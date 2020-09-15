@@ -5,8 +5,10 @@ import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.LineNumberReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -20,6 +22,7 @@ public class Controller {
 
 	//Pre-selected to created the categoryFiles for the game mode.Add the random select method.  
 	//This is the 5 random index whthin the range.
+	private int[] _FiveCategoriesIndex;
 	private int[] _FiveQuestionsIndex;
 	//This is all the files under the category folder. 
 	private final File[] _allCategoryFiles = _categoriesFolder.listFiles();
@@ -42,30 +45,38 @@ public class Controller {
 	//*******************************************************************************
 	//Add the randomly select method. 
 	private File[] getFiveCategories() {
-		_FiveQuestionsIndex = this.getFiveRandomNumbers();
+		_FiveCategoriesIndex = this.getFiveRandomNumbers(_categoriesFolder.listFiles().length,0);
 		for (int i=0; i<5; i++) {
-			_categoryFiles[i] = _allCategoryFiles[_FiveQuestionsIndex[i]];
+			_categoryFiles[i] = _allCategoryFiles[_FiveCategoriesIndex[i]];
 		}	
 		return _categoryFiles;
 	}
-	
-	//Select five lines randomly from a file. 
-	//private File getFiveLines(File category) {
-		
-		
-		//return 
-	//}
 
-	private int[] getFiveRandomNumbers() {
-		int max = _categoriesFolder.listFiles().length - 1;
-		int min = 0;
+	// read the appointed line number of a file. 
+	private String readAppointedLineNumber(File categoryFile, int lineNumber, int totalLines) throws IOException {
+
+		FileReader in = new FileReader(categoryFile);  
+		LineNumberReader reader = new LineNumberReader(in);  
+
+		for(int i = 0; i < totalLines; i++) {
+			String s = reader.readLine();	
+			if (reader.getLineNumber() == lineNumber) {  
+				return s;
+			} 
+		}
+		return null;
+	}
+
+	private int[] getFiveRandomNumbers(int Max, int Min) {
+		int max = Max - 1;
+		int min = Min;
 		int len = max-min+1;
 
 		int[] source = new int[len];
 		for (int i = min; i < min+len; i++){
 			source[i-min] = i;
 		}
- 
+
 		int[] result = new int[5];
 		Random rd = new Random();
 		int index = 0;
@@ -74,9 +85,9 @@ public class Controller {
 			result[i] = source[index];
 			source[index] = source[len];
 		}
-		_FiveQuestionsIndex = result;
-		return _FiveQuestionsIndex; 
- 
+		
+		return result; 
+
 	}
 
 
@@ -96,28 +107,39 @@ public class Controller {
 		try {
 			_categoryFiles = this.getFiveCategories();
 			createFileStructure();
-			
-			for(File categoryFile : _categoryFiles) {
-				// Read every line of category file
-				BufferedReader reader = new BufferedReader(new FileReader(categoryFile));
-				Category category = new Category(categoryFile.getName());
-				
-				// Pick five questions.
-				
-				String questionLine;
 
-				while((questionLine = reader.readLine()) != null) {
+			for(File categoryFile : _categoryFiles) {
+				//Read every line of category file
+				//BufferedReader reader = new BufferedReader(new FileReader(categoryFile));
+				Category category = new Category(categoryFile.getName());
+
+				//get the total length of the file.
+				LineNumberReader lineNum = new LineNumberReader(new FileReader(categoryFile));
+				lineNum.skip(Long.MAX_VALUE);
+				//get five random line numbers. 
+				_FiveQuestionsIndex = this.getFiveRandomNumbers(lineNum.getLineNumber() + 1,1);
+
+		        // Use the for loop to select each question.
+				for (int i = 0; i < 5; i ++) {
+					//This will return the line that match the random number array. 
+					String questionLine = this.readAppointedLineNumber(categoryFile,_FiveQuestionsIndex[i] ,lineNum.getLineNumber());
+           
 					String[] questionData = questionLine.split(",");
 
 					// Extract information from the question line
+					
+					
+					//will not use the value from datat, will use the for loop add value form 100 to 500. 
 					int value = Integer.parseInt(questionData[0].trim());
+					
+					
 					String question = questionData[1].trim();
 					String answer = questionData[2].trim();
 
 					// Check if question has been answered
 					boolean answered = isAnswered(categoryFile.getName(), value);
-
 					category.addQuestion(new Question(question, answer, value, answered));
+		
 				}
 
 				_questionData.add(category);
