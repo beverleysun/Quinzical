@@ -48,29 +48,35 @@ public class Controller {
 		}	
 		return _categoryFiles;
 	}
+	
+	//Select five lines randomly from a file. 
+	//private File getFiveLines(File category) {
+		
+		
+		//return 
+	//}
 
 	private int[] getFiveRandomNumbers() {
-		int max = _categoriesFolder.listFiles().length;
+		int max = _categoriesFolder.listFiles().length - 1;
 		int min = 0;
-		int[] result = new int[5];  
-		int count = 0;  
-		while(count < 5) {  
-			int num = (int) (Math.random() * (max - min)) + min;  
-			boolean flag = true;  
-			for (int j = 0; j < 5; j++) {  
-				if(num == result[j]){  
-					flag = false;  
-					break;  
-				}  
-			}  
-			if(flag){  
-				result[count] = num;  
-				count++;  
-			}  
-		}  
-		_FiveQuestionsIndex = result;
-		return _FiveQuestionsIndex;  
+		int len = max-min+1;
 
+		int[] source = new int[len];
+		for (int i = min; i < min+len; i++){
+			source[i-min] = i;
+		}
+ 
+		int[] result = new int[5];
+		Random rd = new Random();
+		int index = 0;
+		for (int i = 0; i < result.length; i++) {
+			index = Math.abs(rd.nextInt() % len--);
+			result[i] = source[index];
+			source[index] = source[len];
+		}
+		_FiveQuestionsIndex = result;
+		return _FiveQuestionsIndex; 
+ 
 	}
 
 
@@ -91,11 +97,13 @@ public class Controller {
 			_categoryFiles = this.getFiveCategories();
 			createFileStructure();
 			
-			
 			for(File categoryFile : _categoryFiles) {
 				// Read every line of category file
 				BufferedReader reader = new BufferedReader(new FileReader(categoryFile));
 				Category category = new Category(categoryFile.getName());
+				
+				// Pick five questions.
+				
 				String questionLine;
 
 				while((questionLine = reader.readLine()) != null) {
