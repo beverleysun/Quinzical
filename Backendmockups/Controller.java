@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.LineNumberReader;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.Random;
 
 public class Controller {
 	private final File _saveFolder = new File("./.save");
-	private final File _saveProgressFolder = new File("./.save/Progress");
+	private final File _saveProgressFolder = new File("./.save/progress");
 	private final File _answeredFolder = new File("./.save/answered");
 	private final File _winningsFolder = new File("./.save/winnings");
 	private final File _categoriesFolder = new File("./categories");
@@ -36,9 +37,9 @@ public class Controller {
 	private final int _numCats;
 
 	private static Controller _controller;
-	
 
-	private Controller() {
+
+	private Controller(){
 		loadQuestions();
 		_numCats = _questionData.size();
 	}
@@ -52,23 +53,36 @@ public class Controller {
 		
 		{return true;}
 		
+		
 		else if (this.isAnswered(category, (value-100)) && value != 100 ) {
 			return true;
 		}
 		else
 	return false;	
 	}
-	//Add the randomly select method. 
-	private final File[] getFiveCategories() throws IOException {
-		_FiveCategoriesIndex = this.getFiveRandomNumbers(_categoriesFolder.listFiles().length,0);
-		File catFile = new File("./.save/Progress/FiveCategoriesIndex");
-		FileWriter out = new FileWriter(catFile);
-		
+	
+	//Read the file and put the numbers into _categoryFile.
+	private File[] getCategories() throws IOException {
+		BufferedReader in = new BufferedReader(new FileReader("./.save/progress/categoryIndex"));
+		String s = in.readLine(); 
+	    String[] temp = s.split(",");
+	    
 		for (int i=0; i<5; i++) {
-			_categoryFiles[i] = _allCategoryFiles[_FiveCategoriesIndex[i]];
-			out.write(_categoryFiles[i]);
+			_categoryFiles[i] = _allCategoryFiles[Integer.parseInt(temp[i])];
 		}	
+		in.close();
 		return _categoryFiles;
+	}
+	//get five random numbers for categories and write it into file.
+	private void createFiveCategoriesFile() throws IOException {
+		_FiveCategoriesIndex = this.getFiveRandomNumbers(_categoriesFolder.listFiles().length,0);
+		//create the file to store  the category index and read it. 
+		new File("./.save/Progress/categoryIndex").createNewFile();
+		Writer wr = new FileWriter("./.save/Progress/categoryIndex");
+		for (int i=0; i<5; i++) {
+			wr.write(String.valueOf(_FiveCategoriesIndex[i]) + ",");
+		}
+		wr.close();
 	}
 
 	// read the appointed line number of a file. 
@@ -83,6 +97,8 @@ public class Controller {
 				return s;
 			} 
 		}
+		
+		in.close();
 		return null;
 	}
 
@@ -124,15 +140,13 @@ public class Controller {
 	private void loadQuestions() {
 
 		try {
-			getFiveCategories();
 			createFileStructure();
+			getCategories();
 			for(File categoryFile : _categoryFiles) {
 				//Read every line of category file
 				//BufferedReader reader = new BufferedReader(new FileReader(categoryFile));
 				Category category = new Category(categoryFile.getName());
 				
-	
-
 				//get the total length of the file.
 				LineNumberReader lineNum = new LineNumberReader(new FileReader(categoryFile));
 				lineNum.skip(Long.MAX_VALUE);
@@ -180,14 +194,16 @@ public class Controller {
 			_answeredFolder.mkdirs();
 			_winningsFolder.mkdir();
 			_saveProgressFolder.mkdir();
-			
+			createFiveCategoriesFile();
 			new File("./.save/winnings/0").createNewFile();
-
+			
 			// Create folders for each category in the save folder
 			for (String name : _categoriesFolder.list()) {
 				new File("./.save/answered/" + name).mkdir();
 			}
 		}
+		
+	
 	}
 
 	private boolean isAnswered(String category, int value) {
