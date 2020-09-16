@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.Random;
 
 public class Controller {
 	private final File _saveFolder = new File("./.save");
+	private final File _saveProgressFolder = new File("./.save/Progress");
 	private final File _answeredFolder = new File("./.save/answered");
 	private final File _winningsFolder = new File("./.save/winnings");
 	private final File _categoriesFolder = new File("./categories");
@@ -27,15 +29,14 @@ public class Controller {
 	//This is all the files under the category folder. 
 	private final File[] _allCategoryFiles = _categoriesFolder.listFiles();
 	//This is the 5 files that matches the index.
-	private File[] _categoryFiles = new File[5];
-
-
+	private final File[] _categoryFiles = new File[5];
+	
 	private final List<Category> _questionData = new ArrayList<>();
-
 
 	private final int _numCats;
 
 	private static Controller _controller;
+	
 
 	private Controller() {
 		loadQuestions();
@@ -43,11 +44,29 @@ public class Controller {
 	}
 
 	//*******************************************************************************
+	//Check the question is avaliable or not 
+	
+	public boolean isAvailable(String category, int value) {
+		
+		if(value == 100 && !isAnswered(category, value)) 
+		
+		{return true;}
+		
+		else if (this.isAnswered(category, (value-100)) && value != 100 ) {
+			return true;
+		}
+		else
+	return false;	
+	}
 	//Add the randomly select method. 
-	private File[] getFiveCategories() {
+	private final File[] getFiveCategories() throws IOException {
 		_FiveCategoriesIndex = this.getFiveRandomNumbers(_categoriesFolder.listFiles().length,0);
+		File catFile = new File("./.save/Progress/FiveCategoriesIndex");
+		FileWriter out = new FileWriter(catFile);
+		
 		for (int i=0; i<5; i++) {
 			_categoryFiles[i] = _allCategoryFiles[_FiveCategoriesIndex[i]];
+			out.write(_categoryFiles[i]);
 		}	
 		return _categoryFiles;
 	}
@@ -105,13 +124,14 @@ public class Controller {
 	private void loadQuestions() {
 
 		try {
-			_categoryFiles = this.getFiveCategories();
+			getFiveCategories();
 			createFileStructure();
-
 			for(File categoryFile : _categoryFiles) {
 				//Read every line of category file
 				//BufferedReader reader = new BufferedReader(new FileReader(categoryFile));
 				Category category = new Category(categoryFile.getName());
+				
+	
 
 				//get the total length of the file.
 				LineNumberReader lineNum = new LineNumberReader(new FileReader(categoryFile));
@@ -120,6 +140,7 @@ public class Controller {
 				_FiveQuestionsIndex = this.getFiveRandomNumbers(lineNum.getLineNumber() + 1,1);
 
 		        // Use the for loop to select each question.
+				int value = 100;
 				for (int i = 0; i < 5; i ++) {
 					//This will return the line that match the random number array. 
 					String questionLine = this.readAppointedLineNumber(categoryFile,_FiveQuestionsIndex[i] ,lineNum.getLineNumber());
@@ -130,7 +151,7 @@ public class Controller {
 					
 					
 					//will not use the value from datat, will use the for loop add value form 100 to 500. 
-					int value = Integer.parseInt(questionData[0].trim());
+					value = 500 - 100*i;
 					
 					
 					String question = questionData[1].trim();
@@ -138,8 +159,13 @@ public class Controller {
 
 					// Check if question has been answered
 					boolean answered = isAnswered(categoryFile.getName(), value);
-					category.addQuestion(new Question(question, answer, value, answered));
-		
+					
+					//Check the question is avaiable or not 
+					boolean available = isAvailable(categoryFile.getName(),value);
+					
+					category.addQuestion(new Question(question, answer, value, answered, available));
+					
+				
 				}
 
 				_questionData.add(category);
@@ -153,6 +179,8 @@ public class Controller {
 		if(!_saveFolder.exists()) {
 			_answeredFolder.mkdirs();
 			_winningsFolder.mkdir();
+			_saveProgressFolder.mkdir();
+			
 			new File("./.save/winnings/0").createNewFile();
 
 			// Create folders for each category in the save folder
