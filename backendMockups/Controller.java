@@ -35,7 +35,7 @@ public class Controller {
 	//This is the 5 files that matches the index.
 	private final File[] _categoryFiles = new File[5];
 
-	private final List<Category> _questionData = new ArrayList<>();
+	private final List<Category> _questionData = new ArrayList<Category>();
 
 	private final int _numCats;
 

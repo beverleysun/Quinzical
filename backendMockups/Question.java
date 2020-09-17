@@ -1,27 +1,26 @@
 package jeopardy;
-
 public class Question {
     private final String _question;
     private final String _answer;
     private final int _value;
     private boolean _completed;
     //Check the question is avaliable or not. 
-    private boolean _avaliable;
+    private boolean _available;
 
-    public Question(String question, String answer, int value, boolean completed, boolean avaliable) {
+    public Question(String question, String answer, int value, boolean completed, boolean available) {
         _question = question;
         _answer = answer;
         _value = value;
         _completed = completed;
-        _avaliable = avaliable;
+        _available = available;
     }
     
-    public boolean isAvaliable() {
-    	return _avaliable;
+    public boolean isAvailable() {
+    	return _available;
     }
     
-    public void setAvaliable(boolean completed) {
-    	_avaliable = completed;
+    public void setAvailable(boolean completed) {
+    	_available = completed;
     }
 
     public String getQuestion() {
