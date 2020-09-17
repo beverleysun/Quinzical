@@ -25,6 +25,7 @@ hs_err_pid*
 # Intellij specific files
 *.iml
 /out/
+/.idea/
 
 # Mac specific
 .DS_Store
