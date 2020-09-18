@@ -16,7 +16,7 @@ public class Jeopardy extends Application {
     @Override
     public void start(Stage stage) {
         // Load assets
-        Font.loadFont(getClass().getResourceAsStream("/assets/slkscr.ttf"), 16);
+        Font.loadFont(getClass().getResourceAsStream("/assets/PTSans.ttf"), 16);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/assets/logo.png")));
 
         // Set up stage area
