@@ -29,3 +29,6 @@ hs_err_pid*
 
 # Mac specific
 .DS_Store
+
+# Game specific
+.save/
