@@ -1,5 +1,5 @@
 .start-button, .reset-button, .question-button, .back-button, .yes-button, .no-button, .confirm-button {
-    -fx-font-family: 'Silkscreen';
+    -fx-font-family: "PT Sans";
     -fx-font-size: 20;
     -fx-text-fill: "white";
     -fx-padding: 10,8,10,8;
@@ -9,16 +9,13 @@
 
 .start-button, .reset-button, .back-button, .yes-button, .no-button, .confirm-button{
     -fx-background-color: rgb(220,38,136);
-    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.5) , 15 , 0 , 0 , 0 );
 }
 
 .question-button {
     -fx-background-color: rgb(85,189,202);
-    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 15 , 0 , 0 , 0 );
 }
 
 .start-button:hover, .reset-button:hover, .question-button:hover, .back-button:hover, .yes-button:hover, .no-button:hover, .confirm-button:hover {
-    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.2) , 13 , 0 , 0 , 0 );
     -fx-cursor: hand;
 }
 
@@ -31,7 +28,7 @@
 }
 
 .start-jeopardy, .category-label, .prompt, .winnings-label, .question-info, .validation-label, .game-completed, .please-reset {
-    -fx-font-family: "Silkscreen";
+    -fx-font-family: "PT Sans";
     -fx-text-fill: white;
     -fx-alignment: center;
     -fx-font-weight: bold;
@@ -50,7 +47,7 @@
 }
 
 .answer-input {
-    -fx-font-family: "Silkscreen";
+    -fx-font-family: "PT Sans";
     -fx-font-size: 20;
 }
 
@@ -65,7 +62,4 @@
 .background {
     -fx-background: linear-gradient(from 35% 0% to 65% 100%, rgba(217,147,42,1) 0%, rgba(111,22,223,1) 100%);
 
-}
-.answering-stage {
-    -fx-background-color: #38276b;
 }
