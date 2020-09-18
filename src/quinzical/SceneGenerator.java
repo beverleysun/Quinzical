@@ -280,7 +280,7 @@ public class SceneGenerator {
 
         // Styling
         scene.getStylesheets().add("assets/style.css");
-        root.getStyleClass().add("answering-stage");
+        root.getStyleClass().add("background");
         questionLabel.getStyleClass().add("prompt");
         questionInfo.getStyleClass().add("question-info");
         answerInput.getStyleClass().add("answer-input");
