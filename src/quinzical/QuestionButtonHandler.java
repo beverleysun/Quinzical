@@ -26,8 +26,8 @@ public class QuestionButtonHandler extends ButtonHandler {
         questionToAsk.setCompleted(true);
         _controller.addCompletedFile(category, value);
         
-        //After answer the question, set it unavaliable and set the question
-        // that  value is 100 more than it avaliable. 
+        // After the question is answered, set it unavailable and set the question
+        // that has a value 100 more available.
         questionToAsk.setAvailable(false);
         int valueInt = Integer.parseInt(value);
         if (valueInt < 500 ) {
