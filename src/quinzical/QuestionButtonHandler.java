@@ -28,11 +28,11 @@ public class QuestionButtonHandler extends ButtonHandler {
         
         //After answer the question, set it unavaliable and set the question
         // that  value is 100 more than it avaliable. 
-        questionToAsk.setAvaliable(false);
+        questionToAsk.setAvailable(false);
         int valueInt = Integer.parseInt(value);
         if (valueInt < 500 ) {
-        Question questionToSetAvaialble = _controller.findQuestion(category,  Integer.toString((valueInt+100)));
-        questionToSetAvaialble.setAvaliable(true);
+        Question questionToSetAvailable = _controller.findQuestion(category,  Integer.toString((valueInt+100)));
+        questionToSetAvailable.setAvailable(true);
         }
         
 
