@@ -5,6 +5,7 @@ import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -24,13 +25,12 @@ public class Controller {
 	private final File _winningsFolder = new File("./.save/winnings");
 	private final File _categoriesFolder = new File("./categories");
 
-	//Pre-selected to created the categoryFiles for the game mode.Add the random select method.  
-	//This is the 5 random index whthin the range.
-
 	private int[] _FiveQuestionsIndex = new int[5];
-	//This is all the files under the category folder. 
+
+	// All files under the category folder
 	private final File[] _allCategoryFiles = _categoriesFolder.listFiles();
-	//This is the 5 files that matches the index.
+
+	// All 5 files that matches the index
 	private final File[] _categoryFiles = new File[5];
 
 	private final List<Category> _questionData = new ArrayList<Category>();
@@ -46,22 +46,30 @@ public class Controller {
 		_numCats = _questionData.size();
 	}
 
+	public static Controller getInstance() {
+		if (_controller == null ) {
+			_controller = new Controller();
+		}
+
+		return _controller;
+	}
+
 	//*******************************************************************************
 	//Check the is the question is available or not
 
 	public boolean isAvailable(String category, int value) {
-
-		if(value == 100 && !isAnswered(category, value))
-
-		{return true;}
-
-
-		else return isAnswered(category, (value - 100)) && value != 100;
+		if(value == 100 && !isAnswered(category, value)){
+			return true;
+		} else {
+			return isAnswered(category, (value - 100)) && value != 100;
+		}
 	}
+
 	//check the question index file
 	private boolean checkQuestionIndexFile(String fileName) {
 		return new File("./.save/QuestionsIndex/" + fileName ).exists();
 	}
+
 	//Read the file and put the numbers into _categoryFile.
 	private int[] getQuestions(String fileName) throws IOException {
 		BufferedReader in = new BufferedReader(new FileReader("./.save/QuestionsIndex/" + fileName));
@@ -76,19 +84,25 @@ public class Controller {
 	}
 
 	//Read the file and put the numbers into _categoryFile.
-	private void loadCategories() throws IOException {
-		BufferedReader in = new BufferedReader(new FileReader("./.save/CategoryIndex/categoryIndex"));
-		String s = in.readLine();
-		String[] temp = s.split(",");
+	private void loadCategories() {
+		try {
+			BufferedReader in = new BufferedReader(new FileReader("./.save/CategoryIndex/categoryIndex"));
+			String s = in.readLine();
+			String[] temp = s.split(",");
 
-		for (int i=0; i<5; i++) {
-			_categoryFiles[i] = _allCategoryFiles[Integer.parseInt(temp[i])];
+			for (int i=0; i<5; i++) {
+				_categoryFiles[i] = _allCategoryFiles[Integer.parseInt(temp[i])];
+			}
+			in.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		in.close();
 	}
+
 	//get five random numbers and write it into file.
 	private void createRandomNumFile(int Max, int Min, String Path, int[]Variable) throws IOException {
-		Variable = this.getFiveRandomNumbers(Max,Min);
+		Variable = getFiveRandomNumbers(Max,Min);
 		//create the file to store  the category index and read it. 
 		new File(Path).createNewFile();
 		Writer wr = new FileWriter(Path);
@@ -98,26 +112,29 @@ public class Controller {
 		wr.close();
 	}
 
-	// read the appointed line number of a file. 
-	private String readAppointedLineNumber(File categoryFile, int lineNumber, int totalLines) throws IOException {
+	// Read the appointed line number of a file.
+	private String readAppointedLineNumber(File categoryFile, int lineNumber, int totalLines) {
 
-		FileReader in = new FileReader(categoryFile);
-		LineNumberReader reader = new LineNumberReader(in);
+		try {
+			FileReader in = new FileReader(categoryFile);
+			LineNumberReader reader = new LineNumberReader(in);
 
-		for(int i = 0; i < totalLines; i++) {
-			String s = reader.readLine();
-			if (reader.getLineNumber() == lineNumber) {
-				return s;
+			for(int i = 0; i < totalLines; i++) {
+				String s = reader.readLine();
+				if (reader.getLineNumber() == lineNumber) {
+					return s;
+				}
 			}
+			in.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 
-		in.close();
 		return null;
 	}
 
-	private int[] getFiveRandomNumbers(int Max, int Min) {
-		int max = Max - 1;
-		int min = Min;
+	private int[] getFiveRandomNumbers(int max, int min) {
+		max = max - 1;
 		int len = max-min+1;
 
 		int[] source = new int[len];
@@ -133,22 +150,13 @@ public class Controller {
 			result[i] = source[index];
 			source[index] = source[len];
 		}
-
 		return result;
-
 	}
 
 
 	//*******************************************************************************
 
 
-	public static Controller getInstance() {
-		if (_controller == null ) {
-			_controller = new Controller();
-		}
-
-		return _controller;
-	}
 
 	private void loadQuestions() {
 		try {
@@ -167,7 +175,6 @@ public class Controller {
 
 				//get five random line numbers and store it into a file.
 				if (!checkQuestionIndexFile(categoryFile.getName())) {
-					//_FiveQuestionsIndex = this.getFiveRandomNumbers(lineNum.getLineNumber() + 1,1);
 					createRandomNumFile(lineNum.getLineNumber() + 1, 1,_QuestionsIndexFolder +"/"+ categoryFile.getName() ,_FiveQuestionsIndex );
 				}
 				//load the question index from the file.
@@ -177,7 +184,7 @@ public class Controller {
 				int value = 100;
 				for (int i = 0; i < 5; i ++) {
 					//This will return the line that match the random number array.
-					String questionLine = this.readAppointedLineNumber(categoryFile,_FiveQuestionsIndex[i] ,lineNum.getLineNumber());
+					String questionLine = readAppointedLineNumber(categoryFile,_FiveQuestionsIndex[i] ,lineNum.getLineNumber());
 
 					//will not use the value from data, will use the for loop add value form 100 to 500.
 					value = 500 - 100*i;
@@ -210,9 +217,12 @@ public class Controller {
 		String question = splitQuestion[0].trim();
 		String answer = splitQuestion[1].trim();
 
+		// Get the last character of the question and answer strings
 		String lastCharQ = question.substring(question.length() - 1);
 		String lastCharA = answer.substring(answer.length() - 1);
 
+
+		// If the strings end with '.' or ',' then remove it
 		if (lastCharQ.equals(".") || lastCharQ.equals(",")) {
 			question = question.substring(0, question.length()-1).trim();
 		}
@@ -228,14 +238,14 @@ public class Controller {
 	}
 
 	private void createFileStructure() throws IOException {
-		int[] _FiveCategoriesIndex = new int[5];
+		int[] _fiveCategoriesIndex = new int[5];
 
 		if(!_saveFolder.exists()) {
 			_answeredFolder.mkdirs();
 			_winningsFolder.mkdir();
 			_CategoryIndexFolder.mkdir();
 			_QuestionsIndexFolder.mkdir();
-			createRandomNumFile(_categoriesFolder.listFiles().length,0,"./.save/CategoryIndex/categoryIndex",_FiveCategoriesIndex);
+			createRandomNumFile(_categoriesFolder.listFiles().length,0,"./.save/CategoryIndex/categoryIndex",_fiveCategoriesIndex);
 			new File("./.save/winnings/0").createNewFile();
 
 			// Create folders for each category in the save folder
