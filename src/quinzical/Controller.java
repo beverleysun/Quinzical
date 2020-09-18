@@ -35,6 +35,7 @@ public class Controller {
 
 	private final List<Category> _questionData = new ArrayList<Category>();
 
+
 	private final int _numCats;
 
 	private static Controller _controller;
@@ -46,7 +47,7 @@ public class Controller {
 	}
 
 	//*******************************************************************************
-	//Check the question is avaliable or not 
+	//Check the is the question is available or not
 
 	public boolean isAvailable(String category, int value) {
 
@@ -55,7 +56,7 @@ public class Controller {
 		{return true;}
 
 
-		else return this.isAnswered(category, (value - 100)) && value != 100;
+		else return isAnswered(category, (value - 100)) && value != 100;
 	}
 	//check the question index file
 	private boolean checkQuestionIndexFile(String fileName) {
@@ -75,7 +76,7 @@ public class Controller {
 	}
 
 	//Read the file and put the numbers into _categoryFile.
-	private File[] getCategories() throws IOException {
+	private void loadCategories() throws IOException {
 		BufferedReader in = new BufferedReader(new FileReader("./.save/CategoryIndex/categoryIndex"));
 		String s = in.readLine();
 		String[] temp = s.split(",");
@@ -84,7 +85,6 @@ public class Controller {
 			_categoryFiles[i] = _allCategoryFiles[Integer.parseInt(temp[i])];
 		}
 		in.close();
-		return _categoryFiles;
 	}
 	//get five random numbers and write it into file.
 	private void createRandomNumFile(int Max, int Min, String Path, int[]Variable) throws IOException {
@@ -151,11 +151,9 @@ public class Controller {
 	}
 
 	private void loadQuestions() {
-
-
 		try {
 			createFileStructure();
-			getCategories();
+			loadCategories();
 
 			for(File categoryFile : _categoryFiles) {
 				//Read every line of category file
@@ -181,22 +179,18 @@ public class Controller {
 					//This will return the line that match the random number array.
 					String questionLine = this.readAppointedLineNumber(categoryFile,_FiveQuestionsIndex[i] ,lineNum.getLineNumber());
 
-					String[] questionData = questionLine.split("\\)");
-
-					// Extract information from the question line
-
-
-					//will not use the value from datat, will use the for loop add value form 100 to 500.
+					//will not use the value from data, will use the for loop add value form 100 to 500.
 					value = 500 - 100*i;
 
+					String [] questionData = parseQuestionLine(questionLine);
+					String question = questionData[0];
+					String answer = questionData[1];
 
-					String question = questionData[0].trim();
-					String answer = questionData[1].trim();
 
 					// Check if question has been answered
 					boolean answered = isAnswered(categoryFile.getName(), value);
 
-					//Check the question is avaiable or not
+					//Check the if the question is available or not
 					boolean available = isAvailable(categoryFile.getName(),value);
 
 					category.addQuestion(new Question(question, answer, value, answered, available));
@@ -211,9 +205,31 @@ public class Controller {
 		}
 	}
 
-	private void createFileStructure() throws IOException {
+	private String[] parseQuestionLine(String str) {
+		String[] splitQuestion = str.split("\\(\\p{ASCII}*\\)");
+		String question = splitQuestion[0].trim();
+		String answer = splitQuestion[1].trim();
 
+		String lastCharQ = question.substring(question.length() - 1);
+		String lastCharA = answer.substring(answer.length() - 1);
+
+		if (lastCharQ.equals(".") || lastCharQ.equals(",")) {
+			question = question.substring(0, question.length()-1).trim();
+		}
+
+		if (lastCharA.equals(".") || lastCharA.equals(",")) {
+			answer = answer.substring(0, answer.length()-1).trim();
+		}
+
+		splitQuestion[0] = question;
+		splitQuestion[1] = answer;
+
+		return splitQuestion;
+	}
+
+	private void createFileStructure() throws IOException {
 		int[] _FiveCategoriesIndex = new int[5];
+
 		if(!_saveFolder.exists()) {
 			_answeredFolder.mkdirs();
 			_winningsFolder.mkdir();
@@ -227,8 +243,6 @@ public class Controller {
 				new File("./.save/answered/" + name).mkdir();
 			}
 		}
-
-
 	}
 
 	private boolean isAnswered(String category, int value) {
