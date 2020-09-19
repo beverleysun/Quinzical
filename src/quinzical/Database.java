@@ -1,8 +1,5 @@
 package quinzical;
 
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -14,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Controller {
+public class Database {
 	private final File _saveFolder = new File("./.save");
 	private final File _CategoryIndexFolder = new File("./.save/CategoryIndex");
 	private final File _QuestionsIndexFolder = new File("./.save/QuestionsIndex/");
@@ -37,18 +34,18 @@ public class Controller {
 
 	private final int _numCats;
 
-	private static Controller _controller;
+	private static Database _database;
 
-	private Controller(){
+	private Database(){
 		loadQuestions();
 		_numCats = _questionData.size();
 	}
 
-	public static Controller getInstance() {
-		if (_controller == null ) {
-			_controller = new Controller();
+	public static Database getInstance() {
+		if (_database == null ) {
+			_database = new Database();
 		}
-		return _controller;
+		return _database;
 	}
 
 	// Check if the question is available
@@ -258,15 +255,6 @@ public class Controller {
 		return _questionData;
 	}
 
-	public int getNumCats() {
-		return _numCats;
-	}
-
-	public void showScene(Stage stage, Scene scene) {
-		stage.setScene(scene);
-		stage.show();
-	}
-
 	public int getWinnings() {
 		String[] winnings = _winningsFolder.list();
 		return Integer.parseInt(winnings[0]);
@@ -325,15 +313,5 @@ public class Controller {
 			}
 		}
 		return true;
-	}
-
-	public void speak(String str) {
-		String command = "espeak " + "\"" + str + "\"";
-		ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
-		try {
-			Process process = pb.start();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 }
