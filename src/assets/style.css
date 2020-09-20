@@ -29,3 +29,12 @@
 .orange-button {
     -fx-background-color: #D9932A;
 }
+
+.slider .thumb {
+    -fx-background-color: #D9932A;
+}
+
+.slider .track {
+    -fx-background-color: white;
+    -fx-pref-height: 1px;
+}
