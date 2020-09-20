@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="background-color" stylesheets="@../assets/style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="background-color" stylesheets="@../assets/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.PlayController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="110.0" />
@@ -28,10 +28,7 @@
             <Font name="PT Sans" size="26.0" />
          </font>
       </Label>
-      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="225.0" prefWidth="95.0" spacing="12.0" style="-fx-background-radius: 5px;"
-            stylesheets="@../assets/style.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2"
-            GridPane.valignment="TOP">
+      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="95.0" spacing="12.0" style="-fx-background-radius: 5px;" stylesheets="@../assets/style.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <children>
             <Label alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" styleClass="purple-text-fill" stylesheets="@../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
                <font>
@@ -89,10 +86,7 @@
             <String fx:value="white-background" />
             <String fx:value="background-radius-5" />
          </styleClass></VBox>
-      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="225.0" prefWidth="95.0" spacing="12.0" style="-fx-background-radius: 5px;"
-            stylesheets="@../assets/style.css" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2"
-            GridPane.valignment="TOP">
+      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="95.0" spacing="12.0" style="-fx-background-radius: 5px;" stylesheets="@../assets/style.css" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <children>
             <Label alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" styleClass="purple-text-fill" stylesheets="@../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
                <font>
@@ -211,10 +205,7 @@
             <String fx:value="background-radius-5" />
          </styleClass>
       </VBox>
-      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="225.0" prefWidth="95.0" spacing="12.0" style="-fx-background-radius: 5px;"
-            stylesheets="@../assets/style.css" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2"
-            GridPane.valignment="TOP">
+      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="95.0" spacing="12.0" style="-fx-background-radius: 5px;" stylesheets="@../assets/style.css" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <children>
             <Label alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" styleClass="purple-text-fill" stylesheets="@../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
                <font>
@@ -272,10 +263,7 @@
             <String fx:value="white-background" />
             <String fx:value="background-radius-5" />
          </styleClass></VBox>
-      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="225.0" prefWidth="95.0" spacing="12.0" style="-fx-background-radius: 5px;"
-            stylesheets="@../assets/style.css" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2"
-            GridPane.valignment="TOP">
+      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="95.0" spacing="12.0" style="-fx-background-radius: 5px;" stylesheets="@../assets/style.css" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <children>
             <Label alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" styleClass="purple-text-fill" stylesheets="@../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
                <font>
@@ -333,5 +321,6 @@
             <String fx:value="white-background" />
             <String fx:value="background-radius-5" />
          </styleClass></VBox>
+      <Slider id="slider" blockIncrement="0.25" majorTickUnit="1.0" max="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" minorTickCount="0" prefWidth="95.0" stylesheets="@../assets/style.css" value="1.25" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
    </children>
 </GridPane>
