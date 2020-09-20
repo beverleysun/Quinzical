@@ -322,5 +322,10 @@
             <String fx:value="background-radius-5" />
          </styleClass></VBox>
       <Slider id="slider" blockIncrement="0.25" majorTickUnit="1.0" max="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" minorTickCount="0" prefWidth="95.0" stylesheets="@../assets/style.css" value="1.25" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+      <Label styleClass="white-text-fill" stylesheets="@../assets/style.css" text="Voice Speed" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+         <font>
+            <Font name="PT Sans" size="14.0" />
+         </font>
+      </Label>
    </children>
 </GridPane>
