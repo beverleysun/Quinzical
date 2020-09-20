@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.StartPageController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.StartPageController">
    <children>
       <GridPane styleClass="background-color" stylesheets="@../assets/style.css">
         <columnConstraints>
@@ -24,7 +24,7 @@
                   <Font name="PT Sans" size="50.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="85.0" stylesheets="@../assets/style.css" text="Play" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+            <Button mnemonicParsing="false" onAction="#play" prefHeight="34.0" prefWidth="85.0" stylesheets="@../assets/style.css" text="Play" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                <font>
                   <Font name="PT Sans" size="16.0" />
                </font>
