@@ -17,3 +17,7 @@
 .white-button {
     -fx-background-color: white;
 }
+
+.orange-button {
+    -fx-background-color: #D9932A;
+}
