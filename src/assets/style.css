@@ -1,0 +1,23 @@
+.background-color {
+    -fx-background-color: linear-gradient(from 35% 0% to 65% 100%, rgba(217,147,42,1) 0%, rgba(111,22,223,1) 100%);
+}
+
+.white-text-fill {
+    -fx-text-fill: white;
+}
+
+.purple-text-fill {
+    -fx-text-fill: #6F16DF;
+}
+
+.button-radius-5 {
+    -fx-background-radius: 5px;
+}
+
+.white-button {
+    -fx-background-color: white;
+}
+
+.orange-button {
+    -fx-background-color: #D9932A;
+}

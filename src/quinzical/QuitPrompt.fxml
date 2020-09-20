@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane hgap="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(from 35% 0% to 65% 100%, rgba(217,147,42,1) 0%, rgba(111,22,223,1) 100%);" vgap="20.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.QuitPromptController">
+<GridPane hgap="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="background-color" stylesheets="@../assets/style.css" vgap="20.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.QuitPromptController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -15,18 +16,34 @@
     <RowConstraints maxHeight="243.0" minHeight="10.0" prefHeight="213.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label text="Are you sure?" textFill="WHITE" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+      <Label styleClass="white-text-fill" stylesheets="@../assets/style.css" text="Are you sure?" textFill="WHITE" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
          <font>
-            <Font name="PT Sans" size="34.0" />
+            <Font name="PT Sans" size="40.0" />
          </font>
       </Label>
-      <Button mnemonicParsing="false" onAction="#yesQuit" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: #D9932A; -fx-text-fill: white; -fx-background-radius: 5px;" text="Yes" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Button mnemonicParsing="false" onAction="#yesQuit" prefHeight="34.0" prefWidth="85.0" stylesheets="@../assets/style.css" text="Yes" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></Button>
-      <Button mnemonicParsing="false" onAction="#noQuit" prefHeight="28.0" prefWidth="80.0" style="-fx-background-color: white; -fx-text-fill: #683BA0; -fx-background-radius: 5px;" text="No" textFill="#804b4b" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         </cursor>
+         <font>
+            <Font size="16.0" />
+         </font>
+         <styleClass>
+            <String fx:value="white-text-fill" />
+            <String fx:value="button-radius-5" />
+            <String fx:value="orange-button" />
+         </styleClass></Button>
+      <Button mnemonicParsing="false" onAction="#noQuit" prefHeight="34.0" prefWidth="85.0" stylesheets="@../assets/style.css" text="No" textFill="#804b4b" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></Button>
+         </cursor>
+         <styleClass>
+            <String fx:value="button-radius-5" />
+            <String fx:value="purple-text-fill" />
+            <String fx:value="white-button" />
+         </styleClass>
+         <font>
+            <Font size="16.0" />
+         </font></Button>
    </children>
 </GridPane>
