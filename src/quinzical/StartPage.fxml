@@ -15,7 +15,7 @@
         <rowConstraints>
           <RowConstraints maxHeight="163.0" minHeight="10.0" prefHeight="155.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="48.0" minHeight="48.0" prefHeight="48.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="54.0" minHeight="54.0" prefHeight="54.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="1.7976931348623157E308" minHeight="54.0" prefHeight="141.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
@@ -24,7 +24,7 @@
                   <Font name="PT Sans" size="50.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="80.0" stylesheets="@../assets/style.css" text="Play" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+            <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="85.0" stylesheets="@../assets/style.css" text="Play" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                <font>
                   <Font name="PT Sans" size="16.0" />
                </font>
@@ -36,7 +36,7 @@
                   <String fx:value="button-radius-5" />
                   <String fx:value="white-button" />
                </styleClass></Button>
-            <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="80.0" text="Practice" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="85.0" text="Practice" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                <font>
                   <Font name="PT Sans" size="16.0" />
                </font>
@@ -48,7 +48,7 @@
                   <String fx:value="button-radius-5" />
                   <String fx:value="purple-text-fill" />
                </styleClass></Button>
-            <Button mnemonicParsing="false" onAction="#quit" prefHeight="28.0" prefWidth="80.0" text="Quit" textFill="#6f16df" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
+            <Button mnemonicParsing="false" onAction="#quit" prefHeight="34.0" prefWidth="85.0" text="Quit" textFill="#6f16df" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
                <font>
                   <Font name="PT Sans" size="16.0" />
                </font>
