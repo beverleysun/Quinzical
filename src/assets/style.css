@@ -7,14 +7,22 @@
 }
 
 .purple-text-fill {
-    -fx-text-fill: #6F16DF;
+    -fx-text-fill: #683BA0;
 }
 
-.button-radius-5 {
+.button-radius-5, .background-radius-5 {
     -fx-background-radius: 5px;
 }
 
 .white-button {
+    -fx-background-color: white;
+}
+
+.purple-button {
+    -fx-background-color: #683BA0;
+}
+
+.white-background {
     -fx-background-color: white;
 }
 
