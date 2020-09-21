@@ -2,6 +2,7 @@
 
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
@@ -329,7 +330,7 @@
             <Font name="PT Sans" size="14.0" />
          </font>
       </Label>
-      <Polyline fill="#ffffff00" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+      <Polyline fill="#ffffff00" onMouseClicked="#back" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
         <points>
            <Double fx:value="12" />
            <Double fx:value="-10" />
@@ -345,6 +346,9 @@
          <GridPane.margin>
             <Insets left="10.0" />
          </GridPane.margin>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Polyline>
    </children>
 </GridPane>
