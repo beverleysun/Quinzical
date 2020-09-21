@@ -27,4 +27,14 @@ public class StartPageController {
             ioException.printStackTrace();
         }
     }
+
+    public void practice(ActionEvent e) {
+        // Go to practice module
+        try {
+            Parent practice = FXMLLoader.load(getClass().getResource("Play.fxml"));
+            SceneChanger.changeScene(e, practice);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+    }
 }

@@ -36,7 +36,7 @@
                   <String fx:value="button-radius-5" />
                   <String fx:value="white-button" />
                </styleClass></Button>
-            <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="85.0" text="Practice" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <Button mnemonicParsing="false" onAction="#practice" prefHeight="35.0" prefWidth="85.0" text="Practice" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                <font>
                   <Font name="PT Sans" size="16.0" />
                </font>

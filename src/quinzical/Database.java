@@ -7,6 +7,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -15,6 +18,7 @@ public class Database {
 	private final File _saveFolder = new File("./.save");
 	private final File _CategoryIndexFolder = new File("./.save/CategoryIndex");
 	private final File _QuestionsIndexFolder = new File("./.save/QuestionsIndex/");
+	private final File _PracticeQuestionsFolder = new File("./.save/PracticeQuestions/");
 	private final File _answeredFolder = new File("./.save/answered");
 	private final File _winningsFolder = new File("./.save/winnings");
 	private final File _categoriesFolder = new File("./categories");
@@ -32,13 +36,22 @@ public class Database {
 	// Question data for all categories
 	private final List<Category> _allQuestionData = new ArrayList<Category>();
 
+	//This arraylist is for store all questions in practice mode.
+	private final List<Category> _practiceQuestionData = new ArrayList<>();
+
+    //This is the attempted time for practice question.
+	private int _attempted = 0;
+
 	private final int _numCats;
+	private final int _practiceNumCats;
 
 	private static Database _database;
 
 	private Database(){
 		loadQuestions();
+		loadPracticeQuestions();
 		_numCats = _questionData.size();
+		_practiceNumCats = _practiceQuestionData.size();
 	}
 
 	public static Database getInstance() {
@@ -47,6 +60,95 @@ public class Database {
 		}
 		return _database;
 	}
+    //***************************************************************************************
+	public Question findQuestion(String categoryToFind) {
+		for (Category category : _practiceQuestionData) {
+			if (category.getCategoryName().equals(categoryToFind)) {
+				Question question = category.getQuestions().get(0);
+
+				return question;
+			}
+		}
+		return null;
+	}
+
+	//Read the file and get the attempted times of the question.
+	public  int getAttemptedTimes(String fileName) throws IOException {
+		String s = Files.readString(Path.of("./.save/PracticeQuestions/" + fileName), StandardCharsets.UTF_8);
+		int attempted = Integer.parseInt(s);
+		System.out.print(attempted);
+		_attempted = attempted;
+		return _attempted;
+
+	}
+    //If the practice question is attempted, create a file and store the attempted times.
+	public void isAttempted (String category) throws IOException {
+
+		if (!new File("./.save/PracticeQuestions/"+ category).exists()) {
+			new File("./.save/PracticeQuestions/"+ category).createNewFile();
+			FileWriter writer = new FileWriter(("./.save/PracticeQuestions/"+ category));
+			writer.write("1");
+			writer.close();
+		}
+		else {
+
+			int t = getAttemptedTimes(category);
+			FileWriter writer = new FileWriter(("./.save/PracticeQuestions/"+ category));
+			writer.write(Integer.toString(1 + t));
+			writer.close();}
+	}
+
+	public List<Category> getPracticeQuestionData() {
+		return _practiceQuestionData;
+	}
+
+	void loadPracticeQuestions() {
+
+		try {
+			createFileStructure();
+			for(File categoryFile : _allCategoryFiles) {
+				//Read every line of category file
+				//BufferedReader reader = new BufferedReader(new FileReader(categoryFile));
+				Category category = new Category(categoryFile.getName());
+
+				//get the total length of the file.
+				LineNumberReader lineNum = new LineNumberReader(new FileReader(categoryFile));
+				lineNum.skip(Long.MAX_VALUE);
+
+				// create a random number between 1 to lineNum.getLineNumber().
+				//for example 3.
+				int questionIndex = (int)(Math.random() * (lineNum.getLineNumber() - 1 + 1) + 1);
+
+				//This will return the line that match the random number array.
+				String questionLine = this.readAppointedLineNumber(categoryFile,questionIndex ,lineNum.getLineNumber());
+
+				String[] questionData = parseQuestionLine(questionLine);
+
+				// Extract information from the question line
+
+				String question = questionData[0].trim();
+				String hint = questionData[1].trim();
+				String answer = questionData[2].trim();
+
+
+				if (new File("./.save/PracticeQuestions/"+ categoryFile.getName()).exists()) {
+					_attempted = getAttemptedTimes(categoryFile.getName());
+					if(_attempted >= 3) {
+						new File("./.save/PracticeQuestions/"+ categoryFile.getName()).delete();
+					}
+				}
+
+				category.addQuestion(new Question(question,answer,hint,_attempted));
+				_practiceQuestionData.add(category);
+			}
+
+
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	//***************************************************************************************
 
 	// Check if the question is available
 	public boolean isAvailable(String category, int value) {
@@ -155,7 +257,7 @@ public class Database {
 	}
 
 
-	//*******************************************************************************
+
 
 
 
@@ -201,11 +303,13 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
+   // change to separate the line into 3 parts by "(" and ")".
+	private static String[] parseQuestionLine(String str) {
+		String[] splitQuestion = str.split("[\\(\\)]");
 
-	private String[] parseQuestionLine(String str) {
-		String[] splitQuestion = str.split("\\(\\p{ASCII}*\\)");
 		String question = splitQuestion[0].trim();
-		String answer = splitQuestion[1].trim();
+		String hint = splitQuestion[1].trim();
+		String answer = splitQuestion[2].trim();
 
 		// Get the last character of the question and answer strings
 		String lastCharQ = question.substring(question.length() - 1);
@@ -222,7 +326,9 @@ public class Database {
 		}
 
 		splitQuestion[0] = question;
-		splitQuestion[1] = answer;
+		splitQuestion[1] = hint;
+		splitQuestion[2] = answer;
+
 
 		return splitQuestion;
 	}
@@ -235,6 +341,7 @@ public class Database {
 			_winningsFolder.mkdir();
 			_CategoryIndexFolder.mkdir();
 			_QuestionsIndexFolder.mkdir();
+			_PracticeQuestionsFolder.mkdir();
 			createRandomNumFile(_categoriesFolder.listFiles().length,0,"./.save/CategoryIndex/categoryIndex");
 
 			// Set winnings to $0
@@ -263,7 +370,9 @@ public class Database {
 	public void reset() {
 		deleteDirectory(_saveFolder);
 		_questionData.clear();
+		_practiceQuestionData.clear();
 		loadQuestions();
+		loadPracticeQuestions();
 	}
 
 	public void deleteDirectory(File directoryToBeDeleted) {
@@ -276,8 +385,8 @@ public class Database {
 		directoryToBeDeleted.delete();
 	}
 
-	public Question findQuestion(String categoryToFind, String valueToFind) {
-		for (Category category : _questionData) {
+	public Question findQuestion(String categoryToFind, String valueToFind, List<Category> data) {
+		for (Category category : data) {
 			if (category.getCategoryName().equals(categoryToFind)) {
 				for (Question question : category.getQuestions()) {
 					if (question.getValueString().equals(valueToFind)) {
@@ -304,8 +413,8 @@ public class Database {
 		new File("./.save/winnings/"+ winningsInt).renameTo(new File("./.save/winnings/"+ newWinnings));
 	}
 
-	public boolean gameCompleted() {
-		for (Category category : _questionData) {
+	public boolean gameCompleted(List<Category> data) {
+		for (Category category : data) {
 			for (Question question : category.getQuestions()) {
 				if (!question.isCompleted()) {
 					return false;
