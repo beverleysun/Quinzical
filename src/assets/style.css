@@ -31,11 +31,11 @@
     -fx-background-color: #D9932A;
 }
 
-.slider .thumb {
+.voice-speed-slider .thumb {
     -fx-background-color: #D9932A;
 }
 
-.slider .track {
+.voice-speed-slider .track {
     -fx-background-color: white;
     -fx-pref-height: 1px;
 }
