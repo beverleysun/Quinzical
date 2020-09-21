@@ -4,6 +4,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="background-color" stylesheets="@../assets/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.PlayController">
@@ -328,5 +329,22 @@
             <Font name="PT Sans" size="14.0" />
          </font>
       </Label>
+      <Polyline fill="#ffffff00" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+        <points>
+           <Double fx:value="12" />
+           <Double fx:value="-10" />
+           <Double fx:value="0" />
+           <Double fx:value="0" />
+           <Double fx:value="12" />
+           <Double fx:value="10" />
+           <Double fx:value="0" />
+           <Double fx:value="0" />
+           <Double fx:value="25" />
+           <Double fx:value="0" />
+        </points>
+         <GridPane.margin>
+            <Insets left="10.0" />
+         </GridPane.margin>
+      </Polyline>
    </children>
 </GridPane>
