@@ -26,19 +26,19 @@
       <RowConstraints maxHeight="302.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label alignment="CENTER" styleClass="white-text-fill" stylesheets="@../assets/style.css" text="Choose A Question Value" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Label alignment="CENTER" styleClass="white-text-fill" stylesheets="@../assets/style.css" text="Choose A Question" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <font>
             <Font name="PT Sans" size="26.0" />
          </font>
       </Label>
       <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="95.0" spacing="12.0" style="-fx-background-radius: 5px;" stylesheets="@../assets/style.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <children>
-            <Label id="cat-1-label" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" styleClass="purple-text-fill" stylesheets="@../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="cat1Label" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" styleClass="purple-text-fill" stylesheets="@../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="PT Sans" size="14.0" />
                </font>
             </Label>
-            <Button id="cat-1-value-500" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$500">
+            <Button fx:id="cat1value500Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$500">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -46,7 +46,7 @@
                   <String fx:value="white-text-fill" />
                   <String fx:value="purple-button" />
                </styleClass></Button>
-            <Button id="cat-1-value-400" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$400">
+            <Button fx:id="cat1value400Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$400">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -54,7 +54,7 @@
                   <String fx:value="purple-button" />
                   <String fx:value="white-text-fill" />
                </styleClass></Button>
-            <Button id="cat-1-value-300" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$300">
+            <Button fx:id="cat1value300Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$300">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -63,7 +63,7 @@
                     <String fx:value="purple-button" />
                 </styleClass>
             </Button>
-            <Button id="cat-1-value-200" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$200">
+            <Button fx:id="cat1value200Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$200">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -72,7 +72,7 @@
                     <String fx:value="purple-button" />
                 </styleClass>
             </Button>
-            <Button id="cat-1-value-100" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$100">
+            <Button fx:id="cat1value100Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$100">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -91,12 +91,12 @@
          </styleClass></VBox>
       <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="95.0" spacing="12.0" style="-fx-background-radius: 5px;" stylesheets="@../assets/style.css" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <children>
-            <Label id="cat-2-label" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" styleClass="purple-text-fill" stylesheets="@../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="cat2Label" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" styleClass="purple-text-fill" stylesheets="@../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="PT Sans" size="14.0" />
                </font>
             </Label>
-            <Button id="cat-2-value-500" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$500">
+            <Button fx:id="cat2value500Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$500">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -104,7 +104,7 @@
                   <String fx:value="white-text-fill" />
                   <String fx:value="purple-button" />
                </styleClass></Button>
-            <Button id="cat-2-value-400" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$400">
+            <Button fx:id="cat2value400Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$400">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -112,7 +112,7 @@
                   <String fx:value="purple-button" />
                   <String fx:value="white-text-fill" />
                </styleClass></Button>
-            <Button id="cat-2-value-300" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$300">
+            <Button fx:id="cat2value300Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$300">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -121,7 +121,7 @@
                   <String fx:value="purple-button" />
                </styleClass>
             </Button>
-            <Button id="cat-2-value-200" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$200">
+            <Button fx:id="cat2value200Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$200">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -130,7 +130,7 @@
                   <String fx:value="purple-button" />
                </styleClass>
             </Button>
-            <Button id="cat-2-value-100" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$100">
+            <Button fx:id="cat2value100Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$100">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -149,12 +149,12 @@
          </styleClass></VBox>
       <VBox alignment="TOP_CENTER" layoutX="43.0" layoutY="119.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="95.0" spacing="12.0" style="-fx-background-radius: 5px;" stylesheets="@../assets/style.css" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <children>
-            <Label id="cat-3-label" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" styleClass="purple-text-fill" stylesheets="@../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="cat3Label" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" styleClass="purple-text-fill" stylesheets="@../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="PT Sans" size="14.0" />
                </font>
             </Label>
-            <Button id="cat-3-value-500" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$500">
+            <Button fx:id="cat3value500Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$500">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -163,7 +163,7 @@
                   <String fx:value="purple-button" />
                </styleClass>
             </Button>
-            <Button id="cat-3-value-400" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$400">
+            <Button fx:id="cat3value400Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$400">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -172,7 +172,7 @@
                   <String fx:value="white-text-fill" />
                </styleClass>
             </Button>
-            <Button id="cat-3-value-300" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$300">
+            <Button fx:id="cat3value300Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$300">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -181,7 +181,7 @@
                   <String fx:value="purple-button" />
                </styleClass>
             </Button>
-            <Button id="cat-3-value-200" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$200">
+            <Button fx:id="cat3value200Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$200">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -190,7 +190,7 @@
                   <String fx:value="purple-button" />
                </styleClass>
             </Button>
-            <Button id="cat-3-value-100" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$100">
+            <Button fx:id="cat3value100Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$100">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -210,12 +210,12 @@
       </VBox>
       <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="95.0" spacing="12.0" style="-fx-background-radius: 5px;" stylesheets="@../assets/style.css" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <children>
-            <Label id="cat-4-label" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" styleClass="purple-text-fill" stylesheets="@../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="cat4Label" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" styleClass="purple-text-fill" stylesheets="@../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="PT Sans" size="14.0" />
                </font>
             </Label>
-            <Button id="cat-4-value-500" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$500">
+            <Button fx:id="cat4value500Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$500">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -223,7 +223,7 @@
                   <String fx:value="white-text-fill" />
                   <String fx:value="purple-button" />
                </styleClass></Button>
-            <Button id="cat-4-value-400" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$400">
+            <Button fx:id="cat4value400Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$400">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -231,7 +231,7 @@
                   <String fx:value="purple-button" />
                   <String fx:value="white-text-fill" />
                </styleClass></Button>
-            <Button id="cat-4-value-300" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$300">
+            <Button fx:id="cat4value300Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$300">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -240,7 +240,7 @@
                   <String fx:value="purple-button" />
                </styleClass>
             </Button>
-            <Button id="cat-4-value-200" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$200">
+            <Button fx:id="cat4value200Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$200">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -249,7 +249,7 @@
                   <String fx:value="purple-button" />
                </styleClass>
             </Button>
-            <Button id="cat-4-value-100" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$100">
+            <Button fx:id="cat4value100Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$100">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -268,12 +268,12 @@
          </styleClass></VBox>
       <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="95.0" spacing="12.0" style="-fx-background-radius: 5px;" stylesheets="@../assets/style.css" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <children>
-            <Label id="cat-5-label" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" styleClass="purple-text-fill" stylesheets="@../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="cat5Label" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" styleClass="purple-text-fill" stylesheets="@../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="PT Sans" size="14.0" />
                </font>
             </Label>
-            <Button id="cat-5-value-500" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$500">
+            <Button fx:id="cat5value500Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$500">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -281,7 +281,7 @@
                   <String fx:value="white-text-fill" />
                   <String fx:value="purple-button" />
                </styleClass></Button>
-            <Button id="cat-5-value-400" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$400">
+            <Button fx:id="cat5value400Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$400">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -289,7 +289,7 @@
                   <String fx:value="purple-button" />
                   <String fx:value="white-text-fill" />
                </styleClass></Button>
-            <Button id="cat-5-value-300" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$300">
+            <Button fx:id="cat5value300Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$300">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -298,7 +298,7 @@
                   <String fx:value="purple-button" />
                </styleClass>
             </Button>
-            <Button id="cat-5-value-200" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$200">
+            <Button fx:id="cat5value200Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$200">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -307,7 +307,7 @@
                   <String fx:value="purple-button" />
                </styleClass>
             </Button>
-            <Button id="cat-5-value-100" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$100">
+            <Button fx:id="cat5value100Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$100">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -363,7 +363,7 @@
             <Insets right="10.0" />
          </GridPane.margin>
       </Label>
-      <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="55.0" stylesheets="@../assets/style.css" text="Reset" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+      <Button fx:id="reset" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="55.0" stylesheets="@../assets/style.css" text="Reset" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
          <styleClass>
             <String fx:value="orange-button" />
             <String fx:value="white-text-fill" />
