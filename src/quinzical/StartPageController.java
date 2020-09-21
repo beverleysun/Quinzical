@@ -11,33 +11,23 @@ import java.io.IOException;
 
 public class StartPageController {
 
-    public void quit(ActionEvent e) throws IOException {
-        // Go to quit scene
-        Parent quit = FXMLLoader.load(getClass().getResource("QuitPrompt.fxml"));
-
-        // Set scene width and height to the previous scene width and height
-        Scene prevScene = ((Node)e.getSource()).getScene();
-        Stage window = (Stage) ((Node)e.getSource()).getScene().getWindow();
-        double prevSceneWidth = prevScene.getWidth();
-        double prevSceneHeight = prevScene.getHeight();
-        Scene quitScene = new Scene(quit, prevSceneWidth, prevSceneHeight);
-
-        // Show scene
-        window.setScene(quitScene);
+    public void quit(ActionEvent e) {
+        // Go to quit prompt
+        try {
+            Parent quit = FXMLLoader.load(getClass().getResource("QuitPrompt.fxml"));
+            SceneChanger.changeScene(e, quit);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
     }
 
-    public void play(ActionEvent e) throws IOException {
-        // Go to quit scene
-        Parent quit = FXMLLoader.load(getClass().getResource("Play.fxml"));
-
-        // Set scene width and height to the previous scene width and height
-        Scene prevScene = ((Node)e.getSource()).getScene();
-        Stage window = (Stage) ((Node)e.getSource()).getScene().getWindow();
-        double prevSceneWidth = prevScene.getWidth();
-        double prevSceneHeight = prevScene.getHeight();
-        Scene quitScene = new Scene(quit, prevSceneWidth, prevSceneHeight);
-
-        // Show scene
-        window.setScene(quitScene);
+    public void play(ActionEvent e) {
+        // Go to game module
+        try {
+            Parent play = FXMLLoader.load(getClass().getResource("Play.fxml"));
+            SceneChanger.changeScene(e, play);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
     }
 }
