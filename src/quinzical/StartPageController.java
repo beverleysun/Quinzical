@@ -2,27 +2,29 @@ package quinzical;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class StartPageController {
 
-    public void quit(ActionEvent e) throws IOException {
-        // Go to quit scene
-        Parent quit = FXMLLoader.load(getClass().getResource("QuitPrompt.fxml"));
+    public void quit(ActionEvent e) {
+        // Go to quit prompt
+        try {
+            Parent quit = FXMLLoader.load(getClass().getResource("QuitPrompt.fxml"));
+            SceneChanger.changeScene(e, quit);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+    }
 
-        // Set scene width and height to the previous scene width and height
-        Scene prevScene = ((Node)e.getSource()).getScene();
-        Stage window = (Stage) ((Node)e.getSource()).getScene().getWindow();
-        double prevSceneWidth = prevScene.getWidth();
-        double prevSceneHeight = prevScene.getHeight();
-        Scene quitScene = new Scene(quit, prevSceneWidth, prevSceneHeight);
-
-        // Show scene
-        window.setScene(quitScene);
+    public void play(ActionEvent e) {
+        // Go to game module
+        try {
+            Parent play = FXMLLoader.load(getClass().getResource("Play.fxml"));
+            SceneChanger.changeScene(e, play);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
     }
 }
