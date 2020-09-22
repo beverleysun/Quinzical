@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="background-color" stylesheets="@../assets/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.PlayController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="110.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="110.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="110.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="110.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="110.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="46.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="49.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="227.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="60.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="302.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <Label alignment="CENTER" styleClass="white-text-fill" stylesheets="@../assets/style.css" text="Choose A Question Value" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <font>
+                <Font name="PT Sans" size="26.0" />
+            </font>
+        </Label>
+        <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="95.0" spacing="12.0" style="-fx-background-radius: 5px;" stylesheets="@../assets/style.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+            <children>
+                <Label alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" styleClass="purple-text-fill" stylesheets="@../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
+                    <font>
+                        <Font name="PT Sans" size="14.0" />
+                    </font>
+                </Label>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$500">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="white-text-fill" />
+                        <String fx:value="purple-button" />
+                    </styleClass></Button>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$400">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="purple-button" />
+                        <String fx:value="white-text-fill" />
+                    </styleClass></Button>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="\$300">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="white-text-fill" />
+                        <String fx:value="purple-button" />
+                    </styleClass>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="\$200">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="white-text-fill" />
+                        <String fx:value="purple-button" />
+                    </styleClass>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="\$100">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="white-text-fill" />
+                        <String fx:value="purple-button" />
+                    </styleClass>
+                </Button>
+            </children>
+            <padding>
+                <Insets bottom="14.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+            <styleClass>
+                <String fx:value="white-background" />
+                <String fx:value="background-radius-5" />
+            </styleClass></VBox>
+        <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="95.0" spacing="12.0" style="-fx-background-radius: 5px;" stylesheets="@../assets/style.css" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+            <children>
+                <Label alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" styleClass="purple-text-fill" stylesheets="@../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
+                    <font>
+                        <Font name="PT Sans" size="14.0" />
+                    </font>
+                </Label>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$500">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="white-text-fill" />
+                        <String fx:value="purple-button" />
+                    </styleClass></Button>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$400">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="purple-button" />
+                        <String fx:value="white-text-fill" />
+                    </styleClass></Button>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="\$300">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="white-text-fill" />
+                        <String fx:value="purple-button" />
+                    </styleClass>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="\$200">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="white-text-fill" />
+                        <String fx:value="purple-button" />
+                    </styleClass>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="\$100">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="white-text-fill" />
+                        <String fx:value="purple-button" />
+                    </styleClass>
+                </Button>
+            </children>
+            <padding>
+                <Insets bottom="14.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+            <styleClass>
+                <String fx:value="white-background" />
+                <String fx:value="background-radius-5" />
+            </styleClass></VBox>
+        <VBox alignment="TOP_CENTER" layoutX="43.0" layoutY="119.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="95.0" spacing="12.0" style="-fx-background-radius: 5px;" stylesheets="@../assets/style.css" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+            <children>
+                <Label alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" styleClass="purple-text-fill" stylesheets="@../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
+                    <font>
+                        <Font name="PT Sans" size="14.0" />
+                    </font>
+                </Label>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$500">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="white-text-fill" />
+                        <String fx:value="purple-button" />
+                    </styleClass>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$400">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="purple-button" />
+                        <String fx:value="white-text-fill" />
+                    </styleClass>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="\$300">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="white-text-fill" />
+                        <String fx:value="purple-button" />
+                    </styleClass>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="\$200">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="white-text-fill" />
+                        <String fx:value="purple-button" />
+                    </styleClass>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="\$100">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="white-text-fill" />
+                        <String fx:value="purple-button" />
+                    </styleClass>
+                </Button>
+            </children>
+            <padding>
+                <Insets bottom="14.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+            <styleClass>
+                <String fx:value="white-background" />
+                <String fx:value="background-radius-5" />
+            </styleClass>
+        </VBox>
+        <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="95.0" spacing="12.0" style="-fx-background-radius: 5px;" stylesheets="@../assets/style.css" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+            <children>
+                <Label alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" styleClass="purple-text-fill" stylesheets="@../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
+                    <font>
+                        <Font name="PT Sans" size="14.0" />
+                    </font>
+                </Label>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$500">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="white-text-fill" />
+                        <String fx:value="purple-button" />
+                    </styleClass></Button>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$400">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="purple-button" />
+                        <String fx:value="white-text-fill" />
+                    </styleClass></Button>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="\$300">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="white-text-fill" />
+                        <String fx:value="purple-button" />
+                    </styleClass>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="\$200">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="white-text-fill" />
+                        <String fx:value="purple-button" />
+                    </styleClass>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="\$100">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="white-text-fill" />
+                        <String fx:value="purple-button" />
+                    </styleClass>
+                </Button>
+            </children>
+            <padding>
+                <Insets bottom="14.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+            <styleClass>
+                <String fx:value="white-background" />
+                <String fx:value="background-radius-5" />
+            </styleClass></VBox>
+        <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="95.0" spacing="12.0" style="-fx-background-radius: 5px;" stylesheets="@../assets/style.css" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+            <children>
+                <Label alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="100.0" styleClass="purple-text-fill" stylesheets="@../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
+                    <font>
+                        <Font name="PT Sans" size="14.0" />
+                    </font>
+                </Label>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$500">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="white-text-fill" />
+                        <String fx:value="purple-button" />
+                    </styleClass></Button>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$400">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="purple-button" />
+                        <String fx:value="white-text-fill" />
+                    </styleClass></Button>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="\$300">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="white-text-fill" />
+                        <String fx:value="purple-button" />
+                    </styleClass>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="\$200">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="white-text-fill" />
+                        <String fx:value="purple-button" />
+                    </styleClass>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="\$100">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="white-text-fill" />
+                        <String fx:value="purple-button" />
+                    </styleClass>
+                </Button>
+            </children>
+            <padding>
+                <Insets bottom="14.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+            <styleClass>
+                <String fx:value="white-background" />
+                <String fx:value="background-radius-5" />
+            </styleClass></VBox>
+        <Slider blockIncrement="0.25" majorTickUnit="0.25" max="3.0" maxHeight="-Infinity" maxWidth="-Infinity" min="0.5" minHeight="-Infinity" minWidth="-Infinity" minorTickCount="0" prefWidth="95.0" snapToTicks="true" styleClass="voice-speed-slider" stylesheets="@../assets/style.css" value="1.25" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+        <Label styleClass="white-text-fill" stylesheets="@../assets/style.css" text="Voice Speed" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <font>
+                <Font name="PT Sans" size="14.0" />
+            </font>
+        </Label>
+        <Polyline fill="#ffffff00" onMouseClicked="#back" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeWidth="3.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+            <points>
+                <Double fx:value="12" />
+                <Double fx:value="-10" />
+                <Double fx:value="0" />
+                <Double fx:value="0" />
+                <Double fx:value="12" />
+                <Double fx:value="10" />
+                <Double fx:value="0" />
+                <Double fx:value="0" />
+                <Double fx:value="25" />
+                <Double fx:value="0" />
+            </points>
+            <GridPane.margin>
+                <Insets left="10.0" />
+            </GridPane.margin>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Polyline>
+    </children>
+</GridPane>
