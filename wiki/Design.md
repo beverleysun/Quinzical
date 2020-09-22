@@ -17,11 +17,11 @@ This was the first decision that had to be made to form the base of our design. 
 
 We started off with some research:
 
-<div class="img">
-    <img src="./img/kahoot.png" width=200 />
-    <img src="./img/lotto.jpg" width=200 />
-    <img src="./img/jeopardy.jpg" width=200 />
-    <img src="./img/millionaire.jpg" width=200 />
+<div>
+    <img src="./img/kahoot.png" width=200 alt="Kahoot"/>
+    <img src="./img/lotto.jpg" width=200 alt="Lotto"/>
+    <img src="./img/jeopardy.jpg" width=200 alt="Jeopardy"/>
+    <img src="./img/millionaire.jpg" width=200 alt="Who wants to be a millionaire?"/>
 </div>
 <br>
 
@@ -29,30 +29,29 @@ A main theme that we noticed in these popular game-show/quiz type platforms is t
 So we decided to take inspiration by using purple and complementing it with a brighter and contrasting colour, orange.
 
 #### Sample scenes
-<div class="img">
-    <img src="../mockups/start.jpg" width=285 />
-    <img src="../mockups/play-question-board.jpg" width=285 />
-    <img src="../mockups/practice-1-attempt.jpg" width=285 />
+<div>
+    <img src="../mockups/start.jpg" width=285 alt="Start page"/>
+    <img src="../mockups/play-question-board.jpg" width=285 alt="Question board"/>
+    <img src="../mockups/practice-1-attempt.jpg" width=285 alt="One attempt left in practice mode"/>
 </div>
 <br>
 
-Upon mouse-over on the buttons, the cursor turns into a hand so that the user knows that it is clickable. Text colour is chosen such that
+Upon mouse-over on the buttons, the cursor turns into a hand so that the user knows that it is clickable. Text colour was chosen such that
 it provides enough contrast in the background for it to be readable.
 
 #### Accessibility
 Accessibility is very important for those who are visually impaired. For this, we used the Chrome extension, 
 [Colorblindly](https://chrome.google.com/webstore/detail/colorblindly/floniaahmccleoclneebhhmnjgdfijgg?hl=en), to ensure that
-all elements of the Quinzical are able to be read and distinguished.
+all elements of Quinzical are able to be read and distinguished.
 
 <div>
-  <img src="./img/achromatopsia.png" alt="achromatopsia" width=430/>
-  <img src="./img/tritanopia.png" alt="tritanopia" width=430/>
-  
+  <img src="./img/achromatopsia.png" alt="Achromatopsia (monochrome)" width=430/>
+  <img src="./img/tritanopia.png" alt="Tritanopia (blue-blind)" width=430/>
   <p><b>Left to right</b>: Achromatopsia (Monochrome), Tritanopia (Blue-Blind)</p>
 </div>
 
 ### Layout
-
+We have also decided to group elements together such as the buttons for each category so that the user intuitively knows which button belongs to which category.
 
 ### Typography
 
