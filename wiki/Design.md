@@ -19,15 +19,29 @@ We started off with some research:
 
 <link rel="stylesheet" type="text/css" media="all" href="./style.css" />
 <div class="img">
-    <img src="./img/kahoot.png" width=200 height=150 />
-    <img src="./img/lotto.jpg" width=200 height=150 />
-    <img src="./img/jeopardy.jpg" width=200 height=150 />
-    <img src="./img/millionaire.jpg" width=200 height=150 />
+    <img src="./img/kahoot.png" width=200 />
+    <img src="./img/lotto.jpg" width=200 />
+    <img src="./img/jeopardy.jpg" width=200 />
+    <img src="./img/millionaire.jpg" width=200 />
 </div>
 <br>
 
 A main theme that we noticed in these popular game-show/quiz type platforms is the use of purple and bright/bold colours.
 So we decided to take inspiration by using purple and complementing it with a brighter and contrasting colour, orange.
+
+**Sample scenes:**
+<div class="img">
+    <img src="../mockups/start.jpg" width=285 />
+    <img src="../mockups/play-question-board.jpg" width=285 />
+    <img src="../mockups/practice-board.jpg" width=285 />
+</div>
+<br>
+<div class="img">
+    <img src="../mockups/play-answering-scene.jpg" width=285 />
+    <img src="../mockups/play-incorrect.jpg" width=285 />
+    <img src="../mockups/practice-3-attempts.jpg" width=285 />
+</div>
+
 #### Accessibility
 
 ### Layout
