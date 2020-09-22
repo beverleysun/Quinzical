@@ -1,5 +1,8 @@
 package quinzical;
 
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -148,6 +151,11 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
+
+	public void showScene(Stage stage, Scene scene) {
+		stage.setScene(scene);
+		stage.show();
+	}
 	//***************************************************************************************
 
 	// Check if the question is available
@@ -255,10 +263,6 @@ public class Database {
 		}
 		return result;
 	}
-
-
-
-
 
 
 	private void loadQuestions() {

@@ -3,10 +3,13 @@ package quinzical;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 
 public class StartPageController {
+
 
     public void quit(ActionEvent e) {
         // Go to quit prompt
@@ -31,8 +34,8 @@ public class StartPageController {
     public void practice(ActionEvent e) {
         // Go to practice module
         try {
-            Parent practice = FXMLLoader.load(getClass().getResource("Play.fxml"));
-            SceneChanger.changeScene(e, practice);
+            Parent play = FXMLLoader.load(getClass().getResource("Practice.fxml"));
+            SceneChanger.changeScene(e, play);
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }

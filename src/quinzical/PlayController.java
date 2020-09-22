@@ -1,10 +1,15 @@
 package quinzical;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.FlowPane;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlayController {
     public void back (MouseEvent e) {
@@ -16,4 +21,5 @@ public class PlayController {
             ioException.printStackTrace();
         }
     }
+
 }
