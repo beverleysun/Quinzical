@@ -38,7 +38,7 @@
                   <Font name="PT Sans" size="14.0" />
                </font>
             </Label>
-            <Button id="1-500" fx:id="cat1value500Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$500">
+            <Button onMouseClicked="#askQuestion" id="1-500" fx:id="cat1value500Button" mnemonicParsing="false"  prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$500">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -46,7 +46,7 @@
                   <String fx:value="white-text-fill" />
                   <String fx:value="purple-button" />
                </styleClass></Button>
-            <Button id="1-400" fx:id="cat1value400Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$400">
+            <Button onMouseClicked="#askQuestion" id="1-400" fx:id="cat1value400Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$400">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -54,7 +54,7 @@
                   <String fx:value="purple-button" />
                   <String fx:value="white-text-fill" />
                </styleClass></Button>
-            <Button id="1-300" fx:id="cat1value300Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$300">
+            <Button onMouseClicked="#askQuestion" id="1-300" fx:id="cat1value300Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$300">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -63,7 +63,7 @@
                     <String fx:value="purple-button" />
                 </styleClass>
             </Button>
-            <Button id="1-200" fx:id="cat1value200Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$200">
+            <Button onMouseClicked="#askQuestion" id="1-200" fx:id="cat1value200Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$200">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -72,7 +72,7 @@
                     <String fx:value="purple-button" />
                 </styleClass>
             </Button>
-            <Button id="1-100" fx:id="cat1value100Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$100">
+            <Button onMouseClicked="#askQuestion" id="1-100" fx:id="cat1value100Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$100">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -96,7 +96,7 @@
                   <Font name="PT Sans" size="14.0" />
                </font>
             </Label>
-            <Button id="2-500" fx:id="cat2value500Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$500">
+            <Button onMouseClicked="#askQuestion" id="2-500" fx:id="cat2value500Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$500">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -104,7 +104,7 @@
                   <String fx:value="white-text-fill" />
                   <String fx:value="purple-button" />
                </styleClass></Button>
-            <Button id="2-400" fx:id="cat2value400Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$400">
+            <Button onMouseClicked="#askQuestion" id="2-400" fx:id="cat2value400Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$400">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -112,7 +112,7 @@
                   <String fx:value="purple-button" />
                   <String fx:value="white-text-fill" />
                </styleClass></Button>
-            <Button id="2-300" fx:id="cat2value300Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$300">
+            <Button onMouseClicked="#askQuestion" id="2-300" fx:id="cat2value300Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$300">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -121,7 +121,7 @@
                   <String fx:value="purple-button" />
                </styleClass>
             </Button>
-            <Button id="2-200" fx:id="cat2value200Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$200">
+            <Button onMouseClicked="#askQuestion" id="2-200" fx:id="cat2value200Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$200">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -130,7 +130,7 @@
                   <String fx:value="purple-button" />
                </styleClass>
             </Button>
-            <Button id="2-100" fx:id="cat2value100Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$100">
+            <Button onMouseClicked="#askQuestion" id="2-100" fx:id="cat2value100Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$100">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -154,7 +154,7 @@
                   <Font name="PT Sans" size="14.0" />
                </font>
             </Label>
-            <Button id="3-500" fx:id="cat3value500Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$500">
+            <Button onMouseClicked="#askQuestion" id="3-500" fx:id="cat3value500Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$500">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -163,7 +163,7 @@
                   <String fx:value="purple-button" />
                </styleClass>
             </Button>
-            <Button id="3-400" fx:id="cat3value400Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$400">
+            <Button onMouseClicked="#askQuestion" id="3-400" fx:id="cat3value400Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$400">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -172,7 +172,7 @@
                   <String fx:value="white-text-fill" />
                </styleClass>
             </Button>
-            <Button id="3-300" fx:id="cat3value300Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$300">
+            <Button onMouseClicked="#askQuestion" id="3-300" fx:id="cat3value300Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$300">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -181,7 +181,7 @@
                   <String fx:value="purple-button" />
                </styleClass>
             </Button>
-            <Button id="3-200" fx:id="cat3value200Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$200">
+            <Button onMouseClicked="#askQuestion" id="3-200" fx:id="cat3value200Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$200">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -190,7 +190,7 @@
                   <String fx:value="purple-button" />
                </styleClass>
             </Button>
-            <Button id="3-100" fx:id="cat3value100Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$100">
+            <Button onMouseClicked="#askQuestion" id="3-100" fx:id="cat3value100Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$100">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -215,7 +215,7 @@
                   <Font name="PT Sans" size="14.0" />
                </font>
             </Label>
-            <Button id="4-500" fx:id="cat4value500Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$500">
+            <Button onMouseClicked="#askQuestion" id="4-500" fx:id="cat4value500Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$500">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -223,7 +223,7 @@
                   <String fx:value="white-text-fill" />
                   <String fx:value="purple-button" />
                </styleClass></Button>
-            <Button id="4-400" fx:id="cat4value400Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$400">
+            <Button onMouseClicked="#askQuestion" id="4-400" fx:id="cat4value400Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$400">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -231,7 +231,7 @@
                   <String fx:value="purple-button" />
                   <String fx:value="white-text-fill" />
                </styleClass></Button>
-            <Button id="4-300" fx:id="cat4value300Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$300">
+            <Button onMouseClicked="#askQuestion" id="4-300" fx:id="cat4value300Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$300">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -240,7 +240,7 @@
                   <String fx:value="purple-button" />
                </styleClass>
             </Button>
-            <Button id="4-200" fx:id="cat4value200Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$200">
+            <Button onMouseClicked="#askQuestion" id="4-200" fx:id="cat4value200Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$200">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -249,7 +249,7 @@
                   <String fx:value="purple-button" />
                </styleClass>
             </Button>
-            <Button id="4-100" fx:id="cat4value100Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$100">
+            <Button onMouseClicked="#askQuestion" id="4-100" fx:id="cat4value100Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$100">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -273,7 +273,7 @@
                   <Font name="PT Sans" size="14.0" />
                </font>
             </Label>
-            <Button id="5-500" fx:id="cat5value500Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$500">
+            <Button onMouseClicked="#askQuestion" id="5-500" fx:id="cat5value500Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$500">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -281,7 +281,7 @@
                   <String fx:value="white-text-fill" />
                   <String fx:value="purple-button" />
                </styleClass></Button>
-            <Button id="5-400" fx:id="cat5value400Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$400">
+            <Button onMouseClicked="#askQuestion" id="5-400" fx:id="cat5value400Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$400">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -289,7 +289,7 @@
                   <String fx:value="purple-button" />
                   <String fx:value="white-text-fill" />
                </styleClass></Button>
-            <Button id="5-300" fx:id="cat5value300Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$300">
+            <Button onMouseClicked="#askQuestion" id="5-300" fx:id="cat5value300Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$300">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -298,7 +298,7 @@
                   <String fx:value="purple-button" />
                </styleClass>
             </Button>
-            <Button id="5-200" fx:id="cat5value200Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$200">
+            <Button onMouseClicked="#askQuestion" id="5-200" fx:id="cat5value200Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$200">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
@@ -307,7 +307,7 @@
                   <String fx:value="purple-button" />
                </styleClass>
             </Button>
-            <Button id="5-100" fx:id="cat5value100Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$100">
+            <Button onMouseClicked="#askQuestion" id="5-100" fx:id="cat5value100Button" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="\$100">
                <font>
                   <Font name="PT Sans" size="12.0" />
                </font>
