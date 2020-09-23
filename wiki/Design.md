@@ -66,6 +66,8 @@ Titles and subtitles were larger to form a sense hierarchy.
 
 The font chosen was "PT Sans", a free to use Google font that does not require any licensing.
 
+<img src="./img/ptsans.png" width=98%/>
+
 ## UX
 ### Navigation
 We tried to make the game behave the way a user would expect it to behave. So, when the user is in any of the modules (game or practice)
@@ -74,3 +76,6 @@ the button would do. So a reset button is literally labeled "Reset" to reduce an
 As said before, only buttons have the hand cursor on hover to signify that they can be clicked on. If, after we complete the main
 deliverables of the project, we still have time, keyboard shortcuts may be used to enhance the experience of the user. (We all love
 the shortcut ctrl+c and ctrl+v over right click and select).
+
+## Design Decisions Down the Line
+Here, we'll document any changes to the design as development continues
