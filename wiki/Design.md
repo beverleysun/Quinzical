@@ -1,7 +1,7 @@
 # Design
 This is where we are documenting our design process when developing the Quinzical game. In here, we will be discussing
 both [UI](#ui) and [UX](#ux), covering:
-- [Colour](#color)
+- [Colour](#colour)
 - [Layout](#layout)
 - [Typography](#typography)
 - [Navigation](#navigation)
