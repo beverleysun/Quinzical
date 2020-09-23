@@ -52,8 +52,17 @@ all elements of Quinzical are able to be read and distinguished.
 
 ### Layout
 We have also decided to group elements together such as the buttons for each category so that the user intuitively knows which button belongs to which category.
+All elements are also laid out in such a way that the eye naturally follows the progression of the game. *Quit* is the last button as it
+signifies the end of the game while also keeping with basic design tropes. We have the highest value questions ($500) at the top, and the 
+lowest value questions ($100) at the bottom so that the user "works their way up" to the higher values. The back arrow is placed in the top left corner
+as, traditionally, left-side buttons are associated with go-back functionality and right-side buttons with go-forwards. There
+were plenty of other design/layout decisions made however, we won't delve too deep into that.
 
 ### Typography
+Typography was simple. We needed a simple, easy to read font. For readability, using sans serif font was important, especially for on screen
+use. The clean lines and sharp edges are able to be rendered more clearly on a screen which increases legibility for users. The font size for
+all elements are at least 14pt so that text does not get too small to read (especially on higher resolution screens where everything gets relatively smaller).
+Titles and subtitles were larger than plain text to form a sense hierarchy.
 
 ## UX
 ### Navigation
