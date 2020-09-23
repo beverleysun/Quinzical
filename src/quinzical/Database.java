@@ -79,7 +79,6 @@ public class Database {
 	public  int getAttemptedTimes(String fileName) throws IOException {
 		String s = Files.readString(Path.of("./.save/PracticeQuestions/" + fileName), StandardCharsets.UTF_8);
 		int attempted = Integer.parseInt(s);
-		System.out.print(attempted);
 		_attempted = attempted;
 		return _attempted;
 
