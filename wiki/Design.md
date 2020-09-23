@@ -62,7 +62,15 @@ were plenty of other design/layout decisions made however, we won't delve too de
 Typography was simple. We needed a simple, easy to read font. For readability, using sans serif font was important, especially for on screen
 use. The clean lines and sharp edges are able to be rendered more clearly on a screen which increases legibility for users. The font size for
 all elements are at least 14pt so that text does not get too small to read (especially on higher resolution screens where everything gets relatively smaller).
-Titles and subtitles were larger than plain text to form a sense hierarchy.
+Titles and subtitles were larger to form a sense hierarchy.
+
+The font chosen was "PT Sans", a free to use Google font that does not require any licensing.
 
 ## UX
 ### Navigation
+We tried to make the game behave the way a user would expect it to behave. So, when the user is in any of the modules (game or practice)
+then they would except to be able to change the voice speed. Each button is labeled in such a way that the user knows what
+the button would do. So a reset button is literally labeled "Reset" to reduce any ambiguity that may come with, for example, an image.
+As said before, only buttons have the hand cursor on hover to signify that they can be clicked on. If, after we complete the main
+deliverables of the project, we still have time, keyboard shortcuts may be used to enhance the experience of the user. (We all love
+the shortcut ctrl+c and ctrl+v over right click and select).
