@@ -43,7 +43,7 @@
               <Font name="PT Sans" size="26.0" />
           </font>
       </Label>
-      <Button fx:id="replay" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="100.0" stylesheets="@../assets/style.css" text="Replay" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <Button fx:id="replay" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#replay" prefWidth="100.0" stylesheets="@../assets/style.css" text="Replay" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <styleClass>
             <String fx:value="orange-button" />
             <String fx:value="white-text-fill" />
@@ -64,7 +64,7 @@
             <Insets />
          </GridPane.margin>
       </TextField>
-      <Button fx:id="enter" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="Enter" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+      <Button fx:id="enter" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#enter" prefHeight="30.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="Enter" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="TOP">
          <styleClass>
             <String fx:value="purple-button" />
             <String fx:value="white-text-fill" />
@@ -77,7 +77,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="giveUp" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="Give Up" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+      <Button fx:id="giveUp" mnemonicParsing="false" onMouseClicked="#giveUp" prefHeight="30.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="Give Up" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="TOP">
          <styleClass>
             <String fx:value="orange-button" />
             <String fx:value="white-text-fill" />
