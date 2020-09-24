@@ -2,6 +2,7 @@ package quinzical;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 
 public class AskQuestionController {
 
@@ -11,7 +12,10 @@ public class AskQuestionController {
     private int _value;
 
     @FXML
-    private Label questionInfo;
+    private Label questionInfo, winnings;
+
+    @FXML
+    private Slider voiceSlider;
 
     public AskQuestionController(String questionStr, String answerStr, String categoryStr, int value) {
         _questionStr = questionStr;
@@ -23,7 +27,8 @@ public class AskQuestionController {
     @FXML
     public void initialize() {
         questionInfo.setText("Playing " + _categoryStr + " for $" + _value);
+        voiceSlider.setValue(TTS.getInstance().getMultiplier());
+        winnings.setText("$" + Database.getInstance().getWinnings());
+        TTS.getInstance().speak(_questionStr);
     }
-
-
 }
