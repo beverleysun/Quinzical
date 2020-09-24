@@ -16,7 +16,7 @@ import java.util.List;
 public class PlayController {
 
     @FXML
-    private Label cat1Label, cat2Label, cat3Label, cat4Label, cat5Label;
+    private Label cat1Label, cat2Label, cat3Label, cat4Label, cat5Label, winnings;
 
     @FXML
     private Button cat1value100Button, cat1value200Button, cat1value300Button, cat1value400Button, cat1value500Button,
@@ -37,6 +37,7 @@ public class PlayController {
     public void initialize() {
         setLabels();
         initButtons();
+        winnings.setText("$" + Database.getInstance().getWinnings());
         voiceSlider.setValue(TTS.getInstance().getMultiplier());
     }
 
@@ -75,6 +76,8 @@ public class PlayController {
         Category category = _questionData.get(parsed[0]-1);
         Question question = category.findQuestionByValue(parsed[1]);
         int value = question.getValue();
+
+        question.setCompleted(true);
 
         String questionStr = question.getQuestion();
         String answerStr = question.getAnswer();
