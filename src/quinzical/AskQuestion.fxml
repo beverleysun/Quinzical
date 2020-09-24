@@ -64,7 +64,7 @@
             <Insets />
          </GridPane.margin>
       </TextField>
-      <Button fx:id="enter" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#enter" prefHeight="30.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="Enter" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+      <Button fx:id="enter" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#confirm" prefHeight="30.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="Confirm" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="TOP">
          <styleClass>
             <String fx:value="purple-button" />
             <String fx:value="white-text-fill" />
