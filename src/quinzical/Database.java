@@ -13,11 +13,12 @@ import java.util.Random;
 
 public class Database {
 	private final File _saveFolder = new File("./.save");
-	private final File _CategoryIndexFolder = new File("./.save/CategoryIndex");
-	private final File _QuestionsIndexFolder = new File("./.save/QuestionsIndex/");
+	private final File _CategoryIndexFolder = new File("./.save/category-index");
+	private final File _QuestionsIndexFolder = new File("./.save/questions-index/");
 	private final File _answeredFolder = new File("./.save/answered");
 	private final File _winningsFolder = new File("./.save/winnings");
 	private final File _categoriesFolder = new File("./categories");
+	private final File _voiceSpeedFolder = new File("./.save/voice-speed");
 	private int[] _FiveQuestionsIndex = new int[5];
 
 	// Represents all categories
@@ -32,13 +33,11 @@ public class Database {
 	// Question data for all categories
 	private final List<Category> _allQuestionData = new ArrayList<Category>();
 
-	private final int _numCats;
-
 	private static Database _database;
 
 	private Database(){
 		loadQuestions();
-		_numCats = _questionData.size();
+		loadVoiceSpeed();
 	}
 
 	public static Database getInstance() {
@@ -59,13 +58,13 @@ public class Database {
 
 	// Check if question index file exists
 	private boolean checkQuestionIndexFile(String fileName) {
-		return new File("./.save/QuestionsIndex/" + fileName ).exists();
+		return new File("./.save/questions-index/" + fileName ).exists();
 	}
 
 	// Read the file and put the numbers into _categoryFile.
 	private int[] getQuestions(String fileName) {
 		try {
-			BufferedReader in = new BufferedReader(new FileReader("./.save/QuestionsIndex/" + fileName));
+			BufferedReader in = new BufferedReader(new FileReader("./.save/questions-index/" + fileName));
 			String s = in.readLine();
 			String[] temp = s.split(",");
 
@@ -83,7 +82,7 @@ public class Database {
 	//Read the file and put the numbers into _categoryFile.
 	private void loadCategories() {
 		try {
-			BufferedReader in = new BufferedReader(new FileReader("./.save/CategoryIndex/categoryIndex"));
+			BufferedReader in = new BufferedReader(new FileReader("./.save/category-index/category-index"));
 			String s = in.readLine();
 			String[] temp = s.split(",");
 
@@ -154,11 +153,6 @@ public class Database {
 		return result;
 	}
 
-
-	//*******************************************************************************
-
-
-
 	private void loadQuestions() {
 		try {
 			createFileStructure();
@@ -228,23 +222,30 @@ public class Database {
 	}
 
 	private void createFileStructure() throws IOException {
-		int[] _fiveCategoriesIndex = new int[5];
-
 		if(!_saveFolder.exists()) {
 			_answeredFolder.mkdirs();
 			_winningsFolder.mkdir();
 			_CategoryIndexFolder.mkdir();
 			_QuestionsIndexFolder.mkdir();
-			createRandomNumFile(_categoriesFolder.listFiles().length,0,"./.save/CategoryIndex/categoryIndex");
+			_voiceSpeedFolder.mkdir();
+			createRandomNumFile(_categoriesFolder.listFiles().length,0,"./.save/category-index/category-index");
 
 			// Set winnings to $0
 			new File("./.save/winnings/0").createNewFile();
+
+			// Set default voice speed to 130
+			new File("./.save/voice-speed/130").createNewFile();
 
 			// Create folders for each category in the save folder
 			for (String name : _categoriesFolder.list()) {
 				new File("./.save/answered/" + name).mkdir();
 			}
 		}
+	}
+
+	private void loadVoiceSpeed() {
+		String[] voiceSpeed = _voiceSpeedFolder.list();
+		TTS.getInstance().initMultiplier(Double.parseDouble(voiceSpeed[0]));
 	}
 
 	private boolean isAnswered(String category, int value) {
@@ -313,5 +314,10 @@ public class Database {
 			}
 		}
 		return true;
+	}
+
+	public void updateSpeed(double speed) {
+		File[] voiceSpeedFile = _voiceSpeedFolder.listFiles();
+		voiceSpeedFile[0].renameTo(new File("./.save/voice-speed/"+speed));
 	}
 }
