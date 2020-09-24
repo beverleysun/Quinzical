@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
@@ -24,6 +25,9 @@ public class PlayController {
                     cat4value100Button, cat4value200Button, cat4value300Button, cat4value400Button, cat4value500Button,
                     cat5value100Button, cat5value200Button, cat5value300Button, cat5value400Button, cat5value500Button ;
 
+    @FXML
+    private Slider voiceSlider;
+
 
     private final Database _database = Database.getInstance();
     private final List<Category> _questionData = _database.getQuestionData();
@@ -33,6 +37,7 @@ public class PlayController {
     public void initialize() {
         setLabels();
         initButtons();
+        voiceSlider.setValue(TTS.getInstance().getMultiplier());
     }
 
     private void setLabels() {
@@ -66,7 +71,11 @@ public class PlayController {
         Button buttonSource = (Button) e.getSource();
         int[] parsed = parseButtonID(buttonSource);
 
-        Question question = _questionData.get(parsed[0]-1).findQuestionByValue(parsed[1]);
+        // Get all question data
+        Category category = _questionData.get(parsed[0]-1);
+        Question question = category.findQuestionByValue(parsed[1]);
+        int value = question.getValue();
+
         String questionStr = question.getQuestion();
         String answerStr = question.getAnswer();
 
@@ -86,7 +95,7 @@ public class PlayController {
 
         try {
             // Initialise controller with specific question and answer fields
-            AskQuestionController controller = new AskQuestionController(questionStr, answerStr);
+            AskQuestionController controller = new AskQuestionController(questionStr, answerStr, category.getCategoryName(), value);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AskQuestion.fxml"));
             loader.setController(controller);
 
@@ -113,5 +122,9 @@ public class PlayController {
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
+    }
+
+    public void sliderChanged() {
+        TTS.getInstance().setMultiplier(voiceSlider.getValue());
     }
 }
