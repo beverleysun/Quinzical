@@ -19,9 +19,13 @@ public class PracticeController extends PlayController implements EventHandler<M
 
     private final Database _database = Database.getInstance();
     private final List<Category> _practiceQuestionData = _database.getPracticeQuestionData();
-    private String _category;
-    private Question questionToAsk;
+    private static String _category;
+    private static Question questionToAsk;
     private static String clue;
+    private static String answer;
+    private static String answerFisrLetter;
+    private static String hint;
+    private static int attempted;
 
     @FXML
     private FlowPane categoryFlowPane;
@@ -52,10 +56,14 @@ public class PracticeController extends PlayController implements EventHandler<M
         try {
 
             Button categoryButton = (Button) e.getSource();
+
             _category = categoryButton.getId();
             getQuestionInfo();
             clue = questionToAsk.getQuestion();
-            Parent answer = FXMLLoader.load(getClass().getResource("PracticeAnswering.fxml"));
+            answer = questionToAsk.getAnswer();
+            answerFisrLetter = Character.toString(answer.charAt(0));
+            hint = questionToAsk.getHint();
+            Parent answer = FXMLLoader.load(getClass().getResource("AskQuestion.fxml"));
             SceneChanger.changeScene(e, answer);
 
         } catch (IOException event) {
@@ -67,14 +75,14 @@ public class PracticeController extends PlayController implements EventHandler<M
     private void getQuestionInfo() {
 
         questionToAsk = _database.findQuestion(_category, "0", _practiceQuestionData);
-        // System.out.print(category);
+
 
         try {
             _database.isAttempted(_category);
-            int attempted = _database.getAttemptedTimes(_category);
+            attempted = _database.getAttemptedTimes(_category);
             questionToAsk.set_answeredTimes(attempted);
 
-            int unattempted = 3 - attempted;
+             int unattempted = 3 - attempted;
 
             if (unattempted < 1) {
                 new File("./.save/PracticeQuestions/" + _category).delete();
@@ -88,8 +96,24 @@ public class PracticeController extends PlayController implements EventHandler<M
         }
     }
 
+    public static String getCategory(){
+        return _category;
+    }
     public static String getClue(){
         return clue;
     }
+    public static String getAnswer(){
+        return answer;
+    }
+    public static String getHint(){
+        return hint;
+    }
+    public static Question getQuestion(){
+        return questionToAsk;
+    }
+    public static String getAnswerFirstLetter(){
+        return  answerFisrLetter;
+    }
+
 
 }
