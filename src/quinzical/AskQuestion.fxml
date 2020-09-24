@@ -30,6 +30,7 @@
             <String fx:value="white-background" />
             <String fx:value="purple-text-fill" />
             <String fx:value="background-radius-5" />
+            <String fx:value="font-14" />
         </styleClass>
         <font>
             <Font name="PT Sans" size="14.0" />
@@ -38,41 +39,35 @@
             <Insets />
         </GridPane.margin>
     </Label>
-      <Label id="question-info" fx:id="questionInfo" minWidth="-Infinity" styleClass="white-text-fill" text="Playing NZ Life for $100" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
-          <font>
-              <Font name="PT Sans" size="26.0" />
-          </font>
+      <Label id="question-info" fx:id="questionInfo" minWidth="-Infinity" text="Playing NZ Life for $100" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+         <styleClass>
+            <String fx:value="white-text-fill" />
+            <String fx:value="font-26" />
+         </styleClass>
       </Label>
       <Button fx:id="replay" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#replay" prefWidth="100.0" stylesheets="@../assets/style.css" text="Replay" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <styleClass>
             <String fx:value="orange-button" />
             <String fx:value="white-text-fill" />
             <String fx:value="button-radius-5" />
+            <String fx:value="font-16" />
          </styleClass>
-          <font>
-              <Font name="PT Sans" size="18.0" />
-          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
       <TextField fx:id="textField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="335.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="TOP">
-          <font>
-              <Font name="PT Sans" size="14.0" />
-          </font>
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
       </TextField>
-      <Button fx:id="confirm" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false"  prefHeight="30.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="Confirm" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+      <Button fx:id="confirm" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="Confirm" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="TOP">
          <styleClass>
             <String fx:value="purple-button" />
             <String fx:value="white-text-fill" />
             <String fx:value="button-radius-5" />
+            <String fx:value="font-14" />
          </styleClass>
-          <font>
-              <Font name="PT Sans" size="14.0" />
-          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -82,10 +77,8 @@
             <String fx:value="orange-button" />
             <String fx:value="white-text-fill" />
             <String fx:value="button-radius-5" />
+            <String fx:value="font-14" />
          </styleClass>
-          <font>
-              <Font name="PT Sans" size="14.0" />
-          </font>
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
@@ -93,13 +86,14 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-        <Label styleClass="white-text-fill" stylesheets="@../assets/style.css" text="Voice Speed" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-            <font>
-                <Font name="PT Sans" size="14.0" />
-            </font>
+        <Label stylesheets="@../assets/style.css" text="Voice Speed" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets right="102.5" />
          </GridPane.margin>
+         <styleClass>
+            <String fx:value="white-text-fill" />
+            <String fx:value="font-14" />
+         </styleClass>
         </Label>
         <Slider fx:id="voiceSlider" blockIncrement="0.25" majorTickUnit="0.25" max="3.0" maxHeight="-Infinity" maxWidth="-Infinity" min="0.5" minHeight="-Infinity" minWidth="-Infinity" minorTickCount="0" prefWidth="95.0" snapToTicks="true" styleClass="voice-speed-slider" stylesheets="@../assets/style.css" value="1.25" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
          <GridPane.margin>
