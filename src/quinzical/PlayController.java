@@ -78,6 +78,7 @@ public class PlayController {
         int value = question.getValue();
 
         question.setCompleted(true);
+        Database.getInstance().addCompletedFile(category.getCategoryName(), question.getValueString());
 
         String questionStr = question.getQuestion();
         String answerStr = question.getAnswer();
