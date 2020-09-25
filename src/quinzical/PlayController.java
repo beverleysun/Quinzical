@@ -90,18 +90,18 @@ public class PlayController {
             category.findQuestionByValue(nextValue).setAvailable(true);
         }
 
-//        try {
-//            // Initialise controller with specific question and answer fields
-//            AskQuestionController controller = new AskQuestionController(questionStr, answerStr, category.getCategoryName(), value);
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("AskQuestion.fxml"));
-//            loader.setController(controller);
-//
-//            // Change scene
-//            Parent askQuestion = loader.load();
-//            SceneChanger.changeScene(e, askQuestion);
-//        } catch (IOException ioException) {
-//            ioException.printStackTrace();
-//        }
+        try {
+            // Initialise controller with specific question and answer fields
+            AskQuestionController controller = new AskQuestionController(questionStr, answerStr, category.getCategoryName(), value);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AskQuestion.fxml"));
+            loader.setController(controller);
+
+            // Change scene
+            Parent askQuestion = loader.load();
+            SceneChanger.changeScene(e, askQuestion);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
     }
 
     // Get the category number and question value from the ID of a button
