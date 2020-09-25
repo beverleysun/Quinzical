@@ -121,6 +121,16 @@ public class PlayController {
         }
     }
 
+    public void reset(MouseEvent e) {
+        try {
+            // Load reset prompt page scene
+            Parent startPage = FXMLLoader.load(getClass().getResource("ResetPrompt.fxml"));
+            SceneChanger.changeScene(e, startPage);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+    }
+
     public void sliderChanged() {
         TTS.getInstance().setMultiplier(voiceSlider.getValue());
     }
