@@ -55,6 +55,7 @@ public class AskQuestionController {
     }
 
     public void confirm(MouseEvent e) {
+        // Validate the user answer
         String userAnswer = textField.getText();
         if (_answerStr.equals(userAnswer)) {
             Database.getInstance().addWinnings(_value);
@@ -68,6 +69,7 @@ public class AskQuestionController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Incorrect.fxml"));
         loader.setController(new IncorrectController(_answerStr));
         try {
+            // Load the "incorrect" scene
             Parent incorrect = loader.load();
             SceneChanger.changeScene(e, incorrect);
         } catch (IOException ioException) {
@@ -77,6 +79,7 @@ public class AskQuestionController {
 
     public void loadCorrectScene(MouseEvent e){
         try {
+            // Load the "correct" scene
             Parent correct = FXMLLoader.load(getClass().getResource("Correct.fxml"));
             SceneChanger.changeScene(e, correct);
         } catch (IOException ioException) {

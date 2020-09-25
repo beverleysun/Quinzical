@@ -21,12 +21,14 @@ public class ResetPromptController {
     }
 
     public void yesReset(MouseEvent e) {
+        // Reset the game
         Database.getInstance().reset();
         goToQuestionBoard(e);
     }
 
     public void goToQuestionBoard(MouseEvent e) {
         try {
+            // Load question board scene
             Parent questionBoard = FXMLLoader.load(getClass().getResource("Play.fxml"));
             SceneChanger.changeScene(e, questionBoard);
         } catch (IOException ioException) {

@@ -20,6 +20,7 @@ public class TTS {
     }
 
     public void speak (String str) {
+        // Speak at the user specified speed
         int speed = (int) (_speedMultiplier*_averageSpeed);
         String command = "espeak -s " + speed + " \"" + str + "\"";
         ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);

@@ -52,6 +52,7 @@ public class Database {
 		if (value == 100 && !isAnswered(category, value)) {
 			return true;
 		}
+		// Check that the question value below is answered and that this question is not answered
 		return isAnswered(category, value - 100) && !isAnswered(category, value);
 	}
 
