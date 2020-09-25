@@ -30,6 +30,10 @@
     -fx-font-size: 50;
 }
 
+.font-bold {
+    -fx-font-weight: bold;
+}
+
 
 .background-color {
     -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(217,147,42,1) 0%, rgba(111,22,223,1) 100%);
