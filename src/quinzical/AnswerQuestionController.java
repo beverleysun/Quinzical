@@ -75,11 +75,12 @@ public class AnswerQuestionController extends PlayController  {
 
     @FXML
     public void giveUp(MouseEvent e) throws IOException {
-       skipQuestion(e);
+        skipQuestion(e);
     }
 
 
     public static void skipQuestion(MouseEvent e) throws IOException {
+        
         Parent answer = FXMLLoader.load(AnswerQuestionController.class.getResource("Practice.fxml"));
         SceneChanger.changeScene(e, answer);
         PracticeController.getDatabase().getPracticeQuestionData().clear();
@@ -87,6 +88,7 @@ public class AnswerQuestionController extends PlayController  {
         if(new File("./.save/PracticeQuestions/"+ PracticeController.getCategory()).exists()){
             File file = new File("./.save/PracticeQuestions/"+ PracticeController.getCategory());
             file.delete();
+            new File("./.save/PracticeQuestionsIndex/"+ PracticeController.getCategory()).delete();
         }
 
         PracticeController.getDatabase().loadPracticeQuestions();

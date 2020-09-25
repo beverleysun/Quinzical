@@ -72,7 +72,7 @@ public class PracticeController extends PlayController implements EventHandler<M
 
     public static void getQuestionInfo() {
 
-        questionToAsk = _database.findQuestion(_category, "0", _practiceQuestionData);
+        questionToAsk = _database.findQuestion(_category);
 
 
         try {
@@ -80,10 +80,11 @@ public class PracticeController extends PlayController implements EventHandler<M
             attempted = _database.getAttemptedTimes(_category);
             questionToAsk.set_answeredTimes(attempted);
 
-             int unattempted = 4 - attempted;
+            int unattempted = 4 - attempted;
 
             if (unattempted < 1) {
                 new File("./.save/PracticeQuestions/" + _category).delete();
+                new File("./.save/PracticeQuestionsIndex/"+ _category).delete();
                 _database.getPracticeQuestionData().clear();
                 _database.loadPracticeQuestions();
             }
