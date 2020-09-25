@@ -49,11 +49,10 @@ public class Database {
 
 	// Check if the question is available
 	public boolean isAvailable(String category, int value) {
-		if (value == 100 && !isAnswered(category, value)){
+		if (value == 100 && !isAnswered(category, value)) {
 			return true;
-		} else {
-			return isAnswered(category, (value - 100)) && value != 100;
 		}
+		return isAnswered(category, value - 100) && !isAnswered(category, value);
 	}
 
 	// Check if question index file exists
@@ -62,7 +61,7 @@ public class Database {
 	}
 
 	// Read the file and put the numbers into _categoryFile.
-	private int[] getQuestions(String fileName) {
+	private void getQuestions(String fileName) {
 		try {
 			BufferedReader in = new BufferedReader(new FileReader("./.save/questions-index/" + fileName));
 			String s = in.readLine();
@@ -72,11 +71,9 @@ public class Database {
 				_FiveQuestionsIndex[i] = Integer.parseInt(temp[i]);
 			}
 			in.close();
-			return _FiveQuestionsIndex;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return null;
 	}
 
 	//Read the file and put the numbers into _categoryFile.
@@ -171,7 +168,7 @@ public class Database {
 				}
 
 				// Load the question index from the file.
-				_FiveQuestionsIndex = getQuestions(categoryFile.getName());
+				getQuestions(categoryFile.getName());
 
 				// Use the for loop to select each question.
 				for (int i = 0; i < 5; i ++) {
