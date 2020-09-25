@@ -22,4 +22,14 @@ public class Category {
     public List<Question> getQuestions() {
         return _questions;
     }
+
+    public Question findQuestionByValue(int value) {
+        for (Question question : _questions) {
+            if (question.getValue() == value) {
+                return question;
+            }
+
+        }
+        return null;
+    }
 }

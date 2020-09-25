@@ -6,6 +6,9 @@ public class TTS {
 
     private static TTS _tts;
 
+    private double _speedMultiplier;
+    private double _averageSpeed = 130;
+
     private TTS() {}
 
     // Singleton class
@@ -16,13 +19,26 @@ public class TTS {
         return _tts;
     }
 
-    public void speak (String str, int speedMultiplier) {
-        String command = "espeak -" + speedMultiplier + "\"" + str + "\"";
+    public void speak (String str) {
+        String command = "espeak -" + _speedMultiplier*_averageSpeed + "\"" + str + "\"";
         ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
         try {
             Process process = pb.start();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setMultiplier(double multiplier) {
+        _speedMultiplier = multiplier;
+        Database.getInstance().updateSpeed(multiplier);
+    }
+
+    public void initMultiplier(double multiplier){
+        _speedMultiplier = multiplier;
+    }
+
+    public double getMultiplier() {
+        return _speedMultiplier;
     }
 }

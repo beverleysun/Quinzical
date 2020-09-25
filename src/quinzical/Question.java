@@ -4,7 +4,6 @@ public class Question {
     private final String _answer;
     private final int _value;
     private boolean _completed;
-    //Check the question is avaliable or not. 
     private boolean _available;
 
     public Question(String question, String answer, int value, boolean completed, boolean available) {

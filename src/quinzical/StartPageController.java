@@ -1,14 +1,14 @@
 package quinzical;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
 public class StartPageController {
 
-    public void quit(ActionEvent e) {
+    public void quit(MouseEvent e) {
         // Go to quit prompt
         try {
             Parent quit = FXMLLoader.load(getClass().getResource("QuitPrompt.fxml"));
@@ -18,7 +18,7 @@ public class StartPageController {
         }
     }
 
-    public void play(ActionEvent e) {
+    public void play(MouseEvent e) {
         // Go to game module
         try {
             Parent play = FXMLLoader.load(getClass().getResource("Play.fxml"));
