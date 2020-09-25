@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="500.0" prefWidth="800.0" spacing="10.0" styleClass="background-color"
+      stylesheets="@../assets/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="quinzical.GameCompletedController">
+   <padding>
+      <Insets bottom="20.0"/>
+   </padding>
+   <Label stylesheets="@../assets/style.css" text="Congratz!">
+      <styleClass>
+         <String fx:value="white-text-fill"/>
+         <String fx:value="font-bold"/>
+         <String fx:value="font-40"/>
+      </styleClass>
+   </Label>
+   <Label stylesheets="@../assets/style.css" text="You've completed the game!">
+      <styleClass>
+         <String fx:value="white-text-fill"/>
+         <String fx:value="font-26"/>
+      </styleClass>
+   </Label>
+   <Label fx:id="finalWinningsLabel" stylesheets="@../assets/style.css" text="You're final winnings were SCORE">
+      <styleClass>
+         <String fx:value="white-text-fill"/>
+         <String fx:value="font-16"/>
+      </styleClass>
+   </Label>
+   <Button mnemonicParsing="false" onMouseClicked="#reset" stylesheets="@../assets/style.css"
+           text="Reset To Play Again">
+      <styleClass>
+         <String fx:value="orange-button"/>
+         <String fx:value="white-text-fill"/>
+         <String fx:value="font-16"/>
+         <String fx:value="button-radius-5"/>
+      </styleClass>
+      <VBox.margin>
+         <Insets top="10.0"/>
+      </VBox.margin>
+      <cursor>
+         <Cursor fx:constant="HAND"/>
+      </cursor>
+   </Button>
+</VBox>

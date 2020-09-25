@@ -21,8 +21,13 @@ public class StartPageController {
     public void play(MouseEvent e) {
         // Go to game module
         try {
-            Parent play = FXMLLoader.load(getClass().getResource("Play.fxml"));
-            SceneChanger.changeScene(e, play);
+            if (Database.getInstance().gameCompleted()) {
+                    Parent gameCompleted = FXMLLoader.load(getClass().getResource("GameCompleted.fxml"));
+                    SceneChanger.changeScene(e, gameCompleted);
+            } else {
+                Parent play = FXMLLoader.load(getClass().getResource("Play.fxml"));
+                SceneChanger.changeScene(e, play);
+            }
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }

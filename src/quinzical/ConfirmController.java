@@ -24,9 +24,13 @@ public abstract class ConfirmController {
 
     public void toQuestionBoard(MouseEvent e){
         try {
-            // Load the question board scene
-            Parent questionBoard = FXMLLoader.load(getClass().getResource("Play.fxml"));
-            SceneChanger.changeScene(e, questionBoard);
+            if (Database.getInstance().gameCompleted()) {
+                Parent gameCompleted = FXMLLoader.load(getClass().getResource("GameCompleted.fxml"));
+                SceneChanger.changeScene(e, gameCompleted);
+            } else {
+                Parent play = FXMLLoader.load(getClass().getResource("Play.fxml"));
+                SceneChanger.changeScene(e, play);
+            }
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
