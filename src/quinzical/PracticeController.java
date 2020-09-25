@@ -1,6 +1,5 @@
 package quinzical;
 
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 
-import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,8 +15,8 @@ import java.util.List;
 
 public class PracticeController extends PlayController implements EventHandler<MouseEvent> {
 
-    private final Database _database = Database.getInstance();
-    private final List<Category> _practiceQuestionData = _database.getPracticeQuestionData();
+    private static final Database _database = Database.getInstance();
+    private static final List<Category> _practiceQuestionData = _database.getPracticeQuestionData();
     private static String _category;
     private static Question questionToAsk;
     private static String clue;
@@ -63,7 +61,7 @@ public class PracticeController extends PlayController implements EventHandler<M
             answer = questionToAsk.getAnswer();
             answerFisrLetter = Character.toString(answer.charAt(0));
             hint = questionToAsk.getHint();
-            Parent answer = FXMLLoader.load(getClass().getResource("AskQuestion.fxml"));
+            Parent answer = FXMLLoader.load(getClass().getResource("AnswerQuestion.fxml"));
             SceneChanger.changeScene(e, answer);
 
         } catch (IOException event) {
@@ -72,7 +70,7 @@ public class PracticeController extends PlayController implements EventHandler<M
     }
 
 
-    private void getQuestionInfo() {
+    public static void getQuestionInfo() {
 
         questionToAsk = _database.findQuestion(_category, "0", _practiceQuestionData);
 
@@ -82,7 +80,7 @@ public class PracticeController extends PlayController implements EventHandler<M
             attempted = _database.getAttemptedTimes(_category);
             questionToAsk.set_answeredTimes(attempted);
 
-             int unattempted = 3 - attempted;
+             int unattempted = 4 - attempted;
 
             if (unattempted < 1) {
                 new File("./.save/PracticeQuestions/" + _category).delete();
@@ -114,6 +112,8 @@ public class PracticeController extends PlayController implements EventHandler<M
     public static String getAnswerFirstLetter(){
         return  answerFisrLetter;
     }
+    public static Database getDatabase(){return _database;}
+    public static int getAttempted(){return attempted;}
 
 
 }

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="background-color" stylesheets="@../assets/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="background-color" stylesheets="@../assets/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.AnswerController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="330.0" minWidth="-Infinity" prefWidth="144.0" />
@@ -25,7 +25,7 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Label id="question-info" fx:id="result" minWidth="-Infinity" text="#initialize" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+        <Label id="question-info" fx:id="TopLabel" minWidth="-Infinity" text="#initialize" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
             <styleClass>
                 <String fx:value="white-text-fill" />
                 <String fx:value="font-26" />
@@ -34,7 +34,7 @@
             <Font size="33.0" />
          </font>
         </Label>
-        <Button fx:id="next" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="100.0" stylesheets="@../assets/style.css" text="Next" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+        <Button fx:id="next" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#backToQuestion" prefWidth="100.0" stylesheets="@../assets/style.css" text="Next" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3">
             <styleClass>
                 <String fx:value="orange-button" />
                 <String fx:value="white-text-fill" />
@@ -58,6 +58,24 @@
             <GridPane.margin>
                 <Insets />
             </GridPane.margin></Slider>
+      <Label id="question-info" fx:id="clueLabel" minWidth="-Infinity" text="#initialize" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+         <font>
+            <Font size="33.0" />
+         </font>
+         <styleClass>
+            <String fx:value="white-text-fill" />
+            <String fx:value="font-26" />
+         </styleClass>
+      </Label>
+      <Label id="question-info" fx:id="BottomLabel" minWidth="-Infinity" text="#initialize" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+         <font>
+            <Font size="33.0" />
+         </font>
+         <styleClass>
+            <String fx:value="white-text-fill" />
+            <String fx:value="font-26" />
+         </styleClass>
+      </Label>
 
     </children>
 
