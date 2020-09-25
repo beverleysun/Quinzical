@@ -78,37 +78,30 @@ public class PlayController {
         int value = question.getValue();
 
         question.setCompleted(true);
+        question.setAvailable(false);
         Database.getInstance().addCompletedFile(category.getCategoryName(), question.getValueString());
 
         String questionStr = question.getQuestion();
         String answerStr = question.getAnswer();
 
-        buttonSource.setDisable(true);
-
-        // Set next button available. Disable clicked button
+        // Set next question available
         if (parsed[1] != 500) {
             int nextValue = parsed[1]+100;
-            String nextID = parsed[0] + "-" + nextValue;
-            for (Button button : _buttons) {
-                if (button.getId().equals(nextID)){
-                    button.setDisable(false);
-                    break;
-                }
-            }
+            category.findQuestionByValue(nextValue).setAvailable(true);
         }
 
-        try {
-            // Initialise controller with specific question and answer fields
-            AskQuestionController controller = new AskQuestionController(questionStr, answerStr, category.getCategoryName(), value);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AskQuestion.fxml"));
-            loader.setController(controller);
-
-            // Change scene
-            Parent askQuestion = loader.load();
-            SceneChanger.changeScene(e, askQuestion);
-        } catch (IOException ioException) {
-            ioException.printStackTrace();
-        }
+//        try {
+//            // Initialise controller with specific question and answer fields
+//            AskQuestionController controller = new AskQuestionController(questionStr, answerStr, category.getCategoryName(), value);
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("AskQuestion.fxml"));
+//            loader.setController(controller);
+//
+//            // Change scene
+//            Parent askQuestion = loader.load();
+//            SceneChanger.changeScene(e, askQuestion);
+//        } catch (IOException ioException) {
+//            ioException.printStackTrace();
+//        }
     }
 
     // Get the category number and question value from the ID of a button
