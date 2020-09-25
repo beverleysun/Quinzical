@@ -22,6 +22,7 @@ public class IncorrectController extends ConfirmController {
 
     @FXML
     public void initialize() {
+        super.initialize();
         answerLabel.setText("The correct answer was " + _answer);
         TTS.getInstance().speak("Oops. The correct answer was " + _answer);
         nextButton.setOnMouseClicked(this::toQuestionBoard);
