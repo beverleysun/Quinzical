@@ -73,6 +73,20 @@ public class AnswerQuestionController extends PlayController  {
     public void replay(MouseEvent mouseEvent) {
     }
 
+    @FXML
+    public void giveUp(MouseEvent e) throws IOException {
+        Parent answer = FXMLLoader.load(getClass().getResource("Practice.fxml"));
+        SceneChanger.changeScene(e, answer);
+        PracticeController.getDatabase().getPracticeQuestionData().clear();
+
+        if(new File("./.save/PracticeQuestions/"+ PracticeController.getCategory()).exists()){
+            File file = new File("./.save/PracticeQuestions/"+ PracticeController.getCategory());
+            file.delete();
+        }
+
+        PracticeController.getDatabase().loadPracticeQuestions();
+    }
+
     public static boolean getResult(){
         return _result;
     }
