@@ -62,16 +62,7 @@ public class AnswerController extends PlayController {
             SceneChanger.changeScene(e, answer);
         }
         else {
-            Parent answer = FXMLLoader.load(getClass().getResource("Practice.fxml"));
-            SceneChanger.changeScene(e, answer);
-            PracticeController.getDatabase().getPracticeQuestionData().clear();
-
-            if(new File("./.save/PracticeQuestions/"+ PracticeController.getCategory()).exists()){
-                File file = new File("./.save/PracticeQuestions/"+ PracticeController.getCategory());
-                file.delete();
-            }
-
-            PracticeController.getDatabase().loadPracticeQuestions();
+        AnswerQuestionController.skipQuestion(e);
         }
     }
 

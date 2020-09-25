@@ -75,7 +75,12 @@ public class AnswerQuestionController extends PlayController  {
 
     @FXML
     public void giveUp(MouseEvent e) throws IOException {
-        Parent answer = FXMLLoader.load(getClass().getResource("Practice.fxml"));
+       skipQuestion(e);
+    }
+
+
+    public static void skipQuestion(MouseEvent e) throws IOException {
+        Parent answer = FXMLLoader.load(AnswerQuestionController.class.getResource("Practice.fxml"));
         SceneChanger.changeScene(e, answer);
         PracticeController.getDatabase().getPracticeQuestionData().clear();
 
