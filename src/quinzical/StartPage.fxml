@@ -33,7 +33,7 @@
                 <String fx:value="font-16" />
             </styleClass>
         </Button>
-        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="100.0" text="Practice" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+        <Button mnemonicParsing="false" onMouseClicked="#practice" prefHeight="35.0" prefWidth="100.0" text="Practice" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="2">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
