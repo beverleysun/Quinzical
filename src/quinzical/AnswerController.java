@@ -32,7 +32,7 @@ public class AnswerController extends PlayController {
     private Label BottomLabel;
 
     @FXML
-    private void initialize() {
+    public void initialize() {
     if(AnswerQuestionController.getResult()){
         clueLabel.setText("Correct!");
         TopLabel.setText(null);

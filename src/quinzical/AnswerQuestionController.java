@@ -1,21 +1,14 @@
 package quinzical;
 
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.FlowPane;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class AnswerQuestionController extends PlayController  {
 
@@ -31,10 +24,9 @@ public class AnswerQuestionController extends PlayController  {
     private Label hintLabel;
     @FXML
     private TextField answerInput;
+
     @FXML
-    private Button giveUp;
-    @FXML
-    private void initialize(){
+    public void initialize(){
         questionClue.setText(PracticeController.getClue());
         _unattemptedTime = 4 - PracticeController.getQuestion().getAnsweredTimes();
         System.out.print(_unattemptedTime);
@@ -97,6 +89,7 @@ public class AnswerQuestionController extends PlayController  {
     public static boolean getResult(){
         return _result;
     }
-    public static int get_unattemptedTime(){return _unattemptedTime;
+    public static int get_unattemptedTime() {
+        return _unattemptedTime;
     }
 }

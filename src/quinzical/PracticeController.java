@@ -34,7 +34,7 @@ public class PracticeController extends PlayController implements EventHandler<M
 
     }
 
-    public void initialize() throws IOException {
+    public void initialize() {
 
         categorizations = new ArrayList<>();
         for (Category category : _practiceQuestionData ) {
