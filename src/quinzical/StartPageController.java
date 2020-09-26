@@ -1,17 +1,14 @@
 package quinzical;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 
-import javax.xml.crypto.Data;
 import java.io.IOException;
 
 public class StartPageController {
 
-
-    public void quit(ActionEvent e) {
+    public void quit(MouseEvent e) {
         // Go to quit prompt
         try {
             Parent quit = FXMLLoader.load(getClass().getResource("QuitPrompt.fxml"));
@@ -21,17 +18,22 @@ public class StartPageController {
         }
     }
 
-    public void play(ActionEvent e) {
+    public void play(MouseEvent e) {
         // Go to game module
         try {
-            Parent play = FXMLLoader.load(getClass().getResource("Play.fxml"));
-            SceneChanger.changeScene(e, play);
+            if (Database.getInstance().gameCompleted()) {
+                    Parent gameCompleted = FXMLLoader.load(getClass().getResource("GameCompleted.fxml"));
+                    SceneChanger.changeScene(e, gameCompleted);
+            } else {
+                Parent play = FXMLLoader.load(getClass().getResource("Play.fxml"));
+                SceneChanger.changeScene(e, play);
+            }
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
     }
 
-    public void practice(ActionEvent e) {
+    public void practice(MouseEvent e) {
         // Go to practice module
         try {
             Parent play = FXMLLoader.load(getClass().getResource("Practice.fxml"));
@@ -41,3 +43,4 @@ public class StartPageController {
         }
     }
 }
+

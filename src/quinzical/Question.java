@@ -4,9 +4,9 @@ public class Question {
     private final String _answer;
     private final int _value;
     private boolean _completed;
-    //Check the question is available or not.
     private boolean _available;
-    //For practice mode.
+  
+    // For practice mode.
     private int  _answeredTimes;
     private String _hint;
 
@@ -18,14 +18,13 @@ public class Question {
         _available = available;
     }
 
-    //overload a constructor for practice mode.
+    // Overload a constructor for practice mode.
     public Question(String question, String answer, String hint,int answeredTimes) {
         _value = 0;
         _question = question;
         _answer = answer;
         _answeredTimes = answeredTimes;
         _hint = hint;
-        //_completed = completed;
     }
     //**************************************************************************************************
     public String getHint() {

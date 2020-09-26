@@ -1,3 +1,40 @@
+* {
+    -fx-font-family: "PT Sans";
+}
+
+.font-12 {
+    -fx-font-size: 12;
+}
+
+.font-14 {
+    -fx-font-size: 14;
+}
+
+.font-16 {
+    -fx-font-size: 16;
+}
+
+.font-26 {
+    -fx-font-size: 26;
+}
+
+.font-16 {
+    -fx-font-size: 16;
+}
+
+.font-40 {
+    -fx-font-size: 40;
+}
+
+.font-50 {
+    -fx-font-size: 50;
+}
+
+.font-bold {
+    -fx-font-weight: bold;
+}
+
+
 .background-color {
     -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(217,147,42,1) 0%, rgba(111,22,223,1) 100%);
 }
