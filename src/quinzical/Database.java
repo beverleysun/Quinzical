@@ -52,15 +52,11 @@ public class Database {
 
 	private int _PracticeQuestionsIndex;
 
-	private final int _numCats;
-	private final int _practiceNumCats;
-
 	private static Database _database;
 
 	private Database(){
 		loadQuestions();
 		loadPracticeQuestions();
-		_practiceNumCats = _practiceQuestionData.size();
 		loadVoiceSpeed();
 	}
 
@@ -70,7 +66,6 @@ public class Database {
 		}
 		return _database;
 	}
-	//***************************************************************************************
 
 	public void savePracticeIndex(String category, int Index) throws IOException {
 		if (!new File("./.save/PracticeQuestionsIndex/"+ category).exists()) {
@@ -203,7 +198,6 @@ public class Database {
 		stage.setScene(scene);
 		stage.show();
 	}
-	//***************************************************************************************
 
 	// Check if the question is available
 	public boolean isAvailable(String category, int value) {
