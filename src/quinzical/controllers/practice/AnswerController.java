@@ -36,9 +36,9 @@ public class AnswerController extends PlayController {
     }
     else{
         if(PracticeController.getAttempted() <3){
-            clueLabel.setText("Sorry, you are incorrect!");
+            clueLabel.setText(null);
             TopLabel.setText(null);
-            BottomLabel.setText(null);
+            BottomLabel.setText("Sorry, you are incorrect!");
         }
         else {
             TopLabel.setText("Oops, the answer to");

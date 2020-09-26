@@ -25,7 +25,7 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-        <Label id="question-info" fx:id="TopLabel" minWidth="-Infinity" text="#initialize" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+        <Label id="question-info" fx:id="TopLabel" minWidth="-Infinity" text="#initialize" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.valignment="TOP">
             <styleClass>
                 <String fx:value="white-text-fill" />
                 <String fx:value="font-26" />
@@ -33,6 +33,12 @@
          <font>
             <Font size="33.0" />
          </font>
+         <padding>
+            <Insets top="20.0" />
+         </padding>
+         <GridPane.margin>
+            <Insets top="20.0" />
+         </GridPane.margin>
         </Label>
         <Button fx:id="next" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#backToQuestion" prefWidth="100.0" stylesheets="@../../../assets/style.css" text="Next" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3">
             <styleClass>
@@ -58,7 +64,7 @@
             <GridPane.margin>
                 <Insets />
             </GridPane.margin></Slider>
-      <Label id="question-info" fx:id="clueLabel" minWidth="-Infinity" text="#initialize" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+      <Label id="question-info" fx:id="clueLabel" minWidth="-Infinity" prefHeight="331.0" prefWidth="600.0" text="#initialize" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowSpan="3" GridPane.valignment="BOTTOM">
          <font>
             <Font size="33.0" />
          </font>

@@ -30,6 +30,8 @@ public class AnswerQuestionController extends PlayController {
     @FXML
     public void initialize(){
         questionClue.setText(PracticeController.getClue());
+        questionClue.setWrapText(true);
+
         _unattemptedTime = 4 - PracticeController.getQuestion().getAnsweredTimes();
         System.out.print(_unattemptedTime);
         if(_unattemptedTime > 1) {

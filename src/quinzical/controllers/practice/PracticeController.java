@@ -3,10 +3,12 @@ package quinzical.controllers.practice;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.HPos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 import quinzical.Category;
 import quinzical.Database;
 import quinzical.Question;
@@ -49,6 +51,7 @@ public class PracticeController extends PlayController implements EventHandler<M
             categoryButton.setOnMouseClicked(new PracticeController());
             categoryButton.getStyleClass().add("purple-button");
             categoryButton.getStyleClass().add("white-text-fill");
+            categoryButton.setPrefSize(120,30);
             categorizations.add(categoryButton);
             categoryFlowPane.getChildren().add(categoryButton);
         }
