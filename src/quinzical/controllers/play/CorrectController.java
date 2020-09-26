@@ -1,6 +1,7 @@
-package quinzical;
+package quinzical.controllers.play;
 
 import javafx.fxml.FXML;
+import quinzical.TTS;
 
 public class CorrectController extends ConfirmController {
 

@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane hgap="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="background-color" stylesheets="@../assets/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.ResetPromptController">
+<GridPane hgap="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="background-color" stylesheets="@../../../assets/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.controllers.play.ResetPromptController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="250.0" />
@@ -16,13 +16,13 @@
       <RowConstraints maxHeight="234.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
         <RowConstraints maxHeight="270.0" minHeight="10.0" prefHeight="244.0" vgrow="SOMETIMES" />
     </rowConstraints>
-    <Label alignment="CENTER" stylesheets="@../assets/style.css" text="Are you sure?" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+    <Label alignment="CENTER" stylesheets="@../../../assets/style.css" text="Are you sure?" textAlignment="CENTER" textFill="WHITE" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
         <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="font-50" />
         </styleClass>
     </Label>
-    <Button mnemonicParsing="false" onMouseClicked="#yesReset" prefHeight="34.0" prefWidth="85.0" stylesheets="@../assets/style.css" text="Yes" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+    <Button mnemonicParsing="false" onMouseClicked="#yesReset" prefHeight="34.0" prefWidth="85.0" stylesheets="@../../../assets/style.css" text="Yes" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
         <cursor>
             <Cursor fx:constant="HAND" />
         </cursor>
@@ -36,7 +36,7 @@
          <Insets top="10.0" />
       </GridPane.margin>
     </Button>
-    <Button mnemonicParsing="false" onMouseClicked="#goToQuestionBoard" prefHeight="34.0" prefWidth="85.0" stylesheets="@../assets/style.css" text="No" textFill="#804b4b" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+    <Button mnemonicParsing="false" onMouseClicked="#goToQuestionBoard" prefHeight="34.0" prefWidth="85.0" stylesheets="@../../../assets/style.css" text="No" textFill="#804b4b" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
         <cursor>
             <Cursor fx:constant="HAND" />
         </cursor>
@@ -50,7 +50,7 @@
          <Insets top="10.0" />
       </GridPane.margin>
     </Button>
-   <Label fx:id="finalScoreLabel" stylesheets="@../assets/style.css" text="You're final score was SCORE" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+   <Label fx:id="finalScoreLabel" stylesheets="@../../../assets/style.css" text="You're final score was SCORE" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
       <styleClass>
          <String fx:value="white-text-fill" />
          <String fx:value="font-26" />

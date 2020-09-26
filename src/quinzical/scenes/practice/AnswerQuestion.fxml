@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="background-color" stylesheets="@../assets/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.AnswerQuestionController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="background-color" stylesheets="@../../../assets/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.controllers.practice.AnswerQuestionController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="335.0" />
@@ -31,7 +31,7 @@
                 <String fx:value="font-26" />
             </styleClass>
         </Label>
-        <Button fx:id="replay" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#replay" prefWidth="100.0" stylesheets="@../assets/style.css" text="Replay" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+        <Button fx:id="replay" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#replay" prefWidth="100.0" stylesheets="@../../../assets/style.css" text="Replay" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
             <styleClass>
                 <String fx:value="orange-button" />
                 <String fx:value="white-text-fill" />
@@ -47,7 +47,7 @@
                 <Insets />
             </GridPane.margin>
         </TextField>
-        <Button fx:id="confirm" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#checkAnswer" prefHeight="30.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="Confirm" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+        <Button fx:id="confirm" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#checkAnswer" prefHeight="30.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="Confirm" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
             <styleClass>
                 <String fx:value="purple-button" />
                 <String fx:value="white-text-fill" />
@@ -58,7 +58,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <Button fx:id="giveUp" mnemonicParsing="false" onMouseClicked="#giveUp" prefHeight="30.0" prefWidth="90.0" stylesheets="@../assets/style.css" text="Give Up" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+        <Button fx:id="giveUp" mnemonicParsing="false" onMouseClicked="#giveUp" prefHeight="30.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="Give Up" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
             <styleClass>
                 <String fx:value="orange-button" />
                 <String fx:value="white-text-fill" />
@@ -72,7 +72,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <Label stylesheets="@../assets/style.css" text="Voice Speed" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+        <Label stylesheets="@../../../assets/style.css" text="Voice Speed" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
             <GridPane.margin>
                 <Insets right="102.5" />
             </GridPane.margin>
@@ -81,7 +81,7 @@
                 <String fx:value="font-14" />
             </styleClass>
         </Label>
-        <Slider fx:id="voiceSlider" blockIncrement="0.25" majorTickUnit="0.25" max="3.0" maxHeight="-Infinity" maxWidth="-Infinity" min="0.5" minHeight="-Infinity" minWidth="-Infinity" minorTickCount="0" prefWidth="95.0" snapToTicks="true" styleClass="voice-speed-slider" stylesheets="@../assets/style.css" value="1.25" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+        <Slider fx:id="voiceSlider" blockIncrement="0.25" majorTickUnit="0.25" max="3.0" maxHeight="-Infinity" maxWidth="-Infinity" min="0.5" minHeight="-Infinity" minWidth="-Infinity" minorTickCount="0" prefWidth="95.0" snapToTicks="true" styleClass="voice-speed-slider" stylesheets="@../../../assets/style.css" value="1.25" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
             <GridPane.margin>
                 <Insets />
             </GridPane.margin></Slider>

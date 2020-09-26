@@ -1,10 +1,12 @@
-package quinzical;
+package quinzical.controllers.play;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import quinzical.Database;
+import quinzical.SceneChanger;
 
 import java.io.IOException;
 
@@ -29,7 +31,7 @@ public class ResetPromptController {
     public void goToQuestionBoard(MouseEvent e) {
         try {
             // Load question board scene
-            Parent questionBoard = FXMLLoader.load(getClass().getResource("Play.fxml"));
+            Parent questionBoard = FXMLLoader.load(getClass().getResource("../../scenes/play/Play.fxml"));
             SceneChanger.changeScene(e, questionBoard);
         } catch (IOException ioException) {
             ioException.printStackTrace();

@@ -1,20 +1,15 @@
-package quinzical;
+package quinzical.controllers.practice;
 
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.FlowPane;
+import quinzical.SceneChanger;
+import quinzical.controllers.play.PlayController;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class AnswerController extends PlayController {
 
@@ -58,7 +53,7 @@ public class AnswerController extends PlayController {
     private void backToQuestion(MouseEvent e) throws IOException {
 
         if(AnswerQuestionController.get_unattemptedTime() > 1 && !AnswerQuestionController.getResult()) {
-            Parent answer = FXMLLoader.load(getClass().getResource("AnswerQuestion.fxml"));
+            Parent answer = FXMLLoader.load(getClass().getResource("../../scenes/practice/AnswerQuestion.fxml"));
             SceneChanger.changeScene(e, answer);
         }
         else {

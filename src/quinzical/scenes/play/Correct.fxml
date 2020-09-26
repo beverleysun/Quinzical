@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="background-color" stylesheets="@../assets/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.CorrectController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="background-color" stylesheets="@../../../assets/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.controllers.play.CorrectController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="335.0" />
@@ -23,7 +23,7 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
 
-    <Label fx:id="winnings" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="55.0" stylesheets="@../assets/style.css" text="\$100" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+    <Label fx:id="winnings" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="55.0" stylesheets="@../../../assets/style.css" text="\$100" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
         <styleClass>
             <String fx:value="white-background" />
             <String fx:value="purple-text-fill" />
@@ -33,7 +33,7 @@
             <Insets />
         </GridPane.margin>
     </Label>
-    <Label minWidth="-Infinity" stylesheets="@../assets/style.css" text="Correct!" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+    <Label minWidth="-Infinity" stylesheets="@../../../assets/style.css" text="Correct!" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
         <GridPane.margin>
         <Insets bottom="10.0" />
         </GridPane.margin>
@@ -43,7 +43,7 @@
         <String fx:value="font-bold" />
         </styleClass>
     </Label>
-    <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#toQuestionBoard" prefWidth="100.0" stylesheets="@../assets/style.css" text="Next" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+    <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#toQuestionBoard" prefWidth="100.0" stylesheets="@../../../assets/style.css" text="Next" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
         <styleClass>
             <String fx:value="orange-button" />
             <String fx:value="white-text-fill" />
@@ -57,12 +57,12 @@
         <Insets top="10.0" />
         </GridPane.margin>
     </Button>
-    <Label styleClass="white-text-fill" stylesheets="@../assets/style.css" text="Voice Speed" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+    <Label styleClass="white-text-fill" stylesheets="@../../../assets/style.css" text="Voice Speed" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
         <GridPane.margin>
             <Insets right="102.5" />
         </GridPane.margin>
     </Label>
-    <Slider fx:id="voiceSlider" blockIncrement="0.25" majorTickUnit="0.25" max="3.0" maxHeight="-Infinity" maxWidth="-Infinity" min="0.5" minHeight="-Infinity" minWidth="-Infinity" minorTickCount="0" onMouseExited="#sliderChanged" prefWidth="95.0" snapToTicks="true" styleClass="voice-speed-slider" stylesheets="@../assets/style.css" value="1.25" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+    <Slider fx:id="voiceSlider" blockIncrement="0.25" majorTickUnit="0.25" max="3.0" maxHeight="-Infinity" maxWidth="-Infinity" min="0.5" minHeight="-Infinity" minWidth="-Infinity" minorTickCount="0" onMouseExited="#sliderChanged" prefWidth="95.0" snapToTicks="true" styleClass="voice-speed-slider" stylesheets="@../../../assets/style.css" value="1.25" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
         <GridPane.margin>
             <Insets />
         </GridPane.margin>

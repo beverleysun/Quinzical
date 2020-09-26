@@ -5,8 +5,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.StartPageController">
-    <GridPane styleClass="background-color" stylesheets="@../assets/style.css">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.controllers.StartPageController">
+    <GridPane styleClass="background-color" stylesheets="@../../assets/style.css">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -16,13 +16,13 @@
             <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="1.7976931348623157E308" minHeight="54.0" prefHeight="141.0" vgrow="SOMETIMES" />
         </rowConstraints>
-        <Label alignment="CENTER" stylesheets="@../assets/style.css" text="QUINZICAL" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+        <Label alignment="CENTER" stylesheets="@../../assets/style.css" text="QUINZICAL" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
             <styleClass>
                 <String fx:value="white-text-fill" />
                 <String fx:value="font-50" />
             </styleClass>
         </Label>
-        <Button mnemonicParsing="false" onMouseClicked="#play" prefHeight="34.0" prefWidth="100.0" stylesheets="@../assets/style.css" text="Play" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+        <Button mnemonicParsing="false" onMouseClicked="#play" prefHeight="34.0" prefWidth="100.0" stylesheets="@../../assets/style.css" text="Play" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>

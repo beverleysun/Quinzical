@@ -1,9 +1,10 @@
-package quinzical;
+package quinzical.controllers.play;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import quinzical.TTS;
 
 public class IncorrectController extends ConfirmController {
 

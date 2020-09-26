@@ -1,10 +1,12 @@
-package quinzical;
+package quinzical.controllers.play;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import quinzical.Database;
+import quinzical.SceneChanger;
 
 import java.io.IOException;
 
@@ -28,7 +30,7 @@ public class GameCompletedController {
     public void reset(MouseEvent e) {
         Database.getInstance().reset();
         try {
-            Parent start = FXMLLoader.load(getClass().getResource("StartPage.fxml"));
+            Parent start = FXMLLoader.load(getClass().getResource("../../scenes/StartPage.fxml"));
             SceneChanger.changeScene(e, start);
         } catch (IOException ioException) {
             ioException.printStackTrace();

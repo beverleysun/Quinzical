@@ -1,4 +1,4 @@
-package quinzical;
+package quinzical.controllers.practice;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -7,6 +7,11 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import quinzical.Category;
+import quinzical.Database;
+import quinzical.Question;
+import quinzical.SceneChanger;
+import quinzical.controllers.play.PlayController;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,14 +26,14 @@ public class PracticeController extends PlayController implements EventHandler<M
     private static Question questionToAsk;
     private static String clue;
     private static String answer;
-    private static String answerFisrLetter;
+    private static String answerFirstLetter;
     private static String hint;
     private static int attempted;
 
     @FXML
     private FlowPane categoryFlowPane;
-    Button categoryButton;
-    List<Button> categorizations;
+    private Button categoryButton;
+    private List<Button> categorizations;
 
     public PracticeController(){
 
@@ -59,9 +64,9 @@ public class PracticeController extends PlayController implements EventHandler<M
             getQuestionInfo();
             clue = questionToAsk.getQuestion();
             answer = questionToAsk.getAnswer();
-            answerFisrLetter = Character.toString(answer.charAt(0));
+            answerFirstLetter = Character.toString(answer.charAt(0));
             hint = questionToAsk.getHint();
-            Parent answer = FXMLLoader.load(getClass().getResource("AnswerQuestion.fxml"));
+            Parent answer = FXMLLoader.load(getClass().getResource("../../scenes/practice/AnswerQuestion.fxml"));
             SceneChanger.changeScene(e, answer);
 
         } catch (IOException event) {
@@ -90,7 +95,6 @@ public class PracticeController extends PlayController implements EventHandler<M
             }
 
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -111,7 +115,7 @@ public class PracticeController extends PlayController implements EventHandler<M
         return questionToAsk;
     }
     public static String getAnswerFirstLetter(){
-        return  answerFisrLetter;
+        return  answerFirstLetter;
     }
     public static Database getDatabase(){return _database;}
     public static int getAttempted(){return attempted;}

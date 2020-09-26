@@ -1,4 +1,4 @@
-package quinzical;
+package quinzical.controllers.play;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,7 +7,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.FlowPane;
+import quinzical.Category;
+import quinzical.Database;
+import quinzical.Question;
+import quinzical.SceneChanger;
+import quinzical.TTS;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -95,7 +99,7 @@ public class PlayController {
         try {
             // Initialise controller with specific question and answer fields
             AskQuestionController controller = new AskQuestionController(questionStr, answerStr, category.getCategoryName(), value);
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AskQuestion.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../scenes/play/AskQuestion.fxml"));
             loader.setController(controller);
 
             // Change scene
@@ -116,7 +120,7 @@ public class PlayController {
     public void back(MouseEvent e) {
         try {
             // Load start page scene
-            Parent startPage = FXMLLoader.load(getClass().getResource("StartPage.fxml"));
+            Parent startPage = FXMLLoader.load(getClass().getResource("../../scenes/StartPage.fxml"));
             SceneChanger.changeScene(e, startPage);
         } catch (IOException ioException) {
             ioException.printStackTrace();
@@ -126,7 +130,7 @@ public class PlayController {
     public void reset(MouseEvent e) {
         try {
             // Load reset prompt page scene
-            Parent startPage = FXMLLoader.load(getClass().getResource("ResetPrompt.fxml"));
+            Parent startPage = FXMLLoader.load(getClass().getResource("../../scenes/play/ResetPrompt.fxml"));
             SceneChanger.changeScene(e, startPage);
         } catch (IOException ioException) {
             ioException.printStackTrace();

@@ -1,4 +1,4 @@
-package quinzical;
+package quinzical.controllers.practice;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -6,11 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import quinzical.SceneChanger;
+import quinzical.controllers.play.PlayController;
 
 import java.io.File;
 import java.io.IOException;
 
-public class AnswerQuestionController extends PlayController  {
+public class AnswerQuestionController extends PlayController {
 
     private  String _realAnswer;
     private  String _givenAnswer;
@@ -46,12 +48,12 @@ public class AnswerQuestionController extends PlayController  {
 
             if (_realAnswer.toLowerCase().trim().equals(_givenAnswer.toLowerCase().trim())) {
                 _result = true;
-                Parent answer = FXMLLoader.load(getClass().getResource("Answer.fxml"));
+                Parent answer = FXMLLoader.load(getClass().getResource("../../scenes/practice/Answer.fxml"));
                 SceneChanger.changeScene(e, answer);
             }
             else {
                 _result = false;
-                Parent answer = FXMLLoader.load(getClass().getResource("Answer.fxml"));
+                Parent answer = FXMLLoader.load(getClass().getResource("../../scenes/practice/Answer.fxml"));
                 SceneChanger.changeScene(e, answer);
             }
             PracticeController.getQuestionInfo();
@@ -73,7 +75,7 @@ public class AnswerQuestionController extends PlayController  {
 
     public static void skipQuestion(MouseEvent e) throws IOException {
         
-        Parent answer = FXMLLoader.load(AnswerQuestionController.class.getResource("Practice.fxml"));
+        Parent answer = FXMLLoader.load(AnswerQuestionController.class.getResource("../../scenes/practice/Practice.fxml"));
         SceneChanger.changeScene(e, answer);
         PracticeController.getDatabase().getPracticeQuestionData().clear();
 

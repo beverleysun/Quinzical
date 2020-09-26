@@ -1,4 +1,4 @@
-package quinzical;
+package quinzical.controllers.play;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +8,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import quinzical.Database;
+import quinzical.SceneChanger;
+import quinzical.TTS;
 
 import java.io.IOException;
 
@@ -66,7 +69,7 @@ public class AskQuestionController {
     }
 
     public void loadIncorrectScene(MouseEvent e) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Incorrect.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../scenes/play/Incorrect.fxml"));
         loader.setController(new IncorrectController(_answerStr));
         try {
             // Load the "incorrect" scene
@@ -80,7 +83,7 @@ public class AskQuestionController {
     public void loadCorrectScene(MouseEvent e){
         try {
             // Load the "correct" scene
-            Parent correct = FXMLLoader.load(getClass().getResource("Correct.fxml"));
+            Parent correct = FXMLLoader.load(getClass().getResource("../../scenes/play/Correct.fxml"));
             SceneChanger.changeScene(e, correct);
         } catch (IOException ioException) {
             ioException.printStackTrace();
