@@ -435,7 +435,18 @@ public class Database {
 		directoryToBeDeleted.delete();
 	}
 
-
+	public Question findQuestion(String categoryToFind, String valueToFind) {
+		for (Category category : _questionData) {
+			if (category.getCategoryName().equals(categoryToFind)) {
+				for (Question question : category.getQuestions()) {
+					if (question.getValueString().equals(valueToFind)) {
+						return question;
+					}
+				}
+			}
+		}
+		return null;
+	}
 
 	public void addCompletedFile(String category, String value) {
 		try {
@@ -452,8 +463,8 @@ public class Database {
 		new File("./.save/winnings/"+ winningsInt).renameTo(new File("./.save/winnings/"+ newWinnings));
 	}
 
-	public boolean gameCompleted(List<Category> data) {
-		for (Category category : data) {
+	public boolean gameCompleted() {
+		for (Category category : _questionData) {
 			for (Question question : category.getQuestions()) {
 				if (!question.isCompleted()) {
 					return false;
