@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import quinzical.SceneChanger;
+import quinzical.TTS;
 import quinzical.controllers.play.PlayController;
 
 import java.io.File;
@@ -30,6 +31,7 @@ public class AnswerQuestionController extends PlayController {
     @FXML
     public void initialize(){
         questionClue.setText(PracticeController.getClue());
+        TTS.getInstance().speak(PracticeController.getClue());
         questionClue.setWrapText(true);
         _unattemptedTime = 4 - PracticeController.getQuestion().getAnsweredTimes();
         System.out.print(_unattemptedTime);

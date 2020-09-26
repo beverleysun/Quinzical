@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import quinzical.SceneChanger;
+import quinzical.TTS;
 import quinzical.controllers.play.PlayController;
 
 import java.io.IOException;
@@ -32,6 +33,7 @@ public class AnswerController extends PlayController {
         clueLabel.setText("Correct!");
         TopLabel.setText(null);
         BottomLabel.setText(null);
+        TTS.getInstance().speak("Correct!");
 
     }
     else{
@@ -39,11 +41,13 @@ public class AnswerController extends PlayController {
             clueLabel.setText(null);
             TopLabel.setText(null);
             BottomLabel.setText("Sorry, you are incorrect!");
+            TTS.getInstance().speak("Sorry, you are incorrect!");
         }
         else {
             TopLabel.setText("Oops, the answer to");
             clueLabel.setText(PracticeController.getClue() + " Was");
             BottomLabel.setText(PracticeController.getAnswer());
+            TTS.getInstance().speak("Oops, the answer to " +PracticeController.getClue() + " Was" +PracticeController.getAnswer());
         }
     }
 
