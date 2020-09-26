@@ -129,7 +129,7 @@ public class Database {
 		return _practiceQuestionData;
 	}
 
-	void loadPracticeQuestions() {
+	public void loadPracticeQuestions() {
 
 		try {
 			createFileStructure();
