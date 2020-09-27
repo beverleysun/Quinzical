@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import quinzical.SceneChanger;
 import quinzical.TTS;
@@ -26,10 +27,14 @@ public class AnswerController extends PlayController {
     private Label TopLabel;
     @FXML
     private Label BottomLabel;
+    
+    @FXML
+    private Slider voiceSlider;
 
     @FXML
     public void initialize() {
-    if(AnswerQuestionController.getResult()){
+        voiceSlider.setValue(TTS.getInstance().getMultiplier());
+        if(AnswerQuestionController.getResult()){
         clueLabel.setText("Correct!");
         TopLabel.setText(null);
         BottomLabel.setText(null);

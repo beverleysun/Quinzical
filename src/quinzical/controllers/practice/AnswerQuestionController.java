@@ -4,18 +4,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import quinzical.SceneChanger;
 import quinzical.TTS;
-import quinzical.controllers.play.PlayController;
-
 import java.io.File;
 import java.io.IOException;
 
-public class AnswerQuestionController extends PlayController {
+public class AnswerQuestionController extends PracticeController {
 
-    private  String _realAnswer;
+
+    
+	private  String _realAnswer;
     private  String _givenAnswer;
     private static boolean _result;
     private static int _unattemptedTime;
@@ -27,9 +28,13 @@ public class AnswerQuestionController extends PlayController {
     private Label hintLabel;
     @FXML
     private TextField answerInput;
+    
+    @FXML
+    private Slider voiceSlider;
 
     @FXML
     public void initialize(){
+    	voiceSlider.setValue(TTS.getInstance().getMultiplier());
         questionClue.setText(PracticeController.getClue());
         TTS.getInstance().speak(PracticeController.getClue());
         questionClue.setWrapText(true);
@@ -67,8 +72,7 @@ public class AnswerQuestionController extends PlayController {
 
     }
 
-    public void replay(MouseEvent mouseEvent) {
-    }
+    
 
     @FXML
     public void giveUp(MouseEvent e) throws IOException {

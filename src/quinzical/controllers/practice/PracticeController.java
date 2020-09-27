@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -13,6 +14,7 @@ import quinzical.Category;
 import quinzical.Database;
 import quinzical.Question;
 import quinzical.SceneChanger;
+import quinzical.TTS;
 import quinzical.controllers.play.PlayController;
 
 import java.io.File;
@@ -36,13 +38,16 @@ public class PracticeController extends PlayController implements EventHandler<M
     private FlowPane categoryFlowPane;
     private Button categoryButton;
     private List<Button> categorizations;
+    
+    @FXML
+    private Slider voiceSlider;
 
     public PracticeController(){
 
     }
 
     public void initialize() {
-
+    	voiceSlider.setValue(TTS.getInstance().getMultiplier());
         categorizations = new ArrayList<>();
         for (Category category : _practiceQuestionData ) {
 
@@ -101,6 +106,12 @@ public class PracticeController extends PlayController implements EventHandler<M
             e.printStackTrace();
         }
     }
+    
+    @FXML
+    public void replay() {
+        TTS.getInstance().speak(clue);
+    }
+    
 
     public static String getCategory(){
         return _category;
