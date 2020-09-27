@@ -12,13 +12,14 @@ import quinzical.Database;
 import quinzical.Question;
 import quinzical.SceneChanger;
 import quinzical.TTS;
+import quinzical.controllers.VoiceSpeedChangeable;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class PlayController {
+public class PlayController extends VoiceSpeedChangeable {
 
     @FXML
     private Label cat1Label, cat2Label, cat3Label, cat4Label, cat5Label, winnings;
@@ -30,20 +31,16 @@ public class PlayController {
                     cat4value100Button, cat4value200Button, cat4value300Button, cat4value400Button, cat4value500Button,
                     cat5value100Button, cat5value200Button, cat5value300Button, cat5value400Button, cat5value500Button ;
 
-    @FXML
-    private Slider voiceSlider;
-
-
     private final Database _database = Database.getInstance();
     private final List<Category> _questionData = _database.getQuestionData();
     private final List<Button> _buttons = new ArrayList<Button>();
 
     @FXML
     public void initialize() {
+        super.initialize();
         setLabels();
         initButtons();
         winnings.setText("$" + Database.getInstance().getWinnings());
-        voiceSlider.setValue(TTS.getInstance().getMultiplier());
     }
 
     private void setLabels() {

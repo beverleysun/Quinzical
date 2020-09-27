@@ -4,25 +4,21 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import quinzical.Database;
 import quinzical.SceneChanger;
-import quinzical.TTS;
+import quinzical.controllers.VoiceSpeedChangeable;
 
 import java.io.IOException;
 
-public abstract class ConfirmController {
+public abstract class ConfirmController extends VoiceSpeedChangeable {
     @FXML
     private Label winnings;
 
     @FXML
-    private Slider voiceSlider;
-
-    @FXML
     public void initialize() {
+        super.initialize();
         winnings.setText("$" + Database.getInstance().getWinnings());
-        voiceSlider.setValue(TTS.getInstance().getMultiplier());
     }
 
     public void toQuestionBoard(MouseEvent e){
@@ -39,7 +35,4 @@ public abstract class ConfirmController {
         }
     }
 
-    public void sliderChanged() {
-        TTS.getInstance().setMultiplier(voiceSlider.getValue());
-    }
 }
