@@ -136,8 +136,4 @@ public class PlayController {
             ioException.printStackTrace();
         }
     }
-
-    public void sliderChanged() {
-        TTS.getInstance().setMultiplier(voiceSlider.getValue());
-    }
 }
