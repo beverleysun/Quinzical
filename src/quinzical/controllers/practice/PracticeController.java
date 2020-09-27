@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
@@ -41,6 +42,8 @@ public class PracticeController extends PlayController implements EventHandler<M
     
     @FXML
     private Slider voiceSlider;
+    @FXML
+    private Label speedDisplay;
 
     public PracticeController(){
 
@@ -60,6 +63,18 @@ public class PracticeController extends PlayController implements EventHandler<M
             categorizations.add(categoryButton);
             categoryFlowPane.getChildren().add(categoryButton);
         }
+    }
+
+    @FXML
+    public void replay() {
+        TTS.getInstance().speak(clue);
+    }
+
+    @FXML
+    public void displayVoiceSpeed(MouseEvent e){
+
+
+        speedDisplay.setText(Double.toString(voiceSlider.getValue()));
     }
 
     @Override
@@ -107,11 +122,7 @@ public class PracticeController extends PlayController implements EventHandler<M
         }
     }
     
-    @FXML
-    public void replay() {
-        TTS.getInstance().speak(clue);
-    }
-    
+
 
     public static String getCategory(){
         return _category;
