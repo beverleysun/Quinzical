@@ -276,7 +276,7 @@
          </styleClass>
       </Button>
    </VBox>
-   <Slider fx:id="voiceSlider" blockIncrement="0.25" majorTickUnit="0.25" max="3.0" maxHeight="-Infinity" maxWidth="-Infinity" min="0.5" minHeight="-Infinity" minWidth="-Infinity" minorTickCount="0" onMouseExited="#sliderChanged" prefWidth="95.0" snapToTicks="true" styleClass="voice-speed-slider" stylesheets="@../../../assets/style.css" value="1.25" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+   <Slider fx:id="voiceSlider" blockIncrement="0.25" majorTickUnit="0.25" max="3.0" maxHeight="-Infinity" maxWidth="-Infinity" min="0.5" minHeight="-Infinity" minWidth="-Infinity" minorTickCount="0" onMouseEntered="#displaySpeed" onMouseExited="#removeSpeed" onMouseReleased="#sliderChanged" prefWidth="95.0" snapToTicks="true" styleClass="voice-speed-slider" stylesheets="@../../../assets/style.css" value="1.25" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
    <Label stylesheets="@../../../assets/style.css" text="Voice Speed" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
       <styleClass>
          <String fx:value="white-text-fill" />
@@ -327,4 +327,13 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </Button>
+   <Label fx:id="speedDisplay" layoutX="391.0" layoutY="366.0" stylesheets="@../../../assets/style.css" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
+      <GridPane.margin>
+         <Insets top="-9.0" />
+      </GridPane.margin>
+      <styleClass>
+         <String fx:value="white-text-fill" />
+         <String fx:value="font-14" />
+      </styleClass>
+   </Label>
 </GridPane>
