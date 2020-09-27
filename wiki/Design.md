@@ -61,8 +61,7 @@ were plenty of other design/layout decisions made however, we won't delve too de
 ### Typography
 Typography was simple. We needed a simple, easy to read font. For readability, using sans serif font was important, especially for on screen
 use. The clean lines and sharp edges are able to be rendered more clearly on a screen which increases legibility for users. The font size for
-all elements are at least 14pt so that text does not get too small to read (especially on higher resolution screens where everything gets relatively smaller).
-Titles and subtitles were larger to form a sense hierarchy.
+all elements are at least 12pt so that text does not get too small to read. Titles and subtitles are larger to form a sense hierarchy.
 
 The font chosen was "PT Sans", a free to use Google font that does not require any licensing.
 
@@ -79,3 +78,12 @@ the shortcut ctrl+c and ctrl+v over right click and select).
 
 ## Design Decisions Down the Line
 Here, we'll document any changes to the design as development continues
+
+### Practice Section
+Originally, when the user got the answer wrong, we took them to a separate scene in which they were told they were incorrect then
+prompted to return the answering scene. However, we felt that this process might get annoying to the user (requires extra steps) so
+it would be simpler just to update the label with the number of attempts left.
+
+### Voice Speed Slider
+We decided to include a label that tells the user how fast the voice speed currently is. This would reduce confusion as the user would
+then know how fast the voice would be speaking.
