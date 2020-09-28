@@ -12,7 +12,7 @@ import quinzical.controllers.VoiceSpeedChangeable;
 
 import java.io.IOException;
 
-public class AnswerController extends VoiceSpeedChangeable {
+public class IncorrectController extends VoiceSpeedChangeable {
 
     @FXML
     private Button next;
@@ -26,13 +26,6 @@ public class AnswerController extends VoiceSpeedChangeable {
     @FXML
     public void initialize() {
         super.initialize();
-        if(AnswerQuestionController.getResult()){
-            clueLabel.setText("Correct!");
-            TopLabel.setText(null);
-            BottomLabel.setText(null);
-            TTS.getInstance().speak("Correct!");
-        }
-        else{
             if(PracticeController.getAttempted() < 3){
                 clueLabel.setText(null);
                 TopLabel.setText(null);
@@ -46,8 +39,6 @@ public class AnswerController extends VoiceSpeedChangeable {
                 TTS.getInstance().speak("Oops, the answer to " +PracticeController.getClue() + " was" + PracticeController.getAnswer());
             }
         }
-
-    }
 
     @FXML
     private void backToQuestion(MouseEvent e) throws IOException {

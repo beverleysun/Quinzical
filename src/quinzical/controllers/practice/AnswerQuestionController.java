@@ -48,12 +48,12 @@ public class AnswerQuestionController extends VoiceSpeedChangeable {
         try {
             if (_realAnswer.toLowerCase().trim().equals(_givenAnswer.toLowerCase().trim())) {
                 _result = true;
-                Parent answer = FXMLLoader.load(getClass().getResource("../../scenes/practice/Answer.fxml"));
+                Parent answer = FXMLLoader.load(getClass().getResource("../../scenes/practice/Correct.fxml"));
                 SceneChanger.changeScene(e, answer);
             }
             else {
                 _result = false;
-                Parent answer = FXMLLoader.load(getClass().getResource("../../scenes/practice/Answer.fxml"));
+                Parent answer = FXMLLoader.load(getClass().getResource("../../scenes/practice/Incorrect.fxml"));
                 SceneChanger.changeScene(e, answer);
             }
             PracticeController.getQuestionInfo();
@@ -87,6 +87,8 @@ public class AnswerQuestionController extends VoiceSpeedChangeable {
     public void replay() {
         TTS.getInstance().speak(PracticeController.getClue());
     }
+
+
 
     public static boolean getResult(){
         return _result;
