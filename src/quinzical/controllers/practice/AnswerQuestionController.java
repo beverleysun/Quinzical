@@ -45,7 +45,7 @@ public class AnswerQuestionController extends VoiceSpeedChangeable {
 
     @FXML
     private void checkAnswer(MouseEvent e) {
-        PauseTransition pauseTransition = new PauseTransition(Duration.seconds(1));
+        PauseTransition pauseTransition = new PauseTransition(Duration.seconds(1.5));
         String _realAnswer = answerInput.getText();
         try {
             if (PracticeController.getQuestion().compareAnswers(_realAnswer)) {
@@ -55,6 +55,7 @@ public class AnswerQuestionController extends VoiceSpeedChangeable {
             else {
                 if(_unattemptedTime > 1) {
                     questionClue.setText("Sorry, you are incorrect!");
+                    TTS.getInstance().speak("Sorry, you are incorrect!");
                     pauseTransition.setOnFinished( event -> initialize());
                     pauseTransition.play();
                 }
