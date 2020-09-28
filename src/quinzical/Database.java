@@ -162,6 +162,7 @@ public class Database {
 				String question = questionData[0].trim();
 				String hint = questionData[1].trim();
 				String answer = questionData[2].trim();
+				String[] answers = answer.split("/");
 
 
 				if (new File("./.save/PracticeQuestions/"+ categoryFile.getName()).exists()) {
@@ -178,7 +179,7 @@ public class Database {
 					}
 				}
 
-				category.addQuestion(new Question(question,answer,hint,_attempted));
+				category.addQuestion(new Question(question,answers,hint,_attempted));
 				_practiceQuestionData.add(category);
 			}
 
@@ -323,11 +324,12 @@ public class Database {
 					int value = 500 - 100*i;
 					String question = questionData[0];
 					String answer = questionData[2];
+					String[] answers = answer.split("/");
 
 					boolean answered = isAnswered(categoryFile.getName(), value);
 					boolean available = isAvailable(categoryFile.getName(),value);
 
-					category.addQuestion(new Question(question, answer, value, answered, available));
+					category.addQuestion(new Question(question, answers, value, answered, available));
 				}
 
 				_questionData.add(category);

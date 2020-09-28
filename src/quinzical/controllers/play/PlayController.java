@@ -83,7 +83,7 @@ public class PlayController extends VoiceSpeedChangeable {
         Database.getInstance().addCompletedFile(category.getCategoryName(), question.getValueString());
 
         String questionStr = question.getQuestion();
-        String answerStr = question.getAnswer();
+        String[] answerStr = question.getAnswer();
 
         // Set next question available
         if (parsed[1] != 500) {
@@ -93,7 +93,7 @@ public class PlayController extends VoiceSpeedChangeable {
 
         try {
             // Initialise controller with specific question and answer fields
-            AskQuestionController controller = new AskQuestionController(questionStr, answerStr, category.getCategoryName(), value);
+            AskQuestionController controller = new AskQuestionController(question, questionStr, answerStr, category.getCategoryName(), value);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../../scenes/play/AskQuestion.fxml"));
             loader.setController(controller);
 

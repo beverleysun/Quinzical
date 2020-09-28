@@ -44,15 +44,12 @@ public class AnswerQuestionController extends VoiceSpeedChangeable {
     @FXML
     private void checkAnswer(MouseEvent e) {
         String _realAnswer = answerInput.getText();
-        String _givenAnswer = PracticeController.getAnswer();
         try {
-            if (_realAnswer.toLowerCase().trim().equals(_givenAnswer.toLowerCase().trim())) {
-                _result = true;
+            if (PracticeController.getQuestion().compareAnswers(_realAnswer)) {
                 Parent answer = FXMLLoader.load(getClass().getResource("../../scenes/practice/Correct.fxml"));
                 SceneChanger.changeScene(e, answer);
             }
             else {
-                _result = false;
                 Parent answer = FXMLLoader.load(getClass().getResource("../../scenes/practice/Incorrect.fxml"));
                 SceneChanger.changeScene(e, answer);
             }

@@ -26,7 +26,7 @@ public class PracticeController extends VoiceSpeedChangeable implements EventHan
     private static String _category;
     private static Question questionToAsk;
     private static String clue;
-    private static String answer;
+    private static String[] answers;
     private static String answerFirstLetter;
     private static String hint;
     private static int attempted;
@@ -65,8 +65,8 @@ public class PracticeController extends VoiceSpeedChangeable implements EventHan
             _category = categoryButton.getId();
             getQuestionInfo();
             clue = questionToAsk.getQuestion();
-            answer = questionToAsk.getAnswer();
-            answerFirstLetter = Character.toString(answer.charAt(0));
+            answers = questionToAsk.getAnswer();
+            answerFirstLetter = Character.toString(answers[0].charAt(0));
             hint = questionToAsk.getHint();
             Parent answer = FXMLLoader.load(getClass().getResource("../../scenes/practice/AnswerQuestion.fxml"));
             SceneChanger.changeScene(e, answer);
@@ -114,8 +114,8 @@ public class PracticeController extends VoiceSpeedChangeable implements EventHan
     public static String getClue(){
         return clue;
     }
-    public static String getAnswer(){
-        return answer;
+    public static String[] getAnswer(){
+        return answers;
     }
     public static String getHint(){
         return hint;

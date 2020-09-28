@@ -11,6 +11,7 @@ import quinzical.TTS;
 import quinzical.controllers.VoiceSpeedChangeable;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 public class IncorrectController extends VoiceSpeedChangeable {
 
@@ -35,8 +36,10 @@ public class IncorrectController extends VoiceSpeedChangeable {
             else {
                 TopLabel.setText("Oops, the answer to");
                 clueLabel.setText("\"" + PracticeController.getClue() + "\"" + " was");
-                BottomLabel.setText(PracticeController.getAnswer());
-                TTS.getInstance().speak("Oops, the answer to " +PracticeController.getClue() + " was" + PracticeController.getAnswer());
+                String answerTemp = Arrays.toString(PracticeController.getAnswer());
+                String answer = answerTemp.substring(1,answerTemp.length()-1);
+                BottomLabel.setText(answer);
+                TTS.getInstance().speak("Oops, the answer to " +PracticeController.getClue() + " was" + answer);
             }
         }
 
