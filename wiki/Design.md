@@ -18,10 +18,10 @@ This was the first decision that had to be made to form the base of our design. 
 We started off with some research:
 
 <div>
-    <img src="./img/kahoot.png" width=200 alt="Kahoot"/>
-    <img src="./img/lotto.jpg" width=200 alt="Lotto"/>
-    <img src="./img/jeopardy.jpg" width=200 alt="Jeopardy"/>
-    <img src="./img/millionaire.jpg" width=200 alt="Who wants to be a millionaire?"/>
+    <img src="./img/kahoot.png" width=24.5% alt="Kahoot"/>
+    <img src="./img/lotto.jpg" width=24.5% alt="Lotto"/>
+    <img src="./img/jeopardy.jpg" width=24.5% alt="Jeopardy"/>
+    <img src="./img/millionaire.jpg" width=24.5% alt="Who wants to be a millionaire?"/>
 </div>
 <br>
 
@@ -30,9 +30,9 @@ So we decided to take inspiration by using purple and complementing it with a br
 
 #### Sample scenes
 <div>
-    <img src="../mockups/start.jpg" width=285 alt="Start page"/>
-    <img src="../mockups/play-question-board.jpg" width=285 alt="Question board"/>
-    <img src="../mockups/practice-1-attempt.jpg" width=285 alt="One attempt left in practice mode"/>
+    <img src="../mockups/start.jpg" width=33% alt="Start page"/>
+    <img src="../mockups/play-question-board.jpg" width=33% alt="Question board"/>
+    <img src="../mockups/practice-1-attempt.jpg" width=33% alt="One attempt left in practice mode"/>
 </div>
 <br>
 
@@ -45,8 +45,8 @@ Accessibility is very important for those who are visually impaired. For this, w
 all elements of Quinzical are able to be read and distinguished.
 
 <div>
-  <img src="./img/achromatopsia.png" alt="Achromatopsia (monochrome)" width=430/>
-  <img src="./img/tritanopia.png" alt="Tritanopia (blue-blind)" width=430/>
+  <img src="./img/achromatopsia.png" alt="Achromatopsia (monochrome)" width=49.7%/>
+  <img src="./img/tritanopia.png" alt="Tritanopia (blue-blind)" width=49.7%/>
   <p><b>Left to right</b>: Achromatopsia (Monochrome), Tritanopia (Blue-Blind)</p>
 </div>
 
