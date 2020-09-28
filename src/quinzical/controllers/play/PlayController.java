@@ -5,13 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import quinzical.Category;
 import quinzical.Database;
 import quinzical.Question;
 import quinzical.SceneChanger;
-import quinzical.TTS;
 import quinzical.controllers.VoiceSpeedChangeable;
 
 import java.io.IOException;
