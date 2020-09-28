@@ -10,5 +10,4 @@ public class CorrectController extends ConfirmController {
         super.initialize();
         TTS.getInstance().speak("Correct");
     }
-
 }

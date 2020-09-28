@@ -3,26 +3,23 @@ package quinzical.controllers.practice;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.HPos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.GridPane;
 import quinzical.Category;
 import quinzical.Database;
 import quinzical.Question;
 import quinzical.SceneChanger;
 import quinzical.TTS;
-import quinzical.controllers.play.PlayController;
+import quinzical.controllers.VoiceSpeedChangeable;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PracticeController extends PlayController implements EventHandler<MouseEvent> {
+public class PracticeController extends VoiceSpeedChangeable implements EventHandler<MouseEvent> {
 
     private static final Database _database = Database.getInstance();
     private static final List<Category> _practiceQuestionData = _database.getPracticeQuestionData();
@@ -38,16 +35,9 @@ public class PracticeController extends PlayController implements EventHandler<M
     private FlowPane categoryFlowPane;
     private Button categoryButton;
     private List<Button> categorizations;
-    
-    @FXML
-    private Slider voiceSlider;
-
-    public PracticeController(){
-
-    }
 
     public void initialize() {
-    	voiceSlider.setValue(TTS.getInstance().getMultiplier());
+    	super.initialize();
         categorizations = new ArrayList<>();
         for (Category category : _practiceQuestionData ) {
 
@@ -56,16 +46,20 @@ public class PracticeController extends PlayController implements EventHandler<M
             categoryButton.setOnMouseClicked(new PracticeController());
             categoryButton.getStyleClass().add("purple-button");
             categoryButton.getStyleClass().add("white-text-fill");
-            categoryButton.setPrefSize(120,30);
+            categoryButton.setPrefSize(120,40);
             categorizations.add(categoryButton);
             categoryFlowPane.getChildren().add(categoryButton);
         }
     }
 
+    @FXML
+    public void replay() {
+        TTS.getInstance().speak(clue);
+    }
+
     @Override
     public void handle(MouseEvent e) {
         try {
-
             Button categoryButton = (Button) e.getSource();
 
             _category = categoryButton.getId();
@@ -82,11 +76,8 @@ public class PracticeController extends PlayController implements EventHandler<M
         }
     }
 
-
     public static void getQuestionInfo() {
-
         questionToAsk = _database.findQuestion(_category);
-
 
         try {
             _database.isAttempted(_category);
@@ -106,12 +97,16 @@ public class PracticeController extends PlayController implements EventHandler<M
             e.printStackTrace();
         }
     }
-    
-    @FXML
-    public void replay() {
-        TTS.getInstance().speak(clue);
+
+    public void back(MouseEvent e) {
+        try {
+            // Load start page scene
+            Parent startPage = FXMLLoader.load(getClass().getResource("../../scenes/StartPage.fxml"));
+            SceneChanger.changeScene(e, startPage);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
     }
-    
 
     public static String getCategory(){
         return _category;
@@ -133,6 +128,4 @@ public class PracticeController extends PlayController implements EventHandler<M
     }
     public static Database getDatabase(){return _database;}
     public static int getAttempted(){return attempted;}
-
-
 }

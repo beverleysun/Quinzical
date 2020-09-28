@@ -5,27 +5,24 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import quinzical.Database;
 import quinzical.SceneChanger;
 import quinzical.TTS;
+import quinzical.controllers.VoiceSpeedChangeable;
 
 import java.io.IOException;
 
-public class AskQuestionController {
+public class AskQuestionController extends VoiceSpeedChangeable {
 
-    private String _questionStr;
-    private String _answerStr;
-    private String _categoryStr;
-    private int _value;
+    private final String _questionStr;
+    private final String _answerStr;
+    private final String _categoryStr;
+    private final int _value;
 
     @FXML
     private Label questionInfo, winnings;
-
-    @FXML
-    private Slider voiceSlider;
 
     @FXML
     private Button confirm, giveUp;
@@ -43,14 +40,13 @@ public class AskQuestionController {
 
     @FXML
     public void initialize() {
+        super.initialize();
         questionInfo.setText("Playing " + _categoryStr + " for $" + _value);
-        voiceSlider.setValue(TTS.getInstance().getMultiplier());
         winnings.setText("$" + Database.getInstance().getWinnings());
         TTS.getInstance().speak(_questionStr);
 
         confirm.setOnMouseClicked(this::confirm);
         giveUp.setOnMouseClicked(this::loadIncorrectScene);
-
     }
 
     public void replay() {
@@ -89,9 +85,4 @@ public class AskQuestionController {
             ioException.printStackTrace();
         }
     }
-
-    public void sliderChanged() {
-        TTS.getInstance().setMultiplier(voiceSlider.getValue());
-    }
-
 }

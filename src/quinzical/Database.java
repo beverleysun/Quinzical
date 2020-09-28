@@ -40,10 +40,6 @@ public class Database {
 	// Question data for the 5 random categories
 	private final List<Category> _questionData = new ArrayList<Category>();
 
-	// Question data for all categories
-	private final List<Category> _allQuestionData = new ArrayList<Category>();
-
-
 	//This arraylist is for store all questions in practice mode.
 	private final List<Category> _practiceQuestionData = new ArrayList<>();
 
@@ -331,7 +327,7 @@ public class Database {
 					String [] questionData = parseQuestionLine(questionLine);
 					int value = 500 - 100*i;
 					String question = questionData[0];
-					String answer = questionData[1];
+					String answer = questionData[2];
 
 					boolean answered = isAnswered(categoryFile.getName(), value);
 					boolean available = isAvailable(categoryFile.getName(),value);

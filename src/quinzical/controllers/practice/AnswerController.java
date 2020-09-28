@@ -5,20 +5,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
 import javafx.scene.input.MouseEvent;
 import quinzical.SceneChanger;
 import quinzical.TTS;
-import quinzical.controllers.play.PlayController;
+import quinzical.controllers.VoiceSpeedChangeable;
 
 import java.io.IOException;
 
-public class AnswerController extends PlayController {
+public class AnswerController extends VoiceSpeedChangeable {
 
-
-    public AnswerController() {
-
-    }
     @FXML
     private Button next;
     @FXML
@@ -27,34 +22,30 @@ public class AnswerController extends PlayController {
     private Label TopLabel;
     @FXML
     private Label BottomLabel;
-    
-    @FXML
-    private Slider voiceSlider;
 
     @FXML
     public void initialize() {
-        voiceSlider.setValue(TTS.getInstance().getMultiplier());
+        super.initialize();
         if(AnswerQuestionController.getResult()){
-        clueLabel.setText("Correct!");
-        TopLabel.setText(null);
-        BottomLabel.setText(null);
-        TTS.getInstance().speak("Correct!");
-
-    }
-    else{
-        if(PracticeController.getAttempted() <3){
-            clueLabel.setText(null);
+            clueLabel.setText("Correct!");
             TopLabel.setText(null);
-            BottomLabel.setText("Sorry, you are incorrect!");
-            TTS.getInstance().speak("Sorry, you are incorrect!");
+            BottomLabel.setText(null);
+            TTS.getInstance().speak("Correct!");
         }
-        else {
-            TopLabel.setText("Oops, the answer to");
-            clueLabel.setText(PracticeController.getClue() + " Was");
-            BottomLabel.setText(PracticeController.getAnswer());
-            TTS.getInstance().speak("Oops, the answer to " +PracticeController.getClue() + " Was" +PracticeController.getAnswer());
+        else{
+            if(PracticeController.getAttempted() < 3){
+                clueLabel.setText(null);
+                TopLabel.setText(null);
+                BottomLabel.setText("Sorry, you are incorrect!");
+                TTS.getInstance().speak("Sorry, you are incorrect!");
+            }
+            else {
+                TopLabel.setText("Oops, the answer to");
+                clueLabel.setText("\"" + PracticeController.getClue() + "\"" + " was");
+                BottomLabel.setText(PracticeController.getAnswer());
+                TTS.getInstance().speak("Oops, the answer to " +PracticeController.getClue() + " was" + PracticeController.getAnswer());
+            }
         }
-    }
 
     }
 
@@ -66,8 +57,7 @@ public class AnswerController extends PlayController {
             SceneChanger.changeScene(e, answer);
         }
         else {
-        AnswerQuestionController.skipQuestion(e);
+            AnswerQuestionController.skipQuestion(e);
         }
     }
-
 }
