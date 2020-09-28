@@ -190,11 +190,6 @@ public class Database {
 		}
 	}
 
-	public void showScene(Stage stage, Scene scene) {
-		stage.setScene(scene);
-		stage.show();
-	}
-
 	// Check if the question is available
 	public boolean isAvailable(String category, int value) {
 		if (value == 100 && !isAnswered(category, value)) {
@@ -341,6 +336,7 @@ public class Database {
 			e.printStackTrace();
 		}
 	}
+
 	// change to separate the line into 3 parts by "(" and ")".
 	private static String[] parseQuestionLine(String str) {
 		String[] splitQuestion = str.split("[\\(\\)]");
@@ -389,7 +385,7 @@ public class Database {
 			new File("./.save/winnings/0").createNewFile();
 
 			// Set default voice speed to 130
-			new File("./.save/voice-speed/130").createNewFile();
+			new File("./.save/voice-speed/1").createNewFile();
 
 			// Create folders for each category in the save folder
 			for (String name : _categoriesFolder.list()) {
