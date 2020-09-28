@@ -39,14 +39,19 @@ public class PracticeController extends VoiceSpeedChangeable implements EventHan
     public void initialize() {
     	super.initialize();
         categorizations = new ArrayList<>();
-        for (Category category : _practiceQuestionData ) {
 
+        // Calculate button height to fill up the height of the FlowPane
+        double numRows = Math.ceil((double) _practiceQuestionData.size() / 4);
+        double buttonHeight = (180 - 10*(numRows-1)) / numRows;
+
+        // Load in the category buttons
+        for (Category category : _practiceQuestionData ) {
             categoryButton = new Button(category.getCategoryName());
             categoryButton.setId(category.getCategoryName());
             categoryButton.setOnMouseClicked(new PracticeController());
             categoryButton.getStyleClass().add("purple-button");
             categoryButton.getStyleClass().add("white-text-fill");
-            categoryButton.setPrefSize(120,40);
+            categoryButton.setPrefSize(120,buttonHeight);
             categorizations.add(categoryButton);
             categoryFlowPane.getChildren().add(categoryButton);
         }
@@ -62,12 +67,15 @@ public class PracticeController extends VoiceSpeedChangeable implements EventHan
         try {
             Button categoryButton = (Button) e.getSource();
 
+            // Load a question for the specified category
             _category = categoryButton.getId();
             getQuestionInfo();
             clue = questionToAsk.getQuestion();
             answers = questionToAsk.getAnswer();
             answerFirstLetter = Character.toString(answers[0].charAt(0));
             hint = questionToAsk.getHint();
+
+            // Change scene
             Parent answer = FXMLLoader.load(getClass().getResource("../../scenes/practice/AnswerQuestion.fxml"));
             SceneChanger.changeScene(e, answer);
 

@@ -12,7 +12,6 @@ import quinzical.Question;
 import quinzical.SceneChanger;
 import quinzical.TTS;
 import quinzical.controllers.VoiceSpeedChangeable;
-import quinzical.controllers.practice.PracticeController;
 
 import java.io.IOException;
 import java.util.Arrays;

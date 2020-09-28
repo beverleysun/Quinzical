@@ -1,7 +1,5 @@
 package quinzical;
 
-import java.util.Arrays;
-
 public class Question {
     private final String _question;
     private final String[] _answers;
