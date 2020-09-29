@@ -1,11 +1,13 @@
 package quinzical.controllers.practice;
 
+import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
 import quinzical.SceneChanger;
 import quinzical.TTS;
 import quinzical.controllers.VoiceSpeedChangeable;
@@ -32,7 +34,7 @@ public class AnswerQuestionController extends VoiceSpeedChangeable {
         questionClue.setText(PracticeController.getClue());
         TTS.getInstance().speak(PracticeController.getClue());
         _unattemptedTime = 4 - PracticeController.getQuestion().getAnsweredTimes();
-        System.out.print(_unattemptedTime);
+
         if(_unattemptedTime > 1) {
             hintLabel.setText("You have " + _unattemptedTime + " chances to answer the question from " + PracticeController.getCategory());
         }
@@ -43,18 +45,24 @@ public class AnswerQuestionController extends VoiceSpeedChangeable {
 
     @FXML
     private void checkAnswer(MouseEvent e) {
+        PauseTransition pauseTransition = new PauseTransition(Duration.seconds(1.5));
         String _realAnswer = answerInput.getText();
-        String _givenAnswer = PracticeController.getAnswer();
         try {
-            if (_realAnswer.toLowerCase().trim().equals(_givenAnswer.toLowerCase().trim())) {
-                _result = true;
+            if (PracticeController.getQuestion().compareAnswers(_realAnswer)) {
                 Parent answer = FXMLLoader.load(getClass().getResource("../../scenes/practice/Correct.fxml"));
                 SceneChanger.changeScene(e, answer);
             }
             else {
-                _result = false;
-                Parent answer = FXMLLoader.load(getClass().getResource("../../scenes/practice/Incorrect.fxml"));
-                SceneChanger.changeScene(e, answer);
+                if(_unattemptedTime > 1) {
+                    questionClue.setText("Sorry, you are incorrect!");
+                    TTS.getInstance().speak("Sorry, you are incorrect!");
+                    pauseTransition.setOnFinished( event -> initialize());
+                    pauseTransition.play();
+                }
+                else {
+                    Parent answer = FXMLLoader.load(getClass().getResource("../../scenes/practice/Incorrect.fxml"));
+                    SceneChanger.changeScene(e, answer);
+                }
             }
             PracticeController.getQuestionInfo();
         }

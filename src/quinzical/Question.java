@@ -1,7 +1,8 @@
 package quinzical;
+
 public class Question {
     private final String _question;
-    private final String _answer;
+    private final String[] _answers;
     private final int _value;
     private boolean _completed;
     private boolean _available;
@@ -10,19 +11,19 @@ public class Question {
     private int  _answeredTimes;
     private String _hint;
 
-    public Question(String question, String answer, int value, boolean completed, boolean available) {
+    public Question(String question, String[] answers, int value, boolean completed, boolean available) {
         _question = question;
-        _answer = answer;
+        _answers = answers;
         _value = value;
         _completed = completed;
         _available = available;
     }
 
     // Overload a constructor for practice mode.
-    public Question(String question, String answer, String hint,int answeredTimes) {
+    public Question(String question, String[] answers, String hint,int answeredTimes) {
         _value = 0;
         _question = question;
-        _answer = answer;
+        _answers = answers;
         _answeredTimes = answeredTimes;
         _hint = hint;
     }
@@ -38,6 +39,15 @@ public class Question {
     public void set_answeredTimes(int _answeredTimes) {
         this._answeredTimes = _answeredTimes;
     }
+
+    public boolean compareAnswers(String usersAnswer){
+        for(String answer : _answers){
+            if(usersAnswer.toLowerCase().trim().equals(answer.toLowerCase().trim())){
+                return true;
+            }
+        }
+        return false;
+    }
     //**************************************************************************************************
     public boolean isAvailable() {
     	return _available;
@@ -51,8 +61,8 @@ public class Question {
         return _question;
     }
 
-    public String getAnswer() {
-        return _answer;
+    public String[] getAnswer() {
+        return _answers;
     }
 
     public int getValue() {

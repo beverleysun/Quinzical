@@ -8,18 +8,22 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import quinzical.Database;
+import quinzical.Question;
 import quinzical.SceneChanger;
 import quinzical.TTS;
 import quinzical.controllers.VoiceSpeedChangeable;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 public class AskQuestionController extends VoiceSpeedChangeable {
 
     private final String _questionStr;
-    private final String _answerStr;
+    private final String[] _answerStr;
     private final String _categoryStr;
     private final int _value;
+
+    private Question _question;
 
     @FXML
     private Label questionInfo, winnings;
@@ -30,11 +34,12 @@ public class AskQuestionController extends VoiceSpeedChangeable {
     @FXML
     private TextField textField;
 
-    public AskQuestionController(String questionStr, String answerStr, String categoryStr, int value) {
+    public AskQuestionController(Question question, String questionStr, String[] answerStr, String categoryStr, int value) {
         _questionStr = questionStr;
         _answerStr = answerStr;
         _categoryStr = categoryStr;
         _value = value;
+        _question = question;
 
     }
 
@@ -56,7 +61,7 @@ public class AskQuestionController extends VoiceSpeedChangeable {
     public void confirm(MouseEvent e) {
         // Validate the user answer
         String userAnswer = textField.getText();
-        if (_answerStr.equals(userAnswer)) {
+        if (_question.compareAnswers(userAnswer)) {
             Database.getInstance().addWinnings(_value);
             loadCorrectScene(e);
         } else {
@@ -66,7 +71,9 @@ public class AskQuestionController extends VoiceSpeedChangeable {
 
     public void loadIncorrectScene(MouseEvent e) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../scenes/play/Incorrect.fxml"));
-        loader.setController(new IncorrectController(_answerStr));
+        String answerTemp = Arrays.toString(_answerStr);
+        String answer = answerTemp.substring(1,answerTemp.length()-1);
+        loader.setController(new IncorrectController(answer));
         try {
             // Load the "incorrect" scene
             Parent incorrect = loader.load();
