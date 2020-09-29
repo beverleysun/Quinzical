@@ -27,21 +27,13 @@ public class IncorrectController extends VoiceSpeedChangeable {
     @FXML
     public void initialize() {
         super.initialize();
-            if(PracticeController.getAttempted() < 3){
-                clueLabel.setText(null);
-                TopLabel.setText(null);
-                BottomLabel.setText("Sorry, you are incorrect!");
-                TTS.getInstance().speak("Sorry, you are incorrect!");
-            }
-            else {
-                TopLabel.setText("Oops, the answer to");
-                clueLabel.setText("\"" + PracticeController.getClue() + "\"" + " was");
-                String answerTemp = Arrays.toString(PracticeController.getAnswer());
-                String answer = answerTemp.substring(1,answerTemp.length()-1);
-                BottomLabel.setText(answer);
-                TTS.getInstance().speak("Oops, the answer to " +PracticeController.getClue() + " was" + answer);
-            }
-        }
+        TopLabel.setText("Oops, the answer to");
+        clueLabel.setText("\"" + PracticeController.getClue() + "\"" + " was");
+        String answerTemp = Arrays.toString(PracticeController.getAnswer());
+        String answer = answerTemp.substring(1,answerTemp.length()-1);
+        BottomLabel.setText(answer);
+        TTS.getInstance().speak("Oops, the answer to " +PracticeController.getClue() + " was" + answer);
+    }
 
     @FXML
     private void backToQuestion(MouseEvent e) throws IOException {
