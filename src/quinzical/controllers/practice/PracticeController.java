@@ -37,21 +37,21 @@ public class PracticeController extends VoiceSpeedChangeable implements EventHan
     private List<Button> categorizations;
 
     public void initialize() {
-    	super.initialize();
+        super.initialize();
         categorizations = new ArrayList<>();
 
         // Calculate button height to fill up the height of the FlowPane
         double numRows = Math.ceil((double) _practiceQuestionData.size() / 4);
-        double buttonHeight = (180 - 10*(numRows-1)) / numRows;
+        double buttonHeight = (180 - 10 * (numRows - 1)) / numRows;
 
         // Load in the category buttons
-        for (Category category : _practiceQuestionData ) {
+        for (Category category : _practiceQuestionData) {
             categoryButton = new Button(category.getCategoryName());
             categoryButton.setId(category.getCategoryName());
             categoryButton.setOnMouseClicked(new PracticeController());
             categoryButton.getStyleClass().add("purple-button");
             categoryButton.getStyleClass().add("white-text-fill");
-            categoryButton.setPrefSize(120,buttonHeight);
+            categoryButton.setPrefSize(120, buttonHeight);
             categorizations.add(categoryButton);
             categoryFlowPane.getChildren().add(categoryButton);
         }
@@ -87,22 +87,17 @@ public class PracticeController extends VoiceSpeedChangeable implements EventHan
     public static void getQuestionInfo() {
         questionToAsk = _database.findQuestion(_category);
 
-        try {
-            _database.isAttempted(_category);
-            attempted = _database.getAttemptedTimes(_category);
-            questionToAsk.set_answeredTimes(attempted);
+        _database.isAttempted(_category);
+        attempted = _database.getAttemptedTimes(_category);
+        questionToAsk.set_answeredTimes(attempted);
 
-            int unattempted = 4 - attempted;
+        int unattempted = 4 - attempted;
 
-            if (unattempted < 1) {
-                new File("./.save/PracticeQuestions/" + _category).delete();
-                new File("./.save/PracticeQuestionsIndex/"+ _category).delete();
-                _database.getPracticeQuestionData().clear();
-                _database.loadPracticeQuestions();
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (unattempted < 1) {
+            new File("./.save/practice-questions/" + _category).delete();
+            new File("./.save/practice-questions-index/" + _category).delete();
+            _database.getPracticeQuestionData().clear();
+            _database.loadPracticeQuestions();
         }
     }
 
@@ -116,24 +111,35 @@ public class PracticeController extends VoiceSpeedChangeable implements EventHan
         }
     }
 
-    public static String getCategory(){
+    public static String getCategory() {
         return _category;
     }
-    public static String getClue(){
+
+    public static String getClue() {
         return clue;
     }
-    public static String[] getAnswer(){
+
+    public static String[] getAnswer() {
         return answers;
     }
-    public static String getHint(){
+
+    public static String getHint() {
         return hint;
     }
-    public static Question getQuestion(){
+
+    public static Question getQuestion() {
         return questionToAsk;
     }
-    public static String getAnswerFirstLetter(){
-        return  answerFirstLetter;
+
+    public static String getAnswerFirstLetter() {
+        return answerFirstLetter;
     }
-    public static Database getDatabase(){return _database;}
-    public static int getAttempted(){return attempted;}
+
+    public static Database getDatabase() {
+        return _database;
+    }
+
+    public static int getAttempted() {
+        return attempted;
+    }
 }
