@@ -37,14 +37,10 @@ public class Database {
 	//This arraylist is for store all questions in practice mode.
 	private final List<Category> _practiceQuestionData = new ArrayList<>();
 
-	//This is the attempted time for practice question.
-	private int _attempted = 0;
-
-	private int _practiceQuestionsIndex;
-
 	private static Database _database;
 
 	private Database(){
+		createFileStructure();
 		loadQuestions();
 		loadPracticeQuestions();
 		loadVoiceSpeed();
@@ -57,71 +53,30 @@ public class Database {
 		return _database;
 	}
 
-	public void savePracticeIndex(String category, int Index) {
+
+
+	public void loadPracticeQuestions() {
 		try {
-			if (!new File("./.save/practice-questions-index/" + category).exists()) {
-				new File("./.save/practice-questions-index/" + category).createNewFile();
-				FileWriter writer = new FileWriter(("./.save/practice-questions-index/" + category));
-				writer.write(Integer.toString(Index));
-				writer.close();
-			}
-		} catch (IOException e){
-			e.printStackTrace();
-		}
-	}
+			for(File categoryFile : _allCategoryFiles) {
 
-	private int getPracticeQuestionsIndex(String fileName) {
-		try {
-			BufferedReader in = new BufferedReader(new FileReader("./.save/practice-questions-index/" + fileName));
-			String s = in.readLine();
-			int PracticeQuestionsIndex = Integer.parseInt(s);
-			in.close();
-			return PracticeQuestionsIndex;
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return -1;
-	}
+				//Read every line of category file
+				Category category = new Category(categoryFile.getName());
+				BufferedReader reader = new BufferedReader(new FileReader(categoryFile));
 
-	public Question findQuestion(String categoryToFind) {
-		for (Category category : _practiceQuestionData) {
-			if (category.getCategoryName().equals(categoryToFind)) {
-				Question question = category.getQuestions().get(0);
+				// Load in all questions
+				String questionLine;
+				while ((questionLine = reader.readLine()) != null) {
+					String[] questionData = parseQuestionLine(questionLine);
+					String question = questionData[0].trim();
+					String answer = questionData[2].trim();
+					String[] answers = answer.split("/");
 
-				return question;
+					category.addQuestion(new Question(question,answers));
+				}
+				_practiceQuestionData.add(category);
 			}
 		}
-		return null;
-	}
-
-	//Read the file and get the attempted times of the question.
-	public int getAttemptedTimes(String fileName) {
-		try {
-			String s = Files.readString(Path.of("./.save/practice-questions/" + fileName), StandardCharsets.UTF_8);
-			int attempted = Integer.parseInt(s);
-			_attempted = attempted;
-			return _attempted;
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return 0;
-	}
-	//If the practice question is attempted, create a file and store the attempted times.
-	public void isAttempted (String category) {
-		try {
-			if (!new File("./.save/practice-questions/" + category).exists()) {
-				new File("./.save/practice-questions/" + category).createNewFile();
-				FileWriter writer = new FileWriter(("./.save/practice-questions/" + category));
-				writer.write("1");
-				writer.close();
-			} else {
-
-				int t = getAttemptedTimes(category);
-				FileWriter writer = new FileWriter(("./.save/practice-questions/" + category));
-				writer.write(Integer.toString(1 + t));
-				writer.close();
-			}
-		} catch (IOException e) {
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -130,58 +85,57 @@ public class Database {
 		return _practiceQuestionData;
 	}
 
-	public void loadPracticeQuestions() {
+	public Question findRandomPracticeQuestionByCategory(String categoryStr) {
+		for (Category category : _practiceQuestionData) {
+			if (category.getCategoryName().equals(categoryStr)) {
+				Random rand = new Random();
+				List<Question> questions = category.getQuestions();
+				return (questions.get(rand.nextInt(questions.size())));
+			}
+		}
+		return null;
+	}
+
+	private void loadQuestions() {
 		try {
-			createFileStructure();
-			for(File categoryFile : _allCategoryFiles) {
-				//Read every line of category file
+			loadCategories();
+
+			// Loop through each category
+			for(File categoryFile : _categoryFiles5) {
 				Category category = new Category(categoryFile.getName());
 
-				//get the total length of the file.
+				// Get the total number of lines of the file
 				LineNumberReader lineNum = new LineNumberReader(new FileReader(categoryFile));
 				lineNum.skip(Long.MAX_VALUE);
 
-				// create a random number between 1 to lineNum.getLineNumber().
-				// Save the number to PracticeQuestionIndex folder.
-				if(!new File("./.save/practice-questions/"+ categoryFile.getName()).exists() || !new File("./.save/practice-questions-index/"+ categoryFile.getName()).exists()) {
-					_practiceQuestionsIndex = (int) (Math.random() * (lineNum.getLineNumber() - 1 + 1) + 1);
-					savePracticeIndex(categoryFile.getName(), _practiceQuestionsIndex);
+				// Get five random line numbers and store it into a file.
+				if (!checkQuestionIndexFile(categoryFile.getName())) {
+					createRandomNumFile(lineNum.getLineNumber() + 1, 1, _questionsIndexFolder +"/"+ categoryFile.getName());
 				}
 
-				if(new File("./.save/practice-questions/"+ categoryFile.getName()).exists()){
-					_practiceQuestionsIndex = getPracticeQuestionsIndex(categoryFile.getName());
+				// Load the question line numbers from the category file.
+				int[] fiveQuestionsIndices = getFiveQuestionsIndices(categoryFile.getName());
+
+				// Select 5 questions for each category
+				for (int i = 0; i < 5; i ++) {
+					//This will return the line that match the random number array.
+					String questionLine = readAppointedLineNumber(categoryFile, fiveQuestionsIndices[i] ,lineNum.getLineNumber());
+
+					String [] questionData = parseQuestionLine(questionLine);
+					int value = 500 - 100*i;
+					String question = questionData[0];
+					String answer = questionData[2];
+					String[] answers = answer.split("/");
+
+					boolean answered = isAnswered(categoryFile.getName(), value);
+					boolean available = isAvailable(categoryFile.getName(),value);
+
+					category.addQuestion(new Question(question, answers, value, answered, available));
 				}
 
-				//This will return the line that match the random number array.
-				String questionLine = this.readAppointedLineNumber(categoryFile, _practiceQuestionsIndex,lineNum.getLineNumber());
-
-				String[] questionData = parseQuestionLine(questionLine);
-
-				// Extract information from the question line
-
-				String question = questionData[0].trim();
-				String hint = questionData[1].trim();
-				String answer = questionData[2].trim();
-				String[] answers = answer.split("/");
-
-
-				if (new File("./.save/practice-questions/"+ categoryFile.getName()).exists()) {
-					_attempted = getAttemptedTimes(categoryFile.getName());
-
-					if (_attempted == 2) {
-						new File("./.save/practice-questions-index/"+ categoryFile.getName()).delete();
-					}
-
-					if(_attempted >= 3) {
-						new File("./.save/practice-questions/"+ categoryFile.getName()).delete();
-					}
-				}
-
-				category.addQuestion(new Question(question,answers,hint,_attempted));
-				_practiceQuestionData.add(category);
+				_questionData.add(category);
 			}
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -293,51 +247,6 @@ public class Database {
 		return result;
 	}
 
-	private void loadQuestions() {
-		try {
-			createFileStructure();
-			loadCategories();
-
-			// Loop through each category
-			for(File categoryFile : _categoryFiles5) {
-				Category category = new Category(categoryFile.getName());
-
-				// Get the total number of lines of the file
-				LineNumberReader lineNum = new LineNumberReader(new FileReader(categoryFile));
-				lineNum.skip(Long.MAX_VALUE);
-
-				// Get five random line numbers and store it into a file.
-				if (!checkQuestionIndexFile(categoryFile.getName())) {
-					createRandomNumFile(lineNum.getLineNumber() + 1, 1, _questionsIndexFolder +"/"+ categoryFile.getName());
-				}
-
-				// Load the question line numbers from the category file.
-				int[] fiveQuestionsIndices = getFiveQuestionsIndices(categoryFile.getName());
-
-				// Select 5 questions for each category
-				for (int i = 0; i < 5; i ++) {
-					//This will return the line that match the random number array.
-					String questionLine = readAppointedLineNumber(categoryFile, fiveQuestionsIndices[i] ,lineNum.getLineNumber());
-
-					String [] questionData = parseQuestionLine(questionLine);
-					int value = 500 - 100*i;
-					String question = questionData[0];
-					String answer = questionData[2];
-					String[] answers = answer.split("/");
-
-					boolean answered = isAnswered(categoryFile.getName(), value);
-					boolean available = isAvailable(categoryFile.getName(),value);
-
-					category.addQuestion(new Question(question, answers, value, answered, available));
-				}
-
-				_questionData.add(category);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
 	// change to separate the line into 3 parts by "(" and ")".
 	private static String[] parseQuestionLine(String str) {
 		String[] splitQuestion = str.split("[\\(\\)]");
@@ -364,9 +273,6 @@ public class Database {
 				_winningsFolder.mkdir();
 				_categoryIndexFolder.mkdir();
 				_questionsIndexFolder.mkdir();
-
-				_practiceQuestionsFolder.mkdir();
-				_practiceQuestionIndex.mkdir();
 
 				_voiceSpeedFolder.mkdir();
 				createRandomNumFile(_categoriesFolder.listFiles().length, 0, "./.save/category-index/category-index");
@@ -395,7 +301,6 @@ public class Database {
 	private boolean isAnswered(String category, int value) {
 		return new File("./.save/answered/" + category + "/" + value).exists();
 	}
-
 
 
 	public void addCompletedFile(String category, String value) {
