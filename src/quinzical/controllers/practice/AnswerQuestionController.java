@@ -8,17 +8,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
+import quinzical.Question;
 import quinzical.SceneChanger;
 import quinzical.TTS;
-import quinzical.controllers.VoiceSpeedChangeable;
 
-import java.io.File;
 import java.io.IOException;
 
-public class AnswerQuestionController extends VoiceSpeedChangeable {
-
-    private static boolean _result;
-    private static int _unattemptedTime;
+public class AnswerQuestionController extends ConfirmController {
 
     @FXML
     private Label questionClue;
@@ -27,44 +23,55 @@ public class AnswerQuestionController extends VoiceSpeedChangeable {
     @FXML
     private TextField answerInput;
 
+    private final Question _question;
+    private int _attemptsLeft = 3;
+
+    public AnswerQuestionController(Question question) {
+        _question = question;
+    }
 
     @FXML
     public void initialize(){
         super.initialize();
-        questionClue.setText(PracticeController.getClue());
-        TTS.getInstance().speak(PracticeController.getClue());
-        _unattemptedTime = 4 - PracticeController.getQuestion().getAnsweredTimes();
-
-        if(_unattemptedTime > 1) {
-            hintLabel.setText("You have " + _unattemptedTime + " chances to answer the question from " + PracticeController.getCategory());
-        }
-        else{
-            hintLabel.setText("This is your last chance. Hint, " + PracticeController.getHint() + " " + PracticeController.getAnswerFirstLetter() + "...");
-        }
+        questionClue.setText(_question.getQuestion());
+        hintLabel.setText("3 attempts left");
     }
 
     @FXML
     private void checkAnswer(MouseEvent e) {
         PauseTransition pauseTransition = new PauseTransition(Duration.seconds(1.5));
-        String _realAnswer = answerInput.getText();
+        pauseTransition.setOnFinished( event -> {
+            if (_attemptsLeft == 1) {
+                hintLabel.setText("Last attempt. Hint: The answer starts with " + _question.getAnswer()[0].charAt(0));
+            } else {
+                hintLabel.setText(_attemptsLeft + " attempts left");
+            }
+            questionClue.setText(_question.getQuestion());
+        });
+
+        String _userAnswer = answerInput.getText();
+        _attemptsLeft -= 1;
         try {
-            if (PracticeController.getQuestion().compareAnswers(_realAnswer)) {
+            // Validate the answer
+            if (_question.compareAnswers(_userAnswer)) {
                 Parent answer = FXMLLoader.load(getClass().getResource("../../scenes/practice/Correct.fxml"));
                 SceneChanger.changeScene(e, answer);
             }
             else {
-                if(_unattemptedTime > 1) {
-                    questionClue.setText("Sorry, you are incorrect!");
-                    TTS.getInstance().speak("Sorry, you are incorrect!");
-                    pauseTransition.setOnFinished( event -> initialize());
+                if(_attemptsLeft > 0) {
+                    // If the player still has attempts left, flash "that was wrong"
+                    questionClue.setText("Oops! That was wrong!");
+                    TTS.getInstance().speak("Oops! That was wrong!");
                     pauseTransition.play();
                 }
                 else {
-                    Parent answer = FXMLLoader.load(getClass().getResource("../../scenes/practice/Incorrect.fxml"));
-                    SceneChanger.changeScene(e, answer);
+                    // When all 3 attempts are used, load the incorrect scene
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../../scenes/practice/Incorrect.fxml"));
+                    loader.setController(new IncorrectController(_question));
+                    Parent incorrect = loader.load();
+                    SceneChanger.changeScene(e, incorrect);
                 }
             }
-            PracticeController.getQuestionInfo();
         }
         catch (IOException ioException) {
             ioException.printStackTrace();
@@ -73,35 +80,12 @@ public class AnswerQuestionController extends VoiceSpeedChangeable {
     }
 
     @FXML
-    public void giveUp(MouseEvent e) throws IOException {
-        skipQuestion(e);
-    }
-
-    public static void skipQuestion(MouseEvent e) throws IOException {
-        Parent answer = FXMLLoader.load(AnswerQuestionController.class.getResource("../../scenes/practice/Practice.fxml"));
-        SceneChanger.changeScene(e, answer);
-        PracticeController.getDatabase().getPracticeQuestionData().clear();
-
-        if(new File("./.save/PracticeQuestions/"+ PracticeController.getCategory()).exists()){
-            File file = new File("./.save/PracticeQuestions/"+ PracticeController.getCategory());
-            file.delete();
-            new File("./.save/PracticeQuestionsIndex/"+ PracticeController.getCategory()).delete();
-        }
-
-        PracticeController.getDatabase().loadPracticeQuestions();
+    public void giveUp(MouseEvent e) {
+        backToPractice(e);
     }
 
     @FXML
     public void replay() {
-        TTS.getInstance().speak(PracticeController.getClue());
-    }
-
-
-
-    public static boolean getResult(){
-        return _result;
-    }
-    public static int get_unattemptedTime() {
-        return _unattemptedTime;
+        TTS.getInstance().speak(_question.getQuestion());
     }
 }
