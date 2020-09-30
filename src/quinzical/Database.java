@@ -22,8 +22,6 @@ public class Database {
 	private final File _winningsFolder = new File("./.save/winnings");
 	private final File _categoriesFolder = new File("./categories");
 	private final File _voiceSpeedFolder = new File("./.save/voice-speed");
-	private final File _practiceQuestionsFolder = new File("./.save/practice-questions/");
-	private final File _practiceQuestionIndex = new File("./.save/practice-questions-index/");
 
 	// Represents all categories
 	private final File[] _allCategoryFiles = _categoriesFolder.listFiles();
@@ -52,7 +50,6 @@ public class Database {
 		}
 		return _database;
 	}
-
 
 
 	public void loadPracticeQuestions() {
