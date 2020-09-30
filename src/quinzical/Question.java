@@ -6,10 +6,7 @@ public class Question {
     private final int _value;
     private boolean _completed;
     private boolean _available;
-  
-    // For practice mode.
-    private int  _answeredTimes;
-    private String _hint;
+
 
     public Question(String question, String[] answers, int value, boolean completed, boolean available) {
         _question = question;
@@ -20,24 +17,10 @@ public class Question {
     }
 
     // Overload a constructor for practice mode.
-    public Question(String question, String[] answers, String hint,int answeredTimes) {
+    public Question(String question, String[] answers) {
         _value = 0;
         _question = question;
         _answers = answers;
-        _answeredTimes = answeredTimes;
-        _hint = hint;
-    }
-    //**************************************************************************************************
-    public String getHint() {
-        return _hint;
-    }
-
-    public int getAnsweredTimes() {
-        return _answeredTimes;
-    }
-
-    public void set_answeredTimes(int _answeredTimes) {
-        this._answeredTimes = _answeredTimes;
     }
 
     public boolean compareAnswers(String usersAnswer){
@@ -48,7 +31,7 @@ public class Question {
         }
         return false;
     }
-    //**************************************************************************************************
+
     public boolean isAvailable() {
     	return _available;
     }
