@@ -43,6 +43,25 @@ generate 5 random numbers from the required range and store them into an array. 
 
 ## Playback and Manipulation Audio
 
+## Decisions Down the Line
+Here, we'll document any changes as development continues
 
+### Practice Section
+Initially, when the user quit the game when answering a question in the practice module, we would save the number of attempts
+left and continue on with the question when the game started back up. After some discussion, we ultimately decided to remove
+this feature as players can actually re-attempt the question due the random selection of questions. So, there wasn't any point
+to saving the number of attempts if the question can be attempted again.
 
+### Espeak vs. Festival
+We are currently using espeak due to how easy it is to set the speed. However, after a client meeting (30/09/2020), we will be using
+festival down the line. This is because we are able to set NZ voices that can pronounce Māori words (the best that it can).
+Ultimately, we believe that this is a good decision as we want users to be able to properly learn the pronunciation of the
+Māori language. This is currently low priority as we currently have espeak working and other important things need to also be
+implemented.
 
+### Macrons
+After the client meeting (30/09/2020), macrons were decided to be very important. There are two options:
+1. Normalize the answer and compare them
+2. Allow the user to enter macrons into the answer section
+We think that the second option is best. This allows users to learn how to properly *spell* Māori words which maintains respect
+for the Māori language and culture.
