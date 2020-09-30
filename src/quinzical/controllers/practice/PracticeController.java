@@ -1,6 +1,5 @@
 package quinzical.controllers.practice;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,34 +10,21 @@ import quinzical.Category;
 import quinzical.Database;
 import quinzical.Question;
 import quinzical.SceneChanger;
-import quinzical.TTS;
 import quinzical.controllers.VoiceSpeedChangeable;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
-public class PracticeController extends VoiceSpeedChangeable implements EventHandler<MouseEvent> {
+public class PracticeController extends VoiceSpeedChangeable {
 
-    private static final Database _database = Database.getInstance();
-    private static final List<Category> _practiceQuestionData = _database.getPracticeQuestionData();
-    private static String _category;
-    private static Question questionToAsk;
-    private static String clue;
-    private static String[] answers;
-    private static String answerFirstLetter;
-    private static String hint;
-    private static int attempted;
+    private Database _database = Database.getInstance();
+    private List<Category> _practiceQuestionData = _database.getPracticeQuestionData();
 
     @FXML
     private FlowPane categoryFlowPane;
-    private Button categoryButton;
-    private List<Button> categorizations;
 
     public void initialize() {
         super.initialize();
-        categorizations = new ArrayList<>();
 
         // Calculate button height to fill up the height of the FlowPane
         double numRows = Math.ceil((double) _practiceQuestionData.size() / 4);
@@ -46,37 +32,27 @@ public class PracticeController extends VoiceSpeedChangeable implements EventHan
 
         // Load in the category buttons
         for (Category category : _practiceQuestionData) {
-            categoryButton = new Button(category.getCategoryName());
+            Button categoryButton = new Button(category.getCategoryName());
             categoryButton.setId(category.getCategoryName());
-            categoryButton.setOnMouseClicked(new PracticeController());
+            categoryButton.setOnMouseClicked(this::categoryClicked);
             categoryButton.getStyleClass().add("purple-button");
             categoryButton.getStyleClass().add("white-text-fill");
             categoryButton.setPrefSize(120, buttonHeight);
-            categorizations.add(categoryButton);
             categoryFlowPane.getChildren().add(categoryButton);
         }
     }
 
-    @FXML
-    public void replay() {
-        TTS.getInstance().speak(clue);
-    }
-
-    @Override
-    public void handle(MouseEvent e) {
+    public void categoryClicked(MouseEvent e) {
         try {
             Button categoryButton = (Button) e.getSource();
 
-            // Load a question for the specified category
-            _category = categoryButton.getId();
-            getQuestionInfo();
-            clue = questionToAsk.getQuestion();
-            answers = questionToAsk.getAnswer();
-            answerFirstLetter = Character.toString(answers[0].charAt(0));
-            hint = questionToAsk.getHint();
+            String categoryStr = categoryButton.getId();
+            Question question = _database.findRandomPracticeQuestionByCategory(categoryStr);
 
             // Change scene
-            Parent answer = FXMLLoader.load(getClass().getResource("../../scenes/practice/AnswerQuestion.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../scenes/practice/AnswerQuestion.fxml"));
+            loader.setController(new AnswerQuestionController(question));
+            Parent answer = loader.load();
             SceneChanger.changeScene(e, answer);
 
         } catch (IOException event) {
@@ -84,22 +60,6 @@ public class PracticeController extends VoiceSpeedChangeable implements EventHan
         }
     }
 
-    public static void getQuestionInfo() {
-        questionToAsk = _database.findQuestion(_category);
-
-        _database.isAttempted(_category);
-        attempted = _database.getAttemptedTimes(_category);
-        questionToAsk.set_answeredTimes(attempted);
-
-        int unattempted = 4 - attempted;
-
-        if (unattempted < 1) {
-            new File("./.save/practice-questions/" + _category).delete();
-            new File("./.save/practice-questions-index/" + _category).delete();
-            _database.getPracticeQuestionData().clear();
-            _database.loadPracticeQuestions();
-        }
-    }
 
     public void back(MouseEvent e) {
         try {
@@ -109,37 +69,5 @@ public class PracticeController extends VoiceSpeedChangeable implements EventHan
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
-    }
-
-    public static String getCategory() {
-        return _category;
-    }
-
-    public static String getClue() {
-        return clue;
-    }
-
-    public static String[] getAnswer() {
-        return answers;
-    }
-
-    public static String getHint() {
-        return hint;
-    }
-
-    public static Question getQuestion() {
-        return questionToAsk;
-    }
-
-    public static String getAnswerFirstLetter() {
-        return answerFirstLetter;
-    }
-
-    public static Database getDatabase() {
-        return _database;
-    }
-
-    public static int getAttempted() {
-        return attempted;
     }
 }
