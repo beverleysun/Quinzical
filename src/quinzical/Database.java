@@ -351,9 +351,6 @@ public class Database {
 
 	public void reset() {
 		deleteDirectory(_saveFolder);
-		_questionData.clear();
-		_practiceQuestionData.clear();
-		loadQuestions();
-		loadPracticeQuestions();
+		_database = new Database();
 	}
 }
