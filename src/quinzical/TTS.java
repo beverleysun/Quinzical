@@ -23,7 +23,7 @@ public class TTS {
     }
 
     public void speak (String str) throws IOException {
-        strToText(str,);
+        strToText(str);
         String command = "festival -b ./.save/voice-speed/test.scm \n wait ";
         ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
         try {

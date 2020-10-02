@@ -11,7 +11,7 @@ import quinzical.TTS;
 import java.io.IOException;
 
 public abstract class VoiceSpeedChangeable {
-    private ToggleGroup accents = new ToggleGroup();
+
     @FXML
     private Slider voiceSlider;
 
@@ -21,29 +21,31 @@ public abstract class VoiceSpeedChangeable {
     @FXML
     private RadioButton nzAccent;
 
+
     @FXML
     private RadioButton usAccent;
 
+    private ToggleGroup accents;
 
 
     @FXML
-    public void setAccent(MouseEvent e){
+    public void setAccent(MouseEvent e) {
+        accents = new ToggleGroup();
         nzAccent.setToggleGroup(accents);
         usAccent.setToggleGroup(accents);
 
-        if(nzAccent.isSelected()){
-            TTS.getInstance().setAccent();
+        if (nzAccent.isSelected()) {
+            TTS.getInstance().setAccent("(voice_akl_nz_jdt_diphone)");
         }
-
-
-
-
+        else  {
+            TTS.getInstance().setAccent("(voice_kal_diphone)");
+        }
     }
-
 
 
     public void initialize() throws IOException {
         voiceSlider.setValue(TTS.getInstance().getMultiplier());
+
     }
 
     public void sliderChanged() {
