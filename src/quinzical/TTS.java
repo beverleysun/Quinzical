@@ -10,6 +10,8 @@ public class TTS {
 
     private double _speedMultiplier;
 
+    private String _accent;
+
     private TTS() {}
 
     // Singleton class
@@ -21,7 +23,7 @@ public class TTS {
     }
 
     public void speak (String str) throws IOException {
-        strToText(str);
+        strToText(str,);
         String command = "festival -b ./.save/voice-speed/test.scm \n wait ";
         ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
         try {
@@ -48,10 +50,14 @@ public class TTS {
     public void strToText(String input) throws IOException {
         new File("./.save/voice-speed/test.scm").createNewFile();
         FileWriter writer = new FileWriter("./.save/voice-speed/test.scm");
-        writer.write("(voice_akl_nz_jdt_diphone)" + "\n");
+        writer.write(_accent + "\n");
         writer.write("(Parameter.set 'Duration_Stretch " + (1/_speedMultiplier) +")" + "\n");
         writer.write("(SayText \""+ input+"\")");
         writer.close();
+    }
+
+    public void setAccent(String accent){
+           _accent = accent;
     }
 
 }

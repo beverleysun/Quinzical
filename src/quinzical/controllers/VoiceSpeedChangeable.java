@@ -2,17 +2,45 @@ package quinzical.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseEvent;
 import quinzical.TTS;
 
 import java.io.IOException;
 
 public abstract class VoiceSpeedChangeable {
+    private ToggleGroup accents = new ToggleGroup();
     @FXML
     private Slider voiceSlider;
 
     @FXML
     private Label speedDisplay;
+
+    @FXML
+    private RadioButton nzAccent;
+
+    @FXML
+    private RadioButton usAccent;
+
+
+
+    @FXML
+    public void setAccent(MouseEvent e){
+        nzAccent.setToggleGroup(accents);
+        usAccent.setToggleGroup(accents);
+
+        if(nzAccent.isSelected()){
+            TTS.getInstance().setAccent();
+        }
+
+
+
+
+    }
+
+
 
     public void initialize() throws IOException {
         voiceSlider.setValue(TTS.getInstance().getMultiplier());
@@ -30,4 +58,5 @@ public abstract class VoiceSpeedChangeable {
     public void removeSpeed() {
         speedDisplay.setText("");
     }
+
 }
