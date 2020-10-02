@@ -5,6 +5,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import quinzical.TTS;
 
+import java.io.IOException;
+
 public abstract class VoiceSpeedChangeable {
     @FXML
     private Slider voiceSlider;
@@ -12,7 +14,7 @@ public abstract class VoiceSpeedChangeable {
     @FXML
     private Label speedDisplay;
 
-    public void initialize() {
+    public void initialize() throws IOException {
         voiceSlider.setValue(TTS.getInstance().getMultiplier());
     }
 

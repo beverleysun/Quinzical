@@ -7,6 +7,7 @@ import javafx.scene.input.MouseEvent;
 import quinzical.Question;
 import quinzical.TTS;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 public class IncorrectController extends ConfirmController {
@@ -27,7 +28,7 @@ public class IncorrectController extends ConfirmController {
     }
 
     @FXML
-    public void initialize() {
+    public void initialize() throws IOException {
         super.initialize();
         TopLabel.setText("Oops, the answer to");
         clueLabel.setText("\"" + _question.getQuestion() + "\"" + " was");

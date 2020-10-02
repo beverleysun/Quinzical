@@ -12,7 +12,7 @@ import java.io.IOException;
 public abstract class ConfirmController extends VoiceSpeedChangeable {
 
     @FXML
-    public void initialize() {
+    public void initialize() throws IOException {
         super.initialize();
     }
 

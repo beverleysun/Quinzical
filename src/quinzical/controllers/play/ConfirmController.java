@@ -16,7 +16,7 @@ public abstract class ConfirmController extends VoiceSpeedChangeable {
     private Label winnings;
 
     @FXML
-    public void initialize() {
+    public void initialize() throws IOException {
         super.initialize();
         winnings.setText("$" + Database.getInstance().getWinnings());
     }

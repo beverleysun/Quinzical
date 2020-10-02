@@ -34,7 +34,7 @@ public class PlayController extends VoiceSpeedChangeable {
     private final List<Button> _buttons = new ArrayList<Button>();
 
     @FXML
-    public void initialize() {
+    public void initialize() throws IOException {
         super.initialize();
         setLabels();
         initButtons();

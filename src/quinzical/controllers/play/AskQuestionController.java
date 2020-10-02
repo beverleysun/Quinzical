@@ -44,17 +44,18 @@ public class AskQuestionController extends VoiceSpeedChangeable {
     }
 
     @FXML
-    public void initialize() {
+    public void initialize() throws IOException {
         super.initialize();
         questionInfo.setText("Playing " + _categoryStr + " for $" + _value);
         winnings.setText("$" + Database.getInstance().getWinnings());
+
         TTS.getInstance().speak(_questionStr);
 
         confirm.setOnMouseClicked(this::confirm);
         giveUp.setOnMouseClicked(this::loadIncorrectScene);
     }
 
-    public void replay() {
+    public void replay() throws IOException {
         TTS.getInstance().speak(_questionStr);
     }
 

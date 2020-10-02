@@ -6,6 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import quinzical.TTS;
 
+import java.io.IOException;
+
 public class IncorrectController extends ConfirmController {
 
     @FXML
@@ -22,7 +24,7 @@ public class IncorrectController extends ConfirmController {
     }
 
     @FXML
-    public void initialize() {
+    public void initialize() throws IOException {
         super.initialize();
         answerLabel.setText("The correct answer was " + _answer);
         TTS.getInstance().speak("Oops. The correct answer was " + _answer);

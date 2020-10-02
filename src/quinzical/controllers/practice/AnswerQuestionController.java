@@ -31,9 +31,11 @@ public class AnswerQuestionController extends ConfirmController {
     }
 
     @FXML
-    public void initialize(){
+    public void initialize() throws IOException {
         super.initialize();
         questionClue.setText(_question.getQuestion());
+
+        TTS.getInstance().speak(_question.getQuestion());
         hintLabel.setText("3 attempts left");
     }
 
@@ -85,7 +87,7 @@ public class AnswerQuestionController extends ConfirmController {
     }
 
     @FXML
-    public void replay() {
+    public void replay() throws IOException {
         TTS.getInstance().speak(_question.getQuestion());
     }
 }
