@@ -24,7 +24,7 @@ public class TTS {
 
     public void speak(String str) {
         strToText(str);
-        String command = "festival -b ./.save/voice-speed/test.scm \n wait ";
+        String command = "festival -b ./.save/voice-settings/settings.scm \n wait ";
         ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
         try {
             Process process = pb.start();
@@ -49,7 +49,7 @@ public class TTS {
 
     public void strToText(String input) {
         try {
-            FileWriter writer = new FileWriter("./.save/voice-settings/test.scm");
+            FileWriter writer = new FileWriter("./.save/voice-settings/settings.scm");
             writer.write(_accent + "\n");
             writer.write("(Parameter.set 'Duration_Stretch " + (1 / _speedMultiplier) + ")" + "\n");
             writer.write("(SayText \"" + input + "\")");
@@ -61,6 +61,10 @@ public class TTS {
 
     public void setAccent(String accent){
            _accent = accent;
+    }
+
+    public String getAccent() {
+        return _accent;
     }
 
 }
