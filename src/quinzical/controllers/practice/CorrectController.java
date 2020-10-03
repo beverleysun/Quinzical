@@ -16,7 +16,7 @@ public class CorrectController extends ConfirmController {
     private Label correctLabel;
 
     @FXML
-    public void initialize() throws IOException {
+    public void initialize() {
         super.initialize();
         TTS.getInstance().speak("Correct!");
     }

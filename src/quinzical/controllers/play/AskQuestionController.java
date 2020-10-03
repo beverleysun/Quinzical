@@ -40,11 +40,10 @@ public class AskQuestionController extends VoiceSpeedChangeable {
         _categoryStr = categoryStr;
         _value = value;
         _question = question;
-
     }
 
     @FXML
-    public void initialize() throws IOException {
+    public void initialize() {
         super.initialize();
         questionInfo.setText("Playing " + _categoryStr + " for $" + _value);
         winnings.setText("$" + Database.getInstance().getWinnings());

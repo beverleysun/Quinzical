@@ -11,10 +11,11 @@ import javafx.util.Duration;
 import quinzical.Question;
 import quinzical.SceneChanger;
 import quinzical.TTS;
+import quinzical.controllers.VoiceSpeedChangeable;
 
 import java.io.IOException;
 
-public class AnswerQuestionController extends ConfirmController {
+public class AnswerQuestionController extends VoiceSpeedChangeable {
 
     @FXML
     private Label questionClue;
@@ -31,7 +32,7 @@ public class AnswerQuestionController extends ConfirmController {
     }
 
     @FXML
-    public void initialize() throws IOException {
+    public void initialize() {
         super.initialize();
         questionClue.setText(_question.getQuestion());
 
@@ -83,11 +84,18 @@ public class AnswerQuestionController extends ConfirmController {
 
     @FXML
     public void giveUp(MouseEvent e) {
-        backToPractice(e);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../scenes/practice/Incorrect.fxml"));
+        loader.setController(new IncorrectController(_question));
+        try {
+            Parent incorrect = loader.load();
+            SceneChanger.changeScene(e, incorrect);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
     }
 
     @FXML
-    public void replay() throws IOException {
+    public void replay() {
         TTS.getInstance().speak(_question.getQuestion());
     }
 }
