@@ -7,10 +7,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.io.Writer;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -21,7 +19,7 @@ public class Database {
 	private final File _answeredFolder = new File("./.save/answered");
 	private final File _winningsFolder = new File("./.save/winnings");
 	private final File _categoriesFolder = new File("./categories");
-	private final File _voiceSpeedFolder = new File("./.save/voice-speed");
+	private final File _voiceSettingsFolder = new File("./.save/voice-settings");
 
 	// Represents all categories
 	private final File[] _allCategoryFiles = _categoriesFolder.listFiles();
@@ -41,7 +39,7 @@ public class Database {
 		createFileStructure();
 		loadQuestions();
 		loadPracticeQuestions();
-		loadVoiceSpeed();
+		loadVoice();
 	}
 
 	public static Database getInstance() {
@@ -271,14 +269,18 @@ public class Database {
 				_categoryIndexFolder.mkdir();
 				_questionsIndexFolder.mkdir();
 
-				_voiceSpeedFolder.mkdir();
+				_voiceSettingsFolder.mkdir();
 				createRandomNumFile(_categoriesFolder.listFiles().length, 0, "./.save/category-index/category-index");
 
 				// Set winnings to $0
 				new File("./.save/winnings/0").createNewFile();
 
-				// Set default voice speed to 130
-				new File("./.save/voice-speed/1").createNewFile();
+				// Set default voice speed to 1x
+				new File("./.save/voice-settings/1").createNewFile();
+				new File("./.save/voice-settings/settings.scm").createNewFile();
+				FileWriter writer = new FileWriter("./.save/voice-settings/settings.scm");
+				writer.write("(voice_kal_diphone)\n");
+				writer.close();
 
 				// Create folders for each category in the save folder
 				for (String name : _categoriesFolder.list()) {
@@ -290,9 +292,17 @@ public class Database {
 		}
 	}
 
-	private void loadVoiceSpeed() {
-		String[] voiceSpeed = _voiceSpeedFolder.list();
-		TTS.getInstance().initMultiplier(Double.parseDouble(voiceSpeed[0]));
+	private void loadVoice() {
+		File[] voiceSettings = _voiceSettingsFolder.listFiles();
+		Arrays.sort(voiceSettings);
+		TTS.getInstance().initMultiplier(Double.parseDouble(voiceSettings[0].getName()));
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(voiceSettings[1]));
+			String accent = reader.readLine();
+			TTS.getInstance().setAccent(accent);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	private boolean isAnswered(String category, int value) {
@@ -332,8 +342,8 @@ public class Database {
 	}
 
 	public void updateSpeed(double speed) {
-		File[] voiceSpeedFile = _voiceSpeedFolder.listFiles();
-		voiceSpeedFile[0].renameTo(new File("./.save/voice-speed/" + speed));
+		File[] voiceSpeedFile = _voiceSettingsFolder.listFiles();
+		voiceSpeedFile[0].renameTo(new File("./.save/voice-settings/" + speed));
 	}
 
 	public void deleteDirectory(File directoryToBeDeleted) {
