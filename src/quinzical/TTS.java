@@ -47,7 +47,7 @@ public class TTS {
     }
 
 
-    public void strToText(String input) {
+    private void strToText(String input) {
         try {
             FileWriter writer = new FileWriter("./.save/voice-settings/settings.scm");
             writer.write(_accent + "\n");
@@ -60,7 +60,8 @@ public class TTS {
     }
 
     public void setAccent(String accent){
-           _accent = accent;
+        _accent = accent;
+        strToText("Updated voice");
     }
 
     public String getAccent() {
