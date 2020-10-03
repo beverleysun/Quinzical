@@ -7,6 +7,7 @@ import javafx.scene.input.MouseEvent;
 import quinzical.Question;
 import quinzical.TTS;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 public class IncorrectController extends ConfirmController {

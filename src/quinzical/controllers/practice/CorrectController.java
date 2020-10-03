@@ -6,6 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import quinzical.TTS;
 
+import java.io.IOException;
+
 public class CorrectController extends ConfirmController {
 
     @FXML

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="background-color" stylesheets="@../../../assets/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="background-color" stylesheets="@../../../assets/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="335.0" />
@@ -102,7 +102,43 @@
                 <Insets top="-9.0" />
             </GridPane.margin>
         </Label>
+      <RadioButton fx:id="usAccent" mnemonicParsing="false" onMouseClicked="#setAccent" text="US" GridPane.columnIndex="3" GridPane.rowIndex="3">
+         <styleClass>
+            <String fx:value="font-14" />
+            <String fx:value="white-text-fill" />
+         </styleClass>
+         <GridPane.margin>
+            <Insets left="55.0" top="60.0" />
+         </GridPane.margin>
+      </RadioButton>
+      <RadioButton fx:id="nzAccent" mnemonicParsing="false" onMouseClicked="#setAccent" prefHeight="19.0" prefWidth="50.0" text="NZ" GridPane.columnIndex="3" GridPane.rowIndex="3">
+         <styleClass>
+            <String fx:value="font-14" />
+            <String fx:value="white-text-fill" />
+         </styleClass>
+         <GridPane.margin>
+            <Insets top="60.0" />
+         </GridPane.margin>
+         <font>
+            <Font size="6.0" />
+         </font>
+      </RadioButton>
+      <Label stylesheets="@../../../assets/style.css" text="Accent" GridPane.columnIndex="2" GridPane.rowIndex="3">
+         <styleClass>
+            <String fx:value="white-text-fill" />
+            <String fx:value="font-14" />
+         </styleClass>
+         <GridPane.margin>
+            <Insets left="15.0" top="60.0" />
+         </GridPane.margin>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+      </Label>
 
     </children>
+   <GridPane.margin>
+      <Insets left="2010.0" top="60.0" />
+   </GridPane.margin>
 
 </GridPane>

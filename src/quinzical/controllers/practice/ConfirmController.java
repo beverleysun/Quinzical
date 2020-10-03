@@ -5,11 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
 import quinzical.SceneChanger;
-import quinzical.controllers.VoiceSpeedChangeable;
+import quinzical.controllers.VoiceSettingsChangeable;
 
 import java.io.IOException;
 
-public abstract class ConfirmController extends VoiceSpeedChangeable {
+public abstract class ConfirmController extends VoiceSettingsChangeable {
 
     @FXML
     public void initialize() {

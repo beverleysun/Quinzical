@@ -1,5 +1,7 @@
 package quinzical;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class TTS {
@@ -7,7 +9,8 @@ public class TTS {
     private static TTS _tts;
 
     private double _speedMultiplier;
-    private double _averageSpeed = 130;
+
+    private String _accent;
 
     private TTS() {}
 
@@ -19,10 +22,9 @@ public class TTS {
         return _tts;
     }
 
-    public void speak (String str) {
-        // Speak at the user specified speed
-        int speed = (int) (_speedMultiplier*_averageSpeed);
-        String command = "espeak -s " + speed + " \"" + str + "\"";
+    public void speak(String str) {
+        strToText(str);
+        String command = "festival -b ./.save/voice-settings/settings.scm \n wait ";
         ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
         try {
             Process process = pb.start();
@@ -43,4 +45,26 @@ public class TTS {
     public double getMultiplier() {
         return _speedMultiplier;
     }
+
+
+    public void strToText(String input) {
+        try {
+            FileWriter writer = new FileWriter("./.save/voice-settings/settings.scm");
+            writer.write(_accent + "\n");
+            writer.write("(Parameter.set 'Duration_Stretch " + (1 / _speedMultiplier) + ")" + "\n");
+            writer.write("(SayText \"" + input + "\")");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setAccent(String accent){
+           _accent = accent;
+    }
+
+    public String getAccent() {
+        return _accent;
+    }
+
 }

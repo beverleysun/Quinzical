@@ -11,12 +11,12 @@ import quinzical.Database;
 import quinzical.Question;
 import quinzical.SceneChanger;
 import quinzical.TTS;
-import quinzical.controllers.VoiceSpeedChangeable;
+import quinzical.controllers.VoiceSettingsChangeable;
 
 import java.io.IOException;
 import java.util.Arrays;
 
-public class AskQuestionController extends VoiceSpeedChangeable {
+public class AskQuestionController extends VoiceSettingsChangeable {
 
     private final String _questionStr;
     private final String[] _answerStr;
@@ -40,7 +40,6 @@ public class AskQuestionController extends VoiceSpeedChangeable {
         _categoryStr = categoryStr;
         _value = value;
         _question = question;
-
     }
 
     @FXML
@@ -48,13 +47,14 @@ public class AskQuestionController extends VoiceSpeedChangeable {
         super.initialize();
         questionInfo.setText("Playing " + _categoryStr + " for $" + _value);
         winnings.setText("$" + Database.getInstance().getWinnings());
+
         TTS.getInstance().speak(_questionStr);
 
         confirm.setOnMouseClicked(this::confirm);
         giveUp.setOnMouseClicked(this::loadIncorrectScene);
     }
 
-    public void replay() {
+    public void replay() throws IOException {
         TTS.getInstance().speak(_questionStr);
     }
 

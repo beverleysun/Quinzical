@@ -11,10 +11,11 @@ import javafx.util.Duration;
 import quinzical.Question;
 import quinzical.SceneChanger;
 import quinzical.TTS;
+import quinzical.controllers.VoiceSettingsChangeable;
 
 import java.io.IOException;
 
-public class AnswerQuestionController extends ConfirmController {
+public class AnswerQuestionController extends VoiceSettingsChangeable {
 
     @FXML
     private Label questionClue;
@@ -31,9 +32,12 @@ public class AnswerQuestionController extends ConfirmController {
     }
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         super.initialize();
         questionClue.setText(_question.getQuestion());
+
+
+        TTS.getInstance().speak(_question.getQuestion());
         hintLabel.setText("3 attempts left");
     }
 
@@ -81,7 +85,14 @@ public class AnswerQuestionController extends ConfirmController {
 
     @FXML
     public void giveUp(MouseEvent e) {
-        backToPractice(e);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../scenes/practice/Incorrect.fxml"));
+        loader.setController(new IncorrectController(_question));
+        try {
+            Parent incorrect = loader.load();
+            SceneChanger.changeScene(e, incorrect);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
     }
 
     @FXML

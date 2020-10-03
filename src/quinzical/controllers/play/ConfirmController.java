@@ -7,11 +7,11 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import quinzical.Database;
 import quinzical.SceneChanger;
-import quinzical.controllers.VoiceSpeedChangeable;
+import quinzical.controllers.VoiceSettingsChangeable;
 
 import java.io.IOException;
 
-public abstract class ConfirmController extends VoiceSpeedChangeable {
+public abstract class ConfirmController extends VoiceSettingsChangeable {
     @FXML
     private Label winnings;
 

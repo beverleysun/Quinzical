@@ -10,14 +10,14 @@ import quinzical.Category;
 import quinzical.Database;
 import quinzical.Question;
 import quinzical.SceneChanger;
-import quinzical.controllers.VoiceSpeedChangeable;
+import quinzical.controllers.VoiceSettingsChangeable;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class PlayController extends VoiceSpeedChangeable {
+public class PlayController extends VoiceSettingsChangeable {
 
     @FXML
     private Label cat1Label, cat2Label, cat3Label, cat4Label, cat5Label, winnings;
