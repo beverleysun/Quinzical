@@ -34,7 +34,6 @@
     -fx-font-weight: bold;
 }
 
-
 .background-color {
     -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(217,147,42,1) 0%, rgba(111,22,223,1) 100%);
 }
@@ -75,4 +74,17 @@
 .voice-speed-slider .track {
     -fx-background-color: white;
     -fx-pref-height: 1px;
+}
+
+.radio-accent .radio {
+    -fx-border-width: 1px;
+    -fx-border-color: white;
+    -fx-background-color: null;
+    -fx-border-radius: 15px;
+    -fx-padding: 4px;
+}
+
+.radio-accent:selected .dot {
+    -fx-mark-highlight-color: #D9932A;
+    -fx-mark-color: #D9932A;
 }
