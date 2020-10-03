@@ -41,34 +41,6 @@
         <Insets top="50.0" />
         </GridPane.margin>
     </Label>
-    <Button fx:id="replay" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#replay" prefHeight="30.0" prefWidth="65.0" stylesheets="@../../../assets/style.css" text="Replay" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
-        <styleClass>
-            <String fx:value="orange-button" />
-            <String fx:value="white-text-fill" />
-            <String fx:value="button-radius-5" />
-            <String fx:value="font-14" />
-        </styleClass>
-        <cursor>
-            <Cursor fx:constant="HAND" />
-        </cursor>
-        <GridPane.margin>
-        <Insets right="6.0" />
-        </GridPane.margin>
-    </Button>
-    <Button fx:id="giveUp" mnemonicParsing="false" onMouseClicked="#giveUp" prefHeight="30.0" stylesheets="@../../../assets/style.css" text="Give Up" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
-        <styleClass>
-            <String fx:value="orange-button" />
-            <String fx:value="white-text-fill" />
-            <String fx:value="button-radius-5" />
-            <String fx:value="font-14" />
-        </styleClass>
-        <GridPane.margin>
-            <Insets right="81.0" />
-        </GridPane.margin>
-        <cursor>
-            <Cursor fx:constant="HAND" />
-        </cursor>
-    </Button>
     <Label stylesheets="@../../../assets/style.css" text="Voice Speed" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
         <GridPane.margin>
             <Insets />
@@ -97,8 +69,8 @@
         </GridPane.margin>
     </Label>
     <HBox alignment="BOTTOM_CENTER" prefHeight="30.0" prefWidth="550.0" spacing="20.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="3">
-        <TextField fx:id="answerInput" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="400.0" />
-        <Polyline fill="#ffffff00" onMouseClicked="#checkAnswer" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeWidth="3.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+        <TextField fx:id="answerInput" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#enter" prefHeight="30.0" prefWidth="400.0" />
+        <Polyline fill="#ffffff00" onMouseClicked="#confirm" stroke="WHITE" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeWidth="3.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
             <points>
                 <Double fx:value="-12" />
                 <Double fx:value="-10" />
@@ -120,7 +92,7 @@
         </Polyline>
     </HBox>
     <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-        <Button fx:id="aMacron" mnemonicParsing="false" prefWidth="30.0" onMouseClicked="#addMacron" stylesheets="@../../../assets/style.css" text="ā">
+        <Button fx:id="aMacron" mnemonicParsing="false" onMouseClicked="#addMacron" prefWidth="30.0" stylesheets="@../../../assets/style.css" text="ā">
             <styleClass>
                 <String fx:value="orange-button" />
                 <String fx:value="white-text-fill" />
@@ -131,7 +103,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <Button fx:id="eMacron" mnemonicParsing="false" onMouseClicked="#addMacron" stylesheets="@../../../assets/style.css" prefWidth="30.0" text="ē">
+        <Button fx:id="eMacron" mnemonicParsing="false" onMouseClicked="#addMacron" prefWidth="30.0" stylesheets="@../../../assets/style.css" text="ē">
             <styleClass>
                 <String fx:value="orange-button" />
                 <String fx:value="white-text-fill" />
@@ -142,7 +114,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <Button fx:id="iMacron" mnemonicParsing="false" onMouseClicked="#addMacron" stylesheets="@../../../assets/style.css" prefWidth="30.0" text="ī">
+        <Button fx:id="iMacron" mnemonicParsing="false" onMouseClicked="#addMacron" prefWidth="30.0" stylesheets="@../../../assets/style.css" text="ī">
             <styleClass>
                 <String fx:value="orange-button" />
                 <String fx:value="white-text-fill" />
@@ -153,7 +125,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <Button fx:id="oMacron" mnemonicParsing="false" onMouseClicked="#addMacron" stylesheets="@../../../assets/style.css" prefWidth="30.0" text="ō">
+        <Button fx:id="oMacron" mnemonicParsing="false" onMouseClicked="#addMacron" prefWidth="30.0" stylesheets="@../../../assets/style.css" text="ō">
             <styleClass>
                 <String fx:value="orange-button" />
                 <String fx:value="white-text-fill" />
@@ -164,7 +136,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <Button fx:id="uMacron" mnemonicParsing="false" onMouseClicked="#addMacron" stylesheets="@../../../assets/style.css" prefWidth="30.0" text="ū">
+        <Button fx:id="uMacron" mnemonicParsing="false" onMouseClicked="#addMacron" prefWidth="30.0" stylesheets="@../../../assets/style.css" text="ū">
             <styleClass>
                 <String fx:value="orange-button" />
                 <String fx:value="white-text-fill" />
@@ -214,5 +186,38 @@
         </RadioButton>
 
     </HBox>
+   <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2" GridPane.columnSpan="2">
+    <Button fx:id="giveUp" mnemonicParsing="false" onMouseClicked="#giveUp" prefHeight="30.0" stylesheets="@../../../assets/style.css" text="Give Up" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="0" GridPane.valignment="BOTTOM">
+        <styleClass>
+            <String fx:value="orange-button" />
+            <String fx:value="white-text-fill" />
+            <String fx:value="button-radius-5" />
+            <String fx:value="font-14" />
+        </styleClass>
+        <GridPane.margin>
+            <Insets right="81.0" />
+        </GridPane.margin>
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor>
+    </Button>
+       <Button fx:id="replay" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#replay" prefHeight="30.0" stylesheets="@../../../assets/style.css" text="Replay" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+           <styleClass>
+               <String fx:value="orange-button" />
+               <String fx:value="white-text-fill" />
+               <String fx:value="button-radius-5" />
+               <String fx:value="font-14" />
+           </styleClass>
+           <cursor>
+               <Cursor fx:constant="HAND" />
+           </cursor>
+           <GridPane.margin>
+               <Insets right="6.0" />
+           </GridPane.margin>
+       </Button>
+      <padding>
+         <Insets right="6.0" />
+      </padding>
+   </HBox>
 
 </GridPane>

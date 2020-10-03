@@ -303,31 +303,6 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </Polyline>
-   <Label fx:id="winnings" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="55.0" stylesheets="@../../../assets/style.css" text="\$100" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
-      <styleClass>
-         <String fx:value="white-background" />
-         <String fx:value="purple-text-fill" />
-         <String fx:value="background-radius-5" />
-         <String fx:value="font-14" />
-      </styleClass>
-      <GridPane.margin>
-         <Insets right="6.0" />
-      </GridPane.margin>
-   </Label>
-   <Button fx:id="reset" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#reset" prefHeight="30.0" stylesheets="@../../../assets/style.css" text="Reset" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
-      <styleClass>
-         <String fx:value="orange-button" />
-         <String fx:value="white-text-fill" />
-         <String fx:value="button-radius-5" />
-         <String fx:value="font-14" />
-      </styleClass>
-      <GridPane.margin>
-         <Insets right="75.0" />
-      </GridPane.margin>
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor>
-   </Button>
    <Label fx:id="speedDisplay" layoutX="391.0" layoutY="366.0" stylesheets="@../../../assets/style.css" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
       <GridPane.margin>
          <Insets top="-9.0" />
@@ -368,5 +343,35 @@
          </GridPane.margin>
       </RadioButton>
 
+   </HBox>
+   <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="4" GridPane.columnSpan="2">
+   <Button fx:id="reset" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#reset" prefHeight="30.0" stylesheets="@../../../assets/style.css" text="Reset" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+      <styleClass>
+         <String fx:value="orange-button" />
+         <String fx:value="white-text-fill" />
+         <String fx:value="button-radius-5" />
+         <String fx:value="font-14" />
+      </styleClass>
+      <GridPane.margin>
+         <Insets right="75.0" />
+      </GridPane.margin>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </Button>
+      <Label fx:id="winnings" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="55.0" stylesheets="@../../../assets/style.css" text="\$100" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+         <styleClass>
+            <String fx:value="white-background" />
+            <String fx:value="purple-text-fill" />
+            <String fx:value="background-radius-5" />
+            <String fx:value="font-14" />
+         </styleClass>
+         <GridPane.margin>
+            <Insets right="6.0" />
+         </GridPane.margin>
+      </Label>
+      <padding>
+         <Insets right="6.0" />
+      </padding>
    </HBox>
 </GridPane>
