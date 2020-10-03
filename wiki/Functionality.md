@@ -6,6 +6,8 @@ This document record the functionality design process when developing the Quinzi
 - [GUI](#gui)
 - [Text to Speech](#text-to-speech)
 - [Playback and Manipulation Audio](#playback-and-manipulation-audio)
+- [Decisions Down the Line](#decisions-down-the-line)
+
 
 ## Quinzical introduction
 Quinzical gives users a deeper understanding of New Zealand through a quiz format game. The game
@@ -13,7 +15,6 @@ allows users to select different categories of questions to answer. There are tw
 to play:
 
 ### The Practice Module
-
 In the practice module, There are all categories from the question set will be displayed on the board.
 Users can select any category from the New Zealand Question Set. A randomly selected clue will provide the user with both the text and the TTS read version. The user is told whether they are right or wrong after the answer is typed in. The user is allowed three attempts. In the third attempt, they are given the first letter of the answer as a hint. If they are wrong after the third attempt, the answer is written on the screen along with the original clue.
 
@@ -36,12 +37,18 @@ generate 5 random numbers from the required range and store them into an array. 
 5 clues form a category.
 
 ## GUI
+We are using Java FXML to create GUI that can reduce the design time and is very easy to modify. We make the user interface in SceneBuilder based on the design draft. Different packages are used to store the GUIs and controllers of the game module and practice module. It is easy to debug the functionality of each element in each interface without confusing it.
 
 ## Archive
+All data is stored in the .save folder. The folder category-index store the file that has five numbers which represents the five random categories in it. The questions-index folder contains 5 files which store five numbers for five random quesiton of each category respectively. The answered folder store all the answered questions and the winnings folder store the user's current score. If the user closes the game, all the information is saved in these folders. When the user reopens the game again, the program will first load the data from these files. When the user selects Reset, the.save folder will be first deleted and then recreated.   
+
 
 ## Text to Speech
+Using festival to convert the text into speech. For the NZ english accent, we need to unzip akl_nz_jdt_diphone.zip into /usr/share/festival/voices/english. We also need to install festlex-oald for some pronunciations. The user need to type "sudo apt-get install festlex-oald" in the terminal.  
 
 ## Playback and Manipulation Audio
+In the TTS class, we first create a .scm file that include the type of accent,duration stretch parameter and the text that need to speak. Then we use the linux script command to play the .scm file. The type of accent is linked to the radio buttons and the duration stretch is linked to the slider bar in the GUI. User could change the value of them in the GUI. The replay button in the answer quesion scene will re-load the .scm again.   
+
 
 ## Decisions Down the Line
 Here, we'll document any changes as development continues
