@@ -75,15 +75,11 @@ public class PlayController extends VoiceSettingsChangeable {
         // Get all question data
         Category category = _questionData.get(parsed[0]-1);
         Question question = category.findQuestionByValue(parsed[1]);
-        int value = question.getValue();
 
         // Save data
         question.setCompleted(true);
         question.setAvailable(false);
         Database.getInstance().addCompletedFile(category.getCategoryName(), question.getValueString());
-
-        String questionStr = question.getQuestion();
-        String[] answerStr = question.getAnswer();
 
         // Set next question available
         if (parsed[1] != 500) {
@@ -93,7 +89,7 @@ public class PlayController extends VoiceSettingsChangeable {
 
         try {
             // Initialise controller with specific question and answer fields
-            AskQuestionController controller = new AskQuestionController(question, questionStr, answerStr, category.getCategoryName(), value);
+            AskQuestionController controller = new AskQuestionController(question, category.getCategoryName());
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../../scenes/play/AskQuestion.fxml"));
             loader.setController(controller);
 
