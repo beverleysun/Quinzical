@@ -17,17 +17,18 @@ public abstract class VoiceSettingsChangeable {
     private Label speedDisplay;
 
     @FXML
-    private RadioButton nzAccent;
+    protected
+    RadioButton nzAccent;
 
     @FXML
     private RadioButton usAccent;
 
-    private ToggleGroup accents;
+    private ToggleGroup accents = new ToggleGroup();;
 
 
     @FXML
     public void setAccent(MouseEvent e) {
-        accents = new ToggleGroup();
+
         nzAccent.setToggleGroup(accents);
         usAccent.setToggleGroup(accents);
 

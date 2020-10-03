@@ -34,6 +34,7 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
     @FXML
     public void initialize() {
         super.initialize();
+        nzAccent.setSelected(true);
         questionClue.setText(_question.getQuestion());
 
 

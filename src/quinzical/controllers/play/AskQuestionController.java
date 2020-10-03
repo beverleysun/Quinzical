@@ -34,6 +34,7 @@ public class AskQuestionController extends VoiceSettingsChangeable {
     @FXML
     private TextField textField;
 
+
     public AskQuestionController(Question question, String questionStr, String[] answerStr, String categoryStr, int value) {
         _questionStr = questionStr;
         _answerStr = answerStr;
@@ -45,6 +46,7 @@ public class AskQuestionController extends VoiceSettingsChangeable {
     @FXML
     public void initialize() {
         super.initialize();
+        nzAccent.setSelected(true);
         questionInfo.setText("Playing " + _categoryStr + " for $" + _value);
         winnings.setText("$" + Database.getInstance().getWinnings());
 
