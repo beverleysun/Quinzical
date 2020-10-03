@@ -221,7 +221,7 @@ public class Database {
 		}
 		return null;
 	}
-
+    //generate 5 non-repeated numbers from a given range.
 	private int[] getFiveRandomNumbers(int max, int min) {
 		max = max - 1;
 		int len = max-min+1;

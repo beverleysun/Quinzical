@@ -46,7 +46,7 @@ public class TTS {
         return _speedMultiplier;
     }
 
-
+    //generate the .scm file for festival.
     private void strToText(String input) {
         try {
             FileWriter writer = new FileWriter("./.save/voice-settings/settings.scm");

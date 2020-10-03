@@ -57,6 +57,7 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
 
     @FXML
     private void checkAnswer(Event e) {
+        //Different content will display after the pause. It depends on the attempted times of the question.
         PauseTransition pauseTransition = new PauseTransition(Duration.seconds(1.5));
         pauseTransition.setOnFinished( event -> {
             if (_attemptsLeft == 1) {
