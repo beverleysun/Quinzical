@@ -43,9 +43,8 @@ public abstract class VoiceSpeedChangeable {
     }
 
 
-    public void initialize() throws IOException {
+    public void initialize() {
         voiceSlider.setValue(TTS.getInstance().getMultiplier());
-
     }
 
     public void sliderChanged() {

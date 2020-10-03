@@ -23,7 +23,7 @@ public class PracticeController extends VoiceSpeedChangeable {
     @FXML
     private FlowPane categoryFlowPane;
 
-    public void initialize() throws IOException {
+    public void initialize() {
         super.initialize();
 
         // Calculate button height to fill up the height of the FlowPane

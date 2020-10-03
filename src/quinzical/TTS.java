@@ -22,7 +22,7 @@ public class TTS {
         return _tts;
     }
 
-    public void speak (String str) throws IOException {
+    public void speak(String str) {
         strToText(str);
         String command = "festival -b ./.save/voice-speed/test.scm \n wait ";
         ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
@@ -47,13 +47,16 @@ public class TTS {
     }
 
 
-    public void strToText(String input) throws IOException {
-        new File("./.save/voice-speed/test.scm").createNewFile();
-        FileWriter writer = new FileWriter("./.save/voice-speed/test.scm");
-        writer.write(_accent + "\n");
-        writer.write("(Parameter.set 'Duration_Stretch " + (1/_speedMultiplier) +")" + "\n");
-        writer.write("(SayText \""+ input+"\")");
-        writer.close();
+    public void strToText(String input) {
+        try {
+            FileWriter writer = new FileWriter("./.save/voice-settings/test.scm");
+            writer.write(_accent + "\n");
+            writer.write("(Parameter.set 'Duration_Stretch " + (1 / _speedMultiplier) + ")" + "\n");
+            writer.write("(SayText \"" + input + "\")");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setAccent(String accent){

@@ -28,7 +28,7 @@ public class IncorrectController extends ConfirmController {
     }
 
     @FXML
-    public void initialize() throws IOException {
+    public void initialize() {
         super.initialize();
         TopLabel.setText("Oops, the answer to");
         clueLabel.setText("\"" + _question.getQuestion() + "\"" + " was");
