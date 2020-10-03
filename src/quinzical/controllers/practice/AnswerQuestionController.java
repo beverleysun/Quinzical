@@ -35,6 +35,7 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
     @FXML
     public void initialize() {
         super.initialize();
+        nzAccent.setSelected(true);
         questionClue.setText(_question.getQuestion());
         TTS.getInstance().speak(_question.getQuestion());
         hintLabel.setText("3 attempts left");

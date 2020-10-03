@@ -22,7 +22,6 @@ public abstract class VoiceSettingsChangeable {
     @FXML
     private RadioButton usAccent;
 
-
     @FXML
     public void setAccent(MouseEvent e) {
         if (nzAccent.isSelected()) {
