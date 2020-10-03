@@ -5,6 +5,7 @@ both [UI](#ui) and [UX](#ux), covering:
 - [Layout](#layout)
 - [Typography](#typography)
 - [Navigation](#navigation)
+- [Decisions Down The Line](#decisions-down-the-line)
 
 ## UI
 ### Colour
@@ -76,7 +77,7 @@ As said before, only buttons have the hand cursor on hover to signify that they 
 deliverables of the project, we still have time, keyboard shortcuts may be used to enhance the experience of the user. (We all love
 the shortcut ctrl+c and ctrl+v over right click and select).
 
-## Design Decisions Down the Line
+## Decisions Down The Line
 Here, we'll document any changes to the design as development continues
 
 ### Practice Section
@@ -87,3 +88,9 @@ it would be simpler just to update the label with the number of attempts left.
 ### Voice Speed Slider
 We decided to include a label that tells the user how fast the voice speed currently is. This would reduce confusion as the user would
 then know how fast the voice would be speaking.
+
+### Accents
+We decided to support both the NZ and US accent. It makes sense to put this setting with the voice speed slider as they both pertain to voice settings. Good to have related things in the same place :)
+
+### Macrons
+Because of the Māori macrons, we had to add additional buttons. We didn't want a drop down menu as that creates extra clicks that the user needs to do. An extra 5 buttons seemed to clutter the space, so we decided to move the "replay" and "give up" buttons to the top right, and replace the confirm button with an arrow. This gives the UI a cleaner look and also gives a better user experience.
