@@ -67,3 +67,6 @@ After the client meeting (30/09/2020), macrons were decided to be very important
 1. Normalize the answer and compare them
 2. Allow the user to enter macrons into the answer section
 We think that the second option is best. This allows users to learn how to properly *spell* Māori words which maintains respect for the Māori language and culture.
+
+### Enter
+We have now provided support for the enter key being pressed when answering a question. This means one less click to get to the next stage and also, pressing enter is a natural thing for people to do when they want to confirm something.
