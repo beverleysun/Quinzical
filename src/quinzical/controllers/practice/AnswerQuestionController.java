@@ -1,12 +1,15 @@
 package quinzical.controllers.practice;
 
 import javafx.animation.PauseTransition;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 import quinzical.Question;
@@ -41,7 +44,19 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
     }
 
     @FXML
-    private void checkAnswer(MouseEvent e) {
+    public void confirm(MouseEvent e) {
+        checkAnswer(e);
+    }
+
+    @FXML
+    public void enter(KeyEvent e) {
+        if (e.getCode() == KeyCode.ENTER) {
+            checkAnswer(e);
+        }
+    }
+
+    @FXML
+    private void checkAnswer(Event e) {
         PauseTransition pauseTransition = new PauseTransition(Duration.seconds(1.5));
         pauseTransition.setOnFinished( event -> {
             if (_attemptsLeft == 1) {

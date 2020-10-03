@@ -1,11 +1,14 @@
 package quinzical.controllers.play;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import quinzical.Database;
 import quinzical.Question;
@@ -49,7 +52,17 @@ public class AskQuestionController extends VoiceSettingsChangeable {
 
     @FXML
     public void confirm(MouseEvent e) {
-        // Validate the user answer
+        validateAnswer(e);
+    }
+
+    @FXML
+    public void enter(KeyEvent e) {
+        if (e.getCode() == KeyCode.ENTER) {
+            validateAnswer(e);
+        }
+    }
+
+    private void validateAnswer(Event e) {
         String userAnswer = textField.getText();
         if (_question.compareAnswers(userAnswer)) {
             Database.getInstance().addWinnings(_question.getValue());
@@ -66,7 +79,7 @@ public class AskQuestionController extends VoiceSettingsChangeable {
     }
 
     @FXML
-    public void loadIncorrectScene(MouseEvent e) {
+    public void loadIncorrectScene(Event e) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../scenes/play/Incorrect.fxml"));
         String answerTemp = Arrays.toString(_question.getAnswer());
         String answer = answerTemp.substring(1,answerTemp.length()-1);
@@ -80,7 +93,7 @@ public class AskQuestionController extends VoiceSettingsChangeable {
         }
     }
 
-    public void loadCorrectScene(MouseEvent e){
+    public void loadCorrectScene(Event e){
         try {
             // Load the "correct" scene
             Parent correct = FXMLLoader.load(getClass().getResource("../../scenes/play/Correct.fxml"));
