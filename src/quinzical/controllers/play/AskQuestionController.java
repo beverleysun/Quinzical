@@ -18,62 +18,57 @@ import java.util.Arrays;
 
 public class AskQuestionController extends VoiceSettingsChangeable {
 
-    private final String _questionStr;
-    private final String[] _answerStr;
     private final String _categoryStr;
-    private final int _value;
-
-    private Question _question;
+    private final Question _question;
 
     @FXML
-    private Label questionInfo, winnings;
-
-    @FXML
-    private Button confirm, giveUp;
+    private Label categoryLabel, valueLabel, winnings;
 
     @FXML
     private TextField textField;
 
-
-    public AskQuestionController(Question question, String questionStr, String[] answerStr, String categoryStr, int value) {
-        _questionStr = questionStr;
-        _answerStr = answerStr;
+    public AskQuestionController(Question question, String categoryStr) {
         _categoryStr = categoryStr;
-        _value = value;
         _question = question;
     }
 
     @FXML
     public void initialize() {
         super.initialize();
-        nzAccent.setSelected(true);
-        questionInfo.setText("Playing " + _categoryStr + " for $" + _value);
+        categoryLabel.setText(_categoryStr);
+        valueLabel.setText("$" + _question.getValue());
         winnings.setText("$" + Database.getInstance().getWinnings());
 
-        TTS.getInstance().speak(_questionStr);
-
-        confirm.setOnMouseClicked(this::confirm);
-        giveUp.setOnMouseClicked(this::loadIncorrectScene);
+        TTS.getInstance().speak(_question.getQuestion());
     }
 
-    public void replay() throws IOException {
-        TTS.getInstance().speak(_questionStr);
+    @FXML
+    public void replay() {
+        TTS.getInstance().speak(_question.getQuestion());
     }
 
+    @FXML
     public void confirm(MouseEvent e) {
         // Validate the user answer
         String userAnswer = textField.getText();
         if (_question.compareAnswers(userAnswer)) {
-            Database.getInstance().addWinnings(_value);
+            Database.getInstance().addWinnings(_question.getValue());
             loadCorrectScene(e);
         } else {
             loadIncorrectScene(e);
         }
     }
 
+    @FXML
+    public void addMacron(MouseEvent e) {
+        String macron = ((Button) e.getSource()).getText();
+        textField.appendText(macron);
+    }
+
+    @FXML
     public void loadIncorrectScene(MouseEvent e) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../scenes/play/Incorrect.fxml"));
-        String answerTemp = Arrays.toString(_answerStr);
+        String answerTemp = Arrays.toString(_question.getAnswer());
         String answer = answerTemp.substring(1,answerTemp.length()-1);
         loader.setController(new IncorrectController(answer));
         try {

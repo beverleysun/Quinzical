@@ -4,6 +4,7 @@ import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -36,8 +37,6 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
         super.initialize();
         nzAccent.setSelected(true);
         questionClue.setText(_question.getQuestion());
-
-
         TTS.getInstance().speak(_question.getQuestion());
         hintLabel.setText("3 attempts left");
     }
@@ -82,6 +81,12 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
             ioException.printStackTrace();
         }
 
+    }
+
+    @FXML
+    public void addMacron(MouseEvent e) {
+        String macron = ((Button) e.getSource()).getText();
+        answerInput.appendText(macron);
     }
 
     @FXML

@@ -17,31 +17,31 @@ public abstract class VoiceSettingsChangeable {
     private Label speedDisplay;
 
     @FXML
-    protected
-    RadioButton nzAccent;
+    private RadioButton nzAccent;
 
     @FXML
     private RadioButton usAccent;
 
-    private ToggleGroup accents = new ToggleGroup();;
-
-
     @FXML
     public void setAccent(MouseEvent e) {
-
-        nzAccent.setToggleGroup(accents);
-        usAccent.setToggleGroup(accents);
-
         if (nzAccent.isSelected()) {
             TTS.getInstance().setAccent("(voice_akl_nz_jdt_diphone)");
-        }
-        else  {
+        } else {
             TTS.getInstance().setAccent("(voice_kal_diphone)");
         }
     }
 
     public void initialize() {
         voiceSlider.setValue(TTS.getInstance().getMultiplier());
+
+        ToggleGroup accents = new ToggleGroup();
+        nzAccent.setToggleGroup(accents);
+        usAccent.setToggleGroup(accents);
+        if (TTS.getInstance().getAccent().equals("(voice_akl_nz_jdt_diphone)")) {
+            nzAccent.setSelected(true);
+        } else {
+            usAccent.setSelected(true);
+        }
     }
 
     public void sliderChanged() {
@@ -56,5 +56,4 @@ public abstract class VoiceSettingsChangeable {
     public void removeSpeed() {
         speedDisplay.setText("");
     }
-
 }
