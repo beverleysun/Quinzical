@@ -279,7 +279,7 @@ public class Database {
 				new File("./.save/voice-settings/1").createNewFile();
 				new File("./.save/voice-settings/settings.scm").createNewFile();
 				FileWriter writer = new FileWriter("./.save/voice-settings/settings.scm");
-				writer.write("(voice_kal_diphone)\n");
+				writer.write("(voice_akl_nz_jdt_diphone)");
 				writer.close();
 
 				// Create folders for each category in the save folder
@@ -300,6 +300,7 @@ public class Database {
 			BufferedReader reader = new BufferedReader(new FileReader(voiceSettings[1]));
 			String accent = reader.readLine();
 			TTS.getInstance().setAccent(accent);
+			reader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -342,8 +343,9 @@ public class Database {
 	}
 
 	public void updateSpeed(double speed) {
-		File[] voiceSpeedFile = _voiceSettingsFolder.listFiles();
-		voiceSpeedFile[0].renameTo(new File("./.save/voice-settings/" + speed));
+		File[] voiceSettings = _voiceSettingsFolder.listFiles();
+		Arrays.sort(voiceSettings);
+		voiceSettings[0].renameTo(new File("./.save/voice-settings/" + speed));
 	}
 
 	public void deleteDirectory(File directoryToBeDeleted) {

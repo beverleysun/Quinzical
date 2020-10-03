@@ -1,20 +1,14 @@
 package quinzical.controllers.play;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import quinzical.TTS;
-
-import java.io.IOException;
 
 public class IncorrectController extends ConfirmController {
 
     @FXML
     private Label answerLabel;
-
-    @FXML
-    private Button nextButton;
 
     private String _answer;
 
@@ -28,9 +22,9 @@ public class IncorrectController extends ConfirmController {
         super.initialize();
         answerLabel.setText("The correct answer was " + _answer);
         TTS.getInstance().speak("Oops. The correct answer was " + _answer);
-        nextButton.setOnMouseClicked(this::toQuestionBoard);
     }
 
+    @FXML
     public void toQuestionBoard(MouseEvent e) {
         super.toQuestionBoard(e);
     }

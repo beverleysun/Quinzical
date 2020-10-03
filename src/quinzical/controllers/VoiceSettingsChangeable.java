@@ -41,6 +41,11 @@ public abstract class VoiceSettingsChangeable {
 
     public void initialize() {
         voiceSlider.setValue(TTS.getInstance().getMultiplier());
+        if (TTS.getInstance().getAccent().equals("(voice_akl_nz_jdt_diphone)")) {
+            nzAccent.setSelected(true);
+        } else {
+            usAccent.setSelected(true);
+        }
     }
 
     public void sliderChanged() {
