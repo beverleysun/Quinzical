@@ -11,12 +11,12 @@ import quinzical.Database;
 import quinzical.Question;
 import quinzical.SceneChanger;
 import quinzical.TTS;
-import quinzical.controllers.VoiceSpeedChangeable;
+import quinzical.controllers.VoiceSettingsChangeable;
 
 import java.io.IOException;
 import java.util.Arrays;
 
-public class AskQuestionController extends VoiceSpeedChangeable {
+public class AskQuestionController extends VoiceSettingsChangeable {
 
     private final String _questionStr;
     private final String[] _answerStr;

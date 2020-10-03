@@ -11,11 +11,11 @@ import javafx.util.Duration;
 import quinzical.Question;
 import quinzical.SceneChanger;
 import quinzical.TTS;
-import quinzical.controllers.VoiceSpeedChangeable;
+import quinzical.controllers.VoiceSettingsChangeable;
 
 import java.io.IOException;
 
-public class AnswerQuestionController extends VoiceSpeedChangeable {
+public class AnswerQuestionController extends VoiceSettingsChangeable {
 
     @FXML
     private Label questionClue;
@@ -35,6 +35,7 @@ public class AnswerQuestionController extends VoiceSpeedChangeable {
     public void initialize() {
         super.initialize();
         questionClue.setText(_question.getQuestion());
+
 
         TTS.getInstance().speak(_question.getQuestion());
         hintLabel.setText("3 attempts left");

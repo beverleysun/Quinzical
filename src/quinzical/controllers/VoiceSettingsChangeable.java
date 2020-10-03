@@ -8,9 +8,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import quinzical.TTS;
 
-import java.io.IOException;
-
-public abstract class VoiceSpeedChangeable {
+public abstract class VoiceSettingsChangeable {
 
     @FXML
     private Slider voiceSlider;
@@ -20,7 +18,6 @@ public abstract class VoiceSpeedChangeable {
 
     @FXML
     private RadioButton nzAccent;
-
 
     @FXML
     private RadioButton usAccent;
@@ -41,7 +38,6 @@ public abstract class VoiceSpeedChangeable {
             TTS.getInstance().setAccent("(voice_kal_diphone)");
         }
     }
-
 
     public void initialize() {
         voiceSlider.setValue(TTS.getInstance().getMultiplier());

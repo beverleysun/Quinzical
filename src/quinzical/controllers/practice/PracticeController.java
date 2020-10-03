@@ -10,12 +10,12 @@ import quinzical.Category;
 import quinzical.Database;
 import quinzical.Question;
 import quinzical.SceneChanger;
-import quinzical.controllers.VoiceSpeedChangeable;
+import quinzical.controllers.VoiceSettingsChangeable;
 
 import java.io.IOException;
 import java.util.List;
 
-public class PracticeController extends VoiceSpeedChangeable {
+public class PracticeController extends VoiceSettingsChangeable {
 
     private Database _database = Database.getInstance();
     private List<Category> _practiceQuestionData = _database.getPracticeQuestionData();
