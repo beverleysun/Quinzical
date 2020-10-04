@@ -35,6 +35,8 @@ public class AskQuestionController extends VoiceSettingsChangeable {
         _question = question;
     }
 
+    /* This method will control the initial AskQuestion scene. It will control the display of slider bar, the current winnings,
+     * play the clue by festival and the attempt times. */
     @FXML
     public void initialize() {
         super.initialize();
@@ -45,16 +47,21 @@ public class AskQuestionController extends VoiceSettingsChangeable {
         TTS.getInstance().speak(_question.getQuestion());
     }
 
+    /* This method is invoked when the user press the replay button.
+     * It will read the question again by festival.  */
     @FXML
     public void replay() {
         TTS.getInstance().speak(_question.getQuestion());
     }
 
+    /* This method is invoked when the user click the confirm arrow, it will invoke the check answer method. */
     @FXML
     public void confirm(MouseEvent e) {
         validateAnswer(e);
     }
 
+    /* This method is invoked when the text field is active. If the user press enter key, it will invoke
+     * the check answer method.  */
     @FXML
     public void enter(KeyEvent e) {
         if (e.getCode() == KeyCode.ENTER) {
@@ -62,6 +69,7 @@ public class AskQuestionController extends VoiceSettingsChangeable {
         }
     }
 
+    /* This method compare the user's input with the actual answer in the database.*/
     private void validateAnswer(Event e) {
         String userAnswer = textField.getText();
         if (_question.compareAnswers(userAnswer)) {
@@ -72,12 +80,15 @@ public class AskQuestionController extends VoiceSettingsChangeable {
         }
     }
 
+    /* This method is invoked when the user press the macron letter button */
     @FXML
     public void addMacron(MouseEvent e) {
         String macron = ((Button) e.getSource()).getText();
         textField.appendText(macron);
     }
 
+    /* This method is invoked when the user's input is incorrect.
+     * It will switch to the incorrect scene and display the answer of the question.*/
     @FXML
     public void loadIncorrectScene(Event e) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../scenes/play/Incorrect.fxml"));
@@ -92,7 +103,8 @@ public class AskQuestionController extends VoiceSettingsChangeable {
             ioException.printStackTrace();
         }
     }
-
+    /* This method is invoked when the user's input is correct.
+     * It will switch to the correct scene. */
     public void loadCorrectScene(Event e){
         try {
             // Load the "correct" scene

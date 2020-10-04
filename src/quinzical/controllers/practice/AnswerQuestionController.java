@@ -104,12 +104,14 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
         }
 
     }
+
     /* This method is invoked when the user press the macron letter button */
     @FXML
     public void addMacron(MouseEvent e) {
         String macron = ((Button) e.getSource()).getText();
         answerInput.appendText(macron);
     }
+
     /* This method is invoked when the user press the give-up button. It will switch to the
      * incorrect answer scene and display the actual answer. */
     @FXML

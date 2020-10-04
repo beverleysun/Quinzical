@@ -15,6 +15,7 @@ public class GameCompletedController {
     @FXML
     private Label finalWinningsLabel;
 
+    /* This method control the initial display of the GameCompleted scene. */
     @FXML
     public void initialize() {
         int winnings = Database.getInstance().getWinnings();
@@ -27,6 +28,8 @@ public class GameCompletedController {
         }
     }
 
+    /* This method is invoked when the user click the Reset To Play Again button.
+     * It will reset the game and switch to the StartPage scene. */
     public void reset(MouseEvent e) {
         Database.getInstance().reset();
         try {

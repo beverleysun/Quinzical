@@ -16,18 +16,22 @@ public class ResetPromptController {
     @FXML
     private Label finalScoreLabel;
 
-
+    /* This method will control the display of current winnings.  */
     @FXML
     public void initialize() {
         finalScoreLabel.setText("You're final score was $" + Database.getInstance().getWinnings());
     }
 
+    /* This method is invoked when the user click the yes button in ResetPrompt scene.
+     * It will call the reset method in Database. The .save file will be delete. */
     public void yesReset(MouseEvent e) {
         // Reset the game
         Database.getInstance().reset();
         goToQuestionBoard(e);
     }
-
+    /* This method is invoked when the user click the yes/no button in ResetPrompt scene.
+     * For no button, It will switch to the question selection interface.
+     * For yes button(yesRest), It will reset the game first and then switch to the question selection interface. */
     public void goToQuestionBoard(MouseEvent e) {
         try {
             // Load question board scene

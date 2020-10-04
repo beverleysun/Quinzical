@@ -5,6 +5,7 @@ import quinzical.TTS;
 
 public class CorrectController extends ConfirmController {
 
+    /* This method will control the correct scene. It will display and read the word "Correct". */
     @FXML
     public void initialize() {
         super.initialize();

@@ -15,12 +15,15 @@ public abstract class ConfirmController extends VoiceSettingsChangeable {
     @FXML
     private Label winnings;
 
+    /* This method control the display of the slider bar, and the user's winnings */
     @FXML
     public void initialize() {
         super.initialize();
         winnings.setText("$" + Database.getInstance().getWinnings());
     }
 
+    /* This method is invoked when user click the next button in the incorrect/correct scene.
+     * It will switch to the question selection interface. */
     public void toQuestionBoard(MouseEvent e){
         try {
             if (Database.getInstance().gameCompleted()) {
