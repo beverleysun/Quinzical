@@ -10,6 +10,9 @@ import java.io.IOException;
 
 public class StartPageController {
 
+    /** This method is invoked when the user click the quit button in StartPage scene.
+     *  @param e the source of the click
+     */
     public void quit(MouseEvent e) {
         // Go to quit prompt
         try {
@@ -20,6 +23,9 @@ public class StartPageController {
         }
     }
 
+    /** This method is invoked when the user click the play button in StartPage scene.
+     *  @param e the source of the click
+     */
     public void play(MouseEvent e) {
         // Go to game module
         try {
@@ -34,7 +40,9 @@ public class StartPageController {
             ioException.printStackTrace();
         }
     }
-
+    /** This method is invoked when the user click the practice button in StartPage scene.
+     *  @param e the source of the click
+     */
     public void practice(MouseEvent e) {
         // Go to practice module
         try {

@@ -35,8 +35,9 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
         _question = question;
     }
 
-    /* This method will control the initial AnswerQuestion scene. It will control the display of slider bar, clue
-     * play the clue by festival and the attempt times. */
+    /** This method will control the initial AnswerQuestion scene. It will control the display of slider bar, clue
+     * play the clue by festival and the attempt times.
+     */
     @FXML
     public void initialize() {
         super.initialize();
@@ -45,14 +46,18 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
         hintLabel.setText("3 attempts left");
     }
 
-    /* This method is invoked when the user click the confirm arrow, it will invoke the check answer method. */
+    /** This method is invoked when the user click the confirm arrow, it will invoke the check answer method.
+     @param e the source of the click
+     */
     @FXML
     public void confirm(MouseEvent e) {
         checkAnswer(e);
     }
 
-    /* This method is invoked when the text field is active. If the user press enter key, it will invoke
-     * the check answer method.  */
+    /** This method is invoked when the text field is active. If the user press enter key, it will invoke
+     * the check answer method.
+     * @param e the source of the click
+     */
     @FXML
     public void enter(KeyEvent e) {
         if (e.getCode() == KeyCode.ENTER) {
@@ -60,8 +65,10 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
         }
     }
 
-    /* This method compare the user's input with the actual answer in the database. Different content of
-     * the clue label will be displayed after the pause. It depends on the attempted times of the question.*/
+    /** This method compare the user's input with the actual answer in the database. Different content of
+     * the clue label will be displayed after the pause. It depends on the attempted times of the question.
+     * @param e the source of the click
+     */
     @FXML
     private void checkAnswer(Event e) {
 
@@ -105,15 +112,19 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
 
     }
 
-    /* This method is invoked when the user press the macron letter button */
+    /** This method is invoked when the user press the macron letter button
+     * @param e the source of the click
+     */
     @FXML
     public void addMacron(MouseEvent e) {
         String macron = ((Button) e.getSource()).getText();
         answerInput.appendText(macron);
     }
 
-    /* This method is invoked when the user press the give-up button. It will switch to the
-     * incorrect answer scene and display the actual answer. */
+    /** This method is invoked when the user press the give-up button. It will switch to the
+     * incorrect answer scene and display the actual answer.
+     * @param e the source of the click
+     */
     @FXML
     public void giveUp(MouseEvent e) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../scenes/practice/Incorrect.fxml"));
@@ -125,8 +136,9 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
             ioException.printStackTrace();
         }
     }
-    /* This method is invoked when the user press the replay button.
-     * It will read the question again by festival.  */
+    /** This method is invoked when the user press the replay button.
+     * It will read the question again by festival.
+     */
     @FXML
     public void replay() {
         TTS.getInstance().speak(_question.getQuestionStr());
