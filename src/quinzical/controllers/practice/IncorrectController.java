@@ -42,7 +42,7 @@ public class IncorrectController extends ConfirmController {
         String answer = answerTemp.substring(1,answerTemp.length()-1);
         BottomLabel.setText(answer);
 
-        TTS.getInstance().speak("Oops, the answer to " + _question.getAnswers() + " was" + answer);
+        TTS.getInstance().speak("Oops, the answer to " + _question.getQuestionStr() + " was" + answer);
     }
 
     /** This method is invoked when the user click the next button in incorrect scene.
