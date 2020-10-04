@@ -118,9 +118,8 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
         }
     }
 
-    /**
-     * This method is invoked when the user press the macron letter button. Will add the macron letter to the text field
-     * @param e the event that was triggered
+    /** This method is invoked when the user press the macron letter button
+     * @param e the source of the click
      */
     @FXML
     public void addMacron(MouseEvent e) {
@@ -128,10 +127,9 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
         answerInput.appendText(macron);
     }
 
-    /**
-     * This method is invoked when the user press the give-up button. It will switch to the
+    /** This method is invoked when the user press the give-up button. It will switch to the
      * incorrect answer scene and display the actual answer.
-     * @param e the event that was triggered
+     * @param e the source of the click
      */
     @FXML
     public void giveUp(MouseEvent e) {
@@ -144,8 +142,7 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
             ioException.printStackTrace();
         }
     }
-    /**
-     * This method is invoked when the user press the replay button.
+    /** This method is invoked when the user press the replay button.
      * It will read the question again by festival.
      */
     @FXML

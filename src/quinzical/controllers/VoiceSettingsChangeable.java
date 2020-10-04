@@ -5,7 +5,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.input.MouseEvent;
 import quinzical.TTS;
 
 public abstract class VoiceSettingsChangeable {
@@ -49,18 +48,15 @@ public abstract class VoiceSettingsChangeable {
             usAccent.setSelected(true);
         }
     }
-
     /**
-     * Triggered when the voice slider is changed. Updates the speed to be spoken at and displays the speed to the user
+     * This method will set the new speed when the speed slider changes.
      */
-    @FXML
     public void sliderChanged() {
         TTS.getInstance().setMultiplier(voiceSlider.getValue());
         displaySpeed();
     }
-
     /**
-     * Displays the voice speed to the user
+     * This method will display the speed value when user put the mouse on the slider.
      */
     public void displaySpeed() {
         speedDisplay.setText(TTS.getInstance().getMultiplier() + "x");

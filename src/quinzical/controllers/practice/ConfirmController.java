@@ -19,10 +19,9 @@ public abstract class ConfirmController extends VoiceSettingsChangeable {
         super.initialize();
     }
 
-    /**
-     * This method is invoked in correct/incorrect controller.
+    /** This method is invoked in correct/incorrect controller.
      * It will switch to the question selection interface.
-     * @param e the event that was triggered
+     * @param e the source of the click
      */
     public void backToPractice(MouseEvent e) {
         try {

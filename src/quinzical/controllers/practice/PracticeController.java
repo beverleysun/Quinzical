@@ -44,10 +44,9 @@ public class PracticeController extends VoiceSettingsChangeable {
         }
     }
 
-    /**
-     * This method is invoked when the user click a category button. It will find the random
+    /** This method is invoked when the user click a category button. It will find the random
      * question in that category and switch to AnswerQuestion scene.
-     * @param e the event that was triggered
+     *  @param e the source of the click
      */
     public void categoryClicked(MouseEvent e) {
         try {
@@ -67,10 +66,9 @@ public class PracticeController extends VoiceSettingsChangeable {
         }
     }
 
-    /**
-     * This method is invoked when the user click the back button in Practice scene.
+    /** This method is invoked when the user click the back button in Practice scene.
      * It will switch to the StartPage interface.
-     * @param e the event that was triggered
+     *  @param e the source of the click
      */
     public void back(MouseEvent e) {
         try {

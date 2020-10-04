@@ -24,9 +24,8 @@ public class StartPageController {
         }
     }
 
-    /**
-     * Goes to the question board when the user clicks "play"
-     * @param e the event that was triggered
+    /** This method is invoked when the user click the play button in StartPage scene.
+     *  @param e the source of the click
      */
     public void play(MouseEvent e) {
         // Go to game module

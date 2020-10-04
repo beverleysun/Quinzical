@@ -21,11 +21,9 @@ public class CorrectController extends ConfirmController {
         super.initialize();
         TTS.getInstance().speak("Correct!");
     }
-
-    /**
-     * This method is invoked when the user click the next button in correct scene.
+    /** This method is invoked when the user click the next button in correct scene.
      * It will switch to the question selection interface.
-     * @param e the event that was triggered
+     * @param e the source of the click
      */
     @FXML
     private void backToQuestion(MouseEvent e) {
