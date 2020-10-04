@@ -18,7 +18,7 @@ public class QuitPromptController {
     public void noQuit(MouseEvent e) {
         // Go back to start page
         try {
-            Parent quit = FXMLLoader.load(getClass().getResource("../scenes/StartPage.fxml"));
+            Parent quit = FXMLLoader.load(getClass().getResource("/quinzical/scenes/StartPage.fxml"));
             SceneChanger.changeScene(e, quit);
         } catch (IOException ioException) {
             ioException.printStackTrace();

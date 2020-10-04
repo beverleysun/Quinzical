@@ -38,7 +38,7 @@ public class GameCompletedController {
     public void reset(MouseEvent e) {
         Database.getInstance().reset();
         try {
-            Parent start = FXMLLoader.load(getClass().getResource("../../scenes/StartPage.fxml"));
+            Parent start = FXMLLoader.load(getClass().getResource("/quinzical/scenes/StartPage.fxml"));
             SceneChanger.changeScene(e, start);
         } catch (IOException ioException) {
             ioException.printStackTrace();

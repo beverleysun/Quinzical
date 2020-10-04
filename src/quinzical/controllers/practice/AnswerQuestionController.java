@@ -94,7 +94,7 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
         try {
             // Validate the answer
             if (_question.compareAnswers(_userAnswer)) {
-                Parent answer = FXMLLoader.load(getClass().getResource("../../scenes/practice/Correct.fxml"));
+                Parent answer = FXMLLoader.load(getClass().getResource("/quinzical/scenes/practice/Correct.fxml"));
                 SceneChanger.changeScene(e, answer);
             }
             else {
@@ -106,7 +106,7 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
                 }
                 else {
                     // When all 3 attempts are used, load the incorrect scene
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../../scenes/practice/Incorrect.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/quinzical/scenes/practice/Incorrect.fxml"));
                     loader.setController(new IncorrectController(_question));
                     Parent incorrect = loader.load();
                     SceneChanger.changeScene(e, incorrect);
@@ -133,7 +133,7 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
      */
     @FXML
     public void giveUp(MouseEvent e) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../scenes/practice/Incorrect.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/quinzical/scenes/practice/Incorrect.fxml"));
         loader.setController(new IncorrectController(_question));
         try {
             Parent incorrect = loader.load();

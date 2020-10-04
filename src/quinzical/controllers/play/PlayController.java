@@ -104,7 +104,7 @@ public class PlayController extends VoiceSettingsChangeable {
         try {
             // Initialise controller with specific question and answer fields
             AskQuestionController controller = new AskQuestionController(question, category.getCategoryName());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../scenes/play/AskQuestion.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/quinzical/scenes/play/AskQuestion.fxml"));
             loader.setController(controller);
 
             // Change scene
@@ -133,7 +133,7 @@ public class PlayController extends VoiceSettingsChangeable {
     public void back(MouseEvent e) {
         try {
             // Load start page scene
-            Parent startPage = FXMLLoader.load(getClass().getResource("../../scenes/StartPage.fxml"));
+            Parent startPage = FXMLLoader.load(getClass().getResource("/quinzical/scenes/StartPage.fxml"));
             SceneChanger.changeScene(e, startPage);
         } catch (IOException ioException) {
             ioException.printStackTrace();
@@ -147,7 +147,7 @@ public class PlayController extends VoiceSettingsChangeable {
     public void reset(MouseEvent e) {
         try {
             // Load reset prompt page scene
-            Parent startPage = FXMLLoader.load(getClass().getResource("../../scenes/play/ResetPrompt.fxml"));
+            Parent startPage = FXMLLoader.load(getClass().getResource("/quinzical/scenes/play/ResetPrompt.fxml"));
             SceneChanger.changeScene(e, startPage);
         } catch (IOException ioException) {
             ioException.printStackTrace();

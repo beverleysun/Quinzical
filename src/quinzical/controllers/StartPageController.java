@@ -17,7 +17,7 @@ public class StartPageController {
     public void quit(MouseEvent e) {
         // Go to quit prompt
         try {
-            Parent quit = FXMLLoader.load(getClass().getResource("../scenes/QuitPrompt.fxml"));
+            Parent quit = FXMLLoader.load(getClass().getResource("/quinzical/scenes/QuitPrompt.fxml"));
             SceneChanger.changeScene(e, quit);
         } catch (IOException ioException) {
             ioException.printStackTrace();
@@ -32,10 +32,10 @@ public class StartPageController {
         try {
             // Display game completed scene if all questions have been answered
             if (Database.getInstance().gameCompleted()) {
-                    Parent gameCompleted = FXMLLoader.load(getClass().getResource("../scenes/play/GameCompleted.fxml"));
+                    Parent gameCompleted = FXMLLoader.load(getClass().getResource("/quinzical/scenes/play/GameCompleted.fxml"));
                     SceneChanger.changeScene(e, gameCompleted);
             } else {
-                Parent play = FXMLLoader.load(getClass().getResource("../scenes/play/Play.fxml"));
+                Parent play = FXMLLoader.load(getClass().getResource("/quinzical/scenes/play/Play.fxml"));
                 SceneChanger.changeScene(e, play);
             }
         } catch (IOException ioException) {
@@ -50,7 +50,7 @@ public class StartPageController {
     public void practice(MouseEvent e) {
         // Go to practice module
         try {
-            Parent play = FXMLLoader.load(getClass().getResource("../scenes/practice/Practice.fxml"));
+            Parent play = FXMLLoader.load(getClass().getResource("/quinzical/scenes/practice/Practice.fxml"));
             SceneChanger.changeScene(e, play);
         } catch (IOException ioException) {
             ioException.printStackTrace();

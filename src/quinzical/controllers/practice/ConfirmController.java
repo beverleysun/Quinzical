@@ -25,7 +25,7 @@ public abstract class ConfirmController extends VoiceSettingsChangeable {
      */
     public void backToPractice(MouseEvent e) {
         try {
-            Parent practice = FXMLLoader.load(AnswerQuestionController.class.getResource("../../scenes/practice/Practice.fxml"));
+            Parent practice = FXMLLoader.load(AnswerQuestionController.class.getResource("/quinzical/scenes/practice/Practice.fxml"));
             SceneChanger.changeScene(e, practice);
         } catch (IOException ioException) {
             ioException.printStackTrace();

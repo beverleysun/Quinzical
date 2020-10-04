@@ -44,7 +44,7 @@ public class ResetPromptController {
     public void goToQuestionBoard(MouseEvent e) {
         try {
             // Load question board scene
-            Parent questionBoard = FXMLLoader.load(getClass().getResource("../../scenes/play/Play.fxml"));
+            Parent questionBoard = FXMLLoader.load(getClass().getResource("/quinzical/scenes/play/Play.fxml"));
             SceneChanger.changeScene(e, questionBoard);
         } catch (IOException ioException) {
             ioException.printStackTrace();

@@ -32,10 +32,10 @@ public abstract class ConfirmController extends VoiceSettingsChangeable {
     public void toQuestionBoard(MouseEvent e){
         try {
             if (Database.getInstance().gameCompleted()) {
-                Parent gameCompleted = FXMLLoader.load(getClass().getResource("../../scenes/play/GameCompleted.fxml"));
+                Parent gameCompleted = FXMLLoader.load(getClass().getResource("/quinzical/scenes/play/GameCompleted.fxml"));
                 SceneChanger.changeScene(e, gameCompleted);
             } else {
-                Parent play = FXMLLoader.load(getClass().getResource("../../scenes/play/Play.fxml"));
+                Parent play = FXMLLoader.load(getClass().getResource("/quinzical/scenes/play/Play.fxml"));
                 SceneChanger.changeScene(e, play);
             }
         } catch (IOException ioException) {

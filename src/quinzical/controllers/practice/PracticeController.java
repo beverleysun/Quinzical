@@ -56,7 +56,7 @@ public class PracticeController extends VoiceSettingsChangeable {
             Question question = _database.findRandomPracticeQuestionByCategory(categoryStr);
 
             // Change scene
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../../scenes/practice/AnswerQuestion.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/quinzical/scenes/practice/AnswerQuestion.fxml"));
             loader.setController(new AnswerQuestionController(question));
             Parent answer = loader.load();
             SceneChanger.changeScene(e, answer);
@@ -73,7 +73,7 @@ public class PracticeController extends VoiceSettingsChangeable {
     public void back(MouseEvent e) {
         try {
             // Load start page scene
-            Parent startPage = FXMLLoader.load(getClass().getResource("../../scenes/StartPage.fxml"));
+            Parent startPage = FXMLLoader.load(getClass().getResource("/quinzical/scenes/StartPage.fxml"));
             SceneChanger.changeScene(e, startPage);
         } catch (IOException ioException) {
             ioException.printStackTrace();

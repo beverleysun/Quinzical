@@ -113,7 +113,7 @@ public class AskQuestionController extends VoiceSettingsChangeable {
      */
     @FXML
     public void loadIncorrectScene(Event e) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../../scenes/play/Incorrect.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/quinzical/scenes/play/Incorrect.fxml"));
         String answerTemp = Arrays.toString(_question.getAnswers());
         String answer = answerTemp.substring(1,answerTemp.length()-1);
         loader.setController(new IncorrectController(answer));
@@ -134,7 +134,7 @@ public class AskQuestionController extends VoiceSettingsChangeable {
     public void loadCorrectScene(Event e){
         try {
             // Load the "correct" scene
-            Parent correct = FXMLLoader.load(getClass().getResource("../../scenes/play/Correct.fxml"));
+            Parent correct = FXMLLoader.load(getClass().getResource("/quinzical/scenes/play/Correct.fxml"));
             SceneChanger.changeScene(e, correct);
         } catch (IOException ioException) {
             ioException.printStackTrace();
