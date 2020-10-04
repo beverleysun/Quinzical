@@ -11,15 +11,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class SceneChanger {
-
-
-    private Parent _Parent;
-    public SceneChanger(Parent parent){
-        _Parent = parent;
-    }
-
-
-
+    /**
+     * Changes the scene of the stage. Maintains the size of the stage even if the user has resized the window
+     * @param e the event that triggered the change
+     * @param parent the parent of the scene to be changed to
+     */
     public static void changeScene(Event e, Parent parent) {
         // Set scene width and height to the previous scene width and height
         Scene prevScene = ((Node) e.getSource()).getScene();
@@ -31,5 +27,4 @@ public class SceneChanger {
         // Show scene
         window.setScene(scene);
     }
-
 }

@@ -44,14 +44,14 @@ public class AskQuestionController extends VoiceSettingsChangeable {
         valueLabel.setText("$" + _question.getValue());
         winnings.setText("$" + Database.getInstance().getWinnings());
 
-        TTS.getInstance().speak(_question.getQuestion());
+        TTS.getInstance().speak(_question.getQuestionStr());
     }
 
     /* This method is invoked when the user press the replay button.
      * It will read the question again by festival.  */
     @FXML
     public void replay() {
-        TTS.getInstance().speak(_question.getQuestion());
+        TTS.getInstance().speak(_question.getQuestionStr());
     }
 
     /* This method is invoked when the user click the confirm arrow, it will invoke the check answer method. */
@@ -92,7 +92,7 @@ public class AskQuestionController extends VoiceSettingsChangeable {
     @FXML
     public void loadIncorrectScene(Event e) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../scenes/play/Incorrect.fxml"));
-        String answerTemp = Arrays.toString(_question.getAnswer());
+        String answerTemp = Arrays.toString(_question.getAnswers());
         String answer = answerTemp.substring(1,answerTemp.length()-1);
         loader.setController(new IncorrectController(answer));
         try {

@@ -35,6 +35,9 @@ public class Database {
 
 	private static Database _database;
 
+	/**
+	 * Initiate the database. Can only be instantiated within the scope of this class
+	 */
 	private Database(){
 		createFileStructure();
 		loadQuestions();
@@ -42,6 +45,10 @@ public class Database {
 		loadVoice();
 	}
 
+	/**
+	 * We only want one database object so is a singleton class
+	 * @return the singleton Database object
+	 */
 	public static Database getInstance() {
 		if (_database == null ) {
 			_database = new Database();
@@ -49,7 +56,9 @@ public class Database {
 		return _database;
 	}
 
-
+	/**
+	 * Load in all questions from the categories folder as they are all able to be answered in the practice module
+	 */
 	public void loadPracticeQuestions() {
 		try {
 			for(File categoryFile : _allCategoryFiles) {
@@ -76,10 +85,19 @@ public class Database {
 		}
 	}
 
+	/**
+	 * Get all the questions for practice module
+	 * @return the list of all practice questions
+	 */
 	public List<Category> getPracticeQuestionData() {
 		return _practiceQuestionData;
 	}
 
+	/**
+	 * Questions are randomly selected in the practice module. Select a random one from a given category
+	 * @param categoryStr the category we want the question for
+	 * @return the random question
+	 */
 	public Question findRandomPracticeQuestionByCategory(String categoryStr) {
 		for (Category category : _practiceQuestionData) {
 			if (category.getCategoryName().equals(categoryStr)) {
@@ -91,8 +109,12 @@ public class Database {
 		return null;
 	}
 
+	/**
+	 * Load in all the questions to be used in the game module. Should load 5 categories with 5 questions each.
+	 */
 	private void loadQuestions() {
 		try {
+			// Load in the saved categories
 			loadCategories();
 
 			// Loop through each category
@@ -113,9 +135,10 @@ public class Database {
 
 				// Select 5 questions for each category
 				for (int i = 0; i < 5; i ++) {
-					//This will return the line that match the random number array.
+					// This will return the line that match the random number array.
 					String questionLine = readAppointedLineNumber(categoryFile, fiveQuestionsIndices[i] ,lineNum.getLineNumber());
 
+					// Parse the question
 					String [] questionData = parseQuestionLine(questionLine);
 					int value = 500 - 100*i;
 					String question = questionData[0];
@@ -135,7 +158,21 @@ public class Database {
 		}
 	}
 
-	// Check if the question is available
+	/**
+	 * Get the game module question data
+	 * @return the game module question data
+	 */
+	public List<Category> getQuestionData() {
+		return _questionData;
+	}
+
+	/**
+	 * Only the lowest value not answered in each category should be available. Check for the availability of a question
+	 * value for a given category
+	 * @param category the category to check for
+	 * @param value the value to check for
+	 * @return true if available, false otherwise
+	 */
 	public boolean isAvailable(String category, int value) {
 		if (value == 100 && !isAnswered(category, value)) {
 			return true;
@@ -144,12 +181,20 @@ public class Database {
 		return isAnswered(category, value - 100) && !isAnswered(category, value);
 	}
 
-	// Check if question index file exists
+	/**
+	 * Check if question index file exists
+	 * @param fileName the file name to check for
+	 * @return true if it exists, false otherwise
+	 */
 	private boolean checkQuestionIndexFile(String fileName) {
 		return new File("./.save/questions-index/" + fileName ).exists();
 	}
 
-	// Read the file and put the numbers into _categoryFile.
+	/**
+	 * Get the question line numbers for a category in the save folder
+	 * @param fileName the category to check for
+	 * @return an array of line numbers of type int
+	 */
 	private int[] getFiveQuestionsIndices(String fileName) {
 		try {
 			BufferedReader in = new BufferedReader(new FileReader("./.save/questions-index/" + fileName));
@@ -169,7 +214,9 @@ public class Database {
 		return null;
 	}
 
-	// Loads in the 5 chosen categories
+	/**
+	 * Loads in the 5 chosen categories from the save file
+	 */
 	private void loadCategories() {
 		try {
 			BufferedReader in = new BufferedReader(new FileReader("./.save/category-index/category-index"));
@@ -186,7 +233,12 @@ public class Database {
 		}
 	}
 
-	// Get five random numbers and write it into a file
+	/**
+	 * Create a file with 5 random numbers within a given range
+	 * @param max the maximum random number
+	 * @param min the minimum random number
+	 * @param path the file path to write into
+	 */
 	private void createRandomNumFile(int max, int min, String path) {
 		try {
 			int[] Variable = getFiveRandomNumbers(max, min);
@@ -202,7 +254,13 @@ public class Database {
 		}
 	}
 
-	// Read the appointed line number of a file.
+	/**
+	 * Read the specified line number of a file
+	 * @param categoryFile the file to be read from
+	 * @param lineNumber the line line number to be read
+	 * @param totalLines the total number of lines of the file
+	 * @return
+	 */
 	private String readAppointedLineNumber(File categoryFile, int lineNumber, int totalLines) {
 		try {
 			FileReader in = new FileReader(categoryFile);
@@ -221,7 +279,13 @@ public class Database {
 		}
 		return null;
 	}
-    //generate 5 non-repeated numbers from a given range.
+
+	/**
+	 * Generate 5 non-repeated random numbers in a given range.
+	 * @param max the maximum number
+	 * @param min the minimum number
+	 * @return an array of 5 random numbers
+	 */
 	private int[] getFiveRandomNumbers(int max, int min) {
 		max = max - 1;
 		int len = max-min+1;
@@ -233,7 +297,7 @@ public class Database {
 
 		int[] result = new int[5];
 		Random rd = new Random();
-		int index = 0;
+		int index;
 		for (int i = 0; i < result.length; i++) {
 			index = Math.abs(rd.nextInt() % len--);
 			result[i] = source[index];
@@ -242,7 +306,11 @@ public class Database {
 		return result;
 	}
 
-	// change to separate the line into 3 parts by "(" and ")".
+	/**
+	 * Separate a question line into 3 parts, delimited by "(" and ")"
+	 * @param str the question to be split
+	 * @return an array of type String with the split question
+	 */
 	private static String[] parseQuestionLine(String str) {
 		String[] splitQuestion = str.split("[\\(\\)]");
 
@@ -257,18 +325,17 @@ public class Database {
 		return splitQuestion;
 	}
 
-	public List<Category> getQuestionData() {
-		return _questionData;
-	}
-
+	/**
+	 * If the save folder doesn't exist, generate its file structure and attach default values
+	 */
 	private void createFileStructure() {
 		try {
 			if (!_saveFolder.exists()) {
+				// Make all the required directories
 				_answeredFolder.mkdirs();
 				_winningsFolder.mkdir();
 				_categoryIndexFolder.mkdir();
 				_questionsIndexFolder.mkdir();
-
 				_voiceSettingsFolder.mkdir();
 				createRandomNumFile(_categoriesFolder.listFiles().length, 0, "./.save/category-index/category-index");
 
@@ -292,11 +359,15 @@ public class Database {
 		}
 	}
 
+	/**
+	 * Load all the voice settings i.e. speed and accent
+	 */
 	private void loadVoice() {
 		File[] voiceSettings = _voiceSettingsFolder.listFiles();
 		Arrays.sort(voiceSettings);
 		TTS.getInstance().initMultiplier(Double.parseDouble(voiceSettings[0].getName()));
 		try {
+			// Read the first line of the voice settings file. This is where the accent is stored
 			BufferedReader reader = new BufferedReader(new FileReader(voiceSettings[1]));
 			String accent = reader.readLine();
 			TTS.getInstance().setAccent(accent);
@@ -306,11 +377,21 @@ public class Database {
 		}
 	}
 
+	/**
+	 * Check if a question value has been answered
+	 * @param category the category to check
+	 * @param value the value to check
+	 * @return true is answered, false otherwise
+	 */
 	private boolean isAnswered(String category, int value) {
 		return new File("./.save/answered/" + category + "/" + value).exists();
 	}
 
-
+	/**
+	 * Record a completed question in the save folder
+	 * @param category the category it was completed in
+	 * @param value the value of the question that was completed
+	 */
 	public void addCompletedFile(String category, String value) {
 		try {
 			new File("./.save/answered/" + category + "/" + value).createNewFile();
@@ -319,11 +400,19 @@ public class Database {
 		}
 	}
 
+	/**
+	 * Get the current winnings
+	 * @return the current winnings
+	 */
 	public int getWinnings() {
 		String[] winnings = _winningsFolder.list();
 		return Integer.parseInt(winnings[0]);
 	}
 
+	/**
+	 * Add winnings to the save folder
+	 * @param value the value to increment the current winnings by
+	 */
 	public void addWinnings(int value){
 		String[] winningsStr = _winningsFolder.list();
 		int winningsInt = Integer.parseInt(winningsStr[0]);
@@ -331,7 +420,12 @@ public class Database {
 		new File("./.save/winnings/"+ winningsInt).renameTo(new File("./.save/winnings/"+ newWinnings));
 	}
 
+	/**
+	 * Check if the game has been completed i.e. if all questions have been answered in the game module
+	 * @return true if completed, false otherwise
+	 */
 	public boolean gameCompleted() {
+		// Loop through all questions
 		for (Category category : _questionData) {
 			for (Question question : category.getQuestions()) {
 				if (!question.isCompleted()) {
@@ -342,14 +436,24 @@ public class Database {
 		return true;
 	}
 
+	/**
+	 * Save the voice speed settings in the save folder
+	 * @param speed the speed to save it to
+	 */
 	public void updateSpeed(double speed) {
 		File[] voiceSettings = _voiceSettingsFolder.listFiles();
 		Arrays.sort(voiceSettings);
 		voiceSettings[0].renameTo(new File("./.save/voice-settings/" + speed));
 	}
 
+	/**
+	 * Helper function to reset. Recursively delete a directory
+	 * @param directoryToBeDeleted the directory to be deleted
+	 */
 	public void deleteDirectory(File directoryToBeDeleted) {
 		File[] allContents = directoryToBeDeleted.listFiles();
+
+		// Recursively delete
 		if (allContents != null) {
 			for (File file : allContents) {
 				deleteDirectory(file);
@@ -358,6 +462,9 @@ public class Database {
 		directoryToBeDeleted.delete();
 	}
 
+	/**
+	 * Reset the game. Just deletes the save folder
+	 */
 	public void reset() {
 		deleteDirectory(_saveFolder);
 		_database = new Database();

@@ -40,8 +40,8 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
     @FXML
     public void initialize() {
         super.initialize();
-        questionClue.setText(_question.getQuestion());
-        TTS.getInstance().speak(_question.getQuestion());
+        questionClue.setText(_question.getQuestionStr());
+        TTS.getInstance().speak(_question.getQuestionStr());
         hintLabel.setText("3 attempts left");
     }
 
@@ -68,11 +68,11 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
         PauseTransition pauseTransition = new PauseTransition(Duration.seconds(1.5));
         pauseTransition.setOnFinished( event -> {
             if (_attemptsLeft == 1) {
-                hintLabel.setText("Last attempt. Hint: The answer starts with " + _question.getAnswer()[0].charAt(0));
+                hintLabel.setText("Last attempt. Hint: The answer starts with " + _question.getAnswers()[0].charAt(0));
             } else {
                 hintLabel.setText(_attemptsLeft + " attempts left");
             }
-            questionClue.setText(_question.getQuestion());
+            questionClue.setText(_question.getQuestionStr());
         });
 
         String _userAnswer = answerInput.getText();
@@ -129,6 +129,6 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
      * It will read the question again by festival.  */
     @FXML
     public void replay() {
-        TTS.getInstance().speak(_question.getQuestion());
+        TTS.getInstance().speak(_question.getQuestionStr());
     }
 }

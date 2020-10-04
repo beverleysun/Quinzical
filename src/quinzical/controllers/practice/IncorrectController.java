@@ -7,7 +7,6 @@ import javafx.scene.input.MouseEvent;
 import quinzical.Question;
 import quinzical.TTS;
 
-import java.io.IOException;
 import java.util.Arrays;
 
 public class IncorrectController extends ConfirmController {
@@ -32,13 +31,13 @@ public class IncorrectController extends ConfirmController {
     public void initialize() {
         super.initialize();
         TopLabel.setText("Oops, the answer to");
-        clueLabel.setText("\"" + _question.getQuestion() + "\"" + " was");
+        clueLabel.setText("\"" + _question.getQuestionStr() + "\"" + " was");
 
-        String answerTemp = Arrays.toString(_question.getAnswer());
+        String answerTemp = Arrays.toString(_question.getAnswers());
         String answer = answerTemp.substring(1,answerTemp.length()-1);
         BottomLabel.setText(answer);
 
-        TTS.getInstance().speak("Oops, the answer to " + _question.getAnswer() + " was" + answer);
+        TTS.getInstance().speak("Oops, the answer to " + _question.getAnswers() + " was" + answer);
     }
 
     /* This method is invoked when the user click the next button in incorrect scene.
