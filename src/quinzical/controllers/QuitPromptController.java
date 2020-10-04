@@ -11,12 +11,24 @@ import java.io.IOException;
 
 public class QuitPromptController {
 
-    public void noQuit(MouseEvent e) throws IOException {
+    /**
+     * When the user presses no when prompted if they want to quit or not. Goes back the the start page
+     * @param e the event that was triggered
+     */
+    public void noQuit(MouseEvent e) {
         // Go back to start page
-        Parent quit = FXMLLoader.load(getClass().getResource("../scenes/StartPage.fxml"));
-        SceneChanger.changeScene(e, quit);
+        try {
+            Parent quit = FXMLLoader.load(getClass().getResource("../scenes/StartPage.fxml"));
+            SceneChanger.changeScene(e, quit);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
     }
 
+    /**
+     * Triggered when the user clicks yes to quit. Quits the game
+     * @param e the event that was triggered.
+     */
     public void yesQuit(MouseEvent e) {
         // Close the game
         Stage window = (Stage) ((Node)e.getSource()).getScene().getWindow();

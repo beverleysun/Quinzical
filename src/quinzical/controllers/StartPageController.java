@@ -10,6 +10,10 @@ import java.io.IOException;
 
 public class StartPageController {
 
+    /**
+     * Loads the quit prompt when the quit button is clicked
+     * @param e the event that was triggered
+     */
     public void quit(MouseEvent e) {
         // Go to quit prompt
         try {
@@ -20,9 +24,14 @@ public class StartPageController {
         }
     }
 
+    /**
+     * Goes to the question board when the user clicks "play"
+     * @param e the event that was triggered
+     */
     public void play(MouseEvent e) {
         // Go to game module
         try {
+            // Display game completed scene if all questions have been answered
             if (Database.getInstance().gameCompleted()) {
                     Parent gameCompleted = FXMLLoader.load(getClass().getResource("../scenes/play/GameCompleted.fxml"));
                     SceneChanger.changeScene(e, gameCompleted);
@@ -35,6 +44,10 @@ public class StartPageController {
         }
     }
 
+    /**
+     * Goes to the practice module when the user clicks "practice"
+     * @param e the event that was triggered
+     */
     public void practice(MouseEvent e) {
         // Go to practice module
         try {
