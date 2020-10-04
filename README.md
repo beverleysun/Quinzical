@@ -1,5 +1,8 @@
 # Welcome to Quinzical!
 
+### A note for the markers
+Some methods in the controllers might be greyed out which would normally signify unused methods. These methods, however, are used. Because the controllers are set within the code and not within the .fxml files, it appears that they are not used when they actually are. The same applies for the "errors" within the .fxml files. When the controller is set, the code will work.
+
 ## How to Play
 If you've always wanted to learn more about New Zealand, here's your chance. The game is very easy to play!
 
