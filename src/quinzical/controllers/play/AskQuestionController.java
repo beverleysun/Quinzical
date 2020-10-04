@@ -20,23 +20,28 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class AskQuestionController extends VoiceSettingsChangeable {
-
     private final String _categoryStr;
     private final Question _question;
 
     @FXML
     private Label categoryLabel, valueLabel, winnings;
-
     @FXML
     private TextField textField;
 
+    /**
+     * Takes in the question and category that is being asked
+     * @param question the question
+     * @param categoryStr the name of the category
+     */
     public AskQuestionController(Question question, String categoryStr) {
         _categoryStr = categoryStr;
         _question = question;
     }
 
-    /* This method will control the initial AskQuestion scene. It will control the display of slider bar, the current winnings,
-     * play the clue by festival and the attempt times. */
+    /**
+     * This method will initialize the AskQuestion scene. It will control the display of slider bar, the current winnings,
+     * play the clue by festival and the attempt times.
+     */
     @FXML
     public void initialize() {
         super.initialize();
@@ -47,21 +52,29 @@ public class AskQuestionController extends VoiceSettingsChangeable {
         TTS.getInstance().speak(_question.getQuestionStr());
     }
 
-    /* This method is invoked when the user press the replay button.
-     * It will read the question again by festival.  */
+    /**
+     * This method is invoked when the user press the replay button.
+     * It will read the question again by festival.
+     */
     @FXML
     public void replay() {
         TTS.getInstance().speak(_question.getQuestionStr());
     }
 
-    /* This method is invoked when the user click the confirm arrow, it will invoke the check answer method. */
+    /**
+     * Validates the answer when the confirm arrow is clicked.
+     * @param e the source of the click
+     */
     @FXML
     public void confirm(MouseEvent e) {
         validateAnswer(e);
     }
 
-    /* This method is invoked when the text field is active. If the user press enter key, it will invoke
-     * the check answer method.  */
+    /**
+     * This method is invoked when the text field is active. If the user press enter key, it will invoke
+     * the check answer method.
+     * @param e the source of the key press
+     */
     @FXML
     public void enter(KeyEvent e) {
         if (e.getCode() == KeyCode.ENTER) {
@@ -69,7 +82,10 @@ public class AskQuestionController extends VoiceSettingsChangeable {
         }
     }
 
-    /* This method compare the user's input with the actual answer in the database.*/
+    /**
+     *  This method compare the user's input with the actual answer in the database.
+     *  @param e the source the validation
+     */
     private void validateAnswer(Event e) {
         String userAnswer = textField.getText();
         if (_question.compareAnswers(userAnswer)) {
@@ -80,15 +96,21 @@ public class AskQuestionController extends VoiceSettingsChangeable {
         }
     }
 
-    /* This method is invoked when the user press the macron letter button */
+    /**
+     *  This method is invoked when the user press the macron letter button
+     *  @param e the button source
+     */
     @FXML
     public void addMacron(MouseEvent e) {
         String macron = ((Button) e.getSource()).getText();
         textField.appendText(macron);
     }
 
-    /* This method is invoked when the user's input is incorrect.
-     * It will switch to the incorrect scene and display the answer of the question.*/
+    /**
+     * This method is invoked when the user's input is incorrect.
+     * It will switch to the incorrect scene and display the answer of the question.
+     * @param e the event source
+     */
     @FXML
     public void loadIncorrectScene(Event e) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../../scenes/play/Incorrect.fxml"));
@@ -103,8 +125,12 @@ public class AskQuestionController extends VoiceSettingsChangeable {
             ioException.printStackTrace();
         }
     }
-    /* This method is invoked when the user's input is correct.
-     * It will switch to the correct scene. */
+
+    /**
+     * This method is invoked when the user's input is correct.
+     * It will switch to the correct scene.
+     * @param e the event source
+     */
     public void loadCorrectScene(Event e){
         try {
             // Load the "correct" scene

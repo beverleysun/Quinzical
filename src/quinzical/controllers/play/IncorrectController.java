@@ -12,12 +12,18 @@ public class IncorrectController extends ConfirmController {
 
     private String _answer;
 
+    /**
+     * Takes in the question answer so it can speak it
+     * @param answer the answer to the question
+     */
     public IncorrectController(String answer) {
         super();
         _answer =  answer;
     }
 
-    /* This method will control the incorrect scene. It will display and read the answer */
+    /**
+     * Initialize the "incorrect" scene
+     */
     @FXML
     public void initialize() {
         super.initialize();
@@ -25,8 +31,11 @@ public class IncorrectController extends ConfirmController {
         TTS.getInstance().speak("Oops. The correct answer was " + _answer);
     }
 
-    /* This method is invoked when the user click the next button in incorrect scene.
-     * It will switch to the question selection interface. */
+    /**
+     * This method is invoked when the user click the next button in incorrect scene.
+     * It will switch to the question selection interface.
+     * @param e the source of the click
+     */
     @FXML
     public void toQuestionBoard(MouseEvent e) {
         super.toQuestionBoard(e);

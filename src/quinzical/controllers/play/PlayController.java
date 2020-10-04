@@ -33,6 +33,9 @@ public class PlayController extends VoiceSettingsChangeable {
     private final List<Category> _questionData = _database.getQuestionData();
     private final List<Button> _buttons = new ArrayList<Button>();
 
+    /**
+     * Initialize the question board scene
+     */
     @FXML
     public void initialize() {
         super.initialize();
@@ -41,6 +44,9 @@ public class PlayController extends VoiceSettingsChangeable {
         winnings.setText("$" + Database.getInstance().getWinnings());
     }
 
+    /**
+     * Display the category names
+     */
     private void setLabels() {
         cat1Label.setText(_questionData.get(0).getCategoryName());
         cat2Label.setText(_questionData.get(1).getCategoryName());
@@ -49,6 +55,9 @@ public class PlayController extends VoiceSettingsChangeable {
         cat5Label.setText(_questionData.get(4).getCategoryName());
     }
 
+    /**
+     * Set each button to a specified question and disable if the question is not available
+     */
     private void initButtons() {
         Collections.addAll(_buttons, cat1value100Button, cat1value200Button, cat1value300Button, cat1value400Button, cat1value500Button,
                 cat2value100Button, cat2value200Button, cat2value300Button, cat2value400Button, cat2value500Button,
@@ -68,6 +77,11 @@ public class PlayController extends VoiceSettingsChangeable {
         }
     }
 
+    /**
+     * Invoked when someone clicks a question button. Asks the question associated with the button and
+     * switches to that scene
+     * @param e the source of the button click
+     */
     public void askQuestion(MouseEvent e) {
         Button buttonSource = (Button) e.getSource();
         int[] parsed = parseButtonID(buttonSource);
@@ -101,13 +115,21 @@ public class PlayController extends VoiceSettingsChangeable {
         }
     }
 
-    // Get the category number and question value from the ID of a button
+    /**
+     * Get the category number and question value from the ID of a button
+     * @param button the button to be parsed
+     * @return category and question value in an array
+     */
     private int[] parseButtonID(Button button) {
         int category = Integer.parseInt(button.getId().split("-")[0]);
         int value = Integer.parseInt(button.getId().split("-")[1]);
         return new int[]{category, value};
     }
 
+    /**
+     * Invoked when the back arrow is clicked. Goes back to start page
+     * @param e source of button click
+     */
     public void back(MouseEvent e) {
         try {
             // Load start page scene
@@ -118,6 +140,10 @@ public class PlayController extends VoiceSettingsChangeable {
         }
     }
 
+    /**
+     * Prompts user if they want to reset the game when the button is clicked
+     * @param e source of the button click
+     */
     public void reset(MouseEvent e) {
         try {
             // Load reset prompt page scene
