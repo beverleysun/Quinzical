@@ -1,10 +1,12 @@
 package quinzical.controllers.play;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import quinzical.*;
 import quinzical.controllers.VoiceSettingsChangeable;
@@ -100,13 +102,14 @@ public class PlayController extends VoiceSettingsChangeable {
 
         try {
             // Initialise controller with specific question and answer fields
-            AskQuestionController controller = new AskQuestionController(question, category.getCategoryName());
+            AskQuestionController controller = new AskQuestionController(question, category.getCategoryName(),e);
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/quinzical/scenes/play/AskQuestion.fxml"));
             loader.setController(controller);
 
             // Change scene
             Parent askQuestion = loader.load();
             SceneChanger.changeScene(e, askQuestion);
+
 
 
         } catch (IOException ioException) {

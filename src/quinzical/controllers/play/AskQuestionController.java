@@ -5,6 +5,7 @@ import javafx.beans.property.DoubleProperty;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Point2D;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,15 +13,19 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.robot.Robot;
+import javafx.scene.shape.Polyline;
 import quinzical.*;
 import quinzical.controllers.VoiceSettingsChangeable;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
+
+import static javafx.scene.input.MouseButton.PRIMARY;
 
 public class AskQuestionController extends VoiceSettingsChangeable {
     private final String _categoryStr;
@@ -38,7 +43,14 @@ public class AskQuestionController extends VoiceSettingsChangeable {
     private ProgressBar timeLeftBar;
 
     @FXML
+    private Polyline confirm;
+
+    @FXML
     private HBox hbox;
+
+    private MouseEvent _e;
+
+
 
 
 
@@ -48,9 +60,11 @@ public class AskQuestionController extends VoiceSettingsChangeable {
      * @param question    the question
      * @param categoryStr the name of the category
      */
-    public AskQuestionController(Question question, String categoryStr) {
+    public AskQuestionController(Question question, String categoryStr, MouseEvent e) {
         _categoryStr = categoryStr;
         _question = question;
+        _e = e;
+
     }
 
 
@@ -62,7 +76,11 @@ public class AskQuestionController extends VoiceSettingsChangeable {
         return timeLeft;
     }
 
-    CountdownTimer timer = new CountdownTimer();
+    public Polyline getConfirm(){
+        return confirm;
+    }
+
+
 
     /**
      * This method will initialize the AskQuestion scene. It will control the display of slider bar, the current winnings,
@@ -84,10 +102,17 @@ public class AskQuestionController extends VoiceSettingsChangeable {
 
             }
         });
+        double blueX = hbox.getLayoutX();
+        double blueY = hbox.getLayoutY();
 
+
+
+        CountdownTimer timer = new CountdownTimer(this, _e);
         timeLeftBar.progressProperty().bind(timer.progressProperty());
         timeLeft.textProperty().bind(timer.messageProperty());
         new Thread(timer).start();
+
+
 
     }
 
