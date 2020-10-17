@@ -6,10 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import quinzical.Category;
-import quinzical.Database;
-import quinzical.Question;
-import quinzical.SceneChanger;
+import quinzical.*;
 import quinzical.controllers.VoiceSettingsChangeable;
 
 import java.io.IOException;
@@ -110,6 +107,8 @@ public class PlayController extends VoiceSettingsChangeable {
             // Change scene
             Parent askQuestion = loader.load();
             SceneChanger.changeScene(e, askQuestion);
+
+
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
