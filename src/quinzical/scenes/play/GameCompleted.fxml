@@ -4,47 +4,48 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="500.0" prefWidth="800.0" spacing="10.0" styleClass="background-color"
-      stylesheets="@../../../assets/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="quinzical.controllers.play.GameCompletedController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" spacing="15.0" styleClass="background-color" stylesheets="@../../../assets/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.controllers.play.GameCompletedController">
    <padding>
-      <Insets bottom="20.0"/>
+      <Insets bottom="20.0" />
    </padding>
-   <Label stylesheets="@../../../assets/style.css" text="Congratz!">
+   <ImageView fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+      <viewport>
+         <Rectangle2D />
+      </viewport>
+      <Image url="@../../../assets/reward.png" />
+   </ImageView>
+   <Label fx:id="finalWinningsLabel" stylesheets="@../../../assets/style.css" text="You won ...">
       <styleClass>
-         <String fx:value="white-text-fill"/>
-         <String fx:value="font-bold"/>
-         <String fx:value="font-40"/>
+         <String fx:value="white-text-fill" />
+         <String fx:value="font-26" />
       </styleClass>
    </Label>
-   <Label stylesheets="@../../../assets/style.css" text="You've completed the game!">
+   <Label stylesheets="@../../../assets/style.css" text="Enter your name to save your score">
       <styleClass>
-         <String fx:value="white-text-fill"/>
-         <String fx:value="font-26"/>
+         <String fx:value="white-text-fill" />
+         <String fx:value="font-16" />
       </styleClass>
    </Label>
-   <Label fx:id="finalWinningsLabel" stylesheets="@../../../assets/style.css" text="You're final winnings were SCORE">
-      <styleClass>
-         <String fx:value="white-text-fill"/>
-         <String fx:value="font-16"/>
-      </styleClass>
-   </Label>
-   <Button mnemonicParsing="false" onMouseClicked="#reset" stylesheets="@../../../assets/style.css"
-           text="Reset To Play Again">
-      <styleClass>
-         <String fx:value="orange-button"/>
-         <String fx:value="white-text-fill"/>
-         <String fx:value="font-16"/>
-         <String fx:value="button-radius-5"/>
-      </styleClass>
-      <VBox.margin>
-         <Insets top="10.0"/>
-      </VBox.margin>
-      <cursor>
-         <Cursor fx:constant="HAND"/>
-      </cursor>
-   </Button>
+   <HBox alignment="TOP_CENTER" spacing="20.0">
+      <TextField fx:id="textField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="400.0" stylesheets="@../../../assets/style.css">
+         <styleClass>
+            <String fx:value="white-background" />
+            <String fx:value="font-14" />
+         </styleClass>
+      </TextField>
+      <Button mnemonicParsing="false" onKeyPressed="#checkKeyPress" onMouseClicked="#save" prefWidth="75.0" stylesheets="@../../../assets/style.css" text="Save">
+         <styleClass>
+            <String fx:value="orange-button" />
+            <String fx:value="white-text-fill" />
+            <String fx:value="button-radius-5" />
+            <String fx:value="font-14" />
+         </styleClass>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </HBox>
 </VBox>
