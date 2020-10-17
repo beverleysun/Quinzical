@@ -6,14 +6,13 @@
 <?import javafx.scene.layout.*?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.controllers.StartPageController">
-    <GridPane styleClass="background-color" stylesheets="@../../assets/style.css">
+    <GridPane styleClass="background-color" stylesheets="@../../assets/style.css" vgap="20.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints maxHeight="188.0" minHeight="10.0" prefHeight="188.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="48.0" minHeight="23.0" prefHeight="23.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="1.7976931348623157E308" minHeight="54.0" prefHeight="141.0" vgrow="SOMETIMES" />
         </rowConstraints>
         <Label alignment="CENTER" stylesheets="@../../assets/style.css" text="QUINZICAL" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
@@ -22,38 +21,53 @@
                 <String fx:value="font-50" />
             </styleClass>
         </Label>
-        <Button mnemonicParsing="false" onMouseClicked="#play" prefHeight="34.0" prefWidth="100.0" stylesheets="@../../assets/style.css" text="Play" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor>
-            <styleClass>
-                <String fx:value="purple-text-fill" />
-                <String fx:value="button-radius-5" />
-                <String fx:value="white-button" />
-                <String fx:value="font-16" />
-            </styleClass>
-        </Button>
-        <Button mnemonicParsing="false" onMouseClicked="#practice" prefHeight="35.0" prefWidth="100.0" text="Practice" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor>
-            <styleClass>
-                <String fx:value="white-button" />
-                <String fx:value="button-radius-5" />
-                <String fx:value="purple-text-fill" />
-                <String fx:value="font-16" />
-            </styleClass>
-        </Button>
-        <Button mnemonicParsing="false" onMouseClicked="#quit" prefHeight="34.0" prefWidth="100.0" text="Quit" textFill="#6f16df" textOverrun="WORD_ELLIPSIS" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor>
-            <styleClass>
-                <String fx:value="button-radius-5" />
-                <String fx:value="purple-text-fill" />
-                <String fx:value="white-button" />
-                <String fx:value="font-16" />
-            </styleClass>
-        </Button>
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+         <children>
+              <Button mnemonicParsing="false" onMouseClicked="#play" prefHeight="34.0" prefWidth="100.0" stylesheets="@../../assets/style.css" text="Play" textAlignment="CENTER" wrapText="true">
+                  <cursor>
+                      <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <styleClass>
+                      <String fx:value="purple-text-fill" />
+                      <String fx:value="button-radius-5" />
+                      <String fx:value="white-button" />
+                      <String fx:value="font-16" />
+                  </styleClass>
+              </Button>
+              <Button mnemonicParsing="false" onMouseClicked="#practice" prefHeight="35.0" prefWidth="100.0" text="Practice" textAlignment="CENTER">
+                  <cursor>
+                      <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <styleClass>
+                      <String fx:value="white-button" />
+                      <String fx:value="button-radius-5" />
+                      <String fx:value="purple-text-fill" />
+                      <String fx:value="font-16" />
+                  </styleClass>
+              </Button>
+             <Button mnemonicParsing="false" onMouseClicked="#scores" prefHeight="35.0" prefWidth="100.0" text="Scores" textAlignment="CENTER">
+                 <cursor>
+                     <Cursor fx:constant="HAND" />
+                 </cursor>
+                 <styleClass>
+                     <String fx:value="white-button" />
+                     <String fx:value="button-radius-5" />
+                     <String fx:value="purple-text-fill" />
+                     <String fx:value="font-16" />
+                 </styleClass>
+             </Button>
+              <Button mnemonicParsing="false" onMouseClicked="#quit" prefHeight="34.0" prefWidth="100.0" text="Quit" textFill="#6f16df" textOverrun="WORD_ELLIPSIS" wrapText="true">
+                  <cursor>
+                      <Cursor fx:constant="HAND" />
+                  </cursor>
+                  <styleClass>
+                      <String fx:value="button-radius-5" />
+                      <String fx:value="purple-text-fill" />
+                      <String fx:value="white-button" />
+                      <String fx:value="font-16" />
+                  </styleClass>
+              </Button>
+         </children>
+      </VBox>
     </GridPane>
 </StackPane>

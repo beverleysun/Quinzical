@@ -16,6 +16,7 @@ public class DataLoader {
 
     private final File _categoriesFolder = new File("./categories");
     private final File _saveFolder = new File("./.save");
+    private final File _scoresFile = new File("./.scores");
     private final File _winningsFolder = new File("./.save/winnings");
     private final File _voiceSettingsFolder = new File("./.save/voice-settings");
     private final File _categoryIndexFolder = new File("./.save/category-index");
@@ -26,6 +27,7 @@ public class DataLoader {
 
     private final List<Category> _questionData = new ArrayList<Category>();
     private final List<Category> _practiceQuestionData = new ArrayList<>();
+    private final List<User> _scores = new ArrayList<>();
 
 
     /**
@@ -36,6 +38,7 @@ public class DataLoader {
         loadPracticeQuestions();
         loadQuestions();
         loadVoice();
+        loadScores();
     }
 
     /**
@@ -43,6 +46,10 @@ public class DataLoader {
      */
     private void createFileStructure() {
         try {
+            if (!_scoresFile.exists()) {
+                _scoresFile.createNewFile();
+            }
+
             if (!_saveFolder.exists()) {
                 // Make all the required directories
                 _answeredFolder.mkdirs();
@@ -94,6 +101,7 @@ public class DataLoader {
                     category.addQuestion(new Question(question,answers));
                 }
                 _practiceQuestionData.add(category);
+                reader.close();
             }
         }
         catch (IOException e) {
@@ -115,6 +123,10 @@ public class DataLoader {
      */
     public List<Category> getQuestionData() {
         return _questionData;
+    }
+
+    public List<User> getScores() {
+        return _scores;
     }
 
     /**
@@ -158,9 +170,32 @@ public class DataLoader {
 
                     category.addQuestion(new Question(question, answers, value, answered, available));
                 }
-
                 _questionData.add(category);
+                lineNum.close();
             }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Load in all past player scores
+     */
+    public void loadScores() {
+        try {
+            //Read every line of scores file
+            BufferedReader reader = new BufferedReader(new FileReader(_scoresFile));
+
+            // Load in all scores
+            String scoreLine;
+            while ((scoreLine = reader.readLine()) != null) {
+                String[] scoreData = scoreLine.split(",");
+                String name = scoreData[0].trim();
+                int score = Integer.parseInt(scoreData[1].trim());
+                _scores.add(new User(name, score));
+            }
+            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
