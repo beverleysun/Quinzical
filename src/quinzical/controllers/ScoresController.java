@@ -28,8 +28,8 @@ public class ScoresController {
         List<User> sortedScores = Database.getInstance().getSortedScores();
 
         // Add top 10 scores
-        for (int i = 0; i < 10; i++) {
-            User user = sortedScores.get(i);
+        int count = 1;
+        for (User user : sortedScores) {
             GridPane entry = new GridPane();
 
             // Set grid column cell sizes
@@ -62,6 +62,11 @@ public class ScoresController {
             entry.add(score, 0, 0);
             entry.add(name, 1, 0);
             scoresVBox.getChildren().add(entry);
+
+            count++;
+            if (count > 10) {
+                break;
+            }
         }
     }
 
