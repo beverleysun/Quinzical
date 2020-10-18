@@ -9,6 +9,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -17,6 +18,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.robot.Robot;
 import javafx.scene.shape.Polyline;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import quinzical.model.Database;
 import quinzical.model.Question;
@@ -55,7 +57,7 @@ public class AskQuestionController extends VoiceSettingsChangeable {
     @FXML
     public void initialize() {
         super.initialize();
-        initTimer(30);
+        initTimer(5);
 
         categoryLabel.setText(_categoryStr);
         valueLabel.setText("$" + _question.getValue());
@@ -79,25 +81,31 @@ public class AskQuestionController extends VoiceSettingsChangeable {
                             i.set(i.get() - 1);
                             timeLeft.setText(Integer.toString(i.get()));
 
-                            // When time is up, simulate the enter key to proceed to the next scene
+                            // When time is up, load the "incorrect" scene
                             if(i.get() == 0) {
-                                textField.requestFocus();
-                                simulateEnter();
+                                // Get scene data
+                                double width = confirm.getScene().getWidth();
+                                double height = confirm.getScene().getHeight();
+                                Stage window = (Stage) confirm.getScene().getWindow();
+
+                                // Initiate the scene
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/quinzical/scenes/play/Incorrect.fxml"));
+                                String answerTemp = Arrays.toString(_question.getAnswers());
+                                String answer = answerTemp.substring(1,answerTemp.length()-1); // Remove square brackets as a result of Arrays.toString()
+                                loader.setController(new IncorrectController(answer));
+
+                                // Load the scene
+                                try {
+                                    window.setScene(new Scene(loader.load(), width, height));
+                                } catch (IOException ioException) {
+                                    ioException.printStackTrace();
+                                }
                             }
                         }
                 )
         );
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
-    }
-
-    /**
-     * Simulate an enter key press
-     */
-    public void simulateEnter(){
-        Robot robot = new Robot();
-        robot.keyPress(KeyCode.ENTER);
-        robot.keyRelease(KeyCode.ENTER);
     }
 
     /**
