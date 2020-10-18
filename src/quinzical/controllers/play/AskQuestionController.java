@@ -80,6 +80,7 @@ public class AskQuestionController extends VoiceSettingsChangeable {
         // Display contents after 1.5 second
         PauseTransition pauseTransition = new PauseTransition(Duration.seconds(10));
         pauseTransition.setOnFinished( event -> {
+            textField.requestFocus();
             pressEnter();
         });
         pauseTransition.play();
@@ -134,7 +135,7 @@ public class AskQuestionController extends VoiceSettingsChangeable {
      * @param e the source of the click
      */
     @FXML
-    public void confirm(MouseEvent e) {
+    public void confirm(Event e) {
 
         validateAnswer(e);
 
