@@ -38,7 +38,7 @@ public class GameCompletedController {
     }
 
     /**
-     * This method is invoked when the user click the Reset To Play Again button.
+     * Saves the user's score.
      * It will reset the game and switch to the StartPage scene.
      * @param e the source of the click
      */
