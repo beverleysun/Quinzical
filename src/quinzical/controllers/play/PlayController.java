@@ -72,6 +72,11 @@ public class PlayController extends VoiceSettingsChangeable {
 
             // Disable if question is unavailable to answer
             button.setDisable(!questionForButton.isAvailable());
+
+            // Different colour for questions that have been completed
+            if (questionForButton.isCompleted()) {
+                button.setStyle("-fx-background-color: gray");
+            }
         }
     }
 

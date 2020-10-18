@@ -8,6 +8,7 @@ public class TTS {
     private static TTS _tts;
     private double _speedMultiplier;
     private String _accent;
+    private Process _process;
 
     /**
      * Cannot be instantiated outside of the scope of this class
@@ -39,7 +40,12 @@ public class TTS {
 
         // Speak
         try {
-            Process process = pb.start();
+            // End old speaking process so that the new one can be played
+            if (_process != null) {
+                _process.descendants().forEach(ProcessHandle::destroy);
+                _process.destroy();
+            }
+            _process = pb.start();
         } catch (IOException e) {
             e.printStackTrace();
         }

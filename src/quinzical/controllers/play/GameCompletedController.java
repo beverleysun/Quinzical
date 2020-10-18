@@ -48,7 +48,7 @@ public class GameCompletedController {
             String name = textField.getText().toUpperCase();
             Database.getInstance().addScore(name);
             Database.getInstance().reset();
-            Parent start = FXMLLoader.load(getClass().getResource("/quinzical/scenes/StartPage.fxml"));
+            Parent start = FXMLLoader.load(getClass().getResource("/quinzical/scenes/Scores.fxml"));
             SceneChanger.changeScene(e, start);
         } catch (IOException ioException) {
             ioException.printStackTrace();
