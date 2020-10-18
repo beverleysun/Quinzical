@@ -34,7 +34,7 @@ import static javafx.scene.input.MouseButton.PRIMARY;
 public class AskQuestionController extends VoiceSettingsChangeable {
     private final String _categoryStr;
     private final Question _question;
-
+    CountdownTimer timer = new CountdownTimer();
     @FXML
     private Label categoryLabel, valueLabel, winnings;
     @FXML
@@ -50,12 +50,6 @@ public class AskQuestionController extends VoiceSettingsChangeable {
     private Polyline confirm;
 
 
-    private MouseEvent _e;
-
-
-
-
-
     /**
      * Takes in the question and category that is being asked
      *
@@ -68,7 +62,6 @@ public class AskQuestionController extends VoiceSettingsChangeable {
 
     }
 
-    CountdownTimer timer = new CountdownTimer();
 
     /**
      * This method will initialize the AskQuestion scene. It will control the display of slider bar, the current winnings,
@@ -77,7 +70,7 @@ public class AskQuestionController extends VoiceSettingsChangeable {
     @FXML
     public void initialize() {
         super.initialize();
-        // Display contents after 1.5 second
+        // Automatically press enter after 10 seconds
         PauseTransition pauseTransition = new PauseTransition(Duration.seconds(10));
         pauseTransition.setOnFinished( event -> {
             textField.requestFocus();
@@ -98,27 +91,22 @@ public class AskQuestionController extends VoiceSettingsChangeable {
                 }
             });
 
-
-
+            //bind the progress bar and Label to the task class
             timeLeftBar.progressProperty().bind(timer.progressProperty());
             timeLeft.textProperty().bind(timer.messageProperty());
             new Thread(timer).start();
 
 
-
-
-
-
     }
 
-
+    /**
+     * This method will press the enter by the Robot class.
+     */
     public  void pressEnter(){
         Robot robot = new Robot();
         robot.keyPress(KeyCode.ENTER);
         robot.keyRelease(KeyCode.ENTER);
     }
-
-
 
 
     /**
@@ -136,9 +124,7 @@ public class AskQuestionController extends VoiceSettingsChangeable {
      */
     @FXML
     public void confirm(Event e) {
-
         validateAnswer(e);
-
     }
 
     /**

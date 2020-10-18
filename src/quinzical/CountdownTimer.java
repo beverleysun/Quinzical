@@ -12,20 +12,30 @@ import quinzical.controllers.play.AskQuestionController;
 
 public class CountdownTimer extends Task<Integer>{
 
+    /**
+     * Create a timer object in the AskQuestionController class.
+     */
     public CountdownTimer(){
-
     }
 
+    /**
+     * Countdown from 10 to 1 , stop 1 second after each count.
+     * @return the count value
+     */
     @Override
     public Integer call() throws Exception {
         for (int i = 10; i > 0; i--) {
            updateProgress(i,10);
            Thread.sleep(1000);
         }
-
         return 0;
     }
 
+    /**
+     * This method will update the value of second in the countdown label.
+     * @param sec the countdown second
+     * @param sec the al time when the countdown starts
+     */
     @Override
     protected void updateProgress(double sec, double max){
         updateMessage((int)sec + " Secs");
