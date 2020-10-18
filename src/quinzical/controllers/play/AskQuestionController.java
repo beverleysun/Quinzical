@@ -57,7 +57,7 @@ public class AskQuestionController extends VoiceSettingsChangeable {
     @FXML
     public void initialize() {
         super.initialize();
-        initTimer(5);
+        initTimer(30);
 
         categoryLabel.setText(_categoryStr);
         valueLabel.setText("$" + _question.getValue());
