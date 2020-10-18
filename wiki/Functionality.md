@@ -70,3 +70,12 @@ We think that the second option is best. This allows users to learn how to prope
 
 ### Enter
 We have now provided support for the enter key being pressed when answering a question. This means one less click to get to the next stage and also, pressing enter is a natural thing for people to do when they want to confirm something.
+
+## Timer
+We've added a timer for 30 seconds. The player will have 30 seconds to answer the question. If time runs out, then the next scene will show - incorrect if the answer is incorrect, correct if the user had entered the correct answer but never confirmed the answer
+
+## TTS
+We managed to kill the festival process if text-to-speech needs to occur but the previous process hasn't finished yet. We just had to destroy all descendent processed that it created so it was only a couple of lines of code.
+
+## Scores
+There is now a scoreboard! We decided to add an extra button for this on the start page so users can see the top 10 scores. After the user enters their name (upon completion of all questions), they are redirected to this page as well.
