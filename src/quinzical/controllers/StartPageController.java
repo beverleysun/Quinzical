@@ -56,5 +56,19 @@ public class StartPageController {
             ioException.printStackTrace();
         }
     }
+
+    /**
+     * Goes to the scores page
+     * @param e the event that was triggered
+     */
+    public void scores(MouseEvent e) {
+        // Go to practice module
+        try {
+            Parent scores = FXMLLoader.load(getClass().getResource("/quinzical/scenes/Scores.fxml"));
+            SceneChanger.changeScene(e, scores);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+    }
 }
 

@@ -1,8 +1,11 @@
 package quinzical;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -10,8 +13,10 @@ public class Database {
 	private final File _saveFolder = new File("./.save");
 	private final File _winningsFolder = new File("./.save/winnings");
 	private final File _voiceSettingsFolder = new File("./.save/voice-settings");
+
 	private final List<Category> _questionData;
 	private final List<Category> _practiceQuestionData;
+	private final List<User> _scores;
 
 	private static Database _database;
 
@@ -22,6 +27,7 @@ public class Database {
 		DataLoader loader = new DataLoader();
 		_questionData = loader.getQuestionData();
 		_practiceQuestionData = loader.getPracticeQuestionData();
+		_scores = loader.getScores();
 	}
 
 	/**
@@ -148,5 +154,30 @@ public class Database {
 	public void reset() {
 		deleteDirectory(_saveFolder);
 		_database = new Database();
+	}
+
+	/**
+	 * Saves the winnings under someone's name
+	 * @param name the name for the winnings to be saved under
+	 */
+	public void addScore(String name) {
+		_scores.add(new User(name, getWinnings()));
+
+		try {
+			File file = new File("./.scores");
+			FileWriter fr = new FileWriter(file, true);
+			BufferedWriter br = new BufferedWriter(fr);
+			br.write(name + "," + getWinnings() + "\n");
+
+			br.close();
+			fr.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public List<User> getSortedScores() {
+		Collections.sort(_scores, new User.UserComparator());
+		return _scores;
 	}
 }
