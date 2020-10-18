@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import quinzical.TTS;
+import quinzical.model.TTS;
 
 public class CorrectController extends ConfirmController {
 

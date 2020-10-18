@@ -4,8 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import quinzical.Question;
-import quinzical.TTS;
+import quinzical.model.Question;
+import quinzical.model.TTS;
 
 import java.util.Arrays;
 

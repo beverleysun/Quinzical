@@ -12,9 +12,9 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
-import quinzical.Question;
-import quinzical.SceneChanger;
-import quinzical.TTS;
+import quinzical.model.Question;
+import quinzical.model.SceneChanger;
+import quinzical.model.TTS;
 import quinzical.controllers.VoiceSettingsChangeable;
 
 import java.io.IOException;

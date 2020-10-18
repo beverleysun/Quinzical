@@ -18,10 +18,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.robot.Robot;
 import javafx.scene.shape.Polyline;
 import javafx.util.Duration;
-import quinzical.Database;
-import quinzical.Question;
-import quinzical.SceneChanger;
-import quinzical.TTS;
+import quinzical.model.Database;
+import quinzical.model.Question;
+import quinzical.model.SceneChanger;
+import quinzical.model.TTS;
 import quinzical.controllers.VoiceSettingsChangeable;
 
 import java.io.IOException;

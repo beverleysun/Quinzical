@@ -1,4 +1,4 @@
-package quinzical;
+package quinzical.model;
 
 import java.io.FileWriter;
 import java.io.IOException;

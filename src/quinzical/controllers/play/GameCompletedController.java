@@ -8,8 +8,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import quinzical.Database;
-import quinzical.SceneChanger;
+import quinzical.model.Database;
+import quinzical.model.SceneChanger;
 
 import java.io.IOException;
 

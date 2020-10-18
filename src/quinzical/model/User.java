@@ -1,4 +1,4 @@
-package quinzical;
+package quinzical.model;
 
 import java.util.Comparator;
 
@@ -19,8 +19,6 @@ public class User {
         _name = name;
         _score = score;
     }
-
-
 
     /**
      * Gets name of user
