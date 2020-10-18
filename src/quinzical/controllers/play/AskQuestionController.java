@@ -83,29 +83,43 @@ public class AskQuestionController extends VoiceSettingsChangeable {
 
                             // When time is up, load the "incorrect" scene
                             if(i.get() == 0) {
-                                // Get scene data
-                                double width = confirm.getScene().getWidth();
-                                double height = confirm.getScene().getHeight();
-                                Stage window = (Stage) confirm.getScene().getWindow();
 
                                 // Initiate the scene
-                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/quinzical/scenes/play/Incorrect.fxml"));
-                                String answerTemp = Arrays.toString(_question.getAnswers());
-                                String answer = answerTemp.substring(1,answerTemp.length()-1); // Remove square brackets as a result of Arrays.toString()
-                                loader.setController(new IncorrectController(answer));
-
-                                // Load the scene
-                                try {
-                                    window.setScene(new Scene(loader.load(), width, height));
-                                } catch (IOException ioException) {
-                                    ioException.printStackTrace();
+                                String userAnswer = textField.getText();
+                                if (_question.compareAnswers(userAnswer)) {
+                                    String answerTemp = Arrays.toString(_question.getAnswers());
+                                    String answer = answerTemp.substring(1, answerTemp.length() - 1); // Remove square brackets as a result of Arrays.toString()
+                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/quinzical/scenes/play/Correct.fxml"));
+                                    //loader.setController(new CorrectController());
+                                    loadScene(loader);
                                 }
+                                 else {
+                                    String answerTemp = Arrays.toString(_question.getAnswers());
+                                    String answer = answerTemp.substring(1, answerTemp.length() - 1); // Remove square brackets as a result of Arrays.toString()
+                                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/quinzical/scenes/play/Incorrect.fxml"));
+                                    loader.setController(new IncorrectController(answer));
+                                    loadScene(loader);
+                                }
+
                             }
                         }
                 )
         );
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
+    }
+
+    public void loadScene(FXMLLoader loader){
+        // Get scene data
+        double width = confirm.getScene().getWidth();
+        double height = confirm.getScene().getHeight();
+        Stage window = (Stage) confirm.getScene().getWindow();
+        // Load the scene
+        try {
+            window.setScene(new Scene(loader.load(), width, height));
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
     }
 
     /**
