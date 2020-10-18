@@ -3,7 +3,7 @@ package quinzical.controllers.play;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import quinzical.TTS;
+import quinzical.model.TTS;
 
 public class IncorrectController extends ConfirmController {
 

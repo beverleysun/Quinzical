@@ -8,8 +8,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import quinzical.Database;
-import quinzical.SceneChanger;
+import quinzical.model.Database;
+import quinzical.model.SceneChanger;
 
 import java.io.IOException;
 
@@ -38,7 +38,7 @@ public class GameCompletedController {
     }
 
     /**
-     * This method is invoked when the user click the Reset To Play Again button.
+     * Saves the user's score.
      * It will reset the game and switch to the StartPage scene.
      * @param e the source of the click
      */

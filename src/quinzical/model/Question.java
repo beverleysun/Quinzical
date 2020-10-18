@@ -1,4 +1,4 @@
-package quinzical;
+package quinzical.model;
 
 public class Question {
     private final String _question;

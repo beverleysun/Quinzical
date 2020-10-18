@@ -5,8 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import quinzical.Database;
-import quinzical.SceneChanger;
+import quinzical.model.Database;
+import quinzical.model.SceneChanger;
 
 import java.io.IOException;
 

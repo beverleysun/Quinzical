@@ -5,7 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleGroup;
-import quinzical.TTS;
+import quinzical.model.TTS;
 
 public abstract class VoiceSettingsChangeable {
 

@@ -10,9 +10,9 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
-import quinzical.Database;
-import quinzical.SceneChanger;
-import quinzical.User;
+import quinzical.model.Database;
+import quinzical.model.SceneChanger;
+import quinzical.model.User;
 
 import java.io.IOException;
 import java.util.List;

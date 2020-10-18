@@ -1,4 +1,4 @@
-package quinzical;
+package quinzical.model;
 
 import javafx.event.Event;
 import javafx.scene.Node;

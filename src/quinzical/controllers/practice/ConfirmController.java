@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
-import quinzical.SceneChanger;
+import quinzical.model.SceneChanger;
 import quinzical.controllers.VoiceSettingsChangeable;
 
 import java.io.IOException;

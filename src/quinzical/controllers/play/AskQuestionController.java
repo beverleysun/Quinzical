@@ -1,5 +1,10 @@
 package quinzical.controllers.play;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,10 +15,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import quinzical.Database;
-import quinzical.Question;
-import quinzical.SceneChanger;
-import quinzical.TTS;
+import javafx.scene.robot.Robot;
+import javafx.scene.shape.Polyline;
+import javafx.util.Duration;
+import quinzical.model.Database;
+import quinzical.model.Question;
+import quinzical.model.SceneChanger;
+import quinzical.model.TTS;
 import quinzical.controllers.VoiceSettingsChangeable;
 
 import java.io.IOException;
@@ -23,14 +31,16 @@ public class AskQuestionController extends VoiceSettingsChangeable {
     private final String _categoryStr;
     private final Question _question;
 
-    @FXML
-    private Label categoryLabel, valueLabel, winnings;
-    @FXML
-    private TextField textField;
+    @FXML private Label categoryLabel, valueLabel, winnings;
+    @FXML private TextField textField;
+    @FXML private Label timeLeft;
+    @FXML private Polyline confirm;
+
+    private MouseEvent _e;
 
     /**
      * Takes in the question and category that is being asked
-     * @param question the question
+     * @param question    the question
      * @param categoryStr the name of the category
      */
     public AskQuestionController(Question question, String categoryStr) {
@@ -40,16 +50,54 @@ public class AskQuestionController extends VoiceSettingsChangeable {
 
     /**
      * This method will initialize the AskQuestion scene. It will control the display of slider bar, the current winnings,
-     * play the clue by festival and the attempt times.
+     * play the clue by festival.
      */
     @FXML
     public void initialize() {
         super.initialize();
+        initTimer(30);
+
         categoryLabel.setText(_categoryStr);
         valueLabel.setText("$" + _question.getValue());
         winnings.setText("$" + Database.getInstance().getWinnings());
 
         TTS.getInstance().speak(_question.getQuestionStr());
+    }
+
+    /**
+     * Initialize the timer to 30 seconds to answer the question
+     */
+    public void initTimer(int timerValue) {
+        IntegerProperty i = new SimpleIntegerProperty(timerValue);
+        timeLeft.setText(Integer.toString(i.get()));
+
+        Timeline timeline = new Timeline(
+                new KeyFrame(
+                        // Update the timer every second
+                        Duration.seconds(1),
+                        event -> {
+                            i.set(i.get() - 1);
+                            timeLeft.setText(Integer.toString(i.get()));
+
+                            // When time is up, simulate the enter key to proceed to the next scene
+                            if(i.get() == 0) {
+                                textField.requestFocus();
+                                simulateEnter();
+                            }
+                        }
+                )
+        );
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+    }
+
+    /**
+     * Simulate an enter key press
+     */
+    public void simulateEnter(){
+        Robot robot = new Robot();
+        robot.keyPress(KeyCode.ENTER);
+        robot.keyRelease(KeyCode.ENTER);
     }
 
     /**
@@ -66,7 +114,7 @@ public class AskQuestionController extends VoiceSettingsChangeable {
      * @param e the source of the click
      */
     @FXML
-    public void confirm(MouseEvent e) {
+    public void confirm(Event e) {
         validateAnswer(e);
     }
 
@@ -86,7 +134,7 @@ public class AskQuestionController extends VoiceSettingsChangeable {
      *  This method compare the user's input with the actual answer in the database.
      *  @param e the source the validation
      */
-    private void validateAnswer(Event e) {
+    public void validateAnswer(Event e) {
         String userAnswer = textField.getText();
         if (_question.compareAnswers(userAnswer)) {
             Database.getInstance().addWinnings(_question.getValue());
@@ -113,10 +161,12 @@ public class AskQuestionController extends VoiceSettingsChangeable {
      */
     @FXML
     public void loadIncorrectScene(Event e) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/quinzical/scenes/play/Incorrect.fxml"));
         String answerTemp = Arrays.toString(_question.getAnswers());
-        String answer = answerTemp.substring(1,answerTemp.length()-1);
+        String answer = answerTemp.substring(1,answerTemp.length()-1); // Remove square brackets as a result of Arrays.toString()
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/quinzical/scenes/play/Incorrect.fxml"));
         loader.setController(new IncorrectController(answer));
+
         try {
             // Load the "incorrect" scene
             Parent incorrect = loader.load();

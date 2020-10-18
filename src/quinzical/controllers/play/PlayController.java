@@ -6,10 +6,10 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import quinzical.Category;
-import quinzical.Database;
-import quinzical.Question;
-import quinzical.SceneChanger;
+import quinzical.model.Category;
+import quinzical.model.Database;
+import quinzical.model.Question;
+import quinzical.model.SceneChanger;
 import quinzical.controllers.VoiceSettingsChangeable;
 
 import java.io.IOException;
@@ -64,16 +64,14 @@ public class PlayController extends VoiceSettingsChangeable {
                 cat3value100Button, cat3value200Button, cat3value300Button, cat3value400Button, cat3value500Button,
                 cat4value100Button, cat4value200Button, cat4value300Button, cat4value400Button, cat4value500Button,
                 cat5value100Button, cat5value200Button, cat5value300Button, cat5value400Button, cat5value500Button);
+
         for (Button button: _buttons) {
+            // Get data from button ID for which question to ask
             int[] parsed = parseButtonID(button);
+            Question questionForButton = _questionData.get(parsed[0]-1).findQuestionByValue(parsed[1]);
 
-            Question questionToAsk = _questionData.get(parsed[0]-1).findQuestionByValue(parsed[1]);
-
-            if (!questionToAsk.isAvailable()) {
-                button.setDisable(true);
-            } else {
-                button.setDisable(false);
-            }
+            // Disable if question is unavailable to answer
+            button.setDisable(!questionForButton.isAvailable());
         }
     }
 
@@ -110,6 +108,7 @@ public class PlayController extends VoiceSettingsChangeable {
             // Change scene
             Parent askQuestion = loader.load();
             SceneChanger.changeScene(e, askQuestion);
+
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
