@@ -10,24 +10,19 @@ import javafx.scene.robot.Robot;
 import quinzical.controllers.play.AskQuestionController;
 
 
-public class CountdownTimer extends Task<Integer> {
-    private MouseEvent _e;
-    private AskQuestionController _controller;
+public class CountdownTimer extends Task<Integer>{
 
+    public CountdownTimer(){
 
-    public CountdownTimer(AskQuestionController controller, MouseEvent e){
-       _e = e;
-        _controller = controller;
     }
 
     @Override
     public Integer call() throws Exception {
-        for (int i = 5; i > 0; i--) {
-           updateProgress(i,5);
+        for (int i = 10; i > 0; i--) {
+           updateProgress(i,10);
            Thread.sleep(1000);
         }
-        
-        _controller.confirm(_e);
+
         return 0;
     }
 

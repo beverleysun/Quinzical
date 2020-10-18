@@ -9,8 +9,11 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    private static Stage _stage;
+
     @Override
     public void start(Stage primaryStage) throws Exception{
+
         Parent root = FXMLLoader.load(getClass().getResource("scenes/StartPage.fxml"));
         Font.loadFont(getClass().getResourceAsStream("../assets/PTSans-Regular"), 14);
         primaryStage.setTitle("Quinzical");
@@ -18,10 +21,14 @@ public class Main extends Application {
         primaryStage.setMinHeight(300);
         primaryStage.setMinWidth(400);
 
+        _stage = primaryStage;
+
         primaryStage.setScene(new Scene(root, 800, 500));
         primaryStage.show();
     }
-
+   public static Stage getStage(){
+       return _stage;
+   }
     public static void main(String[] args) {
         launch(args);
     }

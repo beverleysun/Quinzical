@@ -1,5 +1,6 @@
 package quinzical.controllers.play;
 
+import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
 import javafx.event.Event;
@@ -18,11 +19,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.robot.Robot;
 import javafx.scene.shape.Polyline;
+import javafx.util.Duration;
 import quinzical.*;
 import quinzical.controllers.VoiceSettingsChangeable;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.CountDownLatch;
 
 import static javafx.scene.input.MouseButton.PRIMARY;
@@ -45,8 +49,6 @@ public class AskQuestionController extends VoiceSettingsChangeable {
     @FXML
     private Polyline confirm;
 
-    @FXML
-    private HBox hbox;
 
     private MouseEvent _e;
 
@@ -60,27 +62,13 @@ public class AskQuestionController extends VoiceSettingsChangeable {
      * @param question    the question
      * @param categoryStr the name of the category
      */
-    public AskQuestionController(Question question, String categoryStr, MouseEvent e) {
+    public AskQuestionController(Question question, String categoryStr) {
         _categoryStr = categoryStr;
         _question = question;
-        _e = e;
 
     }
 
-
-    public ProgressBar getTimeLeftBar(){
-        return timeLeftBar;
-    }
-
-    public Label getTimeLeft(){
-        return timeLeft;
-    }
-
-    public Polyline getConfirm(){
-        return confirm;
-    }
-
-
+    CountdownTimer timer = new CountdownTimer();
 
     /**
      * This method will initialize the AskQuestion scene. It will control the display of slider bar, the current winnings,
@@ -89,33 +77,45 @@ public class AskQuestionController extends VoiceSettingsChangeable {
     @FXML
     public void initialize() {
         super.initialize();
-        categoryLabel.setText(_categoryStr);
-        valueLabel.setText("$" + _question.getValue());
-        winnings.setText("$" + Database.getInstance().getWinnings());
-
-        TTS.getInstance().speak(_question.getQuestionStr());
-
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                textField.requestFocus();
-
-            }
+        // Display contents after 1.5 second
+        PauseTransition pauseTransition = new PauseTransition(Duration.seconds(10));
+        pauseTransition.setOnFinished( event -> {
+            pressEnter();
         });
-        double blueX = hbox.getLayoutX();
-        double blueY = hbox.getLayoutY();
+        pauseTransition.play();
+
+            categoryLabel.setText(_categoryStr);
+            valueLabel.setText("$" + _question.getValue());
+            winnings.setText("$" + Database.getInstance().getWinnings());
+
+            TTS.getInstance().speak(_question.getQuestionStr());
+
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    textField.requestFocus();
+                }
+            });
 
 
 
-        CountdownTimer timer = new CountdownTimer(this, _e);
-        timeLeftBar.progressProperty().bind(timer.progressProperty());
-        timeLeft.textProperty().bind(timer.messageProperty());
-        new Thread(timer).start();
+            timeLeftBar.progressProperty().bind(timer.progressProperty());
+            timeLeft.textProperty().bind(timer.messageProperty());
+            new Thread(timer).start();
+
+
+
 
 
 
     }
 
+
+    public  void pressEnter(){
+        Robot robot = new Robot();
+        robot.keyPress(KeyCode.ENTER);
+        robot.keyRelease(KeyCode.ENTER);
+    }
 
 
 
@@ -135,6 +135,7 @@ public class AskQuestionController extends VoiceSettingsChangeable {
      */
     @FXML
     public void confirm(MouseEvent e) {
+
         validateAnswer(e);
 
     }
