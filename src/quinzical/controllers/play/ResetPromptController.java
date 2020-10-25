@@ -32,16 +32,31 @@ public class ResetPromptController {
     public void yesReset(MouseEvent e) {
         // Reset the game
         Database.getInstance().reset();
-        goToQuestionBoard(e);
+        goToSelectionBoard(e);
     }
 
     /**
-     * This method is invoked when the user click the yes/no button in ResetPrompt scene.
-     * For no button, It will switch to the question selection interface.
-     * For yes button(yesRest), It will reset the game first and then switch to the question selection interface.
+     * This method is invoked when the user click the yes button in ResetPrompt scene.
+     * It will reset the game first and then switch to the category selection interface.
      * @param e the source of the button click
      */
-    public void goToQuestionBoard(MouseEvent e) {
+    public void goToSelectionBoard(MouseEvent e) {
+        try {
+            // Load question board scene
+            Parent questionBoard = FXMLLoader.load(getClass().getResource("/quinzical/scenes/play/SelectCategories.fxml"));
+            SceneChanger.changeScene(e, questionBoard);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+    }
+
+
+    /**
+     * This method is invoked when the user click the no button in ResetPrompt scene.
+     * For no button, It will switch to the question selection interface.
+     * @param e the source of the button click
+     */
+    public void goToPlayBoard(MouseEvent e) {
         try {
             // Load question board scene
             Parent questionBoard = FXMLLoader.load(getClass().getResource("/quinzical/scenes/play/Play.fxml"));

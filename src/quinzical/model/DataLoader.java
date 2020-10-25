@@ -36,7 +36,7 @@ public class DataLoader {
     public DataLoader() {
         createFileStructure();
         loadPracticeQuestions();
-        loadQuestions();
+        //loadQuestions();
         loadVoice();
         loadScores();
     }
@@ -57,7 +57,8 @@ public class DataLoader {
                 _categoryIndexFolder.mkdir();
                 _questionsIndexFolder.mkdir();
                 _voiceSettingsFolder.mkdir();
-                createRandomNumFile(_categoriesFolder.listFiles().length, 0, "./.save/category-index/category-index");
+
+                //createRandomNumFile(_categoriesFolder.listFiles().length, 0, "./.save/category-index/category-index");
 
                 // Set winnings to $0
                 new File("./.save/winnings/0").createNewFile();
@@ -132,7 +133,7 @@ public class DataLoader {
     /**
      * Load in all the questions to be used in the game module. Should load 5 categories with 5 questions each.
      */
-    private void loadQuestions() {
+    public void loadQuestions() {
         try {
             // Load in the saved categories
             loadCategories();

@@ -7,6 +7,16 @@ public class Category {
     private final String _categoryName;
     private final List<Question> _questions = new ArrayList<Question>();
 
+    private boolean _selected = false;
+
+    public void setSelected(boolean selected){
+        _selected = selected;
+    }
+
+    public boolean getSelectStatus(){
+        return _selected;
+    }
+
     /**
      * Represents a category
      * @param categoryName the name of the category

@@ -1,33 +1,69 @@
 package quinzical.model;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.io.*;
+import java.util.*;
 
 public class Database {
 	private final File _saveFolder = new File("./.save");
 	private final File _winningsFolder = new File("./.save/winnings");
 	private final File _voiceSettingsFolder = new File("./.save/voice-settings");
 
-	private final List<Category> _questionData;
+	private  List<Category> _questionData;
 	private final List<Category> _practiceQuestionData;
 	private final List<User> _scores;
 
 	private static Database _database;
-
+	DataLoader _loader = new DataLoader();
 	/**
 	 * Initiate the database. Can only be instantiated within the scope of this class
 	 */
 	private Database(){
-		DataLoader loader = new DataLoader();
-		_questionData = loader.getQuestionData();
-		_practiceQuestionData = loader.getPracticeQuestionData();
-		_scores = loader.getScores();
+
+		//_questionData = _loader.getQuestionData();
+		_practiceQuestionData = _loader.getPracticeQuestionData();
+		_scores = _loader.getScores();
+	}
+
+	/**
+	 * Find the Category object by the category name and return it.
+	 */
+	public Category getCategory(String name){
+		for(Category category : _practiceQuestionData){
+			if(name.equals(category.getCategoryName())){
+				return category;
+			}
+		}
+		return null;
+	}
+
+	public int[] getCategorieIndex(ArrayList<Category> category) {
+
+		int[] categoryIndex = new int[5];
+		for (int i = 0; i < 5; i++) {
+			String name = category.get(i).getCategoryName();
+			for (int j = 0; j < _practiceQuestionData.size(); j++) {
+				if (name.equals(_practiceQuestionData.get(j).getCategoryName())) {
+					categoryIndex[i] = j;
+				}
+			}
+		}
+		return categoryIndex;
+	}
+
+	public void loadCategoryIndex (int[] index) {
+		try {
+			new File("./.save/category-index/category-index").createNewFile();
+			Writer wr = new FileWriter("./.save/category-index/category-index");
+
+			for (int k = 0; k < 5; k++) {
+
+				wr.write(index[k] + ",");;
+			}
+
+			wr.close();
+		} catch (IOException ioException) {
+			ioException.printStackTrace();
+		}
 	}
 
 	/**
@@ -54,6 +90,8 @@ public class Database {
 	 * @return the game module question data
 	 */
 	public List<Category> getQuestionData() {
+		_loader.loadQuestions();
+		_questionData = _loader.getQuestionData();
 		return _questionData;
 	}
 
