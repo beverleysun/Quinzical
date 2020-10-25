@@ -10,11 +10,14 @@ import quinzical.model.SceneChanger;
 
 import java.io.IOException;
 
+/**
+ * Controls the scene when the user clicks the reset button
+ *
+ * @author Beverley Sun, Jinkai Zhang
+ */
 public class ResetPromptController {
 
-
-    @FXML
-    private Label finalScoreLabel;
+    @FXML private Label finalScoreLabel;
 
     /**
      * Initializes the reset prompt scene
@@ -29,6 +32,7 @@ public class ResetPromptController {
      * It will call the reset method in Database. The .save file will be deleted.
      * @param e the source of the button click
      */
+    @FXML
     public void yesReset(MouseEvent e) {
         // Reset the game
         Database.getInstance().reset();
@@ -40,6 +44,7 @@ public class ResetPromptController {
      * It will reset the game first and then switch to the category selection interface.
      * @param e the source of the button click
      */
+    @FXML
     public void goToSelectionBoard(MouseEvent e) {
         try {
             // Load question board scene
@@ -56,6 +61,7 @@ public class ResetPromptController {
      * For no button, It will switch to the question selection interface.
      * @param e the source of the button click
      */
+    @FXML
     public void goToPlayBoard(MouseEvent e) {
         try {
             // Load question board scene

@@ -17,21 +17,23 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Controls the scene where the user gets to choose the question that they are going to answer
+ *
+ * @author Beverley Sun, Jinkai Zhang
+ */
 public class PlayController extends VoiceSettingsChangeable {
 
-    @FXML
-    private Label cat1Label, cat2Label, cat3Label, cat4Label, cat5Label, winnings;
-
-    @FXML
-    private Button cat1value100Button, cat1value200Button, cat1value300Button, cat1value400Button, cat1value500Button,
+    @FXML private Label cat1Label, cat2Label, cat3Label, cat4Label, cat5Label, winnings;
+    @FXML private Button cat1value100Button, cat1value200Button, cat1value300Button, cat1value400Button, cat1value500Button,
                     cat2value100Button, cat2value200Button, cat2value300Button, cat2value400Button, cat2value500Button,
                     cat3value100Button, cat3value200Button, cat3value300Button, cat3value400Button, cat3value500Button,
                     cat4value100Button, cat4value200Button, cat4value300Button, cat4value400Button, cat4value500Button,
                     cat5value100Button, cat5value200Button, cat5value300Button, cat5value400Button, cat5value500Button ;
 
-    private final Database _database = Database.getInstance();
-    private final List<Category> _questionData = _database.getQuestionData();
-    private final List<Button> _buttons = new ArrayList<Button>();
+    private final Database database = Database.getInstance();
+    private final List<Category> questionData = database.getQuestionData();
+    private final List<Button> buttons = new ArrayList<>();
 
     /**
      * Initialize the question board scene
@@ -48,27 +50,27 @@ public class PlayController extends VoiceSettingsChangeable {
      * Display the category names
      */
     private void setLabels() {
-        cat1Label.setText(_questionData.get(0).getCategoryName());
-        cat2Label.setText(_questionData.get(1).getCategoryName());
-        cat3Label.setText(_questionData.get(2).getCategoryName());
-        cat4Label.setText(_questionData.get(3).getCategoryName());
-        cat5Label.setText(_questionData.get(4).getCategoryName());
+        cat1Label.setText(questionData.get(0).getCategoryName());
+        cat2Label.setText(questionData.get(1).getCategoryName());
+        cat3Label.setText(questionData.get(2).getCategoryName());
+        cat4Label.setText(questionData.get(3).getCategoryName());
+        cat5Label.setText(questionData.get(4).getCategoryName());
     }
 
     /**
      * Set each button to a specified question and disable if the question is not available
      */
     private void initButtons() {
-        Collections.addAll(_buttons, cat1value100Button, cat1value200Button, cat1value300Button, cat1value400Button, cat1value500Button,
+        Collections.addAll(buttons, cat1value100Button, cat1value200Button, cat1value300Button, cat1value400Button, cat1value500Button,
                 cat2value100Button, cat2value200Button, cat2value300Button, cat2value400Button, cat2value500Button,
                 cat3value100Button, cat3value200Button, cat3value300Button, cat3value400Button, cat3value500Button,
                 cat4value100Button, cat4value200Button, cat4value300Button, cat4value400Button, cat4value500Button,
                 cat5value100Button, cat5value200Button, cat5value300Button, cat5value400Button, cat5value500Button);
 
-        for (Button button: _buttons) {
+        for (Button button: buttons) {
             // Get data from button ID for which question to ask
             int[] parsed = parseButtonID(button);
-            Question questionForButton = _questionData.get(parsed[0]-1).findQuestionByValue(parsed[1]);
+            Question questionForButton = questionData.get(parsed[0]-1).findQuestionByValue(parsed[1]);
 
             // Disable if question is unavailable to answer
             button.setDisable(!questionForButton.isAvailable());
@@ -90,7 +92,7 @@ public class PlayController extends VoiceSettingsChangeable {
         int[] parsed = parseButtonID(buttonSource);
 
         // Get all question data
-        Category category = _questionData.get(parsed[0]-1);
+        Category category = questionData.get(parsed[0]-1);
         Question question = category.findQuestionByValue(parsed[1]);
 
         // Save data
@@ -134,6 +136,7 @@ public class PlayController extends VoiceSettingsChangeable {
      * Invoked when the back arrow is clicked. Goes back to start page
      * @param e source of button click
      */
+    @FXML
     public void back(MouseEvent e) {
         try {
             // Load start page scene
@@ -148,6 +151,7 @@ public class PlayController extends VoiceSettingsChangeable {
      * Prompts user if they want to reset the game when the button is clicked
      * @param e source of the button click
      */
+    @FXML
     public void reset(MouseEvent e) {
         try {
             // Load reset prompt page scene

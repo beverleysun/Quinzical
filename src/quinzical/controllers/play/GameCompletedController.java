@@ -13,6 +13,11 @@ import quinzical.model.SceneChanger;
 
 import java.io.IOException;
 
+/**
+ * Controls the scene when the entire game has been completed
+ *
+ * @author Beverley Sun, Jinkai Zhang
+ */
 public class GameCompletedController {
 
     @FXML private Label finalWinningsLabel;
@@ -31,6 +36,7 @@ public class GameCompletedController {
      * Check if the enter key is pressed. If yes, then proceed to save the user's score.
      * @param e the KeyEvent that occurred
      */
+    @FXML
     public void checkKeyPress(KeyEvent e) {
         if (e.getCode() == KeyCode.ENTER) {
             save(e);

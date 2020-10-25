@@ -3,6 +3,11 @@ package quinzical.controllers.play;
 import javafx.fxml.FXML;
 import quinzical.model.TTS;
 
+/**
+ * Controls the scene when the user gets the answer right
+ *
+ * @author Beverley Sun, Jinkai Zhang
+ */
 public class CorrectController extends ConfirmController {
 
     /**

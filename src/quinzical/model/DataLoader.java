@@ -12,23 +12,27 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Class that loads in all the data from the save files
+ *
+ * @author Beverley Sun, Jinkai Zhang
+ */
 public class DataLoader {
 
-    private final File _categoriesFolder = new File("./categories");
-    private final File _saveFolder = new File("./.save");
-    private final File _scoresFile = new File("./.scores");
-    private final File _winningsFolder = new File("./.save/winnings");
-    private final File _voiceSettingsFolder = new File("./.save/voice-settings");
-    private final File _categoryIndexFolder = new File("./.save/category-index");
-    private final File _questionsIndexFolder = new File("./.save/questions-index/");
-    private final File _answeredFolder = new File("./.save/answered");
-    private final File[] _categoryFiles5 = new File[5];
-    private final File[] _allCategoryFiles = _categoriesFolder.listFiles();
+    private final File categoriesFolder = new File("./categories");
+    private final File saveFolder = new File("./.save");
+    private final File scoresFile = new File("./.scores");
+    private final File winningsFolder = new File("./.save/winnings");
+    private final File voiceSettingsFolder = new File("./.save/voice-settings");
+    private final File categoryIndexFolder = new File("./.save/category-index");
+    private final File questionsIndexFolder = new File("./.save/questions-index/");
+    private final File answeredFolder = new File("./.save/answered");
+    private final File[] categoryFiles5 = new File[5];
+    private final File[] allCategoryFiles = categoriesFolder.listFiles();
 
-    private final List<Category> _questionData = new ArrayList<Category>();
-    private final List<Category> _practiceQuestionData = new ArrayList<>();
-    private final List<User> _scores = new ArrayList<>();
-
+    private final List<Category> questionData = new ArrayList<>();
+    private final List<Category> practiceQuestionData = new ArrayList<>();
+    private final List<User> scores = new ArrayList<>();
 
     /**
      * Loads in all data from the save folder
@@ -36,7 +40,6 @@ public class DataLoader {
     public DataLoader() {
         createFileStructure();
         loadPracticeQuestions();
-        //loadQuestions();
         loadVoice();
         loadScores();
     }
@@ -46,19 +49,17 @@ public class DataLoader {
      */
     private void createFileStructure() {
         try {
-            if (!_scoresFile.exists()) {
-                _scoresFile.createNewFile();
+            if (!scoresFile.exists()) {
+                scoresFile.createNewFile();
             }
 
-            if (!_saveFolder.exists()) {
+            if (!saveFolder.exists()) {
                 // Make all the required directories
-                _answeredFolder.mkdirs();
-                _winningsFolder.mkdir();
-                _categoryIndexFolder.mkdir();
-                _questionsIndexFolder.mkdir();
-                _voiceSettingsFolder.mkdir();
-
-                //createRandomNumFile(_categoriesFolder.listFiles().length, 0, "./.save/category-index/category-index");
+                answeredFolder.mkdirs();
+                winningsFolder.mkdir();
+                categoryIndexFolder.mkdir();
+                questionsIndexFolder.mkdir();
+                voiceSettingsFolder.mkdir();
 
                 // Set winnings to $0
                 new File("./.save/winnings/0").createNewFile();
@@ -71,7 +72,7 @@ public class DataLoader {
                 writer.close();
 
                 // Create folders for each category in the save folder
-                for (String name : _categoriesFolder.list()) {
+                for (String name : categoriesFolder.list()) {
                     new File("./.save/answered/" + name).mkdir();
                 }
             }
@@ -85,9 +86,10 @@ public class DataLoader {
      */
     public void loadPracticeQuestions() {
         try {
-            for(File categoryFile : _allCategoryFiles) {
+            assert allCategoryFiles != null;
+            for(File categoryFile : allCategoryFiles) {
 
-                //Read every line of category file
+                // Read every line of category file
                 Category category = new Category(categoryFile.getName());
                 BufferedReader reader = new BufferedReader(new FileReader(categoryFile));
 
@@ -95,13 +97,14 @@ public class DataLoader {
                 String questionLine;
                 while ((questionLine = reader.readLine()) != null) {
                     String[] questionData = parseQuestionLine(questionLine);
+
                     String question = questionData[0].trim();
                     String answer = questionData[2].trim();
                     String[] answers = answer.split("/");
 
-                    category.addQuestion(new Question(question,answers));
+                    category.addQuestion(new Question(question, answers));
                 }
-                _practiceQuestionData.add(category);
+                practiceQuestionData.add(category);
                 reader.close();
             }
         }
@@ -111,27 +114,7 @@ public class DataLoader {
     }
 
     /**
-     * Get all the questions for practice module
-     * @return the list of all practice questions
-     */
-    public List<Category> getPracticeQuestionData() {
-        return _practiceQuestionData;
-    }
-
-    /**
-     * Get the game module question data
-     * @return the game module question data
-     */
-    public List<Category> getQuestionData() {
-        return _questionData;
-    }
-
-    public List<User> getScores() {
-        return _scores;
-    }
-
-    /**
-     * Load in all the questions to be used in the game module. Should load 5 categories with 5 questions each.
+     * Load in all the questions to be used in the game module. Loads 5 categories with 5 questions each.
      */
     public void loadQuestions() {
         try {
@@ -139,7 +122,7 @@ public class DataLoader {
             loadCategories();
 
             // Loop through each category
-            for(File categoryFile : _categoryFiles5) {
+            for(File categoryFile : categoryFiles5) {
                 Category category = new Category(categoryFile.getName());
 
                 // Get the total number of lines of the file
@@ -148,7 +131,7 @@ public class DataLoader {
 
                 // Get five random line numbers and store it into a file.
                 if (!checkQuestionIndexFile(categoryFile.getName())) {
-                    createRandomNumFile(lineNum.getLineNumber() + 1, 1, _questionsIndexFolder +"/"+ categoryFile.getName());
+                    createRandomNumFile(lineNum.getLineNumber() + 1, 1, questionsIndexFolder +"/"+ categoryFile.getName());
                 }
 
                 // Load the question line numbers from the category file.
@@ -157,9 +140,11 @@ public class DataLoader {
                 // Select 5 questions for each category
                 for (int i = 0; i < 5; i ++) {
                     // This will return the line that match the random number array.
+                    assert fiveQuestionsIndices != null;
                     String questionLine = readAppointedLineNumber(categoryFile, fiveQuestionsIndices[i] ,lineNum.getLineNumber());
 
                     // Parse the question
+                    assert questionLine != null;
                     String [] questionData = parseQuestionLine(questionLine);
                     int value = 500 - 100*i;
                     String question = questionData[0];
@@ -171,7 +156,7 @@ public class DataLoader {
 
                     category.addQuestion(new Question(question, answers, value, answered, available));
                 }
-                _questionData.add(category);
+                questionData.add(category);
                 lineNum.close();
             }
 
@@ -186,7 +171,7 @@ public class DataLoader {
     public void loadScores() {
         try {
             //Read every line of scores file
-            BufferedReader reader = new BufferedReader(new FileReader(_scoresFile));
+            BufferedReader reader = new BufferedReader(new FileReader(scoresFile));
 
             // Load in all scores
             String scoreLine;
@@ -194,8 +179,28 @@ public class DataLoader {
                 String[] scoreData = scoreLine.split(",");
                 String name = scoreData[0].trim();
                 int score = Integer.parseInt(scoreData[1].trim());
-                _scores.add(new User(name, score));
+                scores.add(new User(name, score));
             }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Load all the voice settings i.e. speed and accent
+     */
+    private void loadVoice() {
+        File[] voiceSettings = voiceSettingsFolder.listFiles();
+
+        assert voiceSettings != null;
+        Arrays.sort(voiceSettings);
+        TTS.getInstance().initMultiplier(Double.parseDouble(voiceSettings[0].getName()));
+        try {
+            // Read the first line of the voice settings file. This is where the accent is stored
+            BufferedReader reader = new BufferedReader(new FileReader(voiceSettings[1]));
+            String accent = reader.readLine();
+            TTS.getInstance().setAccent(accent);
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -245,7 +250,8 @@ public class DataLoader {
             String[] temp = s.split(",");
 
             for (int i=0; i<5; i++) {
-                _categoryFiles5[i] = _allCategoryFiles[Integer.parseInt(temp[i])];
+                assert allCategoryFiles != null;
+                categoryFiles5[i] = allCategoryFiles[Integer.parseInt(temp[i])];
             }
             in.close();
 
@@ -262,12 +268,13 @@ public class DataLoader {
      */
     private void createRandomNumFile(int max, int min, String path) {
         try {
-            int[] Variable = getFiveRandomNumbers(max, min);
+            int[] variable = getFiveRandomNumbers(max, min);
+
             // Create the file to store the category index and read it.
             new File(path).createNewFile();
             Writer wr = new FileWriter(path);
             for (int i = 0; i < 5; i++) {
-                wr.write(Variable[i] + ",");
+                wr.write(variable[i] + ",");
             }
             wr.close();
         } catch (IOException e) {
@@ -333,11 +340,11 @@ public class DataLoader {
      * @return an array of type String with the split question
      */
     private static String[] parseQuestionLine(String str) {
-        String[] splitQuestion = str.split("[\\(\\)]");
+        String[] splitQuestion = str.split("[()]");
 
-        String question = splitQuestion[0].trim();
-        String hint = splitQuestion[1].trim();
-        String answer = splitQuestion[2].trim();
+        String question = splitQuestion[0].trim(); // the question itself
+        String hint = splitQuestion[1].trim(); // the (what is), (who is) part
+        String answer = splitQuestion[2].trim(); // the answer
 
         splitQuestion[0] = question;
         splitQuestion[1] = hint;
@@ -372,20 +379,22 @@ public class DataLoader {
     }
 
     /**
-     * Load all the voice settings i.e. speed and accent
+     * Get all the questions for practice module
+     * @return the list of all practice questions
      */
-    private void loadVoice() {
-        File[] voiceSettings = _voiceSettingsFolder.listFiles();
-        Arrays.sort(voiceSettings);
-        TTS.getInstance().initMultiplier(Double.parseDouble(voiceSettings[0].getName()));
-        try {
-            // Read the first line of the voice settings file. This is where the accent is stored
-            BufferedReader reader = new BufferedReader(new FileReader(voiceSettings[1]));
-            String accent = reader.readLine();
-            TTS.getInstance().setAccent(accent);
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public List<Category> getPracticeQuestionData() {
+        return practiceQuestionData;
+    }
+
+    /**
+     * Get the game module question data
+     * @return the game module question data
+     */
+    public List<Category> getQuestionData() {
+        return questionData;
+    }
+
+    public List<User> getScores() {
+        return scores;
     }
 }

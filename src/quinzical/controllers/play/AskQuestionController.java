@@ -16,7 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.robot.Robot;
 import javafx.scene.shape.Polyline;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -29,16 +28,20 @@ import quinzical.controllers.VoiceSettingsChangeable;
 import java.io.IOException;
 import java.util.Arrays;
 
+/**
+ * Controls the asking of the question scene
+ *
+ * @author Beverley Sun, Jinkai Zhang
+ */
 public class AskQuestionController extends VoiceSettingsChangeable {
-    private final String _categoryStr;
-    private final Question _question;
+    private final String categoryStr;
+    private final Question question;
+    private Timeline timeline;
 
     @FXML private Label categoryLabel, valueLabel, winnings;
     @FXML private TextField textField;
     @FXML private Label timeLeft;
     @FXML private Polyline confirm;
-
-    private MouseEvent _e;
 
     /**
      * Takes in the question and category that is being asked
@@ -46,8 +49,8 @@ public class AskQuestionController extends VoiceSettingsChangeable {
      * @param categoryStr the name of the category
      */
     public AskQuestionController(Question question, String categoryStr) {
-        _categoryStr = categoryStr;
-        _question = question;
+        this.categoryStr = categoryStr;
+        this.question = question;
     }
 
     /**
@@ -59,11 +62,11 @@ public class AskQuestionController extends VoiceSettingsChangeable {
         super.initialize();
         initTimer(30);
 
-        categoryLabel.setText(_categoryStr);
-        valueLabel.setText("$" + _question.getValue());
+        categoryLabel.setText(categoryStr);
+        valueLabel.setText("$" + question.getValue());
         winnings.setText("$" + Database.getInstance().getWinnings());
 
-        TTS.getInstance().speak(_question.getQuestionStr());
+        TTS.getInstance().speak(question.getQuestionStr());
     }
 
     /**
@@ -73,7 +76,7 @@ public class AskQuestionController extends VoiceSettingsChangeable {
         IntegerProperty i = new SimpleIntegerProperty(timerValue);
         timeLeft.setText(Integer.toString(i.get()));
 
-        Timeline timeline = new Timeline(
+        timeline = new Timeline(
                 new KeyFrame(
                         // Update the timer every second
                         Duration.seconds(1),
@@ -81,26 +84,22 @@ public class AskQuestionController extends VoiceSettingsChangeable {
                             i.set(i.get() - 1);
                             timeLeft.setText(Integer.toString(i.get()));
 
-                            // When time is up, load the "incorrect" scene
+                            // When time is up, compare answer in the text box
                             if(i.get() == 0) {
 
                                 // Initiate the scene
                                 String userAnswer = textField.getText();
-                                if (_question.compareAnswers(userAnswer)) {
-                                    String answerTemp = Arrays.toString(_question.getAnswers());
-                                    String answer = answerTemp.substring(1, answerTemp.length() - 1); // Remove square brackets as a result of Arrays.toString()
+                                if (question.compareAnswers(userAnswer)) {
                                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/quinzical/scenes/play/Correct.fxml"));
-                                    //loader.setController(new CorrectController());
                                     loadScene(loader);
-                                }
-                                 else {
-                                    String answerTemp = Arrays.toString(_question.getAnswers());
+                                } else {
+                                    String answerTemp = Arrays.toString(question.getAnswers());
                                     String answer = answerTemp.substring(1, answerTemp.length() - 1); // Remove square brackets as a result of Arrays.toString()
+
                                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/quinzical/scenes/play/Incorrect.fxml"));
                                     loader.setController(new IncorrectController(answer));
                                     loadScene(loader);
                                 }
-
                             }
                         }
                 )
@@ -109,11 +108,16 @@ public class AskQuestionController extends VoiceSettingsChangeable {
         timeline.play();
     }
 
+    /**
+     * Loads a scene and preserves scene width and height
+     * @param loader the loader
+     */
     public void loadScene(FXMLLoader loader){
         // Get scene data
         double width = confirm.getScene().getWidth();
         double height = confirm.getScene().getHeight();
         Stage window = (Stage) confirm.getScene().getWindow();
+
         // Load the scene
         try {
             window.setScene(new Scene(loader.load(), width, height));
@@ -128,7 +132,7 @@ public class AskQuestionController extends VoiceSettingsChangeable {
      */
     @FXML
     public void replay() {
-        TTS.getInstance().speak(_question.getQuestionStr());
+        TTS.getInstance().speak(question.getQuestionStr());
     }
 
     /**
@@ -157,9 +161,10 @@ public class AskQuestionController extends VoiceSettingsChangeable {
      *  @param e the source the validation
      */
     public void validateAnswer(Event e) {
+        timeline.stop();
         String userAnswer = textField.getText();
-        if (_question.compareAnswers(userAnswer)) {
-            Database.getInstance().addWinnings(_question.getValue());
+        if (question.compareAnswers(userAnswer)) {
+            Database.getInstance().addWinnings(question.getValue());
             loadCorrectScene(e);
         } else {
             loadIncorrectScene(e);
@@ -183,7 +188,7 @@ public class AskQuestionController extends VoiceSettingsChangeable {
      */
     @FXML
     public void loadIncorrectScene(Event e) {
-        String answerTemp = Arrays.toString(_question.getAnswers());
+        String answerTemp = Arrays.toString(question.getAnswers());
         String answer = answerTemp.substring(1,answerTemp.length()-1); // Remove square brackets as a result of Arrays.toString()
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/quinzical/scenes/play/Incorrect.fxml"));

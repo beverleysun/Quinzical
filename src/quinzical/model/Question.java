@@ -1,11 +1,16 @@
 package quinzical.model;
 
+/**
+ * Represents a singular question
+ *
+ * @author Beverley Sun, Jinkai Zhang
+ */
 public class Question {
-    private final String _question;
-    private final String[] _answers;
-    private final int _value;
-    private boolean _completed;
-    private boolean _available;
+    private final String question;
+    private final String[] answers;
+    private final int value;
+    private boolean completed;
+    private boolean available;
 
     /**
      * Constructor for game mode
@@ -16,11 +21,11 @@ public class Question {
      * @param available if the question is available to ask
      */
     public Question(String question, String[] answers, int value, boolean completed, boolean available) {
-        _question = question;
-        _answers = answers;
-        _value = value;
-        _completed = completed;
-        _available = available;
+        this.question = question;
+        this.answers = answers;
+        this.value = value;
+        this.completed = completed;
+        this.available = available;
     }
 
     /**
@@ -29,9 +34,9 @@ public class Question {
      * @param answers all the accepted answers to the question
      */
     public Question(String question, String[] answers) {
-        _value = 0;
-        _question = question;
-        _answers = answers;
+        value = 0;
+        this.question = question;
+        this.answers = answers;
     }
 
     /**
@@ -40,7 +45,7 @@ public class Question {
      * @return true if answer matches up, false otherwise
      */
     public boolean compareAnswers(String usersAnswer){
-        for(String answer : _answers){
+        for(String answer : answers){
             if(usersAnswer.toLowerCase().trim().equals(answer.toLowerCase().trim())){
                 return true;
             }
@@ -53,7 +58,7 @@ public class Question {
      * @return true if question is available to answer, false otherwise
      */
     public boolean isAvailable() {
-    	return _available;
+    	return available;
     }
 
     /**
@@ -61,7 +66,7 @@ public class Question {
      * @param completed value to set availability to
      */
     public void setAvailable(boolean completed) {
-    	_available = completed;
+    	available = completed;
     }
 
     /**
@@ -69,7 +74,7 @@ public class Question {
      * @return the question string
      */
     public String getQuestionStr() {
-        return _question;
+        return question;
     }
 
     /**
@@ -77,7 +82,7 @@ public class Question {
      * @return an array of type String storing all the answers
      */
     public String[] getAnswers() {
-        return _answers;
+        return answers;
     }
 
     /**
@@ -85,7 +90,7 @@ public class Question {
      * @return the value of the question of type int
      */
     public int getValue() {
-        return _value;
+        return value;
     }
 
     /**
@@ -93,7 +98,7 @@ public class Question {
      * @return the value of the question of type String
      */
     public String getValueString() {
-        return Integer.toString(_value);
+        return Integer.toString(value);
     }
 
     /**
@@ -101,7 +106,7 @@ public class Question {
      * @return true if completed, false otherwise
      */
     public boolean isCompleted() {
-        return _completed;
+        return completed;
     }
 
     /**
@@ -109,6 +114,6 @@ public class Question {
      * @param completed true if question has been completed, false otherwise
      */
     public void setCompleted(boolean completed) {
-        _completed = completed;
+        this.completed = completed;
     }
 }

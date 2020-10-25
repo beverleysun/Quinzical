@@ -6,7 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Enables changing of scenes in the stage area. Preserves scene width and height
+ *
+ * @author Beverley Sun, Jinkai Zhang
+ */
 public class SceneChanger {
+
     /**
      * Changes the scene of the stage. Maintains the size of the stage even if the user has resized the window
      * @param e the event that triggered the change

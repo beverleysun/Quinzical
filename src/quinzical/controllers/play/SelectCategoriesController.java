@@ -13,116 +13,147 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * This controls the scene where the user is able to select the 5 categories that they want to play.
+ *
+ * @author Beverley Sun, Jinkai Zhang
+ */
 public class SelectCategoriesController extends VoiceSettingsChangeable {
 
-    private final List<Button> _buttons = new ArrayList<Button>();
-    private ArrayList<Category> _categories = new ArrayList<Category>();
-    private Category _category;
-    private int _selectedNumber = 0;
+    private final List<Button> buttons = new ArrayList<>();
+    private final ArrayList<Category> categories = new ArrayList<>();
+    private final Database database = Database.getInstance();
+    private final List<Category> allQuestionsData = database.getPracticeQuestionData();
+    private int selectedNumber = 0;
+    private Category category;
 
-
-    private final Database _database = Database.getInstance();
-    private List<Category> _practiceQuestionData = _database.getPracticeQuestionData();
-
-
-
-    @FXML
-    private FlowPane categoryFlowPane;
-    @FXML
-    private Button confirm;
+    @FXML private FlowPane categoryFlowPane;
+    @FXML private Button confirm;
 
     /**
-     * Initializes the practice scene and all of it's buttons.
+     * Initializes the category selection scene and all of it's buttons.
      */
+    @FXML
     public void initialize() {
         super.initialize();
-        double numRows = Math.ceil((double) _practiceQuestionData.size() / 4);
+
+        // Calculate button height for the button area
+        double numRows = Math.ceil((double) allQuestionsData.size() / 3);
         double buttonHeight = (180 - 10 * (numRows - 1)) / numRows;
 
         // Load in the category buttons
-        for (Category category : _practiceQuestionData) {
+        for (Category category : allQuestionsData) {
+            // Init button attributes
             Button categoryButton = new Button(category.getCategoryName());
             categoryButton.setId(category.getCategoryName());
             categoryButton.setOnMouseClicked(this::categoryClicked);
+
+            // Set styles on the buttons
             categoryButton.getStyleClass().add("purple-button");
             categoryButton.getStyleClass().add("white-text-fill");
-            categoryButton.setPrefSize(120, buttonHeight);
+            categoryButton.setPrefSize(163, buttonHeight);
+
             categoryFlowPane.getChildren().add(categoryButton);
 
-            //for initial buttons.
-            _buttons.add(categoryButton);
+            // For initial buttons.
+            buttons.add(categoryButton);
         }
         initButtons();
     }
 
-    // change the colors when the button is clicked.
+    /**
+     * Set colours for each button depending on if they are selected or not. Enable the confirm button if
+     * 5 categories are selected
+     */
     private void initButtons() {
 
         confirm.setDisable(true);
-        if(_selectedNumber == 5){
+
+        // Allow user to confirm when all 5 categories selected
+        if(selectedNumber == 5){
             confirm.setDisable(false);
+
+            // Disable all unselected categories
+            for (Button button : buttons) {
+                category = database.getCategoryByName(button.getId());
+                if (!category.getSelectStatus()) {
+                    button.setDisable(true);
+                }
+            }
+        } else {
+            // Enable all categories
+            for (Button button : buttons) {
+                button.setDisable(false);
+            }
         }
 
-        for (Button button : _buttons) {
-            _category = _database.getCategory(button.getId());
-            if (_category.getSelectStatus()) {
-                button.setStyle("-fx-background-color: orange");
+        // Set buttons to orange if they are selected
+        for (Button button : buttons) {
+            category = database.getCategoryByName(button.getId());
+            if (category.getSelectStatus()) {
+                button.setStyle("-fx-background-color: #D9932A");
             } else {
                 button.setStyle(null);
             }
         }
-
     }
 
+    /**
+     * Triggered when a category has been selected
+     * @param e the event that happened
+     */
+    @FXML
     public void categoryClicked(MouseEvent e) {
 
         Button categoryButton = (Button) e.getSource();
         String categoryStr = categoryButton.getId();
-        //Add a new field in Category class, it indicates the button is been selected or not.
-        _category = _database.getCategory(categoryStr);
 
-        if (_category.getSelectStatus()) {
-            _categories.remove(_category);
-            _category.setSelected(false);
-            _selectedNumber--;
-        } else {
-            _categories.add(_category);
-            _category.setSelected(true);
-            _selectedNumber++;
+        //Add a new field in Category class, it indicates if the button has been selected or not.
+        category = database.getCategoryByName(categoryStr);
+
+        if (category.getSelectStatus()) { // When the user deselects a category
+            categories.remove(category);
+            category.setSelected(false);
+            selectedNumber--;
+        } else { // When the user selected a category
+            categories.add(category);
+            category.setSelected(true);
+            selectedNumber++;
         }
-        initButtons();
+        initButtons(); // Re-initiate the buttons
     }
 
+    /**
+     * Triggered when the user clicks the confirm button (all categories have been selected)
+     * @param e the event that happened
+     */
+    @FXML
     public void setConfirm(MouseEvent e) {
-        //get a int[] that contains the 5 index of user selected category.
-        int[] catIndex = _database.getCategorieIndex(_categories);
-        //Create the file that store the array.
-        _database.loadCategoryIndex(catIndex);
+        // Get an int[] that contains the 5 indices of the user selected categories.
+        int[] catIndex = database.getCategoryIndices(categories);
+        // Create the file that stores the array.
+        database.loadCategoryIndex(catIndex);
 
-
+        // Go to the question board scene
         try {
             Parent play = FXMLLoader.load(getClass().getResource("/quinzical/scenes/play/Play.fxml"));
             SceneChanger.changeScene(e, play);
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
-
-
     }
 
-
     /**
-     * This method is invoked when the user click the back button in Practice scene.
+     * This method is invoked when the user click the back button.
      * It will switch to the StartPage interface.
      *
      * @param e the source of the click
      */
+    @FXML
     public void back(MouseEvent e) {
         try {
-
-            // If go back here, then reset the game. (or maybe just delete the Catgory Index file.)
-            _database.reset();
+            // If go back here, then reset the game.
+            database.reset();
             // Load start page scene
             Parent startPage = FXMLLoader.load(getClass().getResource("/quinzical/scenes/StartPage.fxml"));
             SceneChanger.changeScene(e, startPage);
@@ -130,6 +161,4 @@ public class SelectCategoriesController extends VoiceSettingsChangeable {
             ioException.printStackTrace();
         }
     }
-
-
 }

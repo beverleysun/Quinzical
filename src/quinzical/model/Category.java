@@ -3,26 +3,22 @@ package quinzical.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents a category
+ *
+ * @author Beverley Sun, Jinkai Zhang
+ */
 public class Category {
-    private final String _categoryName;
-    private final List<Question> _questions = new ArrayList<Question>();
-
-    private boolean _selected = false;
-
-    public void setSelected(boolean selected){
-        _selected = selected;
-    }
-
-    public boolean getSelectStatus(){
-        return _selected;
-    }
+    private final String categoryName;
+    private final List<Question> questions = new ArrayList<Question>();
+    private boolean selected = false;
 
     /**
      * Represents a category
      * @param categoryName the name of the category
      */
     public Category(String categoryName){
-        _categoryName = categoryName;
+        this.categoryName = categoryName;
     }
 
     /**
@@ -30,7 +26,7 @@ public class Category {
      * @param question the question to be added
      */
     public void addQuestion(Question question) {
-        _questions.add(question);
+        questions.add(question);
     }
 
     /**
@@ -38,7 +34,7 @@ public class Category {
      * @return the category name
      */
     public String getCategoryName() {
-        return _categoryName;
+        return categoryName;
     }
 
     /**
@@ -46,7 +42,7 @@ public class Category {
      * @return list of questions
      */
     public List<Question> getQuestions() {
-        return _questions;
+        return questions;
     }
 
     /**
@@ -55,12 +51,27 @@ public class Category {
      * @return the question that was found
      */
     public Question findQuestionByValue(int value) {
-        for (Question question : _questions) {
+        for (Question question : questions) {
             if (question.getValue() == value) {
                 return question;
             }
 
         }
         return null;
+    }
+
+    /**
+     * @param selected the select status to set to
+     */
+    public void setSelected(boolean selected){
+        this.selected = selected;
+    }
+
+    /**
+     * True if the category has been selected in the category selection scene
+     * @return the selection status
+     */
+    public boolean getSelectStatus(){
+        return selected;
     }
 }

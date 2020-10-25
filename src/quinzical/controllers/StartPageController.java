@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import quinzical.model.Database;
 import quinzical.model.SceneChanger;
@@ -12,24 +11,27 @@ import quinzical.model.SceneChanger;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Controls the initial start up scene
+ *
+ * @author Beverley Sun, Jinkai Zhang
+ */
 public class StartPageController {
 
-    @FXML
-    private Button play;
+    @FXML private Button play;
 
     /**
-     * Initializes the reset prompt scene
+     * Initializes the start page
      */
     @FXML
     public void initialize() {
-        if (new File("./.save/category-index/category-index").exists()) {
+        if (new File("./.save/category-index/category-index").exists()) { // If categories have been chosen
             play.setText("Continue");
         }
-        else{
+        else { // If categories have not been chosen yet
             play.setText("Play");
         }
     }
-
 
     /**
      * Loads the quit prompt when the quit button is clicked
@@ -71,7 +73,6 @@ public class StartPageController {
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
-
     }
 
     /**

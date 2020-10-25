@@ -11,9 +11,14 @@ import quinzical.controllers.VoiceSettingsChangeable;
 
 import java.io.IOException;
 
+/**
+ * Controls the scenes after the user answers (both incorrectly and correctly)
+ *
+ * @author Beverley Sun, Jinkai Zhang
+ */
 public abstract class ConfirmController extends VoiceSettingsChangeable {
-    @FXML
-    private Label winnings;
+
+    @FXML private Label winnings;
 
     /**
      *  Initializes the scene
@@ -29,6 +34,7 @@ public abstract class ConfirmController extends VoiceSettingsChangeable {
      * It will switch to the question selection interface.
      * @param e the source of the click
      */
+    @FXML
     public void toQuestionBoard(MouseEvent e){
         try {
             if (Database.getInstance().gameCompleted()) {
@@ -42,5 +48,4 @@ public abstract class ConfirmController extends VoiceSettingsChangeable {
             ioException.printStackTrace();
         }
     }
-
 }

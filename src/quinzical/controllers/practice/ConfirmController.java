@@ -9,6 +9,11 @@ import quinzical.controllers.VoiceSettingsChangeable;
 
 import java.io.IOException;
 
+/**
+ * Controls the scenes after the user answers (both incorrectly and correctly)
+ *
+ * @author Beverley Sun, Jinkai Zhang
+ */
 public abstract class ConfirmController extends VoiceSettingsChangeable {
 
     /**
