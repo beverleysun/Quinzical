@@ -25,15 +25,18 @@ import java.util.List;
 public class PlayController extends VoiceSettingsChangeable {
 
     @FXML private Label cat1Label, cat2Label, cat3Label, cat4Label, cat5Label, winnings;
+    @FXML private Label internationalLabel;
     @FXML private Button cat1value100Button, cat1value200Button, cat1value300Button, cat1value400Button, cat1value500Button,
                     cat2value100Button, cat2value200Button, cat2value300Button, cat2value400Button, cat2value500Button,
                     cat3value100Button, cat3value200Button, cat3value300Button, cat3value400Button, cat3value500Button,
                     cat4value100Button, cat4value200Button, cat4value300Button, cat4value400Button, cat4value500Button,
-                    cat5value100Button, cat5value200Button, cat5value300Button, cat5value400Button, cat5value500Button ;
+                    cat5value100Button, cat5value200Button, cat5value300Button, cat5value400Button, cat5value500Button;
+    @FXML private Button cat6value100Button, cat6value200Button, cat6value300Button, cat6value400Button, cat6value500Button;
 
     private final Database database = Database.getInstance();
     private final List<Category> questionData = database.getQuestionData();
     private final List<Button> buttons = new ArrayList<>();
+    private final List<Button> internationalButtons = new ArrayList<>();
 
     /**
      * Initialize the question board scene
@@ -43,6 +46,7 @@ public class PlayController extends VoiceSettingsChangeable {
         super.initialize();
         setLabels();
         initButtons();
+        initInternational();
         winnings.setText("$" + Database.getInstance().getWinnings());
     }
 
@@ -65,7 +69,8 @@ public class PlayController extends VoiceSettingsChangeable {
                 cat2value100Button, cat2value200Button, cat2value300Button, cat2value400Button, cat2value500Button,
                 cat3value100Button, cat3value200Button, cat3value300Button, cat3value400Button, cat3value500Button,
                 cat4value100Button, cat4value200Button, cat4value300Button, cat4value400Button, cat4value500Button,
-                cat5value100Button, cat5value200Button, cat5value300Button, cat5value400Button, cat5value500Button);
+                cat5value100Button, cat5value200Button, cat5value300Button, cat5value400Button, cat5value500Button,
+                cat6value100Button, cat6value200Button, cat6value300Button, cat6value400Button, cat6value500Button);
 
         for (Button button: buttons) {
             // Get data from button ID for which question to ask
@@ -83,6 +88,25 @@ public class PlayController extends VoiceSettingsChangeable {
     }
 
     /**
+     * Initiate the international section. Mainly, check if at least 2 categories has been completed and
+     * set the label and buttons accordingly
+     */
+    public void initInternational() {
+        Collections.addAll(internationalButtons, cat6value100Button, cat6value200Button, cat6value300Button, cat6value400Button, cat6value500Button);
+
+        if (database.getNumCategoriesCompleted() >= 2) {
+            internationalLabel.setText("International (unlocked)");
+        } else {
+            internationalLabel.setText("International (locked)");
+
+            // Disable all buttons as internation section has not been unlocked yet
+            for (Button button : internationalButtons) {
+                button.setDisable(true);
+            }
+        }
+    }
+
+    /**
      * Invoked when someone clicks a question button. Asks the question associated with the button and
      * switches to that scene
      * @param e the source of the button click
@@ -90,6 +114,8 @@ public class PlayController extends VoiceSettingsChangeable {
     public void askQuestion(MouseEvent e) {
         Button buttonSource = (Button) e.getSource();
         int[] parsed = parseButtonID(buttonSource);
+
+        ConfirmController.setPrevNumCategoriesCompleted(database.getNumCategoriesCompleted());
 
         // Get all question data
         Category category = questionData.get(parsed[0]-1);

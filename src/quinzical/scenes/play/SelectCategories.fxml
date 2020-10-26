@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="background-color" stylesheets="@../../../assets/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.controllers.play.SelectCategoriesController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="background-color" stylesheets="@../../../assets/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.controllers.play.SelectCategoriesController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="110.0" />
@@ -109,15 +109,18 @@
             </children>
 
         </HBox>
-        <Button fx:id="confirm" mnemonicParsing="false" onMouseClicked="#setConfirm" text="Confirm" GridPane.columnIndex="5" GridPane.rowIndex="2">
+        <Button fx:id="confirm" mnemonicParsing="false" onMouseClicked="#setConfirm" text="Confirm" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
             <GridPane.margin>
-                <Insets top="145.0" />
+                <Insets left="10.0" />
             </GridPane.margin>
             <styleClass>
                 <String fx:value="orange-button" />
                 <String fx:value="white-text-fill" />
-                <String fx:value="font-16" />
+                <String fx:value="font-14" />
             </styleClass>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
         </Button>
     </children>
 </GridPane>
