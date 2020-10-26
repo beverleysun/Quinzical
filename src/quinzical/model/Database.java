@@ -14,19 +14,22 @@ public class Database {
 	private final File winningsFolder = new File("./.save/winnings");
 	private final File voiceSettingsFolder = new File("./.save/voice-settings");
 
-	private List<Category> questionData;
-	private final List<Category> practiceQuestionData;
-	private final List<User> scores;
+	DataLoader loader = new DataLoader();
+
+	private final List<Category> questionData = loader.getQuestionData();
+	private final List<Category> practiceQuestionData = loader.getPracticeQuestionData();
+	private final List<User> scores = loader.getScores();
 
 	private static Database database;
-	DataLoader loader = new DataLoader();
 
 	/**
 	 * Initiate the database. Can only be instantiated within the scope of this class
 	 */
 	private Database(){
-		practiceQuestionData = loader.getPracticeQuestionData();
-		scores = loader.getScores();
+		// User has already chosen categories, so can load in the questions
+		if (new File("./.save/category-index/category-index").exists()) {
+			loadQuestionData();
+		}
 	}
 
 	/**
@@ -38,6 +41,10 @@ public class Database {
 			database = new Database();
 		}
 		return database;
+	}
+
+	public void loadQuestionData() {
+		loader.loadQuestions();
 	}
 
 	/**
@@ -53,11 +60,19 @@ public class Database {
 	}
 
 	/**
+	 * Saves user selected categories into a file
+	 * @param categories the list of categories to save
+	 */
+	public void saveCategories(ArrayList<Category> categories) {
+		loadCategoryIndex(getCategoryIndices(categories));
+	}
+
+	/**
 	 * Get positions (indices) of categories in the practice questions list given a list of categories
 	 * @param category list of categories to check for
 	 * @return the positions
 	 */
-	public int[] getCategoryIndices(ArrayList<Category> category) {
+	private int[] getCategoryIndices(ArrayList<Category> category) {
 		int[] categoryIndex = new int[5];
 		for (int i = 0; i < 5; i++) {
 			String name = category.get(i).getCategoryName();
@@ -71,10 +86,10 @@ public class Database {
 	}
 
 	/**
-	 * Create the file that stores the category indices to continue from the next game
+	 * Create the file that stores the category indices to continue from in the next game
 	 * @param index the array of indices to store
 	 */
-	public void loadCategoryIndex(int[] index) {
+	private void loadCategoryIndex(int[] index) {
 		try {
 			new File("./.save/category-index/category-index").createNewFile();
 			Writer wr = new FileWriter("./.save/category-index/category-index");
@@ -101,8 +116,6 @@ public class Database {
 	 * @return the game module question data
 	 */
 	public List<Category> getQuestionData() {
-		loader.loadQuestions();
-		questionData = loader.getQuestionData();
 		return questionData;
 	}
 

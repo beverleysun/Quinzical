@@ -49,13 +49,12 @@ public class GameCompletedController {
      * @param e the source of the click
      */
     public void save(Event e) {
-        Database.getInstance().reset();
         try {
             String name = textField.getText().toUpperCase();
             Database.getInstance().addScore(name);
             Database.getInstance().reset();
-            Parent start = FXMLLoader.load(getClass().getResource("/quinzical/scenes/Scores.fxml"));
-            SceneChanger.changeScene(e, start);
+            Parent scores = FXMLLoader.load(getClass().getResource("/quinzical/scenes/Scores.fxml"));
+            SceneChanger.changeScene(e, scores);
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }

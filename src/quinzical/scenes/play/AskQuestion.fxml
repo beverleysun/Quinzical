@@ -189,7 +189,7 @@
       </HBox>
       <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.columnSpan="3">
          <children>
-          <Button fx:id="giveUp" mnemonicParsing="false" onMouseClicked="#loadIncorrectScene" prefHeight="30.0" stylesheets="@../../../assets/style.css" text="Give Up" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+          <Button fx:id="giveUp" mnemonicParsing="false" onMouseClicked="#giveUp" prefHeight="30.0" stylesheets="@../../../assets/style.css" text="Give Up" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
               <styleClass>
                   <String fx:value="orange-button" />
                   <String fx:value="white-text-fill" />

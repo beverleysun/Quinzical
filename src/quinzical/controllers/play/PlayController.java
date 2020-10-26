@@ -155,8 +155,8 @@ public class PlayController extends VoiceSettingsChangeable {
     public void reset(MouseEvent e) {
         try {
             // Load reset prompt page scene
-            Parent startPage = FXMLLoader.load(getClass().getResource("/quinzical/scenes/play/ResetPrompt.fxml"));
-            SceneChanger.changeScene(e, startPage);
+            Parent reset = FXMLLoader.load(getClass().getResource("/quinzical/scenes/play/ResetPrompt.fxml"));
+            SceneChanger.changeScene(e, reset);
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }

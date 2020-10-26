@@ -55,10 +55,9 @@ public class StartPageController {
      */
     public void play(MouseEvent e) {
         try {
-            //Check the category index file, if it exists then continue the game.
-            //if its not exist, then let user choose the category.
+            // Check the category index file, if it exists then continue the game.
+            // otherwise let user choose the category.
             if (new File("./.save/category-index/category-index").exists()) {
-                Database.getInstance().getQuestionData();
                 if (Database.getInstance().gameCompleted()) {
                     Parent gameCompleted = FXMLLoader.load(getClass().getResource("/quinzical/scenes/play/GameCompleted.fxml"));
                     SceneChanger.changeScene(e, gameCompleted);

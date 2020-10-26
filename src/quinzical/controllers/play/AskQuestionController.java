@@ -182,6 +182,16 @@ public class AskQuestionController extends VoiceSettingsChangeable {
     }
 
     /**
+     * When the user clicks the give up button
+     * @param e the event that happened
+     */
+    @FXML
+    public void giveUp(MouseEvent e) {
+        timeline.stop();
+        loadIncorrectScene(e);
+    }
+
+    /**
      * This method is invoked when the user's input is incorrect.
      * It will switch to the incorrect scene and display the answer of the question.
      * @param e the event source

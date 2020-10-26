@@ -129,10 +129,8 @@ public class SelectCategoriesController extends VoiceSettingsChangeable {
      */
     @FXML
     public void setConfirm(MouseEvent e) {
-        // Get an int[] that contains the 5 indices of the user selected categories.
-        int[] catIndex = database.getCategoryIndices(categories);
-        // Create the file that stores the array.
-        database.loadCategoryIndex(catIndex);
+        database.saveCategories(categories); // Save selected categories into save folder
+        database.loadQuestionData(); // Categories have been selected, so can now load question data
 
         // Go to the question board scene
         try {
