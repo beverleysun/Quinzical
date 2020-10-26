@@ -45,14 +45,19 @@ public class TTS {
 
         // Speak
         try {
-            // End old speaking process so that the new one can be played
-            if (process != null) {
-                process.descendants().forEach(ProcessHandle::destroy);
-                process.destroy();
-            }
             process = pb.start();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    /**
+     * Kills the current process
+     */
+    public void killCurrentProcess() {
+        if (process != null) {
+            process.descendants().forEach(ProcessHandle::destroy);
+            process.destroy();
         }
     }
 

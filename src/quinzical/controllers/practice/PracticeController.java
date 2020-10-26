@@ -6,10 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
-import quinzical.model.Category;
-import quinzical.model.Database;
-import quinzical.model.Question;
-import quinzical.model.SceneChanger;
+import quinzical.model.*;
 import quinzical.controllers.VoiceSettingsChangeable;
 
 import java.io.IOException;
@@ -33,6 +30,7 @@ public class PracticeController extends VoiceSettingsChangeable {
     @FXML
     public void initialize() {
         super.initialize();
+        TTS.getInstance().killCurrentProcess();
 
         // Calculate button height to fill up the height of the FlowPane
         double numRows = Math.ceil((double) practiceQuestionData.size() / 4);

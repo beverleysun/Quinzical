@@ -7,10 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.io.Writer;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Class that loads in all the data from the save files
@@ -72,13 +69,35 @@ public class DataLoader {
                 writer.close();
 
                 // Create folders for each category in the save folder
-                for (String name : categoriesFolder.list()) {
+                for (String name : Objects.requireNonNull(categoriesFolder.list())) {
                     new File("./.save/answered/" + name).mkdir();
                 }
+                new File("./.save/answered/International").mkdir();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Get 5 random international question and add to the question data list
+     */
+    private void loadInternationalQuestions() {
+        InternationalQuestionGenerator generator = new InternationalQuestionGenerator();
+
+        Category cat = new Category("International");
+        for (int i = 0; i < 5; i++) {
+            String[] questionAndAnswer = generator.getInternationQAndA();
+
+            String questionStr = questionAndAnswer[0];
+            String[] answer = new String[]{questionAndAnswer[1]};
+            int value = 500 - 100*i;
+            boolean answered = isAnswered("International", value);
+            boolean available = isAvailable("International", value);
+            Question question = new Question(questionStr, answer, value, answered, available);
+            cat.addQuestion(question);
+        }
+        questionData.add(cat);
     }
 
     /**
@@ -159,6 +178,7 @@ public class DataLoader {
                 questionData.add(category);
                 lineNum.close();
             }
+            loadInternationalQuestions();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -394,6 +414,10 @@ public class DataLoader {
         return questionData;
     }
 
+    /**
+     * Get the list of past users and their scores
+     * @return the list of past users
+     */
     public List<User> getScores() {
         return scores;
     }

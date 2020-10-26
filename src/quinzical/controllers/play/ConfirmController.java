@@ -8,6 +8,7 @@ import javafx.scene.input.MouseEvent;
 import quinzical.model.Database;
 import quinzical.model.SceneChanger;
 import quinzical.controllers.VoiceSettingsChangeable;
+import quinzical.model.TTS;
 
 import java.io.IOException;
 
@@ -19,6 +20,7 @@ import java.io.IOException;
 public abstract class ConfirmController extends VoiceSettingsChangeable {
 
     @FXML private Label winnings;
+    private static int prevNumCategoriesCompleted;
 
     /**
      *  Initializes the scene
@@ -26,6 +28,7 @@ public abstract class ConfirmController extends VoiceSettingsChangeable {
     @FXML
     public void initialize() {
         super.initialize();
+        TTS.getInstance().killCurrentProcess();
         winnings.setText("$" + Database.getInstance().getWinnings());
     }
 
@@ -40,6 +43,9 @@ public abstract class ConfirmController extends VoiceSettingsChangeable {
             if (Database.getInstance().gameCompleted()) {
                 Parent gameCompleted = FXMLLoader.load(getClass().getResource("/quinzical/scenes/play/GameCompleted.fxml"));
                 SceneChanger.changeScene(e, gameCompleted);
+            } else if (Database.getInstance().getNumCategoriesCompleted() == 2 && prevNumCategoriesCompleted == 1) {
+                Parent gameCompleted = FXMLLoader.load(getClass().getResource("/quinzical/scenes/play/UnlockedInternational.fxml"));
+                SceneChanger.changeScene(e, gameCompleted);
             } else {
                 Parent play = FXMLLoader.load(getClass().getResource("/quinzical/scenes/play/Play.fxml"));
                 SceneChanger.changeScene(e, play);
@@ -47,5 +53,13 @@ public abstract class ConfirmController extends VoiceSettingsChangeable {
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
+    }
+
+    /**
+     * Sets the number of categories that were completed before this current question was answered
+     * @param i the number of completed categories
+     */
+    public static void setPrevNumCategoriesCompleted(int i) {
+        prevNumCategoriesCompleted = i;
     }
 }

@@ -136,6 +136,27 @@ public class Database {
 	}
 
 	/**
+	 * Gets the number of categories that have been completed (excluding the international section)
+	 * @return number of categories completed
+	 */
+	public int getNumCategoriesCompleted() {
+		int numCompleted = 0;
+		for (Category c : questionData) {
+			boolean catCompleted = true;
+			for (Question q : c.getQuestions()) {
+				if (!q.isCompleted()) {
+					catCompleted = false;
+					break;
+				}
+			}
+			if (catCompleted) {
+				numCompleted++;
+			}
+		}
+		return numCompleted;
+	}
+
+	/**
 	 * Record a completed question in the save folder
 	 * @param category the category it was completed in
 	 * @param value the value of the question that was completed
