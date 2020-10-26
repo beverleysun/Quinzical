@@ -6,10 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import quinzical.model.Category;
-import quinzical.model.Database;
-import quinzical.model.Question;
-import quinzical.model.SceneChanger;
+import quinzical.model.*;
 import quinzical.controllers.VoiceSettingsChangeable;
 
 import java.io.IOException;
@@ -44,6 +41,7 @@ public class PlayController extends VoiceSettingsChangeable {
     @FXML
     public void initialize() {
         super.initialize();
+        TTS.getInstance().killCurrentProcess();
         setLabels();
         initButtons();
         initInternational();

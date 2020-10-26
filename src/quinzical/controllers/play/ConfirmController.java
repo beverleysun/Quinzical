@@ -8,6 +8,7 @@ import javafx.scene.input.MouseEvent;
 import quinzical.model.Database;
 import quinzical.model.SceneChanger;
 import quinzical.controllers.VoiceSettingsChangeable;
+import quinzical.model.TTS;
 
 import java.io.IOException;
 
@@ -27,6 +28,7 @@ public abstract class ConfirmController extends VoiceSettingsChangeable {
     @FXML
     public void initialize() {
         super.initialize();
+        TTS.getInstance().killCurrentProcess();
         winnings.setText("$" + Database.getInstance().getWinnings());
     }
 
