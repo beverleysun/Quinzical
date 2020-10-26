@@ -10,11 +10,14 @@ import quinzical.model.SceneChanger;
 
 import java.io.IOException;
 
+/**
+ * Controls the scene when the user clicks the reset button
+ *
+ * @author Beverley Sun, Jinkai Zhang
+ */
 public class ResetPromptController {
 
-
-    @FXML
-    private Label finalScoreLabel;
+    @FXML private Label finalScoreLabel;
 
     /**
      * Initializes the reset prompt scene
@@ -29,19 +32,37 @@ public class ResetPromptController {
      * It will call the reset method in Database. The .save file will be deleted.
      * @param e the source of the button click
      */
+    @FXML
     public void yesReset(MouseEvent e) {
         // Reset the game
         Database.getInstance().reset();
-        goToQuestionBoard(e);
+        goToSelectionBoard(e);
     }
 
     /**
-     * This method is invoked when the user click the yes/no button in ResetPrompt scene.
-     * For no button, It will switch to the question selection interface.
-     * For yes button(yesRest), It will reset the game first and then switch to the question selection interface.
+     * This method is invoked when the user click the yes button in ResetPrompt scene.
+     * It will reset the game first and then switch to the category selection interface.
      * @param e the source of the button click
      */
-    public void goToQuestionBoard(MouseEvent e) {
+    @FXML
+    public void goToSelectionBoard(MouseEvent e) {
+        try {
+            // Load question board scene
+            Parent questionBoard = FXMLLoader.load(getClass().getResource("/quinzical/scenes/play/SelectCategories.fxml"));
+            SceneChanger.changeScene(e, questionBoard);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+    }
+
+
+    /**
+     * This method is invoked when the user click the no button in ResetPrompt scene.
+     * For no button, It will switch to the question selection interface.
+     * @param e the source of the button click
+     */
+    @FXML
+    public void goToPlayBoard(MouseEvent e) {
         try {
             // Load question board scene
             Parent questionBoard = FXMLLoader.load(getClass().getResource("/quinzical/scenes/play/Play.fxml"));

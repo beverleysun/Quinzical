@@ -4,11 +4,13 @@ import java.util.Comparator;
 
 /**
  * Represents a past user and their score
+ *
+ * @author Beverley Sun, Jinkai Zhang
  */
 public class User {
 
-    private final String _name;
-    private final int _score;
+    private final String name;
+    private final int score;
 
     /**
      * Creates a user
@@ -16,8 +18,8 @@ public class User {
      * @param score user's score
      */
     public User(String name, int score) {
-        _name = name;
-        _score = score;
+        this.name = name;
+        this.score = score;
     }
 
     /**
@@ -25,7 +27,7 @@ public class User {
      * @return name of user
      */
     public String getName() {
-        return _name;
+        return name;
     }
 
     /**
@@ -33,7 +35,7 @@ public class User {
      * @return the user's score
      */
     public int getScore() {
-        return _score;
+        return score;
     }
 
     public static class UserComparator implements Comparator<User>{
@@ -45,9 +47,9 @@ public class User {
          */
         @Override
         public int compare(User user1, User user2) {
-            if (user1._score > user2._score) {
+            if (user1.score > user2.score) {
                 return -1;
-            } else if (user1._score == user2._score) {
+            } else if (user1.score == user2.score) {
                 return 0;
             }
             return 1;

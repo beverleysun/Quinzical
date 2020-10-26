@@ -3,12 +3,17 @@ package quinzical.model;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * Class where all text-to-speech occurs
+ *
+ * @author Beverley Sun, Jinkai Zhang
+ */
 public class TTS {
 
-    private static TTS _tts;
-    private double _speedMultiplier;
-    private String _accent;
-    private Process _process;
+    private static TTS tts;
+    private double speedMultiplier;
+    private String accent;
+    private Process process;
 
     /**
      * Cannot be instantiated outside of the scope of this class
@@ -20,10 +25,10 @@ public class TTS {
      * @return an object of type TTS
      */
     public static TTS getInstance() {
-        if (_tts == null) {
-            _tts = new TTS();
+        if (tts == null) {
+            tts = new TTS();
         }
-        return _tts;
+        return tts;
     }
 
     /**
@@ -41,11 +46,11 @@ public class TTS {
         // Speak
         try {
             // End old speaking process so that the new one can be played
-            if (_process != null) {
-                _process.descendants().forEach(ProcessHandle::destroy);
-                _process.destroy();
+            if (process != null) {
+                process.descendants().forEach(ProcessHandle::destroy);
+                process.destroy();
             }
-            _process = pb.start();
+            process = pb.start();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -56,7 +61,7 @@ public class TTS {
      * @param multiplier the value for it to be set to
      */
     public void setMultiplier(double multiplier) {
-        _speedMultiplier = multiplier;
+        speedMultiplier = multiplier;
 
         // Save the speed in the save folder
         Database.getInstance().updateSpeed(multiplier);
@@ -67,7 +72,7 @@ public class TTS {
      * @param multiplier the value for it to be set to
      */
     public void initMultiplier(double multiplier){
-        _speedMultiplier = multiplier;
+        speedMultiplier = multiplier;
     }
 
     /**
@@ -75,7 +80,7 @@ public class TTS {
      * @return the voice speed multiplier of type double
      */
     public double getMultiplier() {
-        return _speedMultiplier;
+        return speedMultiplier;
     }
 
     /**
@@ -85,8 +90,8 @@ public class TTS {
     private void strToText(String input) {
         try {
             FileWriter writer = new FileWriter("./.save/voice-settings/settings.scm");
-            writer.write(_accent + "\n");
-            writer.write("(Parameter.set 'Duration_Stretch " + (1 / _speedMultiplier) + ")" + "\n");
+            writer.write(accent + "\n");
+            writer.write("(Parameter.set 'Duration_Stretch " + (1 / speedMultiplier) + ")" + "\n");
             writer.write("(SayText \"" + input + "\")");
             writer.close();
         } catch (IOException e) {
@@ -99,7 +104,7 @@ public class TTS {
      * @param accent either us or nz (kal_diphone or jdt_diphone)
      */
     public void setAccent(String accent){
-        _accent = accent;
+        this.accent = accent;
         strToText("Updated voice");
     }
 
@@ -108,7 +113,7 @@ public class TTS {
      * @return the accent name
      */
     public String getAccent() {
-        return _accent;
+        return accent;
     }
 
 }

@@ -19,24 +19,26 @@ import quinzical.controllers.VoiceSettingsChangeable;
 
 import java.io.IOException;
 
+/**
+ * Controls the scene where the user can answer the question
+ *
+ * @author Beverley Sun, Jinkai Zhang
+ */
 public class AnswerQuestionController extends VoiceSettingsChangeable {
 
-    @FXML
-    private Label questionClue;
-    @FXML
-    private Label hintLabel;
-    @FXML
-    private TextField answerInput;
+    @FXML private Label questionClue;
+    @FXML private Label hintLabel;
+    @FXML private TextField answerInput;
 
-    private final Question _question;
-    private int _attemptsLeft = 3;
+    private final Question question;
+    private int attemptsLeft = 3;
 
     /**
      * Takes in the question that needs to be asked so that the scene can display it
      * @param question the question to be displayed
      */
     public AnswerQuestionController(Question question) {
-        _question = question;
+        this.question = question;
     }
 
     /**
@@ -45,8 +47,8 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
     @FXML
     public void initialize() {
         super.initialize();
-        questionClue.setText(_question.getQuestionStr());
-        TTS.getInstance().speak(_question.getQuestionStr());
+        questionClue.setText(question.getQuestionStr());
+        TTS.getInstance().speak(question.getQuestionStr());
         hintLabel.setText("3 attempts left");
     }
 
@@ -81,24 +83,24 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
         // Display contents after 1.5 second
         PauseTransition pauseTransition = new PauseTransition(Duration.seconds(1.5));
         pauseTransition.setOnFinished( event -> {
-            if (_attemptsLeft == 1) {
-                hintLabel.setText("Last attempt. Hint: The answer starts with " + _question.getAnswers()[0].charAt(0));
+            if (attemptsLeft == 1) {
+                hintLabel.setText("Last attempt. Hint: The answer starts with " + question.getAnswers()[0].charAt(0));
             } else {
-                hintLabel.setText(_attemptsLeft + " attempts left");
+                hintLabel.setText(attemptsLeft + " attempts left");
             }
-            questionClue.setText(_question.getQuestionStr());
+            questionClue.setText(question.getQuestionStr());
         });
 
         String _userAnswer = answerInput.getText();
-        _attemptsLeft -= 1;
+        attemptsLeft -= 1;
         try {
             // Validate the answer
-            if (_question.compareAnswers(_userAnswer)) {
+            if (question.compareAnswers(_userAnswer)) {
                 Parent answer = FXMLLoader.load(getClass().getResource("/quinzical/scenes/practice/Correct.fxml"));
                 SceneChanger.changeScene(e, answer);
             }
             else {
-                if(_attemptsLeft > 0) {
+                if(attemptsLeft > 0) {
                     // If the player still has attempts left, flash "that was wrong"
                     questionClue.setText("Oops! That was wrong!");
                     TTS.getInstance().speak("Oops! That was wrong!");
@@ -107,7 +109,7 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
                 else {
                     // When all 3 attempts are used, load the incorrect scene
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/quinzical/scenes/practice/Incorrect.fxml"));
-                    loader.setController(new IncorrectController(_question));
+                    loader.setController(new IncorrectController(question));
                     Parent incorrect = loader.load();
                     SceneChanger.changeScene(e, incorrect);
                 }
@@ -134,7 +136,7 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
     @FXML
     public void giveUp(MouseEvent e) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/quinzical/scenes/practice/Incorrect.fxml"));
-        loader.setController(new IncorrectController(_question));
+        loader.setController(new IncorrectController(question));
         try {
             Parent incorrect = loader.load();
             SceneChanger.changeScene(e, incorrect);
@@ -142,11 +144,12 @@ public class AnswerQuestionController extends VoiceSettingsChangeable {
             ioException.printStackTrace();
         }
     }
+
     /** This method is invoked when the user press the replay button.
      * It will read the question again by festival.
      */
     @FXML
     public void replay() {
-        TTS.getInstance().speak(_question.getQuestionStr());
+        TTS.getInstance().speak(question.getQuestionStr());
     }
 }

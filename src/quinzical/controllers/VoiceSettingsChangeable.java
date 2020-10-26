@@ -7,19 +7,17 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleGroup;
 import quinzical.model.TTS;
 
+/**
+ * Controls scenes where the voice settings can be changed
+ *
+ * @author Beverley Sun, Jinkai Zhang
+ */
 public abstract class VoiceSettingsChangeable {
 
-    @FXML
-    private Slider voiceSlider;
-
-    @FXML
-    private Label speedDisplay;
-
-    @FXML
-    private RadioButton nzAccent;
-
-    @FXML
-    private RadioButton usAccent;
+    @FXML private Slider voiceSlider;
+    @FXML private Label speedDisplay;
+    @FXML private RadioButton nzAccent;
+    @FXML private RadioButton usAccent;
 
     /**
      * Sets the accent of the voice that is speaking (US or NZ)

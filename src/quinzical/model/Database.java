@@ -1,33 +1,35 @@
 package quinzical.model;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.io.*;
+import java.util.*;
 
+/**
+ * Represents the place where all questions and categories are stored. Contains methods that can access
+ * questions and also save data to be used later
+ *
+ * @author Beverley Sun, Jinkai Zhang
+ */
 public class Database {
-	private final File _saveFolder = new File("./.save");
-	private final File _winningsFolder = new File("./.save/winnings");
-	private final File _voiceSettingsFolder = new File("./.save/voice-settings");
+	private final File saveFolder = new File("./.save");
+	private final File winningsFolder = new File("./.save/winnings");
+	private final File voiceSettingsFolder = new File("./.save/voice-settings");
 
-	private final List<Category> _questionData;
-	private final List<Category> _practiceQuestionData;
-	private final List<User> _scores;
+	DataLoader loader = new DataLoader();
 
-	private static Database _database;
+	private final List<Category> questionData = loader.getQuestionData();
+	private final List<Category> practiceQuestionData = loader.getPracticeQuestionData();
+	private final List<User> scores = loader.getScores();
+
+	private static Database database;
 
 	/**
 	 * Initiate the database. Can only be instantiated within the scope of this class
 	 */
 	private Database(){
-		DataLoader loader = new DataLoader();
-		_questionData = loader.getQuestionData();
-		_practiceQuestionData = loader.getPracticeQuestionData();
-		_scores = loader.getScores();
+		// User has already chosen categories, so can load in the questions
+		if (new File("./.save/category-index/category-index").exists()) {
+			loadQuestionData();
+		}
 	}
 
 	/**
@@ -35,10 +37,70 @@ public class Database {
 	 * @return the singleton Database object
 	 */
 	public static Database getInstance() {
-		if (_database == null ) {
-			_database = new Database();
+		if (database == null ) {
+			database = new Database();
 		}
-		return _database;
+		return database;
+	}
+
+	public void loadQuestionData() {
+		loader.loadQuestions();
+	}
+
+	/**
+	 * Find the Category object by the category name and return it.
+	 */
+	public Category getCategoryByName(String name){
+		for(Category category : practiceQuestionData){
+			if(name.equals(category.getCategoryName())){
+				return category;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Saves user selected categories into a file
+	 * @param categories the list of categories to save
+	 */
+	public void saveCategories(ArrayList<Category> categories) {
+		loadCategoryIndex(getCategoryIndices(categories));
+	}
+
+	/**
+	 * Get positions (indices) of categories in the practice questions list given a list of categories
+	 * @param category list of categories to check for
+	 * @return the positions
+	 */
+	private int[] getCategoryIndices(ArrayList<Category> category) {
+		int[] categoryIndex = new int[5];
+		for (int i = 0; i < 5; i++) {
+			String name = category.get(i).getCategoryName();
+			for (int j = 0; j < practiceQuestionData.size(); j++) {
+				if (name.equals(practiceQuestionData.get(j).getCategoryName())) {
+					categoryIndex[i] = j;
+				}
+			}
+		}
+		return categoryIndex;
+	}
+
+	/**
+	 * Create the file that stores the category indices to continue from in the next game
+	 * @param index the array of indices to store
+	 */
+	private void loadCategoryIndex(int[] index) {
+		try {
+			new File("./.save/category-index/category-index").createNewFile();
+			Writer wr = new FileWriter("./.save/category-index/category-index");
+
+			for (int k = 0; k < 5; k++) {
+				wr.write(index[k] + ",");;
+			}
+			wr.close();
+		} catch (IOException ioException) {
+			ioException.printStackTrace();
+		}
 	}
 
 	/**
@@ -46,7 +108,7 @@ public class Database {
 	 * @return the list of all practice questions
 	 */
 	public List<Category> getPracticeQuestionData() {
-		return _practiceQuestionData;
+		return practiceQuestionData;
 	}
 
 	/**
@@ -54,7 +116,7 @@ public class Database {
 	 * @return the game module question data
 	 */
 	public List<Category> getQuestionData() {
-		return _questionData;
+		return questionData;
 	}
 
 	/**
@@ -63,7 +125,7 @@ public class Database {
 	 * @return the random question
 	 */
 	public Question findRandomPracticeQuestionByCategory(String categoryStr) {
-		for (Category category : _practiceQuestionData) {
+		for (Category category : practiceQuestionData) {
 			if (category.getCategoryName().equals(categoryStr)) {
 				Random rand = new Random();
 				List<Question> questions = category.getQuestions();
@@ -91,7 +153,7 @@ public class Database {
 	 * @return the current winnings
 	 */
 	public int getWinnings() {
-		String[] winnings = _winningsFolder.list();
+		String[] winnings = winningsFolder.list();
 		return Integer.parseInt(winnings[0]);
 	}
 
@@ -100,7 +162,7 @@ public class Database {
 	 * @param value the value to increment the current winnings by
 	 */
 	public void addWinnings(int value){
-		String[] winningsStr = _winningsFolder.list();
+		String[] winningsStr = winningsFolder.list();
 		int winningsInt = Integer.parseInt(winningsStr[0]);
 		int newWinnings = winningsInt + value;
 		new File("./.save/winnings/"+ winningsInt).renameTo(new File("./.save/winnings/"+ newWinnings));
@@ -112,7 +174,7 @@ public class Database {
 	 */
 	public boolean gameCompleted() {
 		// Loop through all questions
-		for (Category category : _questionData) {
+		for (Category category : questionData) {
 			for (Question question : category.getQuestions()) {
 				if (!question.isCompleted()) {
 					return false;
@@ -127,8 +189,10 @@ public class Database {
 	 * @param speed the speed to save it to
 	 */
 	public void updateSpeed(double speed) {
-		File[] voiceSettings = _voiceSettingsFolder.listFiles();
-		Arrays.sort(voiceSettings);
+		File[] voiceSettings = voiceSettingsFolder.listFiles();
+
+		assert voiceSettings != null;
+		Arrays.sort(voiceSettings); // Sort so that we know the speed file is in the 0th index
 		voiceSettings[0].renameTo(new File("./.save/voice-settings/" + speed));
 	}
 
@@ -152,8 +216,8 @@ public class Database {
 	 * Reset the game. Just deletes the save folder
 	 */
 	public void reset() {
-		deleteDirectory(_saveFolder);
-		_database = new Database();
+		deleteDirectory(saveFolder);
+		database = new Database();
 	}
 
 	/**
@@ -161,7 +225,7 @@ public class Database {
 	 * @param name the name for the winnings to be saved under
 	 */
 	public void addScore(String name) {
-		_scores.add(new User(name, getWinnings()));
+		scores.add(new User(name, getWinnings()));
 
 		try {
 			File file = new File("./.scores");
@@ -176,8 +240,12 @@ public class Database {
 		}
 	}
 
+	/**
+	 * Get the list of past users sorted by their scores
+	 * @return the sorted list of past users
+	 */
 	public List<User> getSortedScores() {
-		Collections.sort(_scores, new User.UserComparator());
-		return _scores;
+		scores.sort(new User.UserComparator());
+		return scores;
 	}
 }

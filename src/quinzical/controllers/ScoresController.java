@@ -17,6 +17,11 @@ import quinzical.model.User;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Controls the scene where all past user scores are displayed
+ *
+ * @author Beverley Sun, Jinkai Zhang
+ */
 public class ScoresController {
 
     @FXML VBox scoresVBox;
@@ -24,6 +29,7 @@ public class ScoresController {
     /**
      * Adds the top 10 scores into the list
      */
+    @FXML
     public void initialize(){
         List<User> sortedScores = Database.getInstance().getSortedScores();
 
@@ -74,6 +80,7 @@ public class ScoresController {
      * It will switch to the StartPage interface.
      *  @param e the source of the click
      */
+    @FXML
     public void back(MouseEvent e) {
         try {
             // Load start page scene

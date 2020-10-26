@@ -1,4 +1,4 @@
-package quinzical.model;
+package quinzical;
 
 public class Launcher {
     public static void main(String[] args) {

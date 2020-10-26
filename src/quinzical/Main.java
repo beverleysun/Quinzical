@@ -1,4 +1,4 @@
-package quinzical.model;
+package quinzical;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

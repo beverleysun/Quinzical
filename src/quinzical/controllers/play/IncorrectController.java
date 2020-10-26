@@ -5,12 +5,15 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import quinzical.model.TTS;
 
+/**
+ * Controls the scene when the user gets the answer correct
+ *
+ * @author Beverley Sun, Jinkai Zhang
+ */
 public class IncorrectController extends ConfirmController {
 
-    @FXML
-    private Label answerLabel;
-
-    private String _answer;
+    @FXML private Label answerLabel;
+    private final String answer;
 
     /**
      * Takes in the question answer so it can speak it
@@ -18,7 +21,7 @@ public class IncorrectController extends ConfirmController {
      */
     public IncorrectController(String answer) {
         super();
-        _answer =  answer;
+        this.answer =  answer;
     }
 
     /**
@@ -27,8 +30,8 @@ public class IncorrectController extends ConfirmController {
     @FXML
     public void initialize() {
         super.initialize();
-        answerLabel.setText("The correct answer was " + _answer);
-        TTS.getInstance().speak("Oops. The correct answer was " + _answer);
+        answerLabel.setText("The correct answer was " + answer);
+        TTS.getInstance().speak("Oops. The correct answer was " + answer);
     }
 
     /**
