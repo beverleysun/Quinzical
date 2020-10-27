@@ -1,7 +1,7 @@
 package quinzical.model;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.io.IOException;
@@ -19,8 +19,7 @@ import java.util.Map;
  */
 public class InternationalQuestionGenerator {
 
-    private final Map<String, String> charCodes = new HashMap<>()
-    {{
+    private final Map<String, String> charCodes = new HashMap<>() {{
         put("&quot;", "\"");
         put("&#039;", "'");
         put("&amp;", "&");
@@ -36,43 +35,37 @@ public class InternationalQuestionGenerator {
     }};
 
     /**
-     * Calls the api and gets an international trivia question
-     * @return an international trivia question and its answer
+     * Calls the api and gets 5 international trivia questions
+     *
+     * @return a set of 5 international trivia questions and their answers
      */
-    public String[] getInternationQAndA() {
-        String[] questionAndAnswer = new String[2];
+    public Map<String, String> getFiveInternationQAndAs() {
+        Map<String, String> map = new HashMap<>();
+        try {
+            // Connect to the API
+            URL url = new URL("https://opentdb.com/api.php?amount=5&category=9&type=multiple");
+            URLConnection connection = url.openConnection();
+            connection.connect();
 
-        Runnable background = new Runnable() {
-            @Override
-            public void run() {
-                try {
+            // Get question data from JSON
+            JsonElement element = JsonParser.parseReader(new InputStreamReader((InputStream) connection.getContent())); // Convert the input stream to a json element
+            JsonArray json = element.getAsJsonObject().get("results").getAsJsonArray();
 
-                    // Connect to the API
-                    URL url = new URL("https://opentdb.com/api.php?amount=1&category=9&type=multiple");
-                    URLConnection connection = url.openConnection();
-                    connection.connect();
-
-                    // Get question data from JSON
-                    JsonElement element = JsonParser.parseReader(new InputStreamReader((InputStream) connection.getContent())); // Convert the input stream to a json element
-                    JsonObject json = element.getAsJsonObject();
-                    String rawQuestion = json.get("results").getAsJsonArray().get(0).getAsJsonObject().get("question").getAsString();
-                    String rawAnswer = json.get("results").getAsJsonArray().get(0).getAsJsonObject().get("correct_answer").getAsString();
-
-                    // Clean up data (replace &amp, &quot, etc. stuff with their actual characters)
-                    questionAndAnswer[0] = cleanCharCodes(rawQuestion);
-                    questionAndAnswer[1] = cleanCharCodes(rawAnswer);
-
-                } catch (IOException e) {
-                    System.out.println("Error getting international question");
-                }
+            for (JsonElement questionElement : json ) {
+                // Clean up data (replace &amp, &quot, etc. stuff with their actual characters)
+                String question = cleanCharCodes(questionElement.getAsJsonObject().get("question").getAsString());
+                String answer = cleanCharCodes(questionElement.getAsJsonObject().get("correct_answer").getAsString());
+                map.put(question, answer);
             }
-        };
-        new Thread(background).start();
-        return questionAndAnswer;
+        } catch (IOException e) {
+            System.out.println("Error getting international question");
+        }
+        return map;
     }
 
     /**
      * Cleans up the string. Replaces &amp, &quot, etc. stuff with their actual characters
+     *
      * @param str the string to clean
      * @return the cleaned string
      */

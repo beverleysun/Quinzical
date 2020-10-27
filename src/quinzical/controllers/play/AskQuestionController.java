@@ -167,6 +167,7 @@ public class AskQuestionController extends VoiceSettingsChangeable {
             Database.getInstance().addWinnings(question.getValue());
             loadCorrectScene(e);
         } else {
+            Database.getInstance().addWinnings(question.getValue()*-1);
             loadIncorrectScene(e);
         }
     }

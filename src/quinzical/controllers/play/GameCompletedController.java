@@ -29,7 +29,11 @@ public class GameCompletedController {
     @FXML
     public void initialize() {
         int winnings = Database.getInstance().getWinnings();
-        finalWinningsLabel.setText("You won $" + winnings + "!");
+        if (Database.getInstance().getWinnings() < 0) {
+            finalWinningsLabel.setText("You lost $" + winnings + " :(");
+        } else {
+            finalWinningsLabel.setText("You won $" + winnings + "!");
+        }
     }
 
     /**

@@ -30,7 +30,7 @@
       </styleClass>
    </Label>
    <HBox alignment="TOP_CENTER" spacing="20.0">
-      <TextField fx:id="textField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="400.0" stylesheets="@../../../assets/style.css">
+      <TextField fx:id="textField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#checkKeyPress" prefWidth="400.0" stylesheets="@../../../assets/style.css">
          <styleClass>
             <String fx:value="white-background" />
             <String fx:value="font-14" />

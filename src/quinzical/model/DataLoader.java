@@ -86,16 +86,22 @@ public class DataLoader {
         InternationalQuestionGenerator generator = new InternationalQuestionGenerator();
 
         Category cat = new Category("International");
-        for (int i = 0; i < 5; i++) {
-            String[] questionAndAnswer = generator.getInternationQAndA();
+        Map<String, String> questionAndAnswers = generator.getFiveInternationQAndAs();
+        int questionValue = 500;
 
-            String questionStr = questionAndAnswer[0];
-            String[] answer = new String[]{questionAndAnswer[1]};
-            int value = 500 - 100*i;
-            boolean answered = isAnswered("International", value);
-            boolean available = isAvailable("International", value);
-            Question question = new Question(questionStr, answer, value, answered, available);
+        // Iterate through all 5 questions and answers
+        for (Map.Entry<String, String> entry : questionAndAnswers.entrySet()) {
+            // Get question and answer
+            String questionStr = entry.getKey();
+            String[] answer = new String[]{entry.getValue()};
+
+            boolean answered = isAnswered("International", questionValue);
+            boolean available = isAvailable("International", questionValue);
+
+            Question question = new Question(questionStr, answer, questionValue, answered, available);
             cat.addQuestion(question);
+
+            questionValue = questionValue - 100; // decrease question value for the next question
         }
         questionData.add(cat);
     }
