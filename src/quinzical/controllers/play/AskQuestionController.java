@@ -37,11 +37,13 @@ public class AskQuestionController extends VoiceSettingsChangeable {
     private final String categoryStr;
     private final Question question;
     private Timeline timeline;
+    private static boolean displayQuestion = false;
 
     @FXML private Label categoryLabel, valueLabel, winnings;
     @FXML private TextField textField;
     @FXML private Label timeLeft;
     @FXML private Polyline confirm;
+    @FXML private Button displayQuestionButton;
 
     /**
      * Takes in the question and category that is being asked
@@ -63,8 +65,8 @@ public class AskQuestionController extends VoiceSettingsChangeable {
         initTimer(30);
 
         categoryLabel.setText(categoryStr);
-        valueLabel.setText("$" + question.getValue());
         winnings.setText("$" + Database.getInstance().getWinnings());
+        setValueLabelAndDisplayQuestionButton();
 
         TTS.getInstance().speak(question.getQuestionStr());
     }
@@ -133,6 +135,29 @@ public class AskQuestionController extends VoiceSettingsChangeable {
     @FXML
     public void replay() {
         TTS.getInstance().speak(question.getQuestionStr());
+    }
+
+    /**
+     * Toggles between displaying the question and displaying the value
+     * @param e the event that happened (the button click)
+     */
+    @FXML
+    public void toggleQuestionLabel(MouseEvent e) {
+        displayQuestion = !displayQuestion;
+        setValueLabelAndDisplayQuestionButton();
+    }
+
+    /**
+     * Sets the label to the value or the question depending on what the user wants.
+     */
+    private void setValueLabelAndDisplayQuestionButton() {
+        if (displayQuestion) {
+            valueLabel.setText(question.getQuestionStr());
+            displayQuestionButton.setText("Display Value");
+        } else {
+            valueLabel.setText("$" + question.getValue());
+            displayQuestionButton.setText("Display Question");
+        }
     }
 
     /**
