@@ -14,7 +14,7 @@ If you've always wanted to learn more about New Zealand, here's your chance. The
 
 You will be presented with a start up screen where you can either choose to play the real game, or practice some of the questions from each category. 
 
-In the 'Play' section, you will be presented with 5 randomly chosen categories with question values underneath them. You will only be able to play the lowest value that hasn't been answered in each category, but you won't know what the question is! Select one of them and you'll be in to win that much money!
+In the 'Play' section, you will be presented with 5 randomly chosen categories with question values underneath them. You will only be able to play the lowest value that hasn't been answered in each category, but you won't know what the question is! Select one of them and you'll be in to win that much money. Be careful, enter a wrong answer and you'll lose that much money. Once you've completed 2 categories, the international category will be unlocked for you to play.
 
 In the 'Practice' section, you will be presented with all the possible categories. Simply click one and a randomly chosen question from that category will be asked. You will be given 3 attempts the answer the question - on your third attempt, the first letter of the answer is given. Don't worry about getting it wrong! The questions aren't worth anything, they're simply there for you to practice.
 
@@ -32,11 +32,11 @@ You can also add your own questions!
 </div>
 
 ## Requirements
-- You must have a [Java Runtime Environment (JRE)](https://www.oracle.com/java/technologies/javase-jre8-downloads.html) installed on your system
-- If you encounter a JNI error, try installing the [Java11 JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) for your system
+- [Java Runtime Environment (JRE)](https://www.oracle.com/java/technologies/javase-jre8-downloads.html)
+- [Java11+ JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
 
 ## Download
-##### Note: It is very important that you have at least 5 categories with at least 5 questions in each
+#### Note: It is very important that you have at least 5 categories with at least 5 questions in each
 
 ### Linux
 1. [Download](https://github.com/SOFTENG206-2020/assignment-3-and-project-team-34/raw/master/Quinzical.jar) the Quinzical.jar file
