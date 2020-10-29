@@ -33,7 +33,7 @@ public class PracticeController extends VoiceSettingsChangeable {
         TTS.getInstance().killCurrentProcess();
 
         // Calculate button height to fill up the height of the FlowPane
-        double numRows = Math.ceil((double) practiceQuestionData.size() / 4);
+        double numRows = Math.ceil((double) practiceQuestionData.size() / 3);
         double buttonHeight = (180 - 10 * (numRows - 1)) / numRows;
 
         // Load in the category buttons
@@ -43,7 +43,7 @@ public class PracticeController extends VoiceSettingsChangeable {
             categoryButton.setOnMouseClicked(this::categoryClicked);
             categoryButton.getStyleClass().add("purple-button");
             categoryButton.getStyleClass().add("white-text-fill");
-            categoryButton.setPrefSize(120, buttonHeight);
+            categoryButton.setPrefSize(163, buttonHeight);
             categoryFlowPane.getChildren().add(categoryButton);
         }
     }
