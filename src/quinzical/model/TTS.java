@@ -121,4 +121,8 @@ public class TTS {
         return accent;
     }
 
+    public Process getProcess() {
+        return process;
+    }
+
 }

@@ -3,6 +3,7 @@ package quinzical.controllers.play;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.Event;
@@ -62,21 +63,39 @@ public class AskQuestionController extends VoiceSettingsChangeable {
     @FXML
     public void initialize() {
         super.initialize();
-        initTimer(30);
 
         categoryLabel.setText(categoryStr);
         winnings.setText("$" + Database.getInstance().getWinnings());
+        timeLeft.setText("15");
         setValueLabelAndDisplayQuestionButton();
-
-        TTS.getInstance().speak(question.getQuestionStr());
+        waitForTTS();
     }
 
     /**
-     * Initialize the timer to 30 seconds to answer the question
+     * Creates a new thread for TTS so that we can wait for the process to finish.
+     * Then, start the timer.
+     */
+    public void waitForTTS() {
+        Runnable tts = () -> {
+            // Speak
+            TTS.getInstance().speak(question.getQuestionStr());
+            try {
+                // Wait for speaking to finish, then start timer
+                TTS.getInstance().getProcess().waitFor();
+                Platform.runLater(() -> initTimer(15));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        };
+        new Thread(tts).start();
+    }
+
+    /**
+     * Initialize the timer to answer the question
      */
     public void initTimer(int timerValue) {
         IntegerProperty i = new SimpleIntegerProperty(timerValue);
-        timeLeft.setText(Integer.toString(i.get()));
+        timeLeft.textProperty().bind(i.asString());
 
         timeline = new Timeline(
                 new KeyFrame(
@@ -84,7 +103,6 @@ public class AskQuestionController extends VoiceSettingsChangeable {
                         Duration.seconds(1),
                         event -> {
                             i.set(i.get() - 1);
-                            timeLeft.setText(Integer.toString(i.get()));
 
                             // When time is up, compare answer in the text box
                             if(i.get() == 0) {
