@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="background-color" stylesheets="@../../../assets/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.controllers.play.PlayController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="background-color" stylesheets="@../../assets/style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.controllers.play.PlayController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="110.0" />
@@ -26,13 +26,13 @@
       <RowConstraints maxHeight="302.0" minHeight="10.0" prefHeight="81.0" vgrow="SOMETIMES" />
       <RowConstraints />
    </rowConstraints>
-   <Label alignment="CENTER" stylesheets="@../../../assets/style.css" text="Choose A Question" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="6" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+   <Label alignment="CENTER" stylesheets="@../../assets/style.css" text="Choose A Question" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="6" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
       <styleClass>
          <String fx:value="white-text-fill" />
          <String fx:value="font-26" />
       </styleClass>
    </Label>
-   <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="95.0" spacing="10.0" style="-fx-background-radius: 5px;" stylesheets="@../../../assets/style.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+   <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="95.0" spacing="10.0" style="-fx-background-radius: 5px;" stylesheets="@../../assets/style.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
       <padding>
          <Insets bottom="14.0" left="10.0" right="10.0" top="10.0" />
       </padding>
@@ -40,41 +40,41 @@
          <String fx:value="white-background" />
          <String fx:value="background-radius-5" />
       </styleClass>
-      <Label fx:id="cat1Label" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="80.0" stylesheets="@../../../assets/style.css" text="Famous People" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="cat1Label" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="80.0" stylesheets="@../../assets/style.css" text="Famous People" textAlignment="CENTER" wrapText="true">
          <styleClass>
             <String fx:value="purple-text-fill" />
             <String fx:value="font-12" />
          </styleClass>
       </Label>
-      <Button id="1-500" fx:id="cat1value500Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$500">
+      <Button id="1-500" fx:id="cat1value500Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$500">
          <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="purple-button" />
             <String fx:value="font-12" />
          </styleClass>
       </Button>
-      <Button id="1-400" fx:id="cat1value400Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$400">
+      <Button id="1-400" fx:id="cat1value400Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$400">
          <styleClass>
             <String fx:value="purple-button" />
             <String fx:value="white-text-fill" />
             <String fx:value="font-12" />
          </styleClass>
       </Button>
-      <Button id="1-300" fx:id="cat1value300Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$300">
+      <Button id="1-300" fx:id="cat1value300Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$300">
          <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="purple-button" />
             <String fx:value="font-12" />
          </styleClass>
       </Button>
-      <Button id="1-200" fx:id="cat1value200Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$200">
+      <Button id="1-200" fx:id="cat1value200Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$200">
          <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="purple-button" />
             <String fx:value="font-12" />
          </styleClass>
       </Button>
-      <Button id="1-100" fx:id="cat1value100Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$100">
+      <Button id="1-100" fx:id="cat1value100Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$100">
          <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="purple-button" />
@@ -82,7 +82,7 @@
          </styleClass>
       </Button>
    </VBox>
-   <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="95.0" spacing="10.0" style="-fx-background-radius: 5px;" stylesheets="@../../../assets/style.css" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+   <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="95.0" spacing="10.0" style="-fx-background-radius: 5px;" stylesheets="@../../assets/style.css" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
       <padding>
          <Insets bottom="14.0" left="10.0" right="10.0" top="10.0" />
       </padding>
@@ -90,40 +90,40 @@
          <String fx:value="white-background" />
          <String fx:value="background-radius-5" />
       </styleClass>
-      <Label fx:id="cat2Label" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="80.0" stylesheets="@../../../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="cat2Label" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="80.0" stylesheets="@../../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
          <styleClass>
             <String fx:value="purple-text-fill" />
             <String fx:value="font-12" />
          </styleClass></Label>
-      <Button id="2-500" fx:id="cat2value500Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$500">
+      <Button id="2-500" fx:id="cat2value500Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$500">
          <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="purple-button" />
             <String fx:value="font-12" />
          </styleClass>
       </Button>
-      <Button id="2-400" fx:id="cat2value400Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$400">
+      <Button id="2-400" fx:id="cat2value400Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$400">
          <styleClass>
             <String fx:value="purple-button" />
             <String fx:value="white-text-fill" />
             <String fx:value="font-12" />
          </styleClass>
       </Button>
-      <Button id="2-300" fx:id="cat2value300Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$300">
+      <Button id="2-300" fx:id="cat2value300Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$300">
          <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="purple-button" />
             <String fx:value="font-12" />
          </styleClass>
       </Button>
-      <Button id="2-200" fx:id="cat2value200Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$200">
+      <Button id="2-200" fx:id="cat2value200Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$200">
          <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="purple-button" />
             <String fx:value="font-12" />
          </styleClass>
       </Button>
-      <Button id="2-100" fx:id="cat2value100Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$100">
+      <Button id="2-100" fx:id="cat2value100Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$100">
          <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="purple-button" />
@@ -131,7 +131,7 @@
          </styleClass>
       </Button>
    </VBox>
-   <VBox alignment="TOP_CENTER" layoutX="43.0" layoutY="119.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="95.0" spacing="10.0" style="-fx-background-radius: 5px;" stylesheets="@../../../assets/style.css" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+   <VBox alignment="TOP_CENTER" layoutX="43.0" layoutY="119.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="95.0" spacing="10.0" style="-fx-background-radius: 5px;" stylesheets="@../../assets/style.css" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
       <padding>
          <Insets bottom="14.0" left="10.0" right="10.0" top="10.0" />
       </padding>
@@ -139,40 +139,40 @@
          <String fx:value="white-background" />
          <String fx:value="background-radius-5" />
       </styleClass>
-      <Label fx:id="cat3Label" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="80.0" stylesheets="@../../../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="cat3Label" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="80.0" stylesheets="@../../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
          <styleClass>
             <String fx:value="purple-text-fill" />
             <String fx:value="font-12" />
          </styleClass></Label>
-      <Button id="3-500" fx:id="cat3value500Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$500">
+      <Button id="3-500" fx:id="cat3value500Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$500">
          <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="purple-button" />
             <String fx:value="font-12" />
          </styleClass>
       </Button>
-      <Button id="3-400" fx:id="cat3value400Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$400">
+      <Button id="3-400" fx:id="cat3value400Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$400">
          <styleClass>
             <String fx:value="purple-button" />
             <String fx:value="white-text-fill" />
             <String fx:value="font-12" />
          </styleClass>
       </Button>
-      <Button id="3-300" fx:id="cat3value300Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$300">
+      <Button id="3-300" fx:id="cat3value300Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$300">
          <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="purple-button" />
             <String fx:value="font-12" />
          </styleClass>
       </Button>
-      <Button id="3-200" fx:id="cat3value200Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$200">
+      <Button id="3-200" fx:id="cat3value200Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$200">
          <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="purple-button" />
             <String fx:value="font-12" />
          </styleClass>
       </Button>
-      <Button id="3-100" fx:id="cat3value100Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$100">
+      <Button id="3-100" fx:id="cat3value100Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$100">
          <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="purple-button" />
@@ -180,7 +180,7 @@
          </styleClass>
       </Button>
    </VBox>
-   <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="95.0" spacing="10.0" style="-fx-background-radius: 5px;" stylesheets="@../../../assets/style.css" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+   <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="95.0" spacing="10.0" style="-fx-background-radius: 5px;" stylesheets="@../../assets/style.css" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
       <padding>
          <Insets bottom="14.0" left="10.0" right="10.0" top="10.0" />
       </padding>
@@ -188,40 +188,40 @@
          <String fx:value="white-background" />
          <String fx:value="background-radius-5" />
       </styleClass>
-      <Label fx:id="cat4Label" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="80.0" stylesheets="@../../../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="cat4Label" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="80.0" stylesheets="@../../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
          <styleClass>
             <String fx:value="purple-text-fill" />
             <String fx:value="font-12" />
          </styleClass></Label>
-      <Button id="4-500" fx:id="cat4value500Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$500">
+      <Button id="4-500" fx:id="cat4value500Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$500">
          <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="purple-button" />
             <String fx:value="font-12" />
          </styleClass>
       </Button>
-      <Button id="4-400" fx:id="cat4value400Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$400">
+      <Button id="4-400" fx:id="cat4value400Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$400">
          <styleClass>
             <String fx:value="purple-button" />
             <String fx:value="white-text-fill" />
             <String fx:value="font-12" />
          </styleClass>
       </Button>
-      <Button id="4-300" fx:id="cat4value300Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$300">
+      <Button id="4-300" fx:id="cat4value300Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$300">
          <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="purple-button" />
             <String fx:value="font-12" />
          </styleClass>
       </Button>
-      <Button id="4-200" fx:id="cat4value200Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$200">
+      <Button id="4-200" fx:id="cat4value200Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$200">
          <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="purple-button" />
             <String fx:value="font-12" />
          </styleClass>
       </Button>
-      <Button id="4-100" fx:id="cat4value100Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$100">
+      <Button id="4-100" fx:id="cat4value100Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$100">
          <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="purple-button" />
@@ -229,7 +229,7 @@
          </styleClass>
       </Button>
    </VBox>
-   <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="95.0" spacing="10.0" style="-fx-background-radius: 5px;" stylesheets="@../../../assets/style.css" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+   <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="95.0" spacing="10.0" style="-fx-background-radius: 5px;" stylesheets="@../../assets/style.css" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
       <padding>
          <Insets bottom="14.0" left="10.0" right="10.0" top="10.0" />
       </padding>
@@ -237,40 +237,40 @@
          <String fx:value="white-background" />
          <String fx:value="background-radius-5" />
       </styleClass>
-      <Label fx:id="cat5Label" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="80.0" stylesheets="@../../../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="cat5Label" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="80.0" stylesheets="@../../assets/style.css" text="Title" textAlignment="CENTER" wrapText="true">
          <styleClass>
             <String fx:value="purple-text-fill" />
             <String fx:value="font-12" />
          </styleClass></Label>
-      <Button id="5-500" fx:id="cat5value500Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$500">
+      <Button id="5-500" fx:id="cat5value500Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$500">
          <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="purple-button" />
             <String fx:value="font-12" />
          </styleClass>
       </Button>
-      <Button id="5-400" fx:id="cat5value400Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$400">
+      <Button id="5-400" fx:id="cat5value400Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$400">
          <styleClass>
             <String fx:value="purple-button" />
             <String fx:value="white-text-fill" />
             <String fx:value="font-12" />
          </styleClass>
       </Button>
-      <Button id="5-300" fx:id="cat5value300Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$300">
+      <Button id="5-300" fx:id="cat5value300Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$300">
          <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="purple-button" />
             <String fx:value="font-12" />
          </styleClass>
       </Button>
-      <Button id="5-200" fx:id="cat5value200Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$200">
+      <Button id="5-200" fx:id="cat5value200Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$200">
          <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="purple-button" />
             <String fx:value="font-12" />
          </styleClass>
       </Button>
-      <Button id="5-100" fx:id="cat5value100Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$100">
+      <Button id="5-100" fx:id="cat5value100Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$100">
          <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="purple-button" />
@@ -278,7 +278,7 @@
          </styleClass>
       </Button>
    </VBox>
-   <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="95.0" spacing="10.0" style="-fx-background-radius: 5px;" stylesheets="@../../../assets/style.css" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+   <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="95.0" spacing="10.0" style="-fx-background-radius: 5px;" stylesheets="@../../assets/style.css" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
       <padding>
          <Insets bottom="14.0" left="10.0" right="10.0" top="10.0" />
       </padding>
@@ -286,40 +286,40 @@
          <String fx:value="white-background" />
          <String fx:value="background-radius-5" />
       </styleClass>
-      <Label fx:id="internationalLabel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="80.0" stylesheets="@../../../assets/style.css" text="International (locked)" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="internationalLabel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="80.0" stylesheets="@../../assets/style.css" text="International (locked)" textAlignment="CENTER" wrapText="true">
          <styleClass>
             <String fx:value="purple-text-fill" />
             <String fx:value="font-12" />
          </styleClass></Label>
-      <Button id="6-500" fx:id="cat6value500Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$500">
+      <Button id="6-500" fx:id="cat6value500Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$500">
          <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="purple-button" />
             <String fx:value="font-12" />
          </styleClass>
       </Button>
-      <Button id="6-400" fx:id="cat6value400Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$400">
+      <Button id="6-400" fx:id="cat6value400Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$400">
          <styleClass>
             <String fx:value="purple-button" />
             <String fx:value="white-text-fill" />
             <String fx:value="font-12" />
          </styleClass>
       </Button>
-      <Button id="6-300" fx:id="cat6value300Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$300">
+      <Button id="6-300" fx:id="cat6value300Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$300">
          <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="purple-button" />
             <String fx:value="font-12" />
          </styleClass>
       </Button>
-      <Button id="6-200" fx:id="cat6value200Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$200">
+      <Button id="6-200" fx:id="cat6value200Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$200">
          <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="purple-button" />
             <String fx:value="font-12" />
          </styleClass>
       </Button>
-      <Button id="6-100" fx:id="cat6value100Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../../assets/style.css" text="\$100">
+      <Button id="6-100" fx:id="cat6value100Button" mnemonicParsing="false" onMouseClicked="#askQuestion" prefHeight="25.0" prefWidth="90.0" stylesheets="@../../assets/style.css" text="\$100">
          <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="purple-button" />
@@ -327,11 +327,11 @@
          </styleClass>
       </Button>
    </VBox>
-   <Slider fx:id="voiceSlider" blockIncrement="0.25" majorTickUnit="0.25" max="3.0" maxHeight="-Infinity" maxWidth="-Infinity" min="0.5" minHeight="-Infinity" minWidth="-Infinity" minorTickCount="0" onMouseEntered="#displaySpeed" onMouseExited="#removeSpeed" onMouseReleased="#sliderChanged" prefWidth="95.0" snapToTicks="true" styleClass="voice-speed-slider" stylesheets="@../../../assets/style.css" value="1.25" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+   <Slider fx:id="voiceSlider" blockIncrement="0.25" majorTickUnit="0.25" max="3.0" maxHeight="-Infinity" maxWidth="-Infinity" min="0.5" minHeight="-Infinity" minWidth="-Infinity" minorTickCount="0" onMouseEntered="#displaySpeed" onMouseExited="#removeSpeed" onMouseReleased="#sliderChanged" prefWidth="95.0" snapToTicks="true" styleClass="voice-speed-slider" stylesheets="@../../assets/style.css" value="1.25" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
       <GridPane.margin>
          <Insets right="110.0" />
       </GridPane.margin></Slider>
-   <Label stylesheets="@../../../assets/style.css" text="Voice Speed" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+   <Label stylesheets="@../../assets/style.css" text="Voice Speed" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
       <styleClass>
          <String fx:value="white-text-fill" />
          <String fx:value="font-14" />
@@ -359,7 +359,7 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </Polyline>
-   <Label fx:id="speedDisplay" layoutX="391.0" layoutY="366.0" stylesheets="@../../../assets/style.css" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
+   <Label fx:id="speedDisplay" layoutX="391.0" layoutY="366.0" stylesheets="@../../assets/style.css" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
       <GridPane.margin>
          <Insets top="-9.0" />
       </GridPane.margin>
@@ -369,7 +369,7 @@
       </styleClass>
    </Label>
    <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="3">
-      <Label stylesheets="@../../../assets/style.css" text="Accent" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+      <Label stylesheets="@../../assets/style.css" text="Accent" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
          <styleClass>
             <String fx:value="white-text-fill" />
             <String fx:value="font-14" />
@@ -378,7 +378,7 @@
             <Insets right="10.0" />
          </GridPane.margin>
       </Label>
-      <RadioButton fx:id="usAccent" mnemonicParsing="false" onMouseClicked="#setAccent" stylesheets="@../../../assets/style.css" text="US" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="4">
+      <RadioButton fx:id="usAccent" mnemonicParsing="false" onMouseClicked="#setAccent" stylesheets="@../../assets/style.css" text="US" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="4">
          <styleClass>
             <String fx:value="font-14" />
             <String fx:value="white-text-fill" />
@@ -388,7 +388,7 @@
             <Insets />
          </GridPane.margin>
       </RadioButton>
-      <RadioButton fx:id="nzAccent" mnemonicParsing="false" onMouseClicked="#setAccent" stylesheets="@../../../assets/style.css" text="NZ" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+      <RadioButton fx:id="nzAccent" mnemonicParsing="false" onMouseClicked="#setAccent" stylesheets="@../../assets/style.css" text="NZ" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
          <styleClass>
             <String fx:value="font-14" />
             <String fx:value="white-text-fill" />
@@ -404,7 +404,7 @@
 
    </HBox>
    <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="5" GridPane.columnSpan="2">
-      <Button fx:id="reset" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#reset" prefHeight="30.0" stylesheets="@../../../assets/style.css" text="Reset" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+      <Button fx:id="reset" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#reset" prefHeight="30.0" stylesheets="@../../assets/style.css" text="Reset" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
          <styleClass>
             <String fx:value="orange-button" />
             <String fx:value="white-text-fill" />
@@ -418,7 +418,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label fx:id="winnings" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="70.0" stylesheets="@../../../assets/style.css" text="\$100" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+      <Label fx:id="winnings" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="70.0" stylesheets="@../../assets/style.css" text="\$100" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
          <styleClass>
             <String fx:value="white-background" />
             <String fx:value="purple-text-fill" />

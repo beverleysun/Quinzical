@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="background-color" stylesheets="@../../../assets/style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="background-color" stylesheets="@../../assets/style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="330.0" />
@@ -38,7 +38,7 @@
         <Insets />
         </GridPane.margin>
     </Label>
-    <Button fx:id="next" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#backToQuestion" prefWidth="100.0" stylesheets="@../../../assets/style.css" text="Next" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+    <Button fx:id="next" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#backToQuestion" prefWidth="100.0" stylesheets="@../../assets/style.css" text="Next" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="3">
         <styleClass>
             <String fx:value="orange-button" />
             <String fx:value="white-text-fill" />
@@ -49,7 +49,7 @@
             <Cursor fx:constant="HAND" />
         </cursor>
     </Button>
-    <Label stylesheets="@../../../assets/style.css" text="Voice Speed" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+    <Label stylesheets="@../../assets/style.css" text="Voice Speed" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
         <GridPane.margin>
             <Insets />
         </GridPane.margin>
@@ -58,7 +58,7 @@
             <String fx:value="font-14" />
         </styleClass>
     </Label>
-    <Slider fx:id="voiceSlider" blockIncrement="0.25" majorTickUnit="0.25" max="3.0" maxHeight="-Infinity" maxWidth="-Infinity" min="0.5" minHeight="-Infinity" minWidth="-Infinity" minorTickCount="0" onMouseEntered="#displaySpeed" onMouseExited="#removeSpeed" onMouseReleased="#sliderChanged" prefWidth="95.0" snapToTicks="true" styleClass="voice-speed-slider" stylesheets="@../../../assets/style.css" value="1.25" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+    <Slider fx:id="voiceSlider" blockIncrement="0.25" majorTickUnit="0.25" max="3.0" maxHeight="-Infinity" maxWidth="-Infinity" min="0.5" minHeight="-Infinity" minWidth="-Infinity" minorTickCount="0" onMouseEntered="#displaySpeed" onMouseExited="#removeSpeed" onMouseReleased="#sliderChanged" prefWidth="95.0" snapToTicks="true" styleClass="voice-speed-slider" stylesheets="@../../assets/style.css" value="1.25" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
     <Label id="question-info" fx:id="clueLabel" style="-fx-text-alignment: center;" text="#initialize" wrapText="true" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
         <font>
           <Font size="33.0" />
@@ -77,7 +77,7 @@
           <String fx:value="font-26" />
         </styleClass>
     </Label>
-    <Label fx:id="speedDisplay" layoutX="391.0" layoutY="366.0" styleClass="white-text-fill" stylesheets="@../../../assets/style.css" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="TOP">
+    <Label fx:id="speedDisplay" layoutX="391.0" layoutY="366.0" styleClass="white-text-fill" stylesheets="@../../assets/style.css" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="TOP">
         <font>
             <Font name="PT Sans" size="14.0" />
         </font>
@@ -86,7 +86,7 @@
         </GridPane.margin>
     </Label>
     <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-        <Label stylesheets="@../../../assets/style.css" text="Accent" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+        <Label stylesheets="@../../assets/style.css" text="Accent" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
             <styleClass>
                 <String fx:value="white-text-fill" />
                 <String fx:value="font-14" />
@@ -95,7 +95,7 @@
                 <Insets right="10.0" />
             </GridPane.margin>
         </Label>
-        <RadioButton fx:id="usAccent" mnemonicParsing="false" onMouseClicked="#setAccent" stylesheets="@../../../assets/style.css" text="US" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="4">
+        <RadioButton fx:id="usAccent" mnemonicParsing="false" onMouseClicked="#setAccent" stylesheets="@../../assets/style.css" text="US" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="4">
             <styleClass>
                 <String fx:value="font-14" />
                 <String fx:value="white-text-fill" />
@@ -105,7 +105,7 @@
                 <Insets />
             </GridPane.margin>
         </RadioButton>
-        <RadioButton fx:id="nzAccent" mnemonicParsing="false" onMouseClicked="#setAccent" stylesheets="@../../../assets/style.css" text="NZ" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+        <RadioButton fx:id="nzAccent" mnemonicParsing="false" onMouseClicked="#setAccent" stylesheets="@../../assets/style.css" text="NZ" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
             <styleClass>
                 <String fx:value="font-14" />
                 <String fx:value="white-text-fill" />

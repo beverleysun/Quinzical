@@ -30,6 +30,7 @@ public class DataLoader {
     private final List<Category> questionData = new ArrayList<>();
     private final List<Category> practiceQuestionData = new ArrayList<>();
     private final List<User> scores = new ArrayList<>();
+    private Category internationalQuestions;
 
     /**
      * Loads in all data from the save folder
@@ -39,6 +40,7 @@ public class DataLoader {
         loadPracticeQuestions();
         loadVoice();
         loadScores();
+        loadInternationalQuestions();
     }
 
     /**
@@ -85,7 +87,7 @@ public class DataLoader {
     private void loadInternationalQuestions() {
         InternationalQuestionGenerator generator = new InternationalQuestionGenerator();
 
-        Category cat = new Category("International");
+        internationalQuestions = new Category("International");
         Map<String, String> questionAndAnswers = generator.getFiveInternationQAndAs();
         int questionValue = 500;
 
@@ -99,17 +101,16 @@ public class DataLoader {
             boolean available = isAvailable("International", questionValue);
 
             Question question = new Question(questionStr, answer, questionValue, answered, available);
-            cat.addQuestion(question);
+            internationalQuestions.addQuestion(question);
 
             questionValue = questionValue - 100; // decrease question value for the next question
         }
-        questionData.add(cat);
     }
 
     /**
      * Load in all questions from the categories folder as they are all able to be answered in the practice module
      */
-    public void loadPracticeQuestions() {
+    private void loadPracticeQuestions() {
         try {
             assert allCategoryFiles != null;
             for(File categoryFile : allCategoryFiles) {
@@ -184,7 +185,7 @@ public class DataLoader {
                 questionData.add(category);
                 lineNum.close();
             }
-            loadInternationalQuestions();
+            questionData.add(internationalQuestions);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -194,7 +195,7 @@ public class DataLoader {
     /**
      * Load in all past player scores
      */
-    public void loadScores() {
+    private void loadScores() {
         try {
             //Read every line of scores file
             BufferedReader reader = new BufferedReader(new FileReader(scoresFile));
@@ -386,7 +387,7 @@ public class DataLoader {
      * @param value the value to check for
      * @return true if available, false otherwise
      */
-    public boolean isAvailable(String category, int value) {
+    private boolean isAvailable(String category, int value) {
         if (value == 100 && !isAnswered(category, value)) {
             return true;
         }

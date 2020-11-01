@@ -95,7 +95,7 @@ public class Database {
 			Writer wr = new FileWriter("./.save/category-index/category-index");
 
 			for (int k = 0; k < 5; k++) {
-				wr.write(index[k] + ",");;
+				wr.write(index[k] + ",");
 			}
 			wr.close();
 		} catch (IOException ioException) {
@@ -175,6 +175,7 @@ public class Database {
 	 */
 	public int getWinnings() {
 		String[] winnings = winningsFolder.list();
+		assert winnings != null;
 		return Integer.parseInt(winnings[0]);
 	}
 
@@ -184,6 +185,7 @@ public class Database {
 	 */
 	public void addWinnings(int value){
 		String[] winningsStr = winningsFolder.list();
+		assert winningsStr != null;
 		int winningsInt = Integer.parseInt(winningsStr[0]);
 		int newWinnings = winningsInt + value;
 		new File("./.save/winnings/"+ winningsInt).renameTo(new File("./.save/winnings/"+ newWinnings));

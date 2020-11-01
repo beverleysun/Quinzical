@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="background-color" stylesheets="@../../../assets/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.controllers.play.UnlockedInternationalController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="background-color" stylesheets="@../../assets/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.controllers.play.UnlockedInternationalController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="550.0" />
@@ -20,7 +20,7 @@
         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         <RowConstraints />
     </rowConstraints>
-    <Label minWidth="-Infinity" stylesheets="@../../../assets/style.css" text="Congrats! You have unlocked the" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+    <Label minWidth="-Infinity" stylesheets="@../../assets/style.css" text="Congrats! You have unlocked the" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
         <GridPane.margin>
             <Insets bottom="50.0" />
         </GridPane.margin>
@@ -30,7 +30,7 @@
             <String fx:value="font-bold" />
         </styleClass>
     </Label>
-    <Label minWidth="-Infinity" stylesheets="@../../../assets/style.css" text="International Category!" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+    <Label minWidth="-Infinity" stylesheets="@../../assets/style.css" text="International Category!" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
         <GridPane.margin>
             <Insets />
         </GridPane.margin>
@@ -40,7 +40,7 @@
             <String fx:value="font-bold" />
         </styleClass>
     </Label>
-    <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#toQuestionBoard" prefWidth="100.0" stylesheets="@../../../assets/style.css" text="Continue" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+    <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#toQuestionBoard" prefWidth="100.0" stylesheets="@../../assets/style.css" text="Continue" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
         <styleClass>
             <String fx:value="orange-button" />
             <String fx:value="white-text-fill" />

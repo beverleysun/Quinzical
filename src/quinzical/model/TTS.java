@@ -121,6 +121,10 @@ public class TTS {
         return accent;
     }
 
+    /**
+     * Returns the current speaking process
+     * @return the current speaking process
+     */
     public Process getProcess() {
         return process;
     }

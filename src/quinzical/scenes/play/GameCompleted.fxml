@@ -7,7 +7,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" spacing="15.0" styleClass="background-color" stylesheets="@../../../assets/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.controllers.play.GameCompletedController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" spacing="15.0" styleClass="background-color" stylesheets="@../../assets/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.controllers.play.GameCompletedController">
    <padding>
       <Insets bottom="20.0" />
    </padding>
@@ -15,28 +15,28 @@
       <viewport>
          <Rectangle2D />
       </viewport>
-      <Image url="@../../../assets/reward.png" />
+      <Image url="@../../assets/reward.png" />
    </ImageView>
-   <Label fx:id="finalWinningsLabel" stylesheets="@../../../assets/style.css" text="You won ...">
+   <Label fx:id="finalWinningsLabel" stylesheets="@../../assets/style.css" text="You won ...">
       <styleClass>
          <String fx:value="white-text-fill" />
          <String fx:value="font-26" />
       </styleClass>
    </Label>
-   <Label stylesheets="@../../../assets/style.css" text="Enter your name to save your score">
+   <Label stylesheets="@../../assets/style.css" text="Enter your name to save your score">
       <styleClass>
          <String fx:value="white-text-fill" />
          <String fx:value="font-16" />
       </styleClass>
    </Label>
    <HBox alignment="TOP_CENTER" spacing="20.0">
-      <TextField fx:id="textField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#checkKeyPress" prefWidth="400.0" stylesheets="@../../../assets/style.css">
+      <TextField fx:id="textField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#checkKeyPress" prefWidth="400.0" stylesheets="@../../assets/style.css">
          <styleClass>
             <String fx:value="white-background" />
             <String fx:value="font-14" />
          </styleClass>
       </TextField>
-      <Button mnemonicParsing="false" onKeyPressed="#checkKeyPress" onMouseClicked="#save" prefWidth="75.0" stylesheets="@../../../assets/style.css" text="Save">
+      <Button mnemonicParsing="false" onKeyPressed="#checkKeyPress" onMouseClicked="#save" prefWidth="75.0" stylesheets="@../../assets/style.css" text="Save">
          <styleClass>
             <String fx:value="orange-button" />
             <String fx:value="white-text-fill" />

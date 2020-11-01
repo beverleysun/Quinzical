@@ -7,7 +7,7 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quinzical.controllers.StartPageController">
    <children>
-       <GridPane styleClass="background-color" stylesheets="@../../assets/style.css" vgap="20.0">
+       <GridPane styleClass="background-color" stylesheets="@../assets/style.css" vgap="20.0">
            <columnConstraints>
                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
            </columnConstraints>
@@ -17,7 +17,7 @@
                <RowConstraints maxHeight="1.7976931348623157E308" minHeight="54.0" prefHeight="141.0" vgrow="SOMETIMES" />
            </rowConstraints>
           <children>
-              <Label alignment="CENTER" stylesheets="@../../assets/style.css" text="QUINZICAL" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+              <Label alignment="CENTER" stylesheets="@../assets/style.css" text="QUINZICAL" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                   <styleClass>
                       <String fx:value="white-text-fill" />
                       <String fx:value="font-50" />
@@ -25,7 +25,7 @@
               </Label>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <children>
-                    <Button fx:id="play" mnemonicParsing="false" onAction="#initialize" onMouseClicked="#play" prefHeight="34.0" prefWidth="100.0" stylesheets="@../../assets/style.css" text="Play" textAlignment="CENTER" wrapText="true">
+                    <Button fx:id="play" mnemonicParsing="false" onAction="#initialize" onMouseClicked="#play" prefHeight="34.0" prefWidth="100.0" stylesheets="@../assets/style.css" text="Play" textAlignment="CENTER" wrapText="true">
                         <cursor>
                             <Cursor fx:constant="HAND" />
                         </cursor>

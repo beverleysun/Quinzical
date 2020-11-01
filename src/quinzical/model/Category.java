@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Category {
     private final String categoryName;
-    private final List<Question> questions = new ArrayList<Question>();
+    private final List<Question> questions = new ArrayList<>();
     private boolean selected = false;
 
     /**
