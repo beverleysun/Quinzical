@@ -8,6 +8,12 @@ Everything is packaged already in the submission so all you need to do is unzip 
 > chmod +x Quinzical.jar
 > java -jar Quinzical.jar
 ```
+Apparently we need to include the JavaFX path in the README.md as well (got marked down for this in assignment 2). So, if you wish to run the jar with the VM arguments (you shouldn't need to), then you can execute these commands
+
+```
+> chmod +x Quinzical.jar
+> java --module-path "/usr/share/java/lib" --add-modules javafx.fxml,javafx.controls -jar Quinzical.jar
+```
 
 ## How to Play
 If you've always wanted to learn more about New Zealand, here's your chance. The game is very easy to play!
@@ -18,7 +24,7 @@ In the 'Play' section, you will be presented with 5 randomly chosen categories w
 
 In the 'Practice' section, you will be presented with all the possible categories. Simply click one and a randomly chosen question from that category will be asked. You will be given 3 attempts the answer the question - on your third attempt, the first letter of the answer is given. Don't worry about getting it wrong! The questions aren't worth anything, they're simply there for you to practice.
 
-When you've completed all the questions in the 'Play' section, enter a name to save your score and the game wil reset. A new set of questions will be generated for you to play again!
+When you've completed all the questions in the 'Play' section, enter a name to save your score and the game will reset. A new set of questions will be generated for you to play again!
 
 You can also add your own questions! 
 [Read below to find out how](#adding-categories-and-questions)
