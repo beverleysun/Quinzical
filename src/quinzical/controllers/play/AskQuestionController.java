@@ -66,7 +66,7 @@ public class AskQuestionController extends VoiceSettingsChangeable {
 
         categoryLabel.setText(categoryStr);
         winnings.setText("$" + Database.getInstance().getWinnings());
-        timeLeft.setText("15");
+        timeLeft.setText("30");
         setValueLabelAndDisplayQuestionButton();
         waitForTTS();
     }
@@ -82,7 +82,7 @@ public class AskQuestionController extends VoiceSettingsChangeable {
             try {
                 // Wait for speaking to finish, then start timer
                 TTS.getInstance().getProcess().waitFor();
-                Platform.runLater(() -> initTimer(15));
+                Platform.runLater(() -> initTimer(30));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
