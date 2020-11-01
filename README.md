@@ -5,15 +5,24 @@ Some methods in the controllers might be greyed out which would normally signify
 
 Everything is packaged already in the submission so all you need to do is unzip the file, set excutable permissions to Quinzical.jar, and run it
 ```
-> chmod +x Quinzical.jar
-> java -jar Quinzical.jar
+> chmod +x ./Quinzical.jar
+> java -jar ./Quinzical.jar
 ```
 Apparently we need to include the JavaFX path in the README.md as well (got marked down for this in assignment 2). So, if you wish to run the jar with the VM arguments (you shouldn't need to), then you can execute these commands
 
 ```
-> chmod +x Quinzical.jar
-> java --module-path "/usr/share/java/lib" --add-modules javafx.fxml,javafx.controls -jar Quinzical.jar
+> chmod +x ./Quinzical.jar
+> java --module-path "/usr/share/java/lib" --add-modules javafx.fxml,javafx.controls -jar ./Quinzical.jar
 ```
+
+Or with the provided script file
+
+```
+> chmod +x ./runme.sh
+> ./runme.sh
+```
+
+We are also assuming that you already have the NZ accent installed in the festival directory. If not, the US accent will work but the NZ accent won't.
 
 ## How to Play
 If you've always wanted to learn more about New Zealand, here's your chance. The game is very easy to play!
