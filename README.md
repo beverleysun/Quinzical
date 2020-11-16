@@ -1,29 +1,5 @@
 # Welcome to Quinzical!
 
-### A note for the markers
-Some methods in the controllers might be greyed out which would normally signify unused methods. These methods, however, are used. Because the controllers are set within the code and not within the .fxml files, it appears that they are not used when they actually are. The same applies for the "errors" within the .fxml files. When the controller is set, the code will work.
-
-Everything is packaged already in the submission so all you need to do is unzip the file, set excutable permissions to Quinzical.jar, and run it
-```
-> chmod +x ./Quinzical.jar
-> java -jar ./Quinzical.jar
-```
-Apparently we need to include the JavaFX path in the README.md as well (got marked down for this in assignment 2). So, if you wish to run the jar with the VM arguments (you shouldn't need to), then you can execute these commands
-
-```
-> chmod +x ./Quinzical.jar
-> java --module-path "/usr/share/java/lib" --add-modules javafx.fxml,javafx.controls -jar ./Quinzical.jar
-```
-
-Or with the provided script file
-
-```
-> chmod +x ./runme.sh
-> ./runme.sh
-```
-
-We are also assuming that you already have the NZ accent installed in the festival directory. If not, the US accent will work but the NZ accent won't.
-
 ## How to Play
 If you've always wanted to learn more about New Zealand, here's your chance. The game is very easy to play!
 
@@ -49,6 +25,7 @@ You can also add your own questions!
 ## Requirements
 - [Java Runtime Environment (JRE)](https://www.oracle.com/java/technologies/javase-jre8-downloads.html)
 - [Java11+ JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+- Linux with festival installed
 
 ## Download
 #### Note: It is very important that you have at least 5 categories with at least 5 questions in each
