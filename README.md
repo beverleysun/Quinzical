@@ -31,8 +31,8 @@ You can also add your own questions!
 #### Note: It is very important that you have at least 5 categories with at least 5 questions in each
 
 ### Linux
-1. [Download](https://github.com/SOFTENG206-2020/assignment-3-and-project-team-34/raw/master/Quinzical.jar) the Quinzical.jar file
-2. [Download](https://github.com/SOFTENG206-2020/assignment-3-and-project-team-34/raw/master/categories.zip) the categories.zip file
+1. [Download](https://github.com/beverleysun/quinzical/raw/master/Quinzical.jar) the Quinzical.jar file
+2. [Download](https://github.com/beverleysun/quinzical/raw/master/categories.zip) the categories.zip file
    - Alternatively, you can create your own categories and questions. [See below for how to do this](#adding-categories-and-questions)
    - Unpack the .zip and move the 'categories' folder into the same directory as Quinzical.jar
 4. Open the terminal and execute the following commands
