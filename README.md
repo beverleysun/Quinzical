@@ -25,7 +25,7 @@ You can also add your own questions!
 ## Requirements
 - [Java Runtime Environment (JRE)](https://www.oracle.com/java/technologies/javase-jre8-downloads.html)
 - [Java11+ JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
-- Linux with festival installed
+- Linux with `festival` installed
 
 ## Download
 #### Note: It is very important that you have at least 5 categories with at least 5 questions in each
